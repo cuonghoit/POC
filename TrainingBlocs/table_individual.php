@@ -1,7 +1,6 @@
 <?php
 
 	$index = isset($_SESSION['training_table_index']) ? $_SESSION['training_table_index'] : 1;
-	$tableData = isset($_SESSION['training_table_value']) ? $_SESSION['training_table_value'] : [];
 	if (isset($_POST["btn_add"])) {
 		$index++;
 	} else if (isset($_POST["btn_remove"])) {
@@ -9,7 +8,6 @@
 			$index--;
 	}
 	$_SESSION['training_table_index'] = $index;
-	$_SESSION['training_table_value'] = $tableData;
 ?>
 
 <!doctype html>
@@ -19,6 +17,38 @@
 <title>Untitled Document</title>
 <link rel="stylesheet" type="text/css" href="../css/table_individual.css"/>
 	<script>
+		window.onload = function(){
+			if (localStorage.getItem("training_table_value") !== null) {
+				var TableValue = JSON.parse(localStorage.getItem("training_table_value"));
+				$('#data_table tr').each(function(row, tr){
+					row = row - 2;
+					if(row < TableValue.length && row >= 0) {
+						$(tr).find('td:eq(1) input').val(TableValue[row]["name"]);
+						$(tr).find('td:eq(2) input').val(TableValue[row]["disciplines"]);
+						$(tr).find('td:eq(3) input').val(TableValue[row]["type"]);
+						$(tr).find('td:eq(4) input').val(TableValue[row]["purpose"]);
+						$(tr).find('td:eq(5) input').val(TableValue[row]["provider"]);
+						$(tr).find('td:eq(6) input').val(TableValue[row]["location"]);
+						$(tr).find('td:eq(7) input').val(TableValue[row]["usd"]);
+						$(tr).find('td:eq(8) input').val(TableValue[row]["vnd"]);
+						$(tr).find('td:eq(9) input').prop("checked", TableValue[row]["jan"]);
+						$(tr).find('td:eq(10) input').prop("checked", TableValue[row]["feb"]);
+						$(tr).find('td:eq(11) input').prop("checked", TableValue[row]["mar"]);
+						$(tr).find('td:eq(12) input').prop("checked", TableValue[row]["apr"]);
+						$(tr).find('td:eq(13) input').prop("checked", TableValue[row]["may"]);
+						$(tr).find('td:eq(14) input').prop("checked", TableValue[row]["jun"]);
+						$(tr).find('td:eq(15) input').prop("checked", TableValue[row]["jul"]);
+						$(tr).find('td:eq(16) input').prop("checked", TableValue[row]["aug"]);
+						$(tr).find('td:eq(17) input').prop("checked", TableValue[row]["sep"]);
+						$(tr).find('td:eq(18) input').prop("checked", TableValue[row]["oct"]);
+						$(tr).find('td:eq(19) input').prop("checked", TableValue[row]["nov"]);
+						$(tr).find('td:eq(20) input').prop("checked", TableValue[row]["dec"]);
+					}
+				});
+				
+			}
+		};
+		
 		function saveData(){
 			var TableData = new Array();
 			$('#data_table tr').each(function(row, tr){
@@ -47,7 +77,9 @@
 			}); 
 			TableData.shift();
 			TableData.shift();
-			alert(TableData[0]["name"]);
+//			alert(TableData[0]["name"]);
+			localStorage.setItem('training_table_value', JSON.stringify(TableData));
+			
 		}
 		
 	</script>
@@ -93,7 +125,7 @@
 	  ?>
 	      <tr>
 	        <td><?php echo($i + 1) ?></td>
-	        <td><input name="textfield" type="text" id="idTrainigName" value="123"></td>
+	        <td><input name="textfield" type="text" id="idTrainigName"></td>
 	        <td><input type="text" name="textfield" id="textfield"></td>
 	        <td><input type="text" name="textfield" id="textfield"></td>
 	        <td><input type="text" name="textfield" id="textfield"></td>
