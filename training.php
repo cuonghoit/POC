@@ -1,5 +1,11 @@
 <?php 
 	session_start();
+	
+	require "database/dbCon.php";
+	$con = getConnection();
+	
+	require "database/trainingFac.php";
+	require "signal/signal.php";
 ?>
 <!doctype html>
 <html>
@@ -12,6 +18,7 @@
 <link rel="stylesheet" type="text/css" href="css/title_individual.css"/>
 <link rel="stylesheet" type="text/css" href="css/general_individual.css"/>
 <link rel="stylesheet" type="text/css" href="css/table_individual.css"/>
+<link rel="stylesheet" type="text/css" href="css/training_footer.css"/>
 <body>
 	<div id="wrapper"> 
 		<div id="menu"> <?php require "TrainingBlocs/menu.php"; ?> </div>
@@ -20,16 +27,16 @@
 			<?php 
 			$path = isset($_GET['p']) ? $_GET['p'] : '';
 			switch ($path) {
-				case 'individual':
+				case Signal::$PAGE_INDIVIDUAL:
 					require "TrainingBlocs/general_individual.php";
 					break;
-				case 'group':
+				case Signal::$PAGE_GROUP:
 					require "TrainingBlocs/general_group.php";
 					break;
-				case 'department':
+				case Signal::$PAGE_DEPARTMENT:
 					require "TrainingBlocs/general_department.php";
 					break;
-				case 'company':
+				case Signal::$PAGE_COMPANY:
 					break;
 				default:
 					require "TrainingBlocs/general_individual.php";
@@ -39,6 +46,7 @@
 		</div>
 		<div id="date_time"> <?php require "TrainingBlocs/date_individual.php"; ?> </div>
 		<div id="table"> <?php require "TrainingBlocs/table_individual.php"; ?> </div>
+		<div id='footer'> <?php require "TrainingBlocs/footer.php"; ?> </div>
 		
 	</div>
 </body>
