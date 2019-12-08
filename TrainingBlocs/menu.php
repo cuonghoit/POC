@@ -1,3 +1,10 @@
+<?php 
+	if (isset($_POST["logout_button"])) {
+		session_destroy();
+		header('Location:login.php');
+	}
+?>
+
 <link rel="stylesheet" type="text/css" href="ddsmoothmenu.css" />
 <link rel="stylesheet" type="text/css" href="ddsmoothmenu-v.css" />
 
@@ -39,7 +46,9 @@ ddsmoothmenu.init({
 <span></span>
 </a>
 
-<div id="smoothmenu1" class="ddsmoothmenu">
+<form method="post" id="form_menu">
+
+	<div id="smoothmenu1" class="ddsmoothmenu">
 <ul>
 <li><a href="./training.php">Home</a></li>
 <li><a href="./training.php">Training Management</a>
@@ -59,5 +68,19 @@ ddsmoothmenu.init({
   </ul>
 </li>
 </ul>
+<div id="id_user_name"> 
+	<table width="100%">
+  <tbody>
+    <tr>
+      <td> <?php echo $_SESSION[Signal::$SESSION_USERNAME] ?>  </td>
+      <td><button id="btn_logout" name="logout_button" form="form_menu"> Logout </button> </td>
+    </tr>
+  </tbody>
+</table>
+	
+</div>
 <br style="clear: left" />
 </div>
+	
+</form>
+

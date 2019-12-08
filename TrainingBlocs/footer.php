@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../css/training_footer.css"/>
 	
 <body>
-	<form>
+	<form id="form1" name="form2" method="post">
 		<div>
 		<?php 
 			$content = 'SUBMIT TO SUPERVISOR FOR APPROVAL: ';
@@ -39,7 +39,7 @@
 			</div>
 		<?php } else { ?>
 			<div id="submit_plan"> <?php echo $content ?>
-				<button id='btn_submit'> Submit </button>
+				<button type="submit" name="btn_submit" form="form1" value="Submit" onclick="saveIndividualTraining(<?php echo $_SESSION[Signal::$SESSION_USERID] ?>)"> Submit </button>
 			</div>
 			<?php if($value === Signal::$PAGE_COMPANY) {?>
 				<div id='div_print'> <button id='btn_print_out'> Print Out </button> </div>

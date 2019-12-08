@@ -1,9 +1,35 @@
 <?php 
 	session_start();
 	require "signal/signal.php";
+	require "database/dbCon.php";
+	$con = getConnection();
 	
-	$_SESSION[Signal::$SESSION_USERID] = 3;
+	require "database/trainingFac.php";
+	
+	if(isset($_POST["btn_login"])) {
+		$userName = $_POST["text_username"];
+		$password = $_POST["text_password"];
+		$loginInfo = login($con, $userName, $password);
+		if(!$loginInfo || mysqli_num_rows($loginInfo) == 0) {
+			// login fail
+			echo 'Login fail';
+		} else {
+			$row = mysqli_fetch_array($loginInfo);
+			$userID = $row['UserID'];
+			$loginName = $row['StaffName'];
+			$_SESSION[Signal::$SESSION_USERID] = $userID;
+			$_SESSION[Signal::$SESSION_USERNAME] = $loginName;
+			header('Location:training.php');
+		}
+	}
 ?>
+
+<?php 
+	if( isset($_SESSION[Signal::$SESSION_USERID]) && isset($_SESSION[Signal::$SESSION_USERNAME])) {
+		header('Location:training.php');
+	}
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -12,6 +38,28 @@
 </head>
 
 <body>
-	<a href="training.php"> Login </a>
+	<form id="form_login" method="post">
+	<table width="100%">
+  <tbody>
+    <tr>
+      <td colspan="2">IHRDC Login Page</td>
+      </tr>
+    <tr>
+      <td width="15%">user name:</td>
+      <td width="85%">
+        <input name="text_username" type="text" id="textfield" value="tame"></td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>
+        <input name="text_password" type="text" id="textfield2" value="123"></td>
+    </tr>
+    <tr>
+      <td><button name="btn_login" form="form_login"> Login </button></td>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+	</form>
 </body>
 </html>
