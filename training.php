@@ -10,6 +10,8 @@
 
     $session_value = $_SESSION[Signal::$SESSION_USERID];
 
+	$path = isset($_GET['p']) ? $_GET['p'] : '';
+
 ?>
 
 <?php 
@@ -39,7 +41,6 @@
 		<div id="title"> <?php require "TrainingBlocs/title_individual.php"; ?> </div>
 		<div id="input"> 
 			<?php 
-			$path = isset($_GET['p']) ? $_GET['p'] : '';
 			switch ($path) {
 				case Signal::$PAGE_INDIVIDUAL:
 					require "TrainingBlocs/general_individual.php";
@@ -59,7 +60,27 @@
 			?> 
 		</div>
 		<div id="date_time"> <?php require "TrainingBlocs/date_individual.php"; ?> </div>
-		<div id="table"> <?php require "TrainingBlocs/table_individual.php"; ?> </div>
+		<div id="table">
+			<?php 
+			switch ($path) {
+				case Signal::$PAGE_INDIVIDUAL:
+					require "TrainingBlocs/table_individual.php";
+					break;
+				case Signal::$PAGE_GROUP:
+					require "TrainingBlocs/table_group_department.php";
+					break;
+				case Signal::$PAGE_DEPARTMENT:
+					require "TrainingBlocs/table_group_department.php";
+					break;
+				case Signal::$PAGE_COMPANY:
+					require "TrainingBlocs/table_group_department.php";
+					break;
+				default:
+					require "TrainingBlocs/table_individual.php";
+					break;
+			} 
+			?> 
+		</div>
 		<div id='footer'> <?php require "TrainingBlocs/footer.php"; ?> </div>
 		
 	</div>

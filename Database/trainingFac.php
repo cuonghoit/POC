@@ -67,4 +67,23 @@ function saveTrainingIndividual($con, $row, $userID) {
 		return $qr;
 };
 
+function getGroupOrDepartMentTraing($con, $userID) {
+	$qr = "
+		SELECT * 
+		FROM training, user_info
+		WHERE user_info.UserID='$userID'
+		AND training.UserID=user_info.UserID
+	";
+	
+	return mysqli_query($con, $qr);
+}
+
+
+function getHighLight($value) {
+	if ($value) { 
+		return 'cadetblue';
+	} else {
+		return 'while';
+	}
+}
 ?>
