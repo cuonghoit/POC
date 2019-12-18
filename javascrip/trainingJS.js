@@ -5,7 +5,7 @@
 				$('#data_table tr').each(function(row, tr){
 					row = row - 2;
 					if(row < TableValue.length && row >= 0) {
-						$(tr).find('td:eq(1) input').val(TableValue[row]["name"]);
+						$(tr).find('td:eq(1)  select option:selected').text(TableValue[row]["name"]);
 						$(tr).find('td:eq(2) input').val(TableValue[row]["disciplines"]);
 						$(tr).find('td:eq(3) input').val(TableValue[row]["type"]);
 						$(tr).find('td:eq(4) input').val(TableValue[row]["purpose"]);
@@ -35,7 +35,7 @@
 			var TableData = new Array();
 			$('#data_table tr').each(function(row, tr){
 				TableData[row] = {
-					"name" 			: $(tr).find('td:eq(1) input').val(),
+					"name" 			: $(tr).find('td:eq(1) select option:selected').text(),
 					"disciplines" 	: $(tr).find('td:eq(2) input').val(),
 					"type" 			: $(tr).find('td:eq(3) input').val(),
 					"purpose" 		: $(tr).find('td:eq(4) input').val(),
@@ -62,11 +62,15 @@
 			sessionStorage.setItem('training_table_value', JSON.stringify(TableData));
 		};
 
+		function test(){
+			alert("PUMP");
+		};
+
 		function saveIndividualTraining($userID){
 			var TableData = new Array();
 			$('#data_table tr').each(function(row, tr){
 				TableData[row] = {
-					"name" 			: $(tr).find('td:eq(1) input').val(),
+					"name" 			: $(tr).find('td:eq(1) select option:selected').text(),
 					"disciplines" 	: $(tr).find('td:eq(2) input').val(),
 					"type" 			: $(tr).find('td:eq(3) input').val(),
 					"purpose" 		: $(tr).find('td:eq(4) input').val(),
@@ -93,4 +97,4 @@
 			$.post("Database/trainingServerSide.php", {trainingData: TableData, userID: $userID}, function(data) {
 				sessionStorage.setItem('training_table_value', null);
 			});
-		}
+		};

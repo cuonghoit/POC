@@ -1,25 +1,18 @@
 <?php 
 
-function getLoginUserInformation($con, $userID) {
+function getCources($con) {
 	$qr = "
-		SELECT 	supervisor_info.StaffName supervisorName, 
-		supervisor_info.JobTitle supervisorJobTitle, 
-		supervisor_info.Email supervisorEmail,
-        department.DepartmentName,
-        user_info.Background,
-        user_info.StaffName,
-        user_info.Education,
-        user_info.JobTitle,
-        user_info.DateInCurrentPosision,
-        user_info.StaffNumber,
-        user_info.DateJoin,
-        user_info.Email
+		SELECT *
+		FROM course
+	";
+	return mysqli_query($con, $qr);
+}
 
-		from user, user_info, department, user_info supervisor_info 
-		WHERE user.UserID=$userID 
-		AND department.userID=$userID
-		AND user_info.UserID=$userID 
-		AND supervisor_info.UserID=department.DepartmentLeader
+function getLoginUserInformation($con, $staffNumber) {
+	$qr = "
+		SELECT 	*
+		from personal_info 
+		WHERE personal_info.Staff_Number='$staffNumber'
 	";
 	return mysqli_query($con, $qr);
 };
@@ -28,12 +21,11 @@ function getLoginUserInformation($con, $userID) {
 function login($con, $userID, $pass) {
 	$qr = "
 		SELECT *
-		FROM user, user_info
+		FROM user, personal_info
 		WHERE user.UserName='$userID'
 		AND user.Password='$pass'
-		AND user.UserID=user_info.UserID
+		AND user.StaffNumber=personal_info.Staff_Number
 	";
-	echo $qr;
 	return mysqli_query($con, $qr);
 }
 

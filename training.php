@@ -35,6 +35,7 @@
 <link rel="stylesheet" type="text/css" href="css/table_individual.css"/>
 <link rel="stylesheet" type="text/css" href="css/training_footer.css"/>
 <link rel="stylesheet" type="text/css" href="css/training_menu.css"/>
+
 <body>
 	<div id="wrapper"> 
 		<div id="menu"> <?php require "TrainingBlocs/menu.php"; ?> </div>

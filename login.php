@@ -16,9 +16,13 @@
 		} else {
 			$row = mysqli_fetch_array($loginInfo);
 			$userID = $row['UserID'];
-			$loginName = $row['StaffName'];
+			$loginName = $row['First_Name']." ".$row['Middle_Name']." ".$row['Last_Name'];
+			$staffRole = $row['Staff_Role_ID'];
+			$staffNumber = $row['Staff_Number'];
 			$_SESSION[Signal::$SESSION_USERID] = $userID;
 			$_SESSION[Signal::$SESSION_USERNAME] = $loginName;
+			$_SESSION[Signal::$SESSION_STAFFNUMBER] = $staffNumber;
+			$_SESSION[Signal::$SESSION_STAFFROLE] = $staffRole;
 			header('Location:training.php');
 		}
 	}
@@ -47,12 +51,12 @@
     <tr>
       <td width="15%">user name:</td>
       <td width="85%">
-        <input name="text_username" type="text" id="textfield" value="tame"></td>
+        <input name="text_username" type="text" id="textfield" value="annt"></td>
     </tr>
     <tr>
       <td>password</td>
       <td>
-        <input name="text_password" type="text" id="textfield2" value="123"></td>
+        <input name="text_password" type="text" id="textfield2" value="1234"></td>
     </tr>
     <tr>
       <td><button name="btn_login" form="form_login"> Login </button></td>

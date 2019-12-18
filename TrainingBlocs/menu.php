@@ -1,4 +1,6 @@
 <?php 
+	require "menu_manager.php";
+	
 	if (isset($_POST["logout_button"])) {
 		session_destroy();
 		header('Location:login.php');
@@ -51,22 +53,30 @@ ddsmoothmenu.init({
 	<div id="smoothmenu1" class="ddsmoothmenu">
 <ul>
 <li><a href="./training.php">Home</a></li>
-<li><a href="./training.php">Training Management</a>
-  <ul>
-  <li><a href="./training.php?p=<?php echo Signal::$PAGE_INDIVIDUAL ?>">Individual Training</a></li>
-  <li><a href="./training.php?p=<?php echo Signal::$PAGE_GROUP ?>">Group Training</a></li>
-  <li><a href="./training.php?p=<?php echo Signal::$PAGE_DEPARTMENT ?>">Department Training</a></li>
-  <li><a href="./training.php?p=<?php echo Signal::$PAGE_COMPANY ?>">Company Training</a></li>
-  <li><a href="./training.php?p=<?php echo Signal::$PAGE_COMPANY ?>">Approve Training</a>
-	  <ul>
-		  <li><a href="./training.php?p=<?php echo Signal::$PAGE_INDIVIDUAL ?>&s=<?php echo Signal::$SIGNAL_APPROVAL ?>">Approve Individual Training Plan</a></li>
-		  <li><a href="./training.php?p=<?php echo Signal::$PAGE_GROUP ?>&s=<?php echo Signal::$SIGNAL_APPROVAL ?>">Approve Group Training Plan</a></li>
-		  <li><a href="./training.php?p=<?php echo Signal::$PAGE_DEPARTMENT ?>&s=<?php echo Signal::$SIGNAL_APPROVAL ?>">Approve Department Training Plan</a></li>
-		  <li><a href="./training.php?p=<?php echo Signal::$PAGE_COMPANY ?>&s=<?php echo Signal::$SIGNAL_APPROVAL ?>">Approve Company Training Plan</a></li>
-	  </ul>
-  </li>
-  </ul>
-</li>
+<?php
+	if(isset($_SESSION[Signal::$SESSION_STAFFROLE])) {
+		$staffRole = $_SESSION[Signal::$SESSION_STAFFROLE];
+		switch ($staffRole) {
+			case 1:
+				getEmployeeMenu();
+				break;
+			case 2:
+				getGroupLeadMenu();
+				break;
+			case 3:
+				getDepartmentManagerMenu();
+				break;
+			case 4:
+				getBODMenu();
+				break;
+			default:
+				getEmployeeMenu();
+				break;
+				
+		}
+	}
+?>
+
 </ul>
 <div id="id_user_name"> 
 	<table width="100%">

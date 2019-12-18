@@ -9,7 +9,9 @@ class Signal {
 	public static $SIGNAL_APPROVAL = 'approval';
 	
 	public static $SESSION_USERID = 'userID';
+	public static $SESSION_STAFFNUMBER = 'staffNumber';
 	public static $SESSION_USERNAME = 'userName';
+	public static $SESSION_STAFFROLE = 'staffRole';
 }
 
 ?>
