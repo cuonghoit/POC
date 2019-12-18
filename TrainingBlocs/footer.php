@@ -34,12 +34,12 @@
 			if ($approval === Signal::$SIGNAL_APPROVAL) {
 		?>
 			<div id='signal_approval'> 
-				<button id='btn_approval'> Approve </button>
-				<button id='btn_reject'> Reject</button>
+				<button id='btn_approval' onclick="getApprovalTraining(1)"> Approve </button>
+				<button id='btn_reject' type="submit" name="btn_submit" form="form1" value="Submit" onclick="getApprovalTraining(0)"> Reject </button>
 			</div>
 		<?php } else { ?>
 			<div id="submit_plan"> <?php echo $content ?>
-				<button type="submit" name="btn_submit" form="form1" value="Submit" onclick="saveIndividualTraining(<?php echo $_SESSION[Signal::$SESSION_USERID] ?>)"> Submit </button>
+				<button type="submit" name="btn_submit" form="form1" value="Submit" onclick="saveIndividualTraining(<?php echo $_SESSION[Signal::$SESSION_STAFFNUMBER] ?>)"> Submit </button>
 			</div>
 			<?php if($value === Signal::$PAGE_COMPANY) {?>
 				<div id='div_print'> <button id='btn_print_out'> Print Out </button> </div>

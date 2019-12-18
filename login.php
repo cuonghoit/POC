@@ -19,10 +19,15 @@
 			$loginName = $row['First_Name']." ".$row['Middle_Name']." ".$row['Last_Name'];
 			$staffRole = $row['Staff_Role_ID'];
 			$staffNumber = $row['Staff_Number'];
+			// TODO will update group late
+			$staffGroup = $row['Department']; 
+			$staffDepartment = $row['Department'];
 			$_SESSION[Signal::$SESSION_USERID] = $userID;
 			$_SESSION[Signal::$SESSION_USERNAME] = $loginName;
 			$_SESSION[Signal::$SESSION_STAFFNUMBER] = $staffNumber;
 			$_SESSION[Signal::$SESSION_STAFFROLE] = $staffRole;
+			$_SESSION[Signal::$SESSION_STAFFGROUP] = $staffGroup;
+			$_SESSION[Signal::$SESSION_STAFFDEPARTMENT] = $staffDepartment;
 			header('Location:training.php');
 		}
 	}

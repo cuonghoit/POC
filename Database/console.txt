@@ -1,0 +1,61 @@
+
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Project Manager Professional'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=333333
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	

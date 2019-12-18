@@ -6,14 +6,22 @@
 	
 	require "trainingFac.php";
 
-	if(isset($_POST["trainingData"]) && isset($_POST["userID"])) {
-		$userID = $_POST["userID"];
+	if(isset($_POST["trainingData"]) && isset($_POST["staffNumber"])) {
+		$staffNumber = $_POST["staffNumber"];
 		$tableData = $_POST["trainingData"];
 		$qr = '';
 		for ($i = 0; $i < count($tableData); $i++){
-			$qr = saveTrainingIndividual($con, $tableData[$i], $userID);
+			$qr = saveTrainingIndividual($con, $tableData[$i], $staffNumber);
 		}
-		echo $qr;
+		return $qr;
+	} else if(isset($_POST["trainingInfo"]) && isset($_POST["status"])) {
+		$TheTable = $_POST["trainingInfo"];
+		$status = $_POST["status"];
+		$qr = '';
+		for ($j = 0; $j < count($TheTable); $j++){
+			$qr = approvalTrainigProgram($con, $TheTable[$j], $status);
+		}
+		return $qr;
 	}
 
 ?>

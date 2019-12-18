@@ -8,6 +8,13 @@ function getCources($con) {
 	return mysqli_query($con, $qr);
 }
 
+function saveToConsole($content) {
+
+	$fp = fopen("console.txt", "a+") or die("Unable to open file!");
+	fwrite($fp, $content);
+	fclose($fp);
+}
+
 function getLoginUserInformation($con, $staffNumber) {
 	$qr = "
 		SELECT 	*
@@ -29,7 +36,7 @@ function login($con, $userID, $pass) {
 	return mysqli_query($con, $qr);
 }
 
-function saveTrainingIndividual($con, $row, $userID) {
+function saveTrainingIndividual($con, $row, $staffNumber) {
 		$name = $row['name'];
 		$disciplines = $row['disciplines'];
 		$type = $row['type'];
@@ -50,24 +57,38 @@ function saveTrainingIndividual($con, $row, $userID) {
 		$oct = $row['oct'];
 		$nov = $row['nov'];
 		$dec = $row['dec'];
-		
+	
 		$qr = "
-			INSERT INTO training(UserID, TrainingName, Disciplines, TypeOfProgram, PurposeOfProgram, Provider, Location, USD, VND, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, December, Status) 
-			VALUES ( $userID , '$name', '$disciplines', '$type', '$purpose', '$provider', '$location', '$usd', '$vnd', $jan, $feb, $mar, $apr, $may, $jun, $jul, $aug, $sep, $oct, $nov, $dec, 'submited')
+			INSERT INTO training_record(Staff_Number, Course_ID, Training_Purpose, Training_Type, Training_Time_From, Training_Time_To, Training_Location, Course_Fee, Traveling_Cost, Accommodation_Cost, Training_Approval_Status, Training_Progress, Assigned_by, Training_Budget_Resources, Training_Assignment_Number, Training_Assignment_Date, Training_Cost_Estimation_Number, Training_Cost_Estimation_Date, Training_Cost_for_ReFund) VALUES ('$staffNumber', '$name', '$purpose', '$type', '2019-12-09', '2019-12-31', '$location', $usd, '0000', '00000', '0', 'N/A', 'N/A', 'N/A', 'N/A', '2019-12-31', 1, '2019-12-31', 1)
 		";
 		mysqli_query($con, $qr);
 		return $qr;
 };
 
-function getGroupOrDepartMentTraing($con, $userID) {
+function getGroupOrDepartMentTraing($con, $departmentName) {
 	$qr = "
 		SELECT * 
-		FROM training, user_info
-		WHERE user_info.UserID='$userID'
-		AND training.UserID=user_info.UserID
+		FROM personal_info, training_record, course
+		WHERE personal_info.Department='$departmentName'
+		AND personal_info.Staff_Number=training_record.Staff_Number
+		AND course.Course_Name=training_record.Course_ID
+		AND training_record.Training_Approval_Status=0
 	";
 	
 	return mysqli_query($con, $qr);
+}
+
+function approvalTrainigProgram($con, $row, $approvalStatus) {
+	$staffNumber = $row['staffNumber'];
+	$couseName = $row['traingName'];
+	$qr = "
+		UPDATE training_record SET Training_Approval_Status=$approvalStatus
+		WHERE training_record.Staff_Number=$staffNumber
+		AND training_record.Course_ID='$couseName'
+	";
+	saveToConsole($qr);
+	mysqli_query($con, $qr);
+	return $qr;
 }
 
 

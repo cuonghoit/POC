@@ -12,6 +12,8 @@ class Signal {
 	public static $SESSION_STAFFNUMBER = 'staffNumber';
 	public static $SESSION_USERNAME = 'userName';
 	public static $SESSION_STAFFROLE = 'staffRole';
+	public static $SESSION_STAFFGROUP = 'staffGroup';
+	public static $SESSION_STAFFDEPARTMENT = 'staffDepartment';
 }
 
 ?>

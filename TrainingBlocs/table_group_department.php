@@ -2,7 +2,8 @@
 
 
 $userID = isset($_SESSION[Signal::$SESSION_USERID]) ? $_SESSION[Signal::$SESSION_USERID] : '';
-$trainingPrograms = getGroupOrDepartMentTraing($con, $userID);
+$departmentName = isset($_SESSION[Signal::$SESSION_STAFFDEPARTMENT]) ? $_SESSION[Signal::$SESSION_STAFFDEPARTMENT] : '';
+$trainingPrograms = getGroupOrDepartMentTraing($con, $departmentName);
 $index = 0;
 
 ?>
@@ -24,6 +25,7 @@ $index = 0;
 	      <tr>
 	        <td rowspan="2" class="table_item_header">No.</td>
 	        <td rowspan="2" class="table_item_header">Name Of Staff</td>
+	        <td rowspan="2" class="table_item_header">Staff Number</td>
 	        <td rowspan="2" class="table_item_header">Name of Training <br>
             Development Program</td>
 	        <td rowspan="2" class="table_item_header">Disciplines<br>
@@ -59,15 +61,16 @@ $index = 0;
 	  	 ?>
 	      <tr>
 	        <td class="table_item"><?php echo $index ?></td>
-	        <td class="table_item"><?php echo $row['StaffName'] ?></td>
-	        <td class="table_item"><?php echo $row['TrainingName'] ?></td>
-	        <td class="table_item"><?php echo $row['Disciplines'] ?></td>
-	        <td class="table_item"><?php echo $row['TypeOfProgram'] ?></td>
-	        <td class="table_item"><?php echo $row['PurposeOfProgram'] ?></td>
+	        <td class="table_item"><?php echo $row['First_Name'].' '.$row['Middle_Name'].' '.$row['Last_Name'] ?></td>
+	        <td class="table_item"><?php echo $row['Staff_Number'] ?></td>
+	        <td class="table_item"><?php echo $row['Course_Name'] ?></td>
+	        <td class="table_item"><?php echo $row['Discipline'] ?></td>
+	        <td class="table_item"><?php echo $row['Course_Type'] ?></td>
+	        <td class="table_item"><?php echo $row['Course_Objectives'] ?></td>
 	        <td class="table_item"><?php echo $row['Provider'] ?></td>
-	        <td class="table_item"><?php echo $row['Location'] ?></td>
-	        <td class="table_item"><?php echo $row['USD'] ?></td>
-	        <td class="table_item"><?php echo $row['VND'] ?></td>
+	        <td class="table_item"><?php echo $row['Training_Location'] ?></td>
+	        <td class="table_item"><?php echo $row['Course_Fee'] ?></td>
+	        <td class="table_item"></td>
 	        <td style="background-color: <?php echo getHighLight($row['Jan']); ?>"></td>
 	        <td style="background-color: <?php echo getHighLight($row['Feb']); ?>"></td>
 	        <td style="background-color: <?php echo getHighLight($row['Mar']); ?>"></td>

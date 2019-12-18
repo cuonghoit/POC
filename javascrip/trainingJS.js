@@ -66,7 +66,22 @@
 			alert("PUMP");
 		};
 
-		function saveIndividualTraining($userID){
+		function getApprovalTraining($approvalStatus) {
+			var TheTable = new Array();
+			$('#data_table_group_department tr').each(function(row, tr) {
+				TheTable[row] = {
+					"staffNumber" : $(tr).find('td:eq(2)').html(),
+					"traingName" : $(tr).find('td:eq(3)').html(),
+				}
+			});
+			TheTable.shift();
+			TheTable.shift();
+			$.post("Database/trainingServerSide.php", {trainingInfo: TheTable, status: $approvalStatus}, function(data) {
+				
+			});
+		}
+
+		function saveIndividualTraining($staffNumber){
 			var TableData = new Array();
 			$('#data_table tr').each(function(row, tr){
 				TableData[row] = {
@@ -94,7 +109,10 @@
 			}); 
 			TableData.shift();
 			TableData.shift();
-			$.post("Database/trainingServerSide.php", {trainingData: TableData, userID: $userID}, function(data) {
+			$.post("Database/trainingServerSide.php", {trainingData: TableData, staffNumber: $staffNumber}, function(data) {
 				sessionStorage.setItem('training_table_value', null);
 			});
 		};
+
+
+
