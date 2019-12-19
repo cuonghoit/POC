@@ -22,7 +22,7 @@ function getActualMenu(){
 			 <ul> 
 			 	<li><a href="#">Building My MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="./perfomance/building_my_annual/building_annual.php">Building My Annual MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php">Building My Annual MSC Objectives</a></li>
 			 			<li><a href="#">Building My Annual MSC Objectives</a></li>
 			 			<li><a href="#">Building My Annual MSC Objectives</a></li>
 			 		</UL>
@@ -53,9 +53,9 @@ function getEmployeeMenu() {
 			 <ul> 
 			 	<li><a href="#">Building My MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Building My Annual MSC Objectives</a></li>
-			 			<li><a href="#">Building My Monthly MSC Objectives</a></li>
-			 			<li><a href="#">Building My Personal Deveopment Plan</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_annual">Building My Annual MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_monthly">Building My Monthly MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_personal_development">Building My Personal Deveopment Plan</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Rating Performance</a>
@@ -104,9 +104,9 @@ function getGroupLeadMenu() {
 			 <ul> 
 			 	<li><a href="#">Building My MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Building My Annual MSC Objectives</a></li>
-			 			<li><a href="#">Building My Monthly MSC Objectives</a></li>
-			 			<li><a href="#">Building My Personal Deveopment Plan</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_annual">Building My Annual MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_monthly">Building My Monthly MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_personal_development">Building My Personal Deveopment Plan</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Approving My Employees MSC Objectives</a>
@@ -178,9 +178,9 @@ function getDepartmentManagerMenu() {
 			 <ul> 
 			 	<li><a href="#">Building My MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Building My Annual MSC Objectives</a></li>
-			 			<li><a href="#">Building My Monthly MSC Objectives</a></li>
-			 			<li><a href="#">Building My Personal Deveopment Plan</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_annual">Building My Annual MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_monthly">Building My Monthly MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_personal_development">Building My Personal Deveopment Plan</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Approving My Employees MSC Objectives</a>
@@ -262,15 +262,15 @@ function getBODMenu() {
 			 <ul> 
 			 	<li><a href="#">Building My MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="./building_annual.php">Building My Annual MSC Objectives</a></li>
-			 			<li><a href="#">Building My Monthly MSC Objectives</a></li>
-			 			<li><a href="#">Building My Personal Deveopment Plan</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_annual">Building My Annual MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_monthly">Building My Monthly MSC Objectives</a></li>
+			 			<li><a href="./msc_objective.php?p=msc_objecctive_personal_development">Building My Personal Deveopment Plan</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Approving My Employees MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Approving My Employees Annual MSC Objectives</a></li>
-			 			<li><a href="#">Approving My Employees Monthly MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_annual_msc&s=approval">Approving My Employees Annual MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_monthly_msc&s=approval">Approving My Employees Monthly MSC Objectives</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Rating Performance</a>

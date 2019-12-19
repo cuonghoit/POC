@@ -43,19 +43,17 @@
 		<div id="input"> 
 			<?php 
 			switch ($path) {
-				case Signal::$PAGE_INDIVIDUAL:
+				case Signal::$MSC_OBJECTIVE_ANNUAL:
 					require "perfomance/blocs/bloc_general_individual.php";
 					break;
-				case Signal::$PAGE_GROUP:
-					require "TrainingBlocs/general_group.php";
+				case Signal::$MSC_OBJECTIVE_MONTHLY:
+					require "perfomance/blocs/bloc_general_info_monthly.php";
 					break;
-				case Signal::$PAGE_DEPARTMENT:
-					require "TrainingBlocs/general_department.php";
-					break;
-				case Signal::$PAGE_COMPANY:
+				case Signal::$MSC_OBJECTIVE_PERSONAL_DEVELOPMENT:
+					require "perfomance/blocs/bloc_general_info_monthly.php";
 					break;
 				default:
-					require "TrainingBlocs/general_individual.php";
+					require "perfomance/blocs/bloc_general_individual.php";
 					break;
 			} 
 			?> 
@@ -64,17 +62,14 @@
 		<div id="table">
 			<?php 
 			switch ($path) {
-				case Signal::$PAGE_INDIVIDUAL:
+				case Signal::$MSC_OBJECTIVE_ANNUAL:
 					require "perfomance/blocs/bloc_table_building_my_annual.php";
 					break;
-				case Signal::$PAGE_GROUP:
-					require "perfomance/blocs/bloc_table_building_my_annual.php";
+				case Signal::$MSC_OBJECTIVE_MONTHLY:
+					require "perfomance/blocs/bloc_table_monthly_msc_objective.php";
 					break;
-				case Signal::$PAGE_DEPARTMENT:
-					require "perfomance/blocs/bloc_table_building_my_annual.php";
-					break;
-				case Signal::$PAGE_COMPANY:
-					require "perfomance/blocs/bloc_table_building_my_annual.php";
+				case Signal::$MSC_OBJECTIVE_PERSONAL_DEVELOPMENT:
+					require "perfomance/blocs/bloc_table_personal_development.php";
 					break;
 				default:
 					require "perfomance/blocs/bloc_table_building_my_annual.php";

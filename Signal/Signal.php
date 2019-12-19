@@ -14,6 +14,14 @@ class Signal {
 	public static $SESSION_STAFFROLE = 'staffRole';
 	public static $SESSION_STAFFGROUP = 'staffGroup';
 	public static $SESSION_STAFFDEPARTMENT = 'staffDepartment';
+
+	public static $MSC_OBJECTIVE_ANNUAL = 'msc_objecctive_annual';
+	public static $MSC_OBJECTIVE_MONTHLY = 'msc_objecctive_monthly';
+	public static $MSC_OBJECTIVE_PERSONAL_DEVELOPMENT = 'msc_objecctive_personal_development';
+
+	public static $APPROVE_MSC_OBJECTIVE_ANNUAL = 'approve_annual_msc';
+	public static $APPROVE_MSC_OBJECTIVE_MONTHLY = 'approve_monthly_msc';
+
 }
 
 ?>
