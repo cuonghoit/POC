@@ -22,6 +22,8 @@ class Signal {
 	public static $APPROVE_MSC_OBJECTIVE_ANNUAL = 'approve_annual_msc';
 	public static $APPROVE_MSC_OBJECTIVE_MONTHLY = 'approve_monthly_msc';
 
+	public static $RATING_PERFOMANCE_ANNUAL = 'rating_perfomance_annual';
+	public static $RATING_PERFOMANCE_MONTHLY = 'rating_perfomance_monthly';
 }
 
 ?>

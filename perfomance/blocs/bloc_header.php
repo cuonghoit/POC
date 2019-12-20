@@ -25,6 +25,12 @@
 				case 'approve_monthly_msc':
 					$title = 'APPROVING MY EMPLOYEE MONTHLY MSC OBJECTIVES';
 					break;
+				case 'rating_perfomance_annual':
+					$title = 'RATING MY ANNUAL PERFORMANCE';
+					break;
+				case 'rating_perfomance_monthly':
+					$title = 'RATING MY MONTHLY PERFORMANCE';
+					break;
 				default:
 					$title = '';
 					break;
