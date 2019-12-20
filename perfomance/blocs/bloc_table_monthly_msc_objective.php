@@ -2,69 +2,69 @@
 	<table width="100%" border="1" align="center" cellpadding="1">
   <tbody>
     <tr>
-      <td width="2%">No.</td>
-      <td width="21%">Objective Category</td>
-      <td width="30%">SMART Objectives and Monthly Milestone (MSC)<br>
+      <td class="table_item_header" width="2%">No.</td>
+      <td class="table_item_header" width="21%">Objective Category</td>
+      <td class="table_item_header" width="30%">SMART Objectives and Monthly Milestone (MSC)<br>
         (Verb/Ojective/Timing/Result)</td>
-      <td width="13%">Target</td>
-      <td width="17%">Criteria for Success</td>
-      <td width="17%">Action Plans to Achieve Objectives</td>
+      <td class="table_item_header" width="13%">Target</td>
+      <td class="table_item_header" width="17%">Criteria for Success</td>
+      <td class="table_item_header" width="17%">Action Plans to Achieve Objectives</td>
     </tr>
     <tr>
-      <td>1</td>
-      <td>Must-Do 1</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">1</td>
+      <td class="table_item">Must-Do 1</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>Must-Do 2</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">2</td>
+      <td class="table_item">Must-Do 2</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>Must-Do 3</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">3</td>
+      <td class="table_item">Must-Do 3</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>Must-Do 4</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">4</td>
+      <td class="table_item">Must-Do 4</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>Should-Do 1</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">5</td>
+      <td class="table_item">Should-Do 1</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>Should-Do 2</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">6</td>
+      <td class="table_item">Should-Do 2</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
     <tr>
-      <td>7</td>
-      <td>Could-Do 1</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td class="table_item">7</td>
+      <td class="table_item">Could-Do 1</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
+      <td class="table_item">&nbsp;</td>
     </tr>
   </tbody>
 </table>

@@ -24,22 +24,22 @@
 <body>
 	
 	<form id="form1" name="form2" method="post">
-	  <table width="100%" border="1" align="center" cellpadding="1" id="data_table">
+	  <table width="100%" border="1" align="center" id="data_table">
 	    <tbody>
 	      <tr>
-	        <td rowspan="2" class="table_item">No.</td>
-	        <td rowspan="2" class="table_item"><p>Name of Training &amp; </p>
+	        <td rowspan="2" class="table_item_header">No.</td>
+	        <td rowspan="2" class="table_item_header"><p>Name of Training &amp; </p>
 	          <p>Development Program</p></td>
-	        <td rowspan="2" class="table_item">Disciplines<br>
+	        <td rowspan="2" class="table_item_header">Disciplines<br>
 	          (Geology, Finance, HRM, Legal …)</td>
-	        <td rowspan="2" class="table_item">Type of Program<br>
+	        <td rowspan="2" class="table_item_header">Type of Program<br>
 	          (e-Learning, Classroom …)</td>
-	        <td rowspan="2" class="table_item"><p>Purpose of program </p>
+	        <td rowspan="2" class="table_item_header"><p>Purpose of program </p>
 	          <p>(Close Competency Gaps, Develop Competencies, Doctorate …) </p></td>
-	        <td rowspan="2" class="table_item">Provider</td>
-	        <td rowspan="2" class="table_item">Location</td>
-	        <td colspan="2" class="table_item">Training Fee</td>
-	        <td colspan="12" class="table_item">Training &amp; Development Schedule</td>
+	        <td rowspan="2" class="table_item_header">Provider</td>
+	        <td rowspan="2" class="table_item_header">Location</td>
+	        <td colspan="2" class="table_item_header">Training Fee</td>
+	        <td colspan="12" class="table_item_header">Training &amp; Development Schedule</td>
           </tr>
 	      <tr>
 	        <td class="table_item">US$</td>
