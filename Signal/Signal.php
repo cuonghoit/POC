@@ -24,6 +24,8 @@ class Signal {
 
 	public static $RATING_PERFOMANCE_ANNUAL = 'rating_perfomance_annual';
 	public static $RATING_PERFOMANCE_MONTHLY = 'rating_perfomance_monthly';
+	public static $APPROVE_RATING_PERFOMANCE_ANNUAL = 'approve_rating_perfomance_annual';
+	public static $APPROVE_RATING_PERFOMANCE_MONTHLY = 'approve_rating_perfomance_monthly';
 }
 
 ?>

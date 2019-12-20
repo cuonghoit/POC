@@ -283,8 +283,8 @@ function getBODMenu() {
 			 			</li>
 			 			<li><a href="#">Approving My Employees Performances</a>
 			 				<ul>
-			 					<li><a href="#">Approving My Employees Annual Performance</a>
-			 					<li><a href="#">Approving My Employees Monthly Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=approve_rating_perfomance_annual&s=approval">Approving My Employees Annual Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=approve_rating_perfomance_monthly&s=approval">Approving My Employees Monthly Performance</a>
 			 				</ul>
 			 			</li>
 			 		</UL>

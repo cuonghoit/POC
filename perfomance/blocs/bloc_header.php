@@ -31,6 +31,12 @@
 				case 'rating_perfomance_monthly':
 					$title = 'RATING MY MONTHLY PERFORMANCE';
 					break;
+				case 'approve_rating_perfomance_annual':
+					$title = 'APPROVING MY EMPLOYEE ANNUAL PERFORMANCE';
+					break;
+				case 'approve_rating_perfomance_monthly':
+					$title = 'APPROVING MY EMPLOYEES MONTHLY PERFORMANCE';
+					break;
 				default:
 					$title = '';
 					break;
