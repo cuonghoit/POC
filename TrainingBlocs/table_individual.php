@@ -24,22 +24,22 @@
 <body>
 	
 	<form id="form1" name="form2" method="post">
-	  <table width="100%" border="1" align="center" id="data_table">
+	  <table id="data_table" border="1">
 	    <tbody>
 	      <tr>
-	        <td rowspan="2" class="table_item_header">No.</td>
-	        <td rowspan="2" class="table_item_header"><p>Name of Training &amp; </p>
-	          <p>Development Program</p></td>
-	        <td rowspan="2" class="table_item_header">Disciplines<br>
-	          (Geology, Finance, HRM, Legal …)</td>
-	        <td rowspan="2" class="table_item_header">Type of Program<br>
-	          (e-Learning, Classroom …)</td>
-	        <td rowspan="2" class="table_item_header"><p>Purpose of program </p>
-	          <p>(Close Competency Gaps, Develop Competencies, Doctorate …) </p></td>
-	        <td rowspan="2" class="table_item_header">Provider</td>
-	        <td rowspan="2" class="table_item_header">Location</td>
-	        <td colspan="2" class="table_item_header">Training Fee</td>
-	        <td colspan="12" class="table_item_header">Training &amp; Development Schedule</td>
+	        <th rowspan="2" class="table_item_header">No.</th>
+	        <th rowspan="2" class="table_item_header"><p>Name of Training &amp; </p>
+	          <p>Development Program</p></th>
+	        <th rowspan="2" class="table_item_header">Disciplines<br>
+	          (Geology, Finance, HRM, Legal …)</th>
+	        <th rowspan="2" class="table_item_header">Type of Program<br>
+	          (e-Learning, Classroom …)</th>
+	        <th rowspan="2" class="table_item_header"><p>Purpose of program </p>
+	          <p>(Close Competency Gaps, Develop Competencies, Doctorate …) </p></th>
+	        <th rowspan="2" class="table_item_header">Provider</th>
+	        <th rowspan="2" class="table_item_header">Location</th>
+	        <th colspan="2" class="table_item_header">Training Fee</th>
+	        <th colspan="12" class="table_item_header">Training &amp; Development Schedule</th>
           </tr>
 	      <tr>
 	        <td class="table_item">US$</td>
