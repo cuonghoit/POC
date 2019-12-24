@@ -28,14 +28,14 @@
 			$_SESSION[Signal::$SESSION_STAFFROLE] = $staffRole;
 			$_SESSION[Signal::$SESSION_STAFFGROUP] = $staffGroup;
 			$_SESSION[Signal::$SESSION_STAFFDEPARTMENT] = $staffDepartment;
-			header('Location:training.php');
+			header('Location:home_page.php');
 		}
 	}
 ?>
 
 <?php 
 	if( isset($_SESSION[Signal::$SESSION_USERID]) && isset($_SESSION[Signal::$SESSION_USERNAME])) {
-		header('Location:training.php');
+		header('Location:home_page.php');
 	}
 ?>
 

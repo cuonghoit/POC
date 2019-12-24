@@ -52,7 +52,7 @@ ddsmoothmenu.init({
 
 	<div id="smoothmenu1" class="ddsmoothmenu">
 <ul>
-<li><a href="./training.php">Home</a></li>
+<li><a href="./home_page.php">Home</a></li>
 <?php
 	if(isset($_SESSION[Signal::$SESSION_STAFFROLE])) {
 		$staffRole = $_SESSION[Signal::$SESSION_STAFFROLE];
