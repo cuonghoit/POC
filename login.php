@@ -51,17 +51,19 @@
 	<table width="100%">
   <tbody>
     <tr>
-      <td colspan="2">IHRDC Login Page</td>
+      <td colspan="2">PHU QUOC PETROLEUM OPERATING COMPANY <br> <b>Login Page</b></td>
+
       </tr>
     <tr>
+ 
       <td width="15%">user name:</td>
       <td width="85%">
-        <input name="text_username" type="text" id="textfield" value="annt"></td>
+        <input name="text_username" type="text" id="textfield" value="sonln"></td>
     </tr>
     <tr>
       <td>password</td>
       <td>
-        <input name="text_password" type="text" id="textfield2" value="1234"></td>
+        <input name="text_password" type="text" id="textfield2" value="1111"></td>
     </tr>
     <tr>
       <td><button name="btn_login" form="form_login"> Login </button></td>

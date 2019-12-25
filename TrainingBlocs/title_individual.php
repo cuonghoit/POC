@@ -29,8 +29,8 @@
 ?>
 <body>
 	
-	<div id="company_name"> IHRDC </div>
-	<div id="program_name"> Training Management System </div>
+	<div id="company_name"> PHU QUOC PETROLEUM OPERATING COMPANY </div>
+	<div id="program_name"> <b> TRAINING MANAGEMENT SYSTEM </b> </div>
 	<br/>
 	<div id="level"> <h3><?php echo($title) ?> ANNUAL TRAINING PLAN</h1>   </div>
 </body>

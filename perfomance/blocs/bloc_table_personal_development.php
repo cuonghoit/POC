@@ -14,24 +14,24 @@
     </tr>
     <tr>
       <td class="table_item">1</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
     <tr>
       <td class="table_item">2</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
     <tr>
       <td class="table_item">3</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
   </tbody>
 </table>
@@ -51,24 +51,24 @@
     </tr>
     <tr>
       <td class="table_item">1</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
     <tr>
       <td class="table_item">2</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
     <tr>
       <td class="table_item">3</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
-      <td class="table_item">&nbsp;</td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
+      <td class="table_item"><input type="text" name="textfield" id="textfield"></td>
     </tr>
   </tbody>
 </table>
@@ -78,15 +78,15 @@
   <tbody>
     <tr>
       <td class="table_item_header" width="19%">Manager Signature:</td>
-      <td class="table_item_header" width="35%">&nbsp;</td>
+      <td class="table_item_header" width="35%"><input type="text" name="textfield" id="textfield"></td>
       <td class="table_item_header" width="14%">HR Singature:</td>
-      <td class="table_item_header" width="32%">&nbsp;</td>
+      <td class="table_item_header" width="32%"><input type="text" name="textfield" id="textfield"></td>
     </tr>
     <tr>
       <td class="table_item_header">Employee Signature:</td>
-      <td class="table_item_header">&nbsp;</td>
+      <td class="table_item_header"><input type="text" name="textfield" id="textfield"></td>
       <td class="table_item_header">Date:</td>
-      <td class="table_item_header">&nbsp;</td>
+      <td class="table_item_header"><input type="text" name="textfield" id="textfield"></td>
     </tr>
   </tbody>
 </table>

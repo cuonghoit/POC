@@ -62,8 +62,8 @@ function getEmployeeMenu() {
 			 		<UL>
 			 			<li><a href="#">Rating My Performances</a>
 			 				<ul>
-			 					<li><a href="#">Rating My Monthly Performance</a>
-			 					<li><a href="#">Rating My Annual Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_monthly">Rating My Monthly Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_annual">Rating My Annual Performance</a>
 			 				</ul>
 			 			</li>
 			 		</UL>
@@ -111,16 +111,16 @@ function getGroupLeadMenu() {
 			 	</li>
 			 	<li><a href="#">Approving My Employees MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Approving My Employees Annual MSC Objectives</a></li>
-			 			<li><a href="#">Approving My Employees Monthly MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_annual_msc&s=approval">Approving My Employees Annual MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_monthly_msc&s=approval">Approving My Employees Monthly MSC Objectives</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Rating Performance</a>
 			 		<UL>
 			 			<li><a href="#">Rating My Performances</a>
 			 				<ul>
-			 					<li><a href="#">Rating My Monthly Performance</a>
-			 					<li><a href="#">Rating My Annual Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_monthly">Rating My Monthly Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_annual">Rating My Annual Performance</a>
 			 				</ul>
 			 			</li>
 			 			<li><a href="#">Approving My Employees Performances</a>
@@ -185,16 +185,16 @@ function getDepartmentManagerMenu() {
 			 	</li>
 			 	<li><a href="#">Approving My Employees MSC Objectives</a>
 			 		<UL>
-			 			<li><a href="#">Approving My Employees Annual MSC Objectives</a></li>
-			 			<li><a href="#">Approving My Employees Monthly MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_annual_msc&s=approval">Approving My Employees Annual MSC Objectives</a></li>
+			 			<li><a href="./approve_msc_objective.php?p=approve_monthly_msc&s=approval">Approving My Employees Monthly MSC Objectives</a></li>
 			 		</UL>
 			 	</li>
 			 	<li><a href="#">Rating Performance</a>
 			 		<UL>
 			 			<li><a href="#">Rating My Performances</a>
 			 				<ul>
-			 					<li><a href="#">Rating My Monthly Performance</a>
-			 					<li><a href="#">Rating My Annual Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_monthly">Rating My Monthly Performance</a>
+			 					<li><a href="./rating_perfomance.php?p=rating_perfomance_annual">Rating My Annual Performance</a>
 			 				</ul>
 			 			</li>
 			 			<li><a href="#">Approving My Employees Performances</a>

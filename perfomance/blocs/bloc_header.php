@@ -45,7 +45,7 @@
 <body>
 	
 	<div id="company_name"> PHU QUOC PETROLEUM OPERATING COMPANY </div>
-	<div id="program_name"> PERFORMANCE MANAGEMENT SYSTEM </div>
+	<div id="program_name"> <b> PERFORMANCE MANAGEMENT SYSTEM </b> </div>
 	<br/>
 	<div id="level"> <h3><?php echo($title) ?></h1>   </div>
 </body>
