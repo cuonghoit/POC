@@ -33,8 +33,54 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
+                            <!-- Left Side Of Navbar -->
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Training Management') }} <span class="caret"></span>
+                                </a>
 
-                    </ul>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarTrainningManagement">
+                                    <a class="dropdown-item" href="#}"
+                                       onclick="">
+                                        {{ __('Individual Training') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Group Training') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Department Training') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Company Training') }}
+                                    </a>
+                                    <div class="tabbable tabs-left">
+                                        <ul class="nav nav-tabs">
+                                            <li>
+                                                <a id="nav-approve-training" class="dropdown-item" href="#"
+                                                   onclick="">
+                                                    {{ __('Approve Training') }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane" id="nav-approve-training">
+                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
+                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
+                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </li>
+                    @endguest
+                </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
