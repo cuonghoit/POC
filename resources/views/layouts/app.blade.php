@@ -42,7 +42,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarTrainningManagement">
-                                    <a class="dropdown-item" href="#}"
+                                    <a class="dropdown-item" href="{{route('IATP',Auth::user()->Staff_Number)}}"
                                        onclick="">
                                         {{ __('Individual Training') }}
                                     </a>

@@ -19,3 +19,5 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/INDIVIDUAL-ANNUAL-TRAINING-PLAN/{staff}', 'HomeController@getIATP')->name('IATP');
