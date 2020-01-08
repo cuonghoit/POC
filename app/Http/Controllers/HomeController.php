@@ -35,4 +35,22 @@ class HomeController extends Controller
         $personal_info = personal_info::where('Staff_Number',$staff)->first();
         return view('IATP',compact('course'), compact('personal_info'));
     }
+    public function postIATP(Request $request){
+        $this->validate($request,[
+            'DateFrom' => 'required',
+            'DateTo' => 'required',
+            'course' => 'required',
+        ],[
+            'DateFrom.required' => 'Please select a training start date!',
+            'DateTo.required' => 'Please select a training end date!',
+            'course.required' => 'Please select 1 course'
+        ]);
+        dd($month[]=$request->month);
+        // dd($insert_data = json_encode($month));
+        if($request->DateFrom > $request->DateTo){
+            return redirect()->back()->with('notice','Please select again Training & Development period from');
+        }
+        // $course_id = $request->course;
+        // $us = $request->us.$course_id;
+    }
 }

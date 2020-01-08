@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form>
+                    <form action="{{route('postIATP')}}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>INDIVIDUAL ANNUAL TRAINING PLAN</b></h3><br>
@@ -21,87 +22,99 @@
                     <table style="width: 100%;">
                         <tr>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Staff name:
+                                <td><label for="Satff_Name">Staff name:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->First_Name}} {{$personal_info->Middle_Name}} {{$personal_info->Last_Name}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Satff_Name" value="{{$personal_info->First_Name}} {{$personal_info->Middle_Name}} {{$personal_info->Last_Name}}" disabled="disabled"><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Background:
+                                <td><label for="Background">Background:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Background}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Background" value="{{$personal_info->Background}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Supervisor:
+                                <td><label for="Supervisor">Supervisor:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Supervisor_Name}}"><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="exampleInputEmail1">Staff number:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Staff_Number}}"><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="exampleInputEmail1">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Education}}"><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="exampleInputEmail1">Supersivor Job title:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Supervisor_Job_Title}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Supervisor" value="{{$personal_info->Supervisor_Name}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Email:
+                                <td><label for="Staff_Number">Staff number:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Email}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Staff_Number" value="{{$personal_info->Staff_Number}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Job title:
+                                <td><label for="Education">Education/Academic degree:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Job_Title}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Education" value="{{$personal_info->Education}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Supervisor Email:
+                                <td><label for="Supervisor_Job_Title">Supersivor Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Supervisor_Email}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Supervisor_Job_Title" value="{{$personal_info->Supervisor_Job_Title}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Date joining:
+                                <td><label for="Email">Email:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Date_Of_Hire}}"><td></td>
+                                <td><input type="email" class="form-control col-md-10" name="Email" value="{{$personal_info->Email}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Date in current position:
+                                <td><label for="Job_Title">Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Date_In_Current_Job_Title}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Job_Title" value="{{$personal_info->Job_Title}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="exampleInputEmail1">Department:
+                                <td><label for="Supervisor_Email">Supervisor Email:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" id="exampleInputEmail1" value="{{$personal_info->Department}}"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="Supervisor_Email" value="{{$personal_info->Supervisor_Email}}" disabled="disabled" ><td></td>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div class="form-group">
+                                <td><label for="Date_Of_Hire">Date joining:
+                                </label></td>
+                                <td><input type="Date" class="form-control col-md-10" name="Date_Of_Hire" value="{{$personal_info->Date_Of_Hire}}" disabled="disabled" ><td></td>
+                            </div>
+                            <div class="form-group">
+                                <td><label for="Date_In_Current_Job_Title">Date in current position:
+                                </label></td>
+                                <td><input type="date" class="form-control col-md-10" name="Date_In_Current_Job_Title" value="{{$personal_info->Date_In_Current_Job_Title}}" disabled="disabled" ><td></td>
+                            </div>
+                            <div class="form-group">
+                                <td><label for="Department">Department:
+                                </label></td>
+                                <td><input type="text" class="form-control col-md-10" name="Department" value="{{$personal_info->Department}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                     </table><br>
                     <p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
+                    @if(count($errors)>0)
+                        <div class="atler">
+                            @foreach($errors->all() as $er)
+                                <b class="text-danger">{{$er}}</b><br>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('notice'))
+                        <div class="text-danger">
+                            <b>{{session('notice')}}</b>
+                        </div>
+                    @endif
                     <table style="width: 100%;">
                         <tr>
                             <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="date" class="form-control col-md-8" value=""></td>
+                                <td><input type="date" name="DateFrom" class="form-control col-md-8" value=""></td>
                                 <td><b>To</b></td>
-                                <td><input type="date" name="date" class="form-control col-md-8" value=""></td>
+                                <td><input type="date" name="DateTo" class="form-control col-md-8" value=""></td>
                             </div>
                         </tr>
                     </table><br>   
                     <table class="table text-center ">
                         <tr>
-                            <th rowspan="2">No.</th>
+                            <th rowspan="2">Chose</th>
                             <th rowspan="2">Name of Training &<br> Development Program</th>
                             <th rowspan="2">Disciplines<br>(Geology, Finance, HRM, Legal …)</th>
                             <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
@@ -122,9 +135,9 @@
                             <td>{{$co->Course_Type}}</td>
                             <td>{{$co->Course_Objectives}}</td>
                             <td>{{$co->Provider}}</td>
-                            <td><input type="text" name="" class="form-control" ></td>
-                            <td><input type="text" name="" class="form-control" ></td>
-                            <td><input type="text" name="" class="form-control" ></td>
+                            <td><input type="text" name="Location{{$co->Course_ID}}" class="form-control" ></td>
+                            <td><input type="text" name="US{{$co->Course_ID}}" class="form-control" ></td>
+                            <td><input type="text" name="VND{{$co->Course_ID}}" class="form-control" ></td>
                         </tr>
                         @endforeach
                     </table><br>
@@ -148,18 +161,18 @@
                         </tr>
                         <div class="form-check">
                             <tr>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="1"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="2"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="3"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="4"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="5"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="6"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="7"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="8"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="9"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="10"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="11"></td>
+                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="12"></td>
                             </tr>
                         </div>
                     </table>

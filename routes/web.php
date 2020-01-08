@@ -21,3 +21,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/INDIVIDUAL-ANNUAL-TRAINING-PLAN/{staff}', 'HomeController@getIATP')->name('IATP');
+Route::post('/INDIVIDUAL-ANNUAL-TRAINING-PLAN', 'HomeController@postIATP')->name('postIATP');
