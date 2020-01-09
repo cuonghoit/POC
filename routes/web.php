@@ -19,3 +19,4 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('Company-Annual-Trainning-Plan','HomeController@CATP')->name('catp');

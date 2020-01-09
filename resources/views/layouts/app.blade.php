@@ -54,7 +54,7 @@
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="{{ route('catp') }}"
                                        onclick="">
                                         {{ __('Company Training') }}
                                     </a>

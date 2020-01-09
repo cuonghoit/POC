@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function catp(){
+        return view('catp');
+    }
+   
 }
