@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
-use App\course;
-use App\personal_info;
+use App\Model\course;
+use App\Model\personal_info;
 
 class HomeController extends Controller
 {
@@ -37,12 +36,12 @@ class HomeController extends Controller
     }
     public function postIATP(Request $request){
         $this->validate($request,[
-            'DateFrom' => 'required',
-            'DateTo' => 'required',
+            'dateFrom' => 'required',
+            'dateTo' => 'required',
             'course' => 'required',
         ],[
-            'DateFrom.required' => 'Please select a training start date!',
-            'DateTo.required' => 'Please select a training end date!',
+            'dateFrom.required' => 'Please select a training start date!',
+            'dateTo.required' => 'Please select a training end date!',
             'course.required' => 'Please select 1 course'
         ]);
         dd($month[]=$request->month);
