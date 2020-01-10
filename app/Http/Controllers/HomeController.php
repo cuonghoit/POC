@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 use App\course;
 use App\personal_info;
 use App\training_record;
+=======
+use App\Model\course;
+use App\Model\personal_info;
+>>>>>>> a3d0afe0a220af5e88d7d47b8376a329db6f2be4
 
 class HomeController extends Controller
 {
@@ -52,12 +56,12 @@ class HomeController extends Controller
     }
     public function postIATP(Request $request){
         $this->validate($request,[
-            'DateFrom' => 'required',
-            'DateTo' => 'required',
+            'dateFrom' => 'required',
+            'dateTo' => 'required',
             'course' => 'required',
         ],[
-            'DateFrom.required' => 'Please select a training start date!',
-            'DateTo.required' => 'Please select a training end date!',
+            'dateFrom.required' => 'Please select a training start date!',
+            'dateTo.required' => 'Please select a training end date!',
             'course.required' => 'Please select 1 course'
         ]);
         dd($month[]=$request->month);

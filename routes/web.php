@@ -23,6 +23,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/Company-Annual-Trainning-Plan/{staff}','HomeController@CATP')->name('CATP');
 
 Route::get('/INDIVIDUAL-ANNUAL-TRAINING-PLAN/{staff}', 'HomeController@getIATP')->name('IATP');
+<<<<<<< HEAD
 
 Route::post('/INDIVIDUAL-ANNUAL-TRAINING-PLAN', 'HomeController@postIATP')->name('postIATP');
 
+=======
+Route::post('/INDIVIDUAL-ANNUAL-TRAINING-PLAN', 'HomeController@postIATP')->name('postIATP');
+>>>>>>> a3d0afe0a220af5e88d7d47b8376a329db6f2be4
