@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -42,7 +43,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarTrainningManagement">
-                                    <a class="dropdown-item" href="#}"
+                                    <a class="dropdown-item" href="{{route('IATP',Auth::user()->Staff_Number)}}"
                                        onclick="">
                                         {{ __('Individual Training') }}
                                     </a>
@@ -54,7 +55,7 @@
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('catp') }}"
+                                    <a class="dropdown-item" href="{{ route('CATP',Auth::user()->Staff_Number) }}"
                                        onclick="">
                                         {{ __('Company Training') }}
                                     </a>

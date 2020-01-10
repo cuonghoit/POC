@@ -16,31 +16,32 @@
 
                     <h5 class="text-center">
                         PHU QUOC PETROLEUM OPERATING COMPANY <br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b>
-                    </h5>    
+                        <b>TRAINING MANAGEMENT SYSTEM</b> <br> <br>
                     <h4 class="text-center"><b>
                         COMPANY ANNUAL TRAINING PLAN</b>
                     </h4>
                     <br>
                     <div >
                         <form>
-                            <p class="text-left">ANNUAL TRAINING PLAN</p>
+                            <b class="text-left">ANNUAL TRAINING PLAN</b>
                             <table>
                                 <tr>
-                                    <td>Training & Development period from:</td>
-                                    <td><input type="date" class="form-control"></td>
+                                    <td><b>Training & Development period from:</b></td>
+                                    
+                                    <td><input type="date" class="form-control" ></td>
                                     <td>To: </td>
-                                    <td><input type="date" class="form-control"></td>
+                                    <td><input type="date" class="form-control" class="form-control" ></td>
+                                    
                                 </tr>
                             </table>
-                            <hr>
+                          <br>
                             <div class="justify-content-center">
                                 <div class="col-md-12">
-                                    <table   class="table">
+                                    <table   class="table text-center">
                                         <tr>
-                                            <td  rowspan="2">No.</td>
+                                            <td  rowspan="2">No</td>
                                             <td  rowspan="2">Name of Staff</td>
-                                            <td rowspan="2">Staff Number</td>
+                                           
                                             <td rowspan="2">Name of Training
 Development Program</td>
                                             <td rowspan="2">Disciplines <br>
@@ -61,25 +62,31 @@ Development Program</td>
                                             <td>US$</td>
                                             <td>VND </td>
                                         </tr>
+                                         @foreach($course as $cr)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Nguyễn Thành An</td>
-                                            <td>3312</td>
-                                            <td>a</td>
-                                            <td>b</td>
-                                            <td>c</td>
-                                            <td>d</td>
-                                            <td>e</td>
-                                            <td>f</td>
-                                            <td>g</td>
-                                            <td>h   </td>
+                                            <td >1</td>
+                                         
+                                            <td>{{ $personal_info->First_Name}}  {{$personal_info->Middle_Name}} {{$$personal_info->Last_Name}}</td>
+                                            
+                                           
+                                            <td >{{ $cr->Course_Name }}</td>
+                                            <td >{{ $cr->Discipline}}</td>
+                                            <td >{{ $cr->Course_Type }}</td>
+                                            <td > {{ $cr->Course_Objectives }}</td>
+                                            <td >{{ $cr->Provider }}</td>
+                                            <td >{{ $cr->Working_Location }}</td>
+                                            
+                                       
+                                            <td></td>
+                                            <td> </td>
+                                           
                                         </tr>
+                                        @endforeach
                                     </table>
-                                    <table class="table" >
+                                    <table class="table text-center" >
                                         <tr >
-                                            <td colspan="12" class="text-center">
-                                                Training & Development Schedule
-                                            </td>
+                                            <td colspan="12" >
+                                                <b>Training & Development Schedule</b>
                                         </tr>
                                         <tr>
                                             <td>Jan</td>
@@ -96,18 +103,18 @@ Development Program</td>
                                             <td>Dec</td>
                                         </tr>
                                          <tr>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>7</td>
-                                            <td>8</td>
-                                            <td>9</td>
-                                            <td>10</td>
-                                            <td>11</td>
-                                            <td>12</td>
+                                            <td><input type="checkbox" name="month[]" value="1"></td>
+                                            <td><input type="checkbox" name="month[]" value="2"></td>
+                                            <td><input type="checkbox" name="month[]" value="3"></td>
+                                            <td><input type="checkbox" name="month[]" value="4"></td>
+                                            <td><input type="checkbox" name="month[]" value="5"></td>
+                                            <td><input type="checkbox" name="month[]" value="6"></td>
+                                            <td><input type="checkbox" name="month[]" value="7"></td>
+                                            <td><input type="checkbox" name="month[]" value="8"></td>
+                                            <td><input type="checkbox" name="month[]" value="9"></td>
+                                            <td><input type="checkbox" name="month[]" value="10"></td>
+                                            <td><input type="checkbox" name="month[]" value="11"></td>
+                                            <td><input type="checkbox" name="month[]" value="12"></td>
                                         </tr>
                                     </table>
                                 </div>
