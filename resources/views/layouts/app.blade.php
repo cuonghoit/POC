@@ -43,7 +43,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarTrainningManagement">
-                                    <a class="dropdown-item" href="{{route('IATP',Auth::user()->Staff_Number)}}"
+                                    <a class="dropdown-item" href="{{route('IATP',Auth::user()->id)}}"
                                        onclick="">
                                         {{ __('Individual Training') }}
                                     </a>
@@ -55,10 +55,10 @@
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('CATP',Auth::user()->Staff_Number) }}"
+                                    <a class="dropdown-item" href="{{ route('CATP',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Company Training') }}
-                                    </a>
+                                    </a>    
                                     <div class="tabbable tabs-left">
                                         <ul class="nav nav-tabs">
                                             <li>
@@ -66,22 +66,21 @@
                                                    onclick="">
                                                     {{ __('Approve Training') }}
                                                 </a>
-                                            </li>
+                                                <div class="tab-content">   
+                                                    <div class="tab-pane" id="nav-approve-training">
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
+                                                    </div>
+                                                </div>
+                                            </li>  
                                         </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane" id="nav-approve-training">
-                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
-                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
-                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Department Training Plan') }}</a>
-                                                <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </li>
-                        </li>
-                    @endguest
-                </ul>
+                        @endguest
+                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

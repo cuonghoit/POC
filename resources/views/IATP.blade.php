@@ -24,68 +24,68 @@
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="satffName" value="{{$personal_info->First_Name}} {{$personal_info->Middle_Name}} {{$personal_info->Last_Name}}" disabled="disabled"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="satffName" value="" disabled="disabled"><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Background">Background:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->Background}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="backGround" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->Supervisor_Name}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="Staff_Number">Staff number:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->Staff_Number}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Education">Education/Academic degree:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->Education}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="education" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->Supervisor_Job_Title}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="email">Email:
                                 </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->Email}}" disabled="disabled" ><td></td>
+                                <td><input type="email" class="form-control col-md-10" name="email" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->Job_Title}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="supervisorEmail">Supervisor Email:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->Supervisor_Email}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="dateOfHire">Date joining:
                                 </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->Date_Of_Hire}}" disabled="disabled" ><td></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
-                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->Date_In_Current_Job_Title}}" disabled="disabled" ><td></td>
+                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->Department}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" value="" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                     </table><br>
@@ -124,22 +124,20 @@
                             <th colspan="2">Training Fee</th>
                         </tr>
                         <tr>
-                            <td>US$</td>
+                            <td>US</td>
                             <td>VND</td>
                         </tr>
-                        @foreach ($course as $co)
                         <tr>
-                            <td><input type="radio" name="course" value="{{$co->Course_ID}}" class="form-control"></td>
-                            <td>{{$co->Course_Name}}</td>
-                            <td>{{$co->Discipline}}</td>
-                            <td>{{$co->Course_Type}}</td>
-                            <td>{{$co->Course_Objectives}}</td>
-                            <td>{{$co->Provider}}</td>
-                            <td><input type="text" name="location{{$co->Course_ID}}" class="form-control" ></td>
-                            <td><input type="text" name="uS{{$co->Course_ID}}" class="form-control" ></td>
-                            <td><input type="text" name="vND{{$co->Course_ID}}" class="form-control" ></td>
+                            <td><input type="radio" name="course" value="" class="form-control"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" name="location" class="form-control" ></td>
+                            <td><input type="text" name="uS" class="form-control" ></td>
+                            <td><input type="text" name="vND" class="form-control" ></td>
                         </tr>
-                        @endforeach
                     </table><br>
                     <table class="table text-center">
                         <tr>

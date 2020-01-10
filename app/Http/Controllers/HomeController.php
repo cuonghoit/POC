@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // use Illuminate\Support\Facades\DB;
-use App\course;
-use App\personal_info;
-use App\training_record;
-=======
+
+
+
+
 use App\Model\course;
 use App\Model\personal_info;
->>>>>>> a3d0afe0a220af5e88d7d47b8376a329db6f2be4
+
 
 class HomeController extends Controller
 {
@@ -36,25 +36,30 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function getCATP($id) {
+        
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('CATP',compact('personal_info'));
 
-    public function CATP($staff){
-        $course = course::all();
+    }
+    public function postCATP($id){
        
-        $personal_info = personal_info::where('Staff_Number',$staff)->first();
+       
+        $personal_info = personal_info::where('user_id',$id)->first();
 
-        return view('CATP',compact('course'), compact('personal_info'));
+        return view('CATP', compact('personal_info'));
     }
    
 
 
-    public function getIATP($staff)
+  
+    public function getIATP($id)
     {
-        $course = course::all();
-     
-        $personal_info = personal_info::where('Staff_Number',$staff)->first();
-        return view('IATP',compact('course'), compact('personal_info'));
+
+        $personal_info = personal_info::find($id);
+        return view('IATP', compact('personal_info'));
     }
-    public function postIATP(Request $request){
+    public function postIATP(Request $request ){
         $this->validate($request,[
             'dateFrom' => 'required',
             'dateTo' => 'required',

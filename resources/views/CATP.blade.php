@@ -62,26 +62,26 @@ Development Program</td>
                                             <td>US$</td>
                                             <td>VND </td>
                                         </tr>
-                                         @foreach($course as $cr)
+                                    
                                         <tr>
                                             <td >1</td>
                                          
-                                            <td>{{ $personal_info->First_Name}}  {{$personal_info->Middle_Name}} {{$$personal_info->Last_Name}}</td>
+                                            <td></td>
                                             
                                            
-                                            <td >{{ $cr->Course_Name }}</td>
-                                            <td >{{ $cr->Discipline}}</td>
-                                            <td >{{ $cr->Course_Type }}</td>
-                                            <td > {{ $cr->Course_Objectives }}</td>
-                                            <td >{{ $cr->Provider }}</td>
-                                            <td >{{ $cr->Working_Location }}</td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
+                                            <td ></td>
                                             
                                        
                                             <td></td>
                                             <td> </td>
                                            
                                         </tr>
-                                        @endforeach
+                                     
                                     </table>
                                     <table class="table text-center" >
                                         <tr >
