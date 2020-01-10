@@ -28,11 +28,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function getIATP($staff)
+    public function getIATP($id)
     {
-        $course = course::all();
-        $personal_info = personal_info::where('Staff_Number',$staff)->first();
-        return view('IATP',compact('course'), compact('personal_info'));
+        $personal_info = personal_info::find($id);
+        return view('IATP', compact('personal_info'));
     }
     public function postIATP(Request $request){
         $this->validate($request,[
