@@ -3,8 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Route;
+
+// use Illuminate\Support\Facades\DB;
+
+
+
+
 use App\Model\course;
 use App\Model\personal_info;
+
 
 class HomeController extends Controller
 {
@@ -27,13 +36,30 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function getCATP($id) {
+        
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('CATP',compact('personal_info'));
 
+    }
+    public function postCATP($id){
+       
+       
+        $personal_info = personal_info::where('user_id',$id)->first();
+
+        return view('CATP', compact('personal_info'));
+    }
+   
+
+
+  
     public function getIATP($id)
     {
+
         $personal_info = personal_info::find($id);
         return view('IATP', compact('personal_info'));
     }
-    public function postIATP(Request $request){
+    public function postIATP(Request $request ){
         $this->validate($request,[
             'dateFrom' => 'required',
             'dateTo' => 'required',
@@ -51,4 +77,5 @@ class HomeController extends Controller
         // $course_id = $request->course;
         // $us = $request->us.$course_id;
     }
+
 }

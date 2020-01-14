@@ -22,3 +22,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
 Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
+
+Route::get('/Company-Annual-Trainning-Plan/{id}','HomeController@getCATP')->name('CATP');
+
+
+
+
