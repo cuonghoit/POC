@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-18">
             <div class="card">
                 
 
@@ -64,21 +64,19 @@ Development Program</td>
                                         </tr>
                                     
                                         <tr>
-                                            <td ></td>
-                                         
+                                            <td > </td>
+                                            <td ><input type="text" name="" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}}"> </td>               
+                                            <td ><input type="text" name="" value=""> </td>
+                                            <td ><input type="" name="" value="{{$personal_info->training_discipline}}"></td>
+                                            <td ><input type="" name="" value="{{$personal_info->education}}"></td>
+                                            <td ><input type="" name="" value="{{$personal_info->education}}"></td>
+                                            <td ><input type="" name="" value="{{$personal_info->nationality}}"> </td>
+                                            <td > <input type="" name="" value="{{$personal_info->nationality}}"> </td>
                                             <td></td>
-                                            
-                                           
-                                            <td ></td>
-                                            <td ></td>
-                                            <td ></td>
-                                            <td ></td>
-                                            <td ></td>
-                                            <td ></td>
-                                            
+                                            <td></td>
                                        
-                                            <td></td>
-                                            <td> </td>
+                                            <td > </td>
+                                            <td > </td>
                                            
                                         </tr>
                                      
