@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -37,7 +37,6 @@ class HomeController extends Controller
         return view('home');
     }
     public function getCATP($id) {
-        
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('CATP',compact('personal_info'));
 
@@ -55,9 +54,10 @@ class HomeController extends Controller
   
     public function getIATP($id)
     {
-
+        $course = course::all();
+        $course_count = DB::table('course')->count();
         $personal_info = personal_info::find($id);
-        return view('IATP', compact('personal_info'));
+        return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
     public function postIATP(Request $request ){
         $this->validate($request,[

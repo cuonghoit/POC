@@ -33,7 +33,7 @@ class CreateTrainingRecordTable extends Migration
             $table->date('training_assignment_date');
             $table->integer('training_cost_estimation_number');
             $table->date('training_cost_estimation_date');
-            $table->double('training_tost_for_reFund');
+            $table->double('training_tost_for_rerund');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('course')->onDelete('cascade');
             $table->timestamps();
