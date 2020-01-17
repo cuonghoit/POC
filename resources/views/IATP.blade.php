@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    #dtHorizontalExample th, td {
+    white-space: nowrap;
+    }
+    .Training table tbody td input[type=text]{
+        width: 150px;
+    }
+
+    
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -111,69 +121,68 @@
                                 <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
                             </div>
                         </tr>
-                    </table><br>    
-                    <table class="table text-center ">
-                        <tr>
-                            <th rowspan="2">Chose</th>
-                            <th rowspan="2">Name of Training &<br> Development Program</th>
-                            <th rowspan="2">Disciplines<br>(Geology, Finance, HRM, Legal …)</th>
-                            <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
-                            <th rowspan="2">Purpose of program<br>(Close Competency Gaps, Develop Competencies, Doctorate …)</th>
-                            <th rowspan="2">Provider</th>
-                            <th rowspan="2">Location</th>
-                            <th colspan="2">Training Fee</th>
-                        </tr>
-                        <tr>
-                            <td>US</td>
-                            <td>VND</td>
-                        </tr>
-                        <tr>
-                            <td><input type="radio" name="course" value="" class="form-control"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><input type="text" name="location" class="form-control" ></td>
-                            <td><input type="text" name="uS" class="form-control" ></td>
-                            <td><input type="text" name="vND" class="form-control" ></td>
-                        </tr>
-                    </table><br>
-                    <table class="table text-center">
-                        <tr>
-                            <th colspan="12">Training & Development Schedule</th>
-                        </tr>
-                        <tr>
-                            <td>Jan</td>
-                            <td>Feb</td>
-                            <td>Mar</td>
-                            <td>Apr</td>
-                            <td>May</td>
-                            <td>Jun</td>
-                            <td>Jul</td>
-                            <td>Aug</td>
-                            <td>Sep</td>
-                            <td>Oct</td>
-                            <td>Now</td>
-                            <td>Dec</td>
-                        </tr>
-                        <div class="form-check">
-                            <tr>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="1"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="2"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="3"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="4"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="5"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="6"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="7"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="8"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="9"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="10"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="11"></td>
-                                <td>&emsp;&emsp;<input type="checkbox" class="form-check-input" id="exampleCheck1" name="month[]" value="12"></td>
-                            </tr>
-                        </div>
-                    </table>
+                    </table><br>  
+                    <div class="table-responsive Training">
+                        <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Chose</th>
+                                    <th rowspan="2">Name of Training &<br> Development Program</th>
+                                    <th rowspan="2">Disciplines<br>(Geology, Finance, HRM, Legal …)</th>
+                                    <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
+                                    <th rowspan="2">Purpose of program<br>(Close Competency Gaps, Develop Competencies, Doctorate …)</th>
+                                    <th rowspan="2">Provider</th>
+                                    <th rowspan="2">Location</th>
+                                    <th colspan="2">Training Fee</th>
+                                    <th colspan="12">Training & Development Schedule</th>
+                                </tr>
+                                <tr>
+                                    <th>US</th>
+                                    <th>VND</th>
+                                    <th>Jan</th>
+                                    <th>Feb</th>
+                                    <th>Mar</th>
+                                    <th>Apr</th>
+                                    <th>May</th>
+                                    <th>Jun</th>
+                                    <th>Jul</th>
+                                    <th>Aug</th>
+                                    <th>Sep</th>
+                                    <th>Oct</th>
+                                    <th>Now</th>
+                                    <th>Dec</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                @foreach ($course as $course)
+                                <tr>
+                                    <td scope="row"><input type="radio" name="course" value="{{$course->id}}" class="form-control"></th>
+                                    <td>{{$course->course_name}}</td>
+                                    <td>{{$course->discipline}}</td>
+                                    <td>{{$course->course_type}}</td>
+                                    <td>{{$course->course_objectives}}</td>
+                                    <td>{{$course->provider}}</td>
+                                    <td><input type="text" name="location" class="form-control"></td>
+                                    <td><input type="text" name="us" class="form-control" ></td>
+                                    <td><input type="text" name="vnd" class="form-control" ></td>
+                                    <td><input type="checkbox" name="month[]" value="1"></td>
+                                    <td><input type="checkbox" name="month[]" value="2"></td>
+                                    <td><input type="checkbox" name="month[]" value="3"></td>
+                                    <td><input type="checkbox" name="month[]" value="4"></td>
+                                    <td><input type="checkbox" name="month[]" value="5"></td>
+                                    <td><input type="checkbox" name="month[]" value="6"></td>
+                                    <td><input type="checkbox" name="month[]" value="7"></td>
+                                    <td><input type="checkbox" name="month[]" value="8"></td>
+                                    <td><input type="checkbox" name="month[]" value="9"></td>
+                                    <td><input type="checkbox" name="month[]" value="10"></td>
+                                    <td><input type="checkbox" name="month[]" value="11"></td>
+                                    <td><input type="checkbox" name="month[]" value="12"></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div> 
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
