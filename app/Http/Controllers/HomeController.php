@@ -36,16 +36,18 @@ class HomeController extends Controller
         return view('home');
     }
     public function getCATP($id) {
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('CATP',compact('personal_info'));
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->get();
+
+        return view('CATP',compact('personal_info'),compact('course'));
 
     }
     public function postCATP($id){
        
        
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('user_id',$id)->get();
 
-        return view('CATP', compact('personal_info'));
+        return view('CATP',compact('personal_info'));
     }
    
 
@@ -55,7 +57,7 @@ class HomeController extends Controller
     {
         $course = course::all();
         $course_count = DB::table('course')->count();
-        $personal_info = personal_info::find($id);
+        $personal_info = personal_info::where('user_id',$id)->first();
         return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
     public function postIATP(Request $request ){

@@ -20,11 +20,24 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
-Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
+Route::group(['middleware' => ['role:employees']], function () {
+    Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
+    Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
+});
 
-Route::get('/Company-Annual-Trainning-Plan/{id}','HomeController@getCATP')->name('CATP');
+Route::group(['middleware' => ['role:supervisors']], function () {
 
+});
+Route::group(['middleware' => ['role:department_managers']], function () {
 
+});
+Route::group(['middleware' => ['role:director']], function () {
 
+});
+Route::group(['middleware' => ['role:general_director']], function () {
+    Route::get('/company-annual-trainning-plan/{id}','HomeController@getCATP')->name('CATP');
+});
+Route::group(['middleware' => ['role:super-admin']], function () {
+
+});
 

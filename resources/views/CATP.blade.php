@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-18">
+        <div class="col-md">
             <div class="card">
                 
 
@@ -21,106 +22,342 @@
                         COMPANY ANNUAL TRAINING PLAN</b>
                     </h4>
                     <br>
-                    <div >
+                   
                         <form>
-                            <b class="text-left">ANNUAL TRAINING PLAN</b>
-                            <table>
+                            <div class="row justify-content-center  ">
+                                <div class="col-sm-offset-3 ">
+                                     <label for="fromdate"> <b>
+                                            Training & Development Period From: </b>
+                                        </label>
+                                </div>
+                                <div class="col-sm-offset-3">
+                                     <input type="date" name="fromdate">
+                                </div>
+                                <div class="col-sm-offset-3">
+                                    <label fromto>
+                                        <b>To: </b>
+                                    </label>
+                                </div>
+                                <div class="col-sm-offset-3">
+                                      <input type="date" name="fromto">
+                                </div>
+                            </div>
+                              
+                            </table>
+                        <div class="table-responsive">
+                            <table class="table  table-bordered text-center" style="white-space: nowrap; ">
+                                <tr class="bg-secondary" >
+                                    <th rowspan="2">
+                                        No.
+                                    </th>
+                                    <th rowspan="2">
+                                        Name of Staff
+                                    </th>
+                                    <th rowspan="2">
+                                        Name of Training & <br> Development Program
+                                    </th>
+                                    <th rowspan="2">
+                                        Disciplines <br> (Geology, Finance, HRM, Legal …)
+                                    </th>
+                                    <th rowspan="2">
+                                        Type of Program <br> (e-Learning, Classroom …)
+                                    </th>
+                                    <th rowspan="2">
+                                        Purpose of Program <br> (Close Competency Gaps, <br>Develop Competencies, Doctorate …)
+                                    </th>
+                                    <th rowspan="2">
+                                        Provider
+                                    </th>
+                                    <th rowspan="2">
+                                        Location
+                                    </th>
+                                    <th colspan="2">Traning Free</td>
+                                    <th colspan="12">Training & Development Schedule</td>
+                                </tr>
+                                <tr class="bg-secondary">
+                                    <th >
+                                        US$
+                                    </th>
+                                    <th>
+                                        VND
+                                    </th>
+                                    <th>
+                                        Jan
+                                    </th>
+                                    <th>
+                                        Feb
+                                    </th>
+                                    <th>
+                                        Mar
+                                    </th>
+                                    <th>
+                                        Apr
+                                    </th>
+                                    <th>
+                                        May
+                                    </th>
+                                    <th>
+                                        Jun
+                                    </th>
+                                    <th>
+                                        Jul
+                                    </th>
+                                    <th>
+                                        Aug
+                                    </th>
+                                    <th>
+                                        Sep
+                                    </th>
+                                    <th>
+                                        Oct
+                                    </th>
+                                    <th>
+                                        Now
+                                    </th>
+                                    <th>
+                                        Dec
+                                    </th>
+                                  
+                                </tr>
+                                <tr class="bg-primary">
+                                    <td></td>
+                                    <td >
+                                        DEPARTMENT: ADMIN
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                 
+                                <tr >
+                                   
+                                    <td>1</td>
+                                    @foreach($personal_info as $pr)
+                                    <td>
+                                        {{$pr->first_name}} {{$pr->middle_name}} {{$pr->last_name}}
+                                    </td>
+                                     @endforeach   
+                                    
+                                    <td>
+                                    
+                                      
+                                    </td>
+                                   
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   
+                                </tr>
+                                
                                 <tr>
-                                    <td><b>Training & Development period from:</b></td>
-                                    
-                                    <td><input type="date" class="form-control" ></td>
-                                    <td>To: </td>
-                                    <td><input type="date" class="form-control" class="form-control" ></td>
-                                    
+                                    <td>2</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>3</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="bg-primary">
+                                    <td></td>
+                                    <td colspan="2">
+                                        DEPARTMENT: DRILLING & COMPLETION
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                   <tr>
+                                    <td>5</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                   <tr>
+                                    <td>6</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
-                          <br>
-                            <div class="justify-content-center">
-                                <div class="col-md-12">
-                                    <table   class="table text-center">
-                                        <tr>
-                                            <td  rowspan="2">No</td>
-                                            <td  rowspan="2">Name of Staff</td>
-                                           
-                                            <td rowspan="2">Name of Training
-Development Program</td>
-                                            <td rowspan="2">Disciplines <br>
-(Geology, Finance, HRM, Legal …)</td>
-                                            <td rowspan="2">Type of Program
-(e-Learning, Classroom …)</td>
-                                            <td rowspan="2">Purpose of program <br>
-(Close Competency Gaps, Develop Competencies, Doctorate …)</td>
-                                            <td rowspan="2">Provider</td>
-                                            <td rowspan="2">Location</td>
-                                            <td colspan="2">
-                                                Training Free
-                                            </td>
-
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>US$</td>
-                                            <td>VND </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td > </td>
-                                            <td ><input type="text" name="" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}}"> </td>               
-                                            <td ><input type="text" name="" value=""> </td>
-                                            <td ><input type="" name="" value="{{$personal_info->training_discipline}}"></td>
-                                            <td ><input type="" name="" value="{{$personal_info->education}}"></td>
-                                            <td ><input type="" name="" value="{{$personal_info->education}}"></td>
-                                            <td ><input type="" name="" value="{{$personal_info->nationality}}"> </td>
-                                            <td > <input type="" name="" value="{{$personal_info->nationality}}"> </td>
-                                            <td></td>
-                                            <td></td>
-                                       
-                                            <td > </td>
-                                            <td > </td>
-                                           
-                                        </tr>
-                                     
-                                    </table>
-                                    <table class="table text-center" >
-                                        <tr >
-                                            <td colspan="12" >
-                                                <b>Training & Development Schedule</b>
-                                        </tr>
-                                        <tr>
-                                            <td>Jan</td>
-                                            <td>Feb</td>
-                                            <td>Mar</td>
-                                            <td>Apr</td>
-                                            <td>May</td>
-                                            <td>Jun</td>
-                                            <td>Jul</td>
-                                            <td>Aug</td>
-                                            <td>Sep</td>
-                                            <td>Oct</td>
-                                            <td>Nov</td>
-                                            <td>Dec</td>
-                                        </tr>
-                                         <tr>
-                                            <td><input type="checkbox" name="month[]" value="1"></td>
-                                            <td><input type="checkbox" name="month[]" value="2"></td>
-                                            <td><input type="checkbox" name="month[]" value="3"></td>
-                                            <td><input type="checkbox" name="month[]" value="4"></td>
-                                            <td><input type="checkbox" name="month[]" value="5"></td>
-                                            <td><input type="checkbox" name="month[]" value="6"></td>
-                                            <td><input type="checkbox" name="month[]" value="7"></td>
-                                            <td><input type="checkbox" name="month[]" value="8"></td>
-                                            <td><input type="checkbox" name="month[]" value="9"></td>
-                                            <td><input type="checkbox" name="month[]" value="10"></td>
-                                            <td><input type="checkbox" name="month[]" value="11"></td>
-                                            <td><input type="checkbox" name="month[]" value="12"></td>
-                                        </tr>
-                                    </table>
-                                </div>
+                    </div>
                                 <p class="text-center">SUBMIT TO GENERAL DIRECTOR FOR APPROVAL:
                                     <input type="submit" name="submit" class="btn btn-secondary"> 
                                 </p>
                                 <div class="float-right">
-                                    <button>Print out</button>
+                                    <button class="btn-primary">Print out</button>
                                 </div>
                             </div>
                         </form>

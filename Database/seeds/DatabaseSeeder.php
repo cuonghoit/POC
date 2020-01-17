@@ -9,15 +9,21 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    
+
       public function run()
     {
 
     
 
-      $this->call([courseTableSeeder::class,
-      			personal_infoTableSeeder::class]);
+      
 
+
+        $this->call(array(
+            courseTableSeeder::class,
+            personal_infoTableSeeder::class,
+            RolesAndPermissionsSeeder::class,
+            UsersSeeder::class));
     }
-    
 }
+
+

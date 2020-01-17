@@ -43,22 +43,33 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarTrainningManagement">
+                                    @role('employees')
                                     <a class="dropdown-item" href="{{route('IATP',Auth::user()->id)}}"
                                        onclick="">
                                         {{ __('Individual Training') }}
                                     </a>
+                                    @endrole
+
+                                    @role('supervisors')
                                     <a class="dropdown-item" href="#"
                                        onclick="">
                                         {{ __('Group Training') }}
                                     </a>
+                                    @endrole
+
+                                    @hasanyrole('department_managers|director')
                                     <a class="dropdown-item" href="#"
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
+                                    @endhasanyrole
+
+                                    @role('general_director')
                                     <a class="dropdown-item" href="{{ route('CATP',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Company Training') }}
-                                    </a>    
+                                    </a>
+                                    @endrole
                                     <div class="tabbable tabs-left">
                                         <ul class="nav nav-tabs">
                                             <li>
@@ -66,7 +77,7 @@
                                                    onclick="">
                                                     {{ __('Approve Training') }}
                                                 </a>
-                                                <div class="tab-content">   
+                                                <div class="tab-content ">
                                                     <div class="tab-pane" id="nav-approve-training">
                                                         <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
                                                         <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
@@ -74,9 +85,10 @@
                                                         <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
                                                     </div>
                                                 </div>
-                                            </li>  
+                                            </li>
                                         </ul>
                                     </div>
+
                                 </div>
                             </li>
                         @endguest
