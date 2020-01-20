@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'IHRDC') }}
+                    <img src="{{ asset('images/poc-logo.png') }}"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -231,6 +231,83 @@
                                     </div>
                                 </div>
                             </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('Pre-Test Management System') }} <span class="caret"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
+                                        <div class="dropright dropdown-item submenu">
+                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ __('Candidate Page') }}
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Test Invitation Email') }}
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Input Personal Info') }}
+                                                </a>
+                                                <div class="dropright dropdown-item submenu">
+                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {{ __('Test Selection') }}
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test') }}</a>
+                                                    </div>
+                                                </div>
+                                                <div class="dropright dropdown-item submenu">
+                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {{ __('Test Results') }}
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test Results') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test Results') }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropright dropdown-item submenu">
+                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ __('Recruiter Page') }}
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Candidate List') }}
+                                                </a>
+                                                <div class="dropright dropdown-item submenu">
+                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {{ __('Test Results Selection') }}
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selectioni by Candidate') }}</a>
+                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selection by Job Titles') }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropright dropdown-item submenu">
+                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ __('Admin Page') }}
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Add the Questions') }}
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Delete the Questions') }}
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Edit the Questions') }}
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    {{ __('Edit the Tests') }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                         @endguest
                     </ul>
 
