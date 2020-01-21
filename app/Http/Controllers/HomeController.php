@@ -55,9 +55,8 @@ class HomeController extends Controller
     public function getIATP($id)
     {
         $course = course::all();
-        $course_count = DB::table('course')->count();
-        $personal_info = personal_info::find($id);
-        return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('IATP',['course'=>$course,'personal_info'=>$personal_info]);
     }
     public function postIATP(Request $request ){
         $this->validate($request,[
@@ -69,6 +68,7 @@ class HomeController extends Controller
             'dateTo.required' => 'Please select a training end date!',
             'course.required' => 'Please select 1 course'
         ]);
+        
         dd($month[]=$request->month);
         // dd($insert_data = json_encode($month));
         if($request->DateFrom > $request->DateTo){

@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="satffName" value="" disabled="disabled"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="satffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}}" disabled="disabled"><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Background">Background:
