@@ -58,7 +58,7 @@
                                     @endhasanyrole
 
                                     @hasanyrole('department_managers|director|super-admin')
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="{{ route('datp',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
@@ -70,6 +70,7 @@
                                         {{ __('Company Training') }}
                                     </a>
                                     @endrole
+                                    
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Approve Training') }}
@@ -77,10 +78,11 @@
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('adatp',Auth::user()->id) }}"onclick="">{{ __('Approve Department Training Plan') }}</a>
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
                                         </div>
                                     </div>
+                                  
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-training-implementation" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Training Implementation') }}

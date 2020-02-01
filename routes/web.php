@@ -29,9 +29,10 @@ Route::group(['middleware' => ['role:supervisors|super-admin']], function () {
 
 });
 Route::group(['middleware' => ['role:department_managers|super-admin']], function () {
-
+	Route::get('/department-annual-training-plan/{id}','HomeController@getdatp')->name('datp');
 });
 Route::group(['middleware' => ['role:director|super-admin']], function () {
+	Route::get('/approve-department-annual-training-plan/{id}','HomeController@getadatp')->name('adatp');
 
 });
 Route::group(['middleware' => ['role:general_director|super-admin']], function () {
