@@ -18,7 +18,7 @@ class personal_infoTableSeeder extends Seeder
        	 'first_name'=>'Ho',
        	 'middle_name'=>'Thanh',
        	 'last_name'=>'Tung',
-       	 'sex'=>'female',
+       	 'sex'=>'male',
        	 'birthday'=>'1998-09-29',
        	 'id_card'=>'PSF01',
        	 'nationality'=>'Viet Nam',
@@ -43,8 +43,6 @@ class personal_infoTableSeeder extends Seeder
        	 'supervisor_email'=>'thanhtungld@gmail.com',
        	 'supervisor_job_title'=>'CEO',
        	 'staff_role_id'=>'1'
-
-
        ]);
     }
 

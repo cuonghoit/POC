@@ -6,7 +6,7 @@
     white-space: nowrap;
     }
     .Training table tbody td input[type=text]{
-        width: 150px;
+        width: 210px;
     }
 
     
@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Training Management / Indidual Training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,7 +23,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('postIATP')}}" method="post">
+                    <form action="{{route('postIATP',$personal_info->user_id)}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
@@ -39,63 +39,63 @@
                             <div class="form-group">
                                 <td><label for="Background">Background:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="Staff_Number">Staff number:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Education">Education/Academic degree:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="email">Email:
                                 </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="" disabled="disabled" ><td></td>
+                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="supervisorEmail">Supervisor Email:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="dateOfHire">Date joining:
                                 </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="" disabled="disabled" ><td></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
-                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="" disabled="disabled" ><td></td>
+                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
                     </table><br>
@@ -126,7 +126,7 @@
                         <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
                             <thead>
                                 <tr>
-                                    <th rowspan="2">Chose</th>
+                                    <th rowspan="2">Choose</th>
                                     <th rowspan="2">Name of Training &<br> Development Program</th>
                                     <th rowspan="2">Disciplines<br>(Geology, Finance, HRM, Legal …)</th>
                                     <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
@@ -158,27 +158,30 @@
                                 @foreach ($course as $course)
                                 <tr>
                                     <td scope="row"><input type="radio" name="course" value="{{$course->id}}" class="form-control"></th>
-                                    <td>{{$course->course_name}}</td>
-                                    <td>{{$course->discipline}}</td>
-                                    <td>{{$course->course_type}}</td>
-                                    <td>{{$course->course_objectives}}</td>
-                                    <td>{{$course->provider}}</td>
-                                    <td><input type="text" name="location" class="form-control"></td>
-                                    <td><input type="text" name="us" class="form-control" ></td>
-                                    <td><input type="text" name="vnd" class="form-control" ></td>
-                                    <td><input type="checkbox" name="month[]" value="1"></td>
-                                    <td><input type="checkbox" name="month[]" value="2"></td>
-                                    <td><input type="checkbox" name="month[]" value="3"></td>
-                                    <td><input type="checkbox" name="month[]" value="4"></td>
-                                    <td><input type="checkbox" name="month[]" value="5"></td>
-                                    <td><input type="checkbox" name="month[]" value="6"></td>
-                                    <td><input type="checkbox" name="month[]" value="7"></td>
-                                    <td><input type="checkbox" name="month[]" value="8"></td>
-                                    <td><input type="checkbox" name="month[]" value="9"></td>
-                                    <td><input type="checkbox" name="month[]" value="10"></td>
-                                    <td><input type="checkbox" name="month[]" value="11"></td>
-                                    <td><input type="checkbox" name="month[]" value="12"></td>
+                                    <td ><input type="text" name="course_count" value="{{$course->course_name}}" class="form-control"></td>
+                                    <td ><input type="text" name="discipline" value="{{$course->discipline}}" class="form-control"></td>
+                                    <td ><input type="text" name="course_type" value="{{$course->course_type}}" class="form-control"></td>
+                                    <td ><input type="text" name="course_objectives" value="{{$course->course_objectives}}" class="form-control"></td>
+                                    <td ><input type="text" name="provider" value="{{$course->provider}}" class="form-control"></td>
+                                    @if(!isset($i))
+                                    <td rowspan="{{$course_count}}"><input type="text" name="location" class="form-control"></td>
+                                    <td rowspan="{{$course_count}}"><input type="text" name="us" class="form-control" ></td>
+                                    <td rowspan="{{$course_count}}"><input type="text" name="vnd" class="form-control" ></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="1"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="2"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="3"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="4"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="5"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="6"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="7"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="8"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="9"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="10"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="11"></td>
+                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="12"></td>
+                                    @endif
                                 </tr>
+                                <?php $i=1; ?>
                                 @endforeach
                             </tbody>
                         </table>

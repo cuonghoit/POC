@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    #dtHorizontalExample th, td {
+    white-space: nowrap;
+    }
+    table{
+        width: 100%;
+    }
     
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md">
+        <div style="width: 100%;">
             <div class="card">
-                
+                <div class="card-header">Training Management / Group Training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,39 +22,36 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <h5 class="text-center">
-                        PHU QUOC PETROLEUM OPERATING COMPANY <br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b> <br> <br>
-                    <h4 class="text-center"><b>
-                        COMPANY ANNUAL TRAINING PLAN</b>
-                    </h4>
-                    <br>
-                   
-                        <form>
-                            <div class="row justify-content-center  ">
-                                <div class="col-sm-offset-3 ">
-                                     <label for="fromdate"> <b>
-                                            Training & Development Period From: </b>
-                                        </label>
-                                </div>
-                                <div class="col-sm-offset-3">
-                                     <input type="date" name="fromdate">
-                                </div>
-                                <div class="col-sm-offset-3">
-                                    <label fromto>
-                                        <b>To: </b>
-                                    </label>
-                                </div>
-                                <div class="col-sm-offset-3">
-                                      <input type="date" name="fromto">
-                                </div>
+                    <form action="" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
+                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                    <h3 class="text-center" ><b>INDIVIDUAL ANNUAL TRAINING PLAN</b></h3><br>
+                    <p class="text-left" ><b>GENERAL INFO</b></p>
+                    <table>
+                        <tr>
+                            <td>Group:</td>
+                            <td><input type="text" name="group" class="form-control col-md-8"></td>
+                            <td>Department:</td>
+                            <td><input type="text" name="department" class="form-control col-md-8"></td>
+                            <td>Company:</td>
+                            <td><input type="text" name="company" class="form-control col-md-8"></td>
+                        </tr>
+                    </table><br>
+                    <p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>Training & Development period from:</td>
+                            <div class="form-group">
+                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
+                                <td><b>To</b></td>
+                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
                             </div>
-                              
-                            </table>
-                        <div class="table-responsive">
-                            <table class="table  table-bordered text-center" style="white-space: nowrap; ">
-                                <tr class="bg-secondary" >
+                        </tr>
+                    </table><br>
+                    <div class="table-responsive Training">
+                            <table class="table table-bordered text-center table-striped" id="dtHorizontalExample">
+                                <tr>
                                     <th rowspan="2">
                                         No.
                                     </th>
@@ -74,7 +79,7 @@
                                     <th colspan="2">Traning Free</td>
                                     <th colspan="12">Training & Development Schedule</td>
                                 </tr>
-                                <tr class="bg-secondary">
+                                <tr>
                                     <th >
                                         US$
                                     </th>
@@ -119,47 +124,11 @@
                                     </th>
                                   
                                 </tr>
-                                <tr class="bg-primary">
-                                    <td></td>
-                                    <td >
-                                        DEPARTMENT: ADMIN
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                 
                                 <tr >
                                    
                                     <td>1</td>
-                                    @foreach($personal_info as $pr)
-                                    <td>
-                                        {{$pr->first_name}} {{$pr->middle_name}} {{$pr->last_name}}
-                                    </td>
-                                     @endforeach   
-                                    
-                                    <td>
-                                    
-                                      
-                                    </td>
-                                   
+                                    <td></td>  
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -210,31 +179,6 @@
                                     <td>3</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="bg-primary">
-                                    <td></td>
-                                    <td colspan="2">
-                                        DEPARTMENT: DRILLING & COMPLETION
-                                    </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -353,16 +297,11 @@
                                 </tr>
                             </table>
                     </div>
-                                <p class="text-center">SUBMIT TO GENERAL DIRECTOR FOR APPROVAL:
-                                    <input type="submit" name="submit" class="btn btn-secondary"> 
-                                </p>
-                                <div class="float-right">
-                                    <button class="btn-primary">Print out</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="form-group text-center">
+                        <label for="submit"><b>SUBMIT TO THE LINE MANAGER FOR APPROVAL:</b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
                     </div>
-                    
+                   </form>
                 </div>
             </div>
         </div>
