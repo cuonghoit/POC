@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    #dtHorizontalExample th, td {
+    white-space: nowrap;
+    }
+    table{
+        width: 100%;
+    }
     
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md">
+        <div style="width: 100%;">
             <div class="card">
-                
+               <!--  <div class="card-header">Training Management / Training-implementation</div> -->
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,47 +22,32 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <h5 class="text-center">
-                        PHU QUOC PETROLEUM OPERATING COMPANY <br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b> <br> <br>
-                    <h4 class="text-center"><b>
-                        COMPANY ANNUAL TRAINING PLAN</b>
-                    </h4>
-                    <br>
-                   
-                        <form>
-                            <div class="row  ">
-                                <div class="col-md-3 ">
-                                     <label for="fromdate"> <b>
-                                            Training & Development Period From: </b>
-                                        </label>
-                                </div>
-                                <div class="col-md-3">
-                                     <input type="date" name="fromdate">
-                                </div>
-                                <div class="col-md-3">
-                                    <label fromto>
-                                        <b> To: </b>
-                                    </label>
-                                </div>
-                                <div class="col-md-3">
-                                      <input type="date" name="todate">
-                                </div>
+                    <form action="" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
+                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                    <h3 class="text-center" ><b>THE COMPANY ANNUAL TRAINING PLAN PROGRESS</b></h3><br>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>Training & Development period from:</td>
+                            <div class="form-group">
+                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
+                                <td><b>To</b></td>
+                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
                             </div>
-                              
-                            </table>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped text-center" style="white-space: nowrap;" >
-                                <tr class="bg-secondary" >
-                                    <th rowspan="2" >
+                        </tr>
+                    </table><br>
+                    <div class="table-responsive Training">
+                            <table class="table table-bordered text-center table-striped" id="dtHorizontalExample">
+                                <tr>
+                                    <th rowspan="2">
                                         No.
                                     </th>
                                     <th rowspan="2">
-                                        Name of Staff
+                                        Name of Training & <br> Development Program
                                     </th>
                                     <th rowspan="2">
-                                        Name of Training & <br> Development Program
+                                        Name of Participants
                                     </th>
                                     <th rowspan="2">
                                         Disciplines <br> (Geology, Finance, HRM, Legal …)
@@ -73,8 +66,14 @@
                                     </th>
                                     <th colspan="2">Traning Free</td>
                                     <th colspan="12">Training & Development Schedule</td>
+                                    <th rowspan="2">
+                                        Status <br> (Not Start, In Progress, Completed)
+                                    </th>
+                                    <th rowspan="2">
+                                        Description <br> (Reason of delay etc.)
+                                    </th>
                                 </tr>
-                                <tr class="bg-secondary">
+                                <tr>
                                     <th >
                                         US$
                                     </th>
@@ -89,7 +88,7 @@
                                     </th>
                                     <th>
                                         Mar
-                                    </th>   
+                                    </th>
                                     <th>
                                         Apr
                                     </th>
@@ -119,43 +118,10 @@
                                     </th>
                                   
                                 </tr>
-                                <tr class="bg-primary">
-                                    <td></td>
-                                    <td colspan="22" class="text-left">
-                                        DEPARTMENT: ADMIN
-                                    </td>
-                                   
-                                </tr>
-                                 
                                 <tr >
-                                    
+                                   
                                     <td>1</td>
-                                    @foreach($personal_info as $pr)
-                                    <td>
-                                    {{$pr->first_name}}
-                                    
-                                    </td>
-                                    @endforeach
-                                     
-                                    <td>
-                                        
-                                    </td>
-                                    
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                       
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
+                                    <td></td>  
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -170,11 +136,20 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 
                                 <tr>
                                     <td>2</td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -220,16 +195,13 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                </tr>
-                                <tr class="bg-primary">
                                     <td></td>
-                                    <td colspan="22" class="text-left">
-                                        DEPARTMENT: DRILLING & COMPLETION
-                                    </td>
-                                    
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -275,9 +247,13 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                    <tr>
                                     <td>6</td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -322,20 +298,17 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
                     </div>
-                                <h6 class="text-center">SUBMIT TO GENERAL DIRECTOR FOR APPROVAL:
-                                    <input type="submit" name="submit" class="btn btn-secondary"> 
-                                </h6>
-                                <div class="float-right">
-                                    <button class="btn-primary">Print out</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="form-group text-center">
+                        <label for="submit"><b>SUBMIT TO THE LINE MANAGER FOR APPROVAL:</b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
                     </div>
-                    
+                   </form>
                 </div>
             </div>
         </div>

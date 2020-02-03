@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;  
 
 
 
@@ -43,17 +43,24 @@ class HomeController extends Controller
         return view('CATP',compact('personal_info'),compact('course'));
 
     }
-    public function postCATP($id){
-       
-       
-        $personal_info = personal_info::where('user_id',$id)->get();
+    // public function postCATP(Request $request){
+    //     $this->validate( $request) {
 
-        return view('CATP',compact('personal_info'));
+    //     }
+    // }
+    
+    public function getdatp($id) {
+        $course = course::all();
+        $personal_info = personal_info::all();
+        
+        return view('layouts.datp', compact('course'), compact('personal_info'));
     }
-   
+    public function getadatp($id) {
+        return view('layouts.adatp');
+    }
 
 
-  
+    
     public function getIATP($id)
     {
         $course = course::all();
@@ -96,4 +103,150 @@ class HomeController extends Controller
         return view('GATP');
     }
 
+    // company-annual-training-plan-schedule
+
+    public function getCATPS()
+    {
+        return view('training_implementation/CATPS');
+    }
+
+    public function getCATPP()
+    {
+        return view('training_implementation/CATPP');
+    }
+
+    public function getPTEBP($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_implementation/PTEBP',compact('personal_info'));
+
+    }
+
+    public function getPTECR() {
+        return view('training_implementation/PTECR');
+    }
+    // end company-annual-training-plan-schedule
+
+    //managing-company-performances
+    public function getCMPR() {
+        return view('performace_management/managing_company_performances/CMPR');
+    }
+
+    public function getCMMPR() {
+        return view('performace_management/managing_company_performances/CMMPR');
+    }
+
+    public function getCAPR() {
+        return view('performace_management/managing_company_performances/CAPR');
+    }
+
+    public function getCMAPR() {
+        return view('performace_management/managing_company_performances/CMAPR');
+    }
+
+    public function getCMPR_FBL() {
+        return view('performace_management/managing_company_performances/CMPR_FBL');
+    }
+
+    public function getCAPR_FBL() {
+        return view('performace_management/managing_company_performances/CAPR_FBL');
+    }
+
+    public function getCMAPR_FBL() {
+        return view('performace_management/managing_company_performances/CMAPR_FBL');
+    }
+    //end managing-company-performances
+
+    //managing-department-performances
+    public function getDMPR() {
+        return view('performace_management/managing_department_performances/DMPR');
+    }
+
+    public function getDMMPR() {
+        return view('performace_management/managing_department_performances/DMMPR');
+    }
+
+    public function getDAPR() {
+        return view('performace_management/managing_department_performances/DAPR');
+    }
+
+    public function getDMAPR() {
+        return view('performace_management/managing_department_performances/DMAPR');
+    }
+
+    public function getDMPR_FBL() {
+        return view('performace_management/managing_department_performances/DMPR_FBL');
+    }
+
+    public function getDAPR_FBL() {
+        return view('performace_management/managing_department_performances/DAPR_FBL');
+    }
+
+    public function getDMAPR_FBL() {
+        return view('performace_management/managing_department_performances/DMAPR_FBL');
+    }
+    //end managing-department-performances
+
+    //managing-employees-performances
+    public function getEMPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EMPR', compact('personal_info'));
+    }
+
+    public function getEMMPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EMMPR', compact('personal_info'));
+    }
+
+    public function getEAPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EAPR', compact('personal_info'));
+    }
+
+    public function getEMAPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EMAPR', compact('personal_info'));
+    }
+
+    public function getEMMPR_FBL($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EMMPR_FBL', compact('personal_info'));
+    }
+
+    public function getEMAPR_FBL($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_employees_performances/EMAPR_FBL', compact('personal_info'));
+    }
+    //end managing-employees-performances
+
+    //managing-my-performances
+    public function getMMPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MMPR', compact('personal_info'));
+    }
+
+    public function getMMMPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MMMPR', compact('personal_info'));
+    }
+
+    public function getMAPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MAPR', compact('personal_info'));
+    }
+
+    public function getMMAPR($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MMAPR', compact('personal_info'));
+    }
+
+    public function getMMMPR_FBL($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MMMPR_FBL', compact('personal_info'));
+    }
+
+    public function getMMAPR_FBL($id) {
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performace_management/managing_my_performances/MMAPR_FBL', compact('personal_info'));
+    }
+    //end managing-my-performances
 }

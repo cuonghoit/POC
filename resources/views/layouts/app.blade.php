@@ -51,14 +51,14 @@
                                     @endhasanyrole
 
                                     @hasanyrole('supervisors|super-admin')
-                                    <a class="dropdown-item" href="{{route('GATP')}}"
+                                    <a class="dropdown-item" href="{{route('MMAPR_FBL',Auth::user()->id)}}"
                                        onclick="">
                                         {{ __('Group Training') }}
                                     </a>
                                     @endhasanyrole
 
                                     @hasanyrole('department_managers|director|super-admin')
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="{{ route('datp',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
@@ -70,6 +70,7 @@
                                         {{ __('Company Training') }}
                                     </a>
                                     @endrole
+                                    
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Approve Training') }}
@@ -77,19 +78,20 @@
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('adatp',Auth::user()->id) }}"onclick="">{{ __('Approve Department Training Plan') }}</a>
                                             <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
                                         </div>
                                     </div>
+                                  
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-training-implementation" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Training Implementation') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="training-implementation-content">
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Company Annual Training Plan Schedule') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Company Annual Training Plan Progress') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Post Training Evaluation by Participant') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Post Training Evaluation Combined Records') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('Company Annual Training Plan Schedule') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Company Annual Training Plan Progress') }}</a>
+                                            <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"onclick="">{{ __('Post Training Evaluation by Participant') }}</a>
+                                            <a class="dropdown-item" href="{{route('PTECR')}}"onclick="">{{ __('Post Training Evaluation Combined Records') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -161,13 +163,13 @@
                                                     {{ __('Managing Company Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Annual Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Company Multi-Annual Performance  Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CMPR')}}"onclick="">{{ __('Company Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CMMPR')}}"onclick="">{{ __('Company Multi-Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CAPR')}}"onclick="">{{ __('Company Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CMAPR')}}"onclick="">{{ __('Company Multi-Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CMPR_FBL')}}"onclick="">{{ __('Company Monthly Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CAPR_FBL')}}"onclick="">{{ __('Company Annual Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('CMAPR_FBL')}}"onclick="">{{ __('Company Multi-Annual Performance  Report - Filter by Level') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -175,13 +177,13 @@
                                                     {{ __('Managing Department Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Annual Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Department Multi-Annual Performance  Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DMPR')}}"onclick="">{{ __('Department Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DMMPR')}}"onclick="">{{ __('Department Multi-Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DAPR')}}"onclick="">{{ __('Department Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DMAPR')}}"onclick="">{{ __('Department Multi-Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DMPR_FBL')}}"onclick="">{{ __('Department Monthly Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DAPR_FBL')}}"onclick="">{{ __('Department Annual Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('DMAPR_FBL')}}"onclick="">{{ __('Department Multi-Annual Performance  Report - Filter by Level') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -189,12 +191,12 @@
                                                     {{ __('Managing Employees Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Multi-Anual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Employees Annual Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EMPR',Auth::user()->id)}}"onclick="">{{ __('Employees Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EMMPR',Auth::user()->id)}}"onclick="">{{ __('Employees Multi-Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EAPR',Auth::user()->id)}}"onclick="">{{ __('Employees Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EMAPR',Auth::user()->id)}}"onclick="">{{ __('Employees Multi-Anual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EMMPR_FBL',Auth::user()->id)}}"onclick="">{{ __('Employees Monthly Performance Report - Filter by Level') }}</a>
+                                                    <a class="dropdown-item" href="{{route('EMAPR_FBL',Auth::user()->id)}}"onclick="">{{ __('Employees Annual Performance Report - Filter by Level') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -202,12 +204,12 @@
                                                     {{ __('Managing My Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Multi-Month Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Multi-Month Performance Report - Filter by Levels') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('My Multi-Annual Performance Report - Filter by Levels') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MMPR',Auth::user()->id)}}"onclick="">{{ __('My Monthly Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MMMPR',Auth::user()->id)}}"onclick="">{{ __('My Multi-Month Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MAPR',Auth::user()->id)}}"onclick="">{{ __('My Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MMAPR',Auth::user()->id)}}"onclick="">{{ __('My Multi-Annual Performance Report') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MMMPR_FBL',Auth::user()->id)}}"onclick="">{{ __('My Multi-Month Performance Report - Filter by Levels') }}</a>
+                                                    <a class="dropdown-item" href="{{route('MMAPR_FBL',Auth::user()->id)}}"onclick="">{{ __('My Multi-Annual Performance Report - Filter by Levels') }}</a>
                                                 </div>
                                             </div>
                                         </div>
