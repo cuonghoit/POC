@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 
-use Illuminate\Support\Facades\DB;  
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -51,9 +51,9 @@ class HomeController extends Controller
     //             'fromdate.required' => 'Please select a training start date!',
     //             'todate.required' => 'Please select a training end date!'
     //         ]
-    //     );        
+    //     );
     // }
-    
+
     public function getdatp($id) {
         $course = course::all();
         $personal_info = personal_info::all();
@@ -68,7 +68,7 @@ class HomeController extends Controller
         $course_count = DB::table('course')->count();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('layouts.adatp',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
-       
+
     }
     public function getaaitp($id) {
         $course = course::all();
@@ -88,7 +88,7 @@ class HomeController extends Controller
 
 
 
-    
+
     public function getIATP($id)
     {
         $course = course::all();
@@ -108,11 +108,10 @@ class HomeController extends Controller
             'course.required' => 'Please select 1 course',
             'us.required' => 'Please fill in Training Fee US'
         ]);
-<<<<<<< HEAD
-=======
+
         dd($month[]=$request->month);
-        // dd($insert_data = json_encode($month));  
->>>>>>> 4b3bdbd5386bc4696a852ed49bae656f375b4005
+        // dd($insert_data = json_encode($month));
+
         if($request->DateFrom > $request->DateTo){
             return redirect()->back()->with('notice','Please select again Training & Development period from');
         }
@@ -206,7 +205,7 @@ class HomeController extends Controller
         return view('performace_management/managing_department_performances/DMAPR');
     }
 
-<<<<<<< HEAD
+
     public function getDMPR_FBL() {
         return view('performace_management/managing_department_performances/DMPR_FBL');
     }
@@ -283,7 +282,7 @@ class HomeController extends Controller
         return view('performace_management/managing_my_performances/MMAPR_FBL', compact('personal_info'));
     }
     //end managing-my-performances
-=======
+
     //performance management
     //building my msc objectives
     public function getbmpdp($id) {
@@ -306,12 +305,12 @@ class HomeController extends Controller
     public function getameamo($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('ameamo',['course'=>$course, 'personal_info'=>$personal_info]);   
+        return view('ameamo',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getamemmo($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('amemmo',['course'=>$course, 'personal_info'=>$personal_info]);   
+        return view('amemmo',['course'=>$course, 'personal_info'=>$personal_info]);
     }
 
     //rating performance
@@ -319,8 +318,7 @@ class HomeController extends Controller
     public function getrmap($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('rmap',['course'=>$course, 'personal_info'=>$personal_info]); 
+        return view('rmap',['course'=>$course, 'personal_info'=>$personal_info]);
     }
 
->>>>>>> 4b3bdbd5386bc4696a852ed49bae656f375b4005
 }
