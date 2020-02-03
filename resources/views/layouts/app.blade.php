@@ -44,7 +44,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
                                     @hasanyrole('employees|super-admin')
-                                    <a class="dropdown-item" href="{{route('IATP',Auth::user()->id)}}"
+                                    <a class="dropdown-item" href="{{   route('IATP',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Individual Training') }}
                                     </a>
@@ -112,7 +112,7 @@
                                                     {{ __('Building My MSC Objectives') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Building My MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Building My Annual MSC Objectives') }}</a>
                                                     <a class="dropdown-item" href="#"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
                                                     <a class="dropdown-item" href="#"onclick="">{{ __('Building My Personal Deveopment Plan') }}</a>
                                                 </div>
@@ -138,13 +138,13 @@
                                                     {{ __('Rating My Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Rating My Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Rating My Annual Performance') }}</a>
                                                     <a class="dropdown-item" href="#"onclick="">{{ __('Rating My Monthly Performance') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Rating My Monthly Performance') }}
+                                                    {{ __('Approving My Emloyees Performance') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                                     <a class="dropdown-item" href="#"onclick="">{{ __('Approving My Employees Annual Performance') }}</a>

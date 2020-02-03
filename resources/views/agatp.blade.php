@@ -4,7 +4,7 @@
 	    <div class="row justify-content-center">
 	        <div style="width: 100%;">
 	            <div class="card">
-                    <div class="card-header">Training Management / Approve Training / Approve Department Training Plan  </div>
+	            	<div class="card-header">Training Management / Department Annual Training Plan</div>
 
 	                <div class="card-body">
 	                    @if (session('status'))
@@ -15,24 +15,25 @@
 	                        <input type="hidden" name="_token" value="{{csrf_token()}}">
 		                    <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
 		                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-		                    <h3 class="text-center" ><b>APPROVE DEPARTMENT ANNUAL TRAINING PLAN</b></h3><br>
+		                    <h3 class="text-center" ><b>APPROVE GROUP ANNUAL TRAINING PLAN</b></h3><br>
 		                    <form>
 		                    <p class="text-left" ><b>GENERAL INFO</b></p>
 		                    <div class="row  ">
-		                    	 
-                                <div class="col-md-3">
+		                    	<div class="col-md-4">
+		                    		<label for="group">Group: </label>
+		                    		<input type="text" name="group" id="group" disabled="disabled" size="30" value="">
+		                    	</div>
+		                   
+                                <div class="col-md-4">
 									<label for="department">Department: </label>
-								</div>
-								<div class="col-md-3">
 									<input type="text" name="department" id="department" disabled="disabled" size="30" value="">
-                                </div>
-                            	<div class="col-md-3">
-									<label for="company">Company: </label>
 								</div>
-								 <div class="col-md-3">
+							
+                            	<div class="col-md-4">
+									<label for="company">Company: </label>
 									<input type="text" name="company" id="company" disabled="disabled" size="30" value="">
-                            	</div>
-                            
+								</div>
+								
                            	</div>
                            	
                            	<p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
@@ -319,6 +320,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                             </table>
                     </div>
@@ -327,7 +329,7 @@
                             <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
                             <button class="btn btn-danger" >REJECT</button>
 
-                    </div>    
+                    </div> 
                      </form>
 
 

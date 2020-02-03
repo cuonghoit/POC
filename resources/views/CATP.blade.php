@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md">
             <div class="card">
-                
+                <div class="card-header">Training Management / Company Annual Trainning Plan</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -47,7 +47,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped text-center" style="white-space: nowrap;" >
                                 <tr class="bg-secondary" >
-                                    <th rowspan="2" >
+                                    <th rowspan="2">
                                         No.
                                     </th>
                                     <th rowspan="2">
@@ -130,14 +130,12 @@
                                 <tr >
                                     
                                     <td>1</td>
-                                    @foreach($personal_info as $pr)
-                                    <td>
-                                    {{$pr->first_name}}
                                     
-                                    </td>
-                                    @endforeach
-                                     
                                     <td>
+                                        
+                                     
+                                    </td>
+                                        
                                         
                                     </td>
                                     
@@ -154,7 +152,8 @@
                                        
                                     </td>
                                     <td>
-                                        
+                                    
+                                    
                                     </td>
                                     <td></td>
                                     <td></td>
