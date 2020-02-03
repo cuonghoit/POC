@@ -51,7 +51,7 @@
                                     @endhasanyrole
 
                                     @hasanyrole('supervisors|super-admin')
-                                    <a class="dropdown-item" href="{{route('MMAPR_FBL',Auth::user()->id)}}"
+                                    <a class="dropdown-item" href="{{route('GATP',Auth::user()->id)}}"
                                        onclick="">
                                         {{ __('Group Training') }}
                                     </a>
@@ -224,9 +224,9 @@
                                                     {{ __('User Management') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Add new User Account') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Edite User Account') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Delete User Account') }}</a>
+                                                    <a class="dropdown-item" href="{{route('addNewUserAccount')}}"onclick="">{{ __('Add new User Account') }}</a>
+                                                    <a class="dropdown-item" href="{{route('editeUserAccount')}}"onclick="">{{ __('Edite User Account') }}</a>
+                                                    <a class="dropdown-item" href="{{route('deleteUserAccount')}}"onclick="">{{ __('Delete User Account') }}</a>
                                                 </div>
                                             </div>
                                         </div>
