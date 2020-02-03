@@ -51,7 +51,7 @@
                                     @endhasanyrole
 
                                     @hasanyrole('supervisors|super-admin')
-                                    <a class="dropdown-item" href="{{route('MMAPR_FBL',Auth::user()->id)}}"
+                                    <a class="dropdown-item" href="{{route('GATP',Auth::user()->id)}}"
                                        onclick="">
                                         {{ __('Group Training') }}
                                     </a>
