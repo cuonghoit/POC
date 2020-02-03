@@ -65,7 +65,6 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
 			Route::get('/my-multi-annual-performance-report-filter-by-levels/{id}', 'HomeController@getMMAPR_FBL')->name('MMAPR_FBL');
 		});
 	});
-    Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
 });
 
 Route::group(['middleware' => ['role:supervisors|super-admin']], function () {
@@ -95,6 +94,12 @@ Route::group(['middleware' => ['role:general_director|super-admin']], function (
     Route::post('/company-annual-trainning-plan','HomeController@postCATP')->name('postCATP');
 });
 Route::group(['middleware' => ['role:super-admin']], function () {
-
+	Route::group(['prefix'=>'administrator'],function(){
+		Route::group(['prefix'=>'user-management'],function(){
+			Route::get('/add-new-user-account', 'HomeController@getAddNewUserAccount')->name('addNewUserAccount');
+			Route::get('/edite-user-account', 'HomeController@getEditeUserAccount')->name('editeUserAccount');
+			Route::get('/delete-user-account', 'HomeController@getDeleteUserAccount')->name('deleteUserAccount');
+		});
+	});
 });
 

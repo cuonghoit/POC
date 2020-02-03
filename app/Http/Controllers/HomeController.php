@@ -321,4 +321,18 @@ class HomeController extends Controller
         return view('rmap',['course'=>$course, 'personal_info'=>$personal_info]);
     }
 
+    //administrator
+    //user management
+
+    public function getAddNewUserAccount(){
+        return view('administrator/user_management/addNewUserAccount');
+    }
+
+    public function getEditeUserAccount(){
+        return view('administrator/user_management/editeUserAccount');
+    }
+
+    public function getDeleteUserAccount(){
+        return view('administrator/user_management/deleteUserAccount');
+    }
 }
