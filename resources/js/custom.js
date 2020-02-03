@@ -1,8 +1,7 @@
 $(document).ready(function () {
-
-    $('.navbar .dropright.dropdown-item').on('click', function (e) {
-        var $el = $(this).children('.dropdown-toggle');
-        var $parent = $el.offsetParent(".dropdown-menu");
+    $('.navbar .dropright.dropdown-item.submenu .dropdown-toggle').on('click', function (e) {
+        var $el = $(this);
+        var $parent = $(this).offsetParent(".dropdown-menu");
         $(this).parent("li").toggleClass('open');
 
         if (!$parent.parent().hasClass('dropright')) {
