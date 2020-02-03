@@ -4,7 +4,7 @@
 	    <div class="row justify-content-center">
 	        <div style="width: 100%;">
 	            <div class="card">
-	               
+	            	<div class="card-header">Training Management / Department Annual Training Plan</div>
 
 	                <div class="card-body">
 	                    @if (session('status'))
@@ -30,7 +30,7 @@
 									<label for="company">Company: </label>
 								</div>
 								 <div class="col-md-3">
-									<input type="text" name="company" id="company" disabled="disabled" size="30" value="">
+									<input type="text" name="company" id="company" disabled="disabled" size="30" value="{{ $pr->department }}">
                             	</div>
                             	@endforeach
                            	</div>

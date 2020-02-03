@@ -1,60 +1,51 @@
 @extends('layouts.app')
-@section('content')
-	<div class="container">
-	    <div class="row justify-content-center">
-	        <div style="width: 100%;">
-	            <div class="card">
-                    <div class="card-header">Training Management / Approve Training / Approve Department Training Plan  </div>
 
-	                <div class="card-body">
-	                    @if (session('status'))
-	                        <div class="alert alert-success" role="alert">
-	                            {{ session('status') }}
-	                        </div>
-	                     @endif
-	                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-		                    <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-		                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-		                    <h3 class="text-center" ><b>APPROVE DEPARTMENT ANNUAL TRAINING PLAN</b></h3><br>
-		                    <form>
-		                    <p class="text-left" ><b>GENERAL INFO</b></p>
-		                    <div class="row  ">
-		                    	 
-                                <div class="col-md-3">
-									<label for="department">Department: </label>
-								</div>
-								<div class="col-md-3">
-									<input type="text" name="department" id="department" disabled="disabled" size="30" value="">
+@section('content')
+    
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">Training Management / Company Annual Trainning Plan</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <h5 class="text-center">
+                        PHU QUOC PETROLEUM OPERATING COMPANY <br>
+                        <b>TRAINING MANAGEMENT SYSTEM</b> <br> <br>
+                    <h4 class="text-center"><b>
+                        APPROVE COMPANY ANNUAL TRAINING PLAN</b>
+                    </h4>
+                    <br>
+                   
+                        <form>
+                            <div class="row  ">
+                                <div class="col-md-3 ">
+                                     <label for="fromdate"> <b>
+                                            Training & Development Period From: </b>
+                                        </label>
                                 </div>
-                            	<div class="col-md-3">
-									<label for="company">Company: </label>
-								</div>
-								 <div class="col-md-3">
-									<input type="text" name="company" id="company" disabled="disabled" size="30" value="">
-                            	</div>
-                            
-                           	</div>
-                           	
-                           	<p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
-                           	<div class="row">
-		                    	
                                 <div class="col-md-3">
-									<label for="department">Training Development Period From: </label>
-								</div>
-								 <div class="col-md-3">
-									<input type="date" name="department" id="department"  size="50" value="">
+                                     <input type="date" name="fromdate">
                                 </div>
-                            	<div class="col-md-3">
-									<label for="company">To: </label>
-								</div>
-								 <div class="col-md-3">
-									<input type="date" name="company" id="company"  size="50">
-                            	</div>
-                            	
-                           	</div>
-                           
-                           	<div class="table-responsive">
-                            <table class="table table-bordered text-center table-striped" style="white-space: nowrap;" >
+                                <div class="col-md-3">
+                                    <label fromto>
+                                        <b> To: </b>
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                      <input type="date" name="todate">
+                                </div>
+                            </div>
+                              
+                            </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center" style="white-space: nowrap;" >
                                 <tr class="bg-secondary" >
                                     <th rowspan="2" >
                                         No.
@@ -98,7 +89,7 @@
                                     </th>
                                     <th>
                                         Mar
-                                    </th>
+                                    </th>   
                                     <th>
                                         Apr
                                     </th>
@@ -128,36 +119,41 @@
                                     </th>
                                   
                                 </tr>
-                                	
+                                <tr class="bg-primary">
+                                    <td></td>
+                                    <td colspan="22" class="text-left">
+                                        DEPARTMENT: ADMIN
+                                    </td>
+                                   
+                                </tr>
                                  
                                 <tr >
-                                   
+                                    
                                     <td>1</td>
-                                 
+                                    
                                     <td>
-                                       
+                                        
+                                     
                                     </td>
-                                      
-                                  
-                                    <td>
-                                      
-                                      
+                                        
+                                        
                                     </td>
                                     
                                     <td>
-                                      
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
                                     </td>
                                     <td>
                                        
                                     </td>
                                     <td>
-                                         
-                                    </td>
-                                    <td>
-                                         
-                                    </td>
-                                    <td>
-                                       
+                                    
+                                    
                                     </td>
                                     <td></td>
                                     <td></td>
@@ -173,7 +169,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                  
+                                    
                                 </tr>
                                 
                                 <tr>
@@ -224,7 +220,13 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                               
+                                <tr class="bg-primary">
+                                    <td></td>
+                                    <td colspan="22" class="text-left">
+                                        DEPARTMENT: DRILLING & COMPLETION
+                                    </td>
+                                    
+                                </tr>
                                 <tr>
                                     <td>4</td>
                                     <td></td>
@@ -319,21 +321,22 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+
                                 </tr>
                             </table>
-                    </div>
-                    <div class="text-center">
-                    		
+                        </div>
+                        <div class="text-center">
+                            
                             <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
                             <button class="btn btn-danger" >REJECT</button>
 
-                    </div>    
-                     </form>
-
-
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
+                        </div>    
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
