@@ -16,7 +16,7 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Rating Performance / Rating My Performance / Rating My Annual Performance
+                    Performance Management / Rating Performance / Approving My Employees Performance / Approving My Employees Monthly Performance
                 </div>
 
                 <div class="card-body">
@@ -25,11 +25,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('postIATP')}}" method="post">
+                    <form action="" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>APPROVE MY EMPLOYEES MONTHLY MSC OBJECTIVES</b></h3><br>
+                    <h3 class="text-center" ><b>APPROVING MY EMPLOYEES MONTHLY PERFORMANCE</b></h3><br>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -125,209 +125,170 @@
                         </tr>
                     </table><br>  
                     <div class="table-responsive">
-                    <table class="table table-bordered text-center table-striped text-nowrap">
+                        <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
                             <tr>
-                                <th rowspan="2">
-                                    Month / Year
+                                <th>No.</th>
+                                <th>
+                                    Objective Category
                                 </th>
-                                <th colspan="7">
+                                <th>
+                                    SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Ojective/Timing/Result)
+                                </th>
+                                <th>
+                                    Result Description 
+                                </th>
+                                <th>
                                     Achieved (√) or Not (x)
                                 </th>
-                                <th rowspan="2">
-                                    Monthly Rates
+                                <th>
+                                    Supervisor Comments
                                 </th>
-                                <th rowspan="2">
-                                    Monthly Performance Appraisal Level
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Must-Do 1</th>
-                                <th>Must-Do 2</th>
-                                <th>Must-Do 3</th>
-                                <th>Must-Do 4</th>
-                                <th>Should-Do 1</th>
-                                <th>Should-Do 2</th>
-                                <th>Could-Do 1</th>
-                         
-
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>1</td>
                                 <td>
-                                    01/2020
+                                    Must-Do 1
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                              
                             </tr>
                             <tr>
+                                <td>2</td>
                                 <td>
-                                    02/2020
+                                    Must-Do 2
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                             
                             </tr>
                             <tr>
+                                <td>3</td>
                                 <td>
-                                    03/2020
+                                    Must-Do 3
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                        
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
                             </tr>
                             <tr>
+                                <td>4</td>
                                 <td>
-                                    04/2020
+                                    Must-Do 4
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                              
                             </tr>
                             <tr>
+                                <td>5</td>
                                 <td>
-                                    05/2020
+                                    Should-Do 1
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                            
                             </tr>
                             <tr>
+                                <td>6</td>
                                 <td>
-                                    06/2020
+                                    Should-Do 2
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                       
                             </tr>
                             <tr>
+                                <td>7</td>
                                 <td>
-                                    07/2020
+                                    Could-Do 1
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
                                 <td>
-                                    08/2020
+                                    <input type="text" name="smart">
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
                                 <td>
-                                    09/2020
+                                    <input type="text" name="target">
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
                                 <td>
-                                    10/2020
+                                    <input type="text" name="criteria">
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
                                 <td>
-                                    11/2020
+                                    <input type="text" name="action-plans">
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    12/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
+                            
                             </tr>
                         </tbody>
                     </table>
                     </div>
-                    <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                     
+                    
+                    <div class="text-center">                            
+                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
+                            <button class="btn btn-danger" >REJECT</button>
+                    </div> 
                    </form>
                 </div>
             </div>

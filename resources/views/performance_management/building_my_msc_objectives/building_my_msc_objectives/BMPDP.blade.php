@@ -15,7 +15,9 @@
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">
+                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Personal Development Plan
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,11 +25,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('postIATP')}}" method="post">
+                    <form action="" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>APPROVE INDIVIDUAL ANNUAL TRAINING PLAN</b></h3><br>
+                    <h3 class="text-center" ><b>BUILDING MY PERSONAL DEVELOPMENT MSC OBJECTIVES</b></h3><br>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -58,7 +60,11 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
                             </div>
-                            
+                            <div class="form-group">
+                                <td><label for="supervisorJobTitle">Supersivor Job title:
+                                </label></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
+                            </div>
                         </tr>
                         <tr>
                             <div class="form-group">
@@ -95,7 +101,7 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
+                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -121,77 +127,22 @@
                     <div class="table-responsive Training">
                         <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
                             <thead>
-                                <tr>
-                                    <th rowspan="2">No</th>
-                                    <th rowspan="2">Name of Training &<br> Development Program</th>
-                                    <th rowspan="2">Disciplines<br>(Geology, Finance, HRM, Legal …)</th>
-                                    <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
-                                    <th rowspan="2">Purpose of program<br>(Close Competency Gaps, Develop Competencies, Doctorate …)</th>
-                                    <th rowspan="2">Provider</th>
-                                    <th rowspan="2">Location</th>
-                                    <th colspan="2">Training Fee</th>
-                                    <th colspan="12">Training & Development Schedule</th>
-                                </tr>
-                                <tr>
-                                    <th>US</th>
-                                    <th>VND</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Now</th>
-                                    <th>Dec</th>
-                                </tr>
+                                 <th>No. </th>
+                                 <th>
+                                     Target Winning Behavioral Competencies <br> (Company Common Behavioral Competencies)
+                                 </th>
+                                 <th>
+                                     Development Activities <br> (Individual Driven, Manager Supported, Organizatonal Sponsored)
+                                 </th>
+                                 <th>
+                                     Timeframe
+                                 </th>
+                                 <th>
+                                     Expected Outcomes <br> (How will I know if and when Ihave been successful)
+                                 </th>
                             </thead>
-                            
                             <tbody>
-                                
                                 <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><input type="text" name="location" class="form-control"></td>
-                                    <td><input type="text" name="us" class="form-control" ></td>
-                                    <td><input type="text" name="vnd" class="form-control" ></td>
-                                    <td><input type="checkbox" name="month[]" value="1"></td>
-                                    <td><input type="checkbox" name="month[]" value="2"></td>
-                                    <td><input type="checkbox" name="month[]" value="3"></td>
-                                    <td><input type="checkbox" name="month[]" value="4"></td>
-                                    <td><input type="checkbox" name="month[]" value="5"></td>
-                                    <td><input type="checkbox" name="month[]" value="6"></td>
-                                    <td><input type="checkbox" name="month[]" value="7"></td>
-                                    <td><input type="checkbox" name="month[]" value="8"></td>
-                                    <td><input type="checkbox" name="month[]" value="9"></td>
-                                    <td><input type="checkbox" name="month[]" value="10"></td>
-                                    <td><input type="checkbox" name="month[]" value="11"></td>
-                                    <td><input type="checkbox" name="month[]" value="12"></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -199,22 +150,6 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -222,108 +157,97 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                               
 
                             </tbody>
                         </table>
+                    </div>
+                    <br>
+                    <div class="table-responsive Training">
+                        <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
+                            <thead>
+                                 <th>No. </th>
+                                 <th>
+                                     Target Winning Technical Competencies <br> (Technical Competencies in JCM)
+                                 </th>
+                                 <th>
+                                     Development Activities <br> (Individual Driven, Manager Supported, Organizatonal Sponsored)
+                                 </th>
+                                 <th>
+                                     Timeframe
+                                 </th>
+                                 <th>
+                                     Expected Outcomes <br> (How will I know if and when Ihave been successful)
+                                 </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                    
+                            </tbody>
+                        </table>
                     </div> 
-                    <div class="text-center">
-                            
-                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
-                            <button class="btn btn-danger" >REJECT</button>
-
-                    </div> 
+                    <br>
+                    <div>
+                        <table class="table table-bordered text-center table-striped">
+                            <tr>
+                                <td>
+                                    Manager Signature:
+                                </td>
+                                <td>
+                                    <input type="text" name="manager">
+                                </td>
+                                <td>
+                                    HR Singature:
+                                </td>
+                                <td>
+                                    <input type="text" name="hr">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Employee Signature:
+                                </td>
+                                <td>
+                                     <input type="text" name="employee">
+                                </td>
+                                <td>
+                                    Date:
+                                </td>
+                                <td>
+                                    <input type="text" name="date">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-group text-center">
+                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
+                    </div>
                    </form>
                 </div>
             </div>
