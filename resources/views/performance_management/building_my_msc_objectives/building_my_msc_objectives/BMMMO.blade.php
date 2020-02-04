@@ -16,7 +16,7 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Personal Development Plan
+                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Monthly MSC Objectives
                 </div>
 
                 <div class="card-body">
@@ -25,11 +25,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('postIATP')}}" method="post">
+                    <form action="" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>BUILDING MY PERSONAL DEVELOPMENT MSC OBJECTIVES</b></h3><br>
+                    <h3 class="text-center" ><b>BUILDING MY MONTHLY MSC OBJECTIVES</b></h3><br>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -124,126 +124,149 @@
                             </div>
                         </tr>
                     </table><br>  
-                    <div class="table-responsive Training">
-                        <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
-                            <thead>
-                                 <th>No. </th>
-                                 <th>
-                                     Target Winning Behavioral Competencies <br> (Company Common Behavioral Competencies)
-                                 </th>
-                                 <th>
-                                     Development Activities <br> (Individual Driven, Manager Supported, Organizatonal Sponsored)
-                                 </th>
-                                 <th>
-                                     Timeframe
-                                 </th>
-                                 <th>
-                                     Expected Outcomes <br> (How will I know if and when Ihave been successful)
-                                 </th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <br>
-                    <div class="table-responsive Training">
-                        <table class="table table-bordered text-center table-striped" id="dtHorizontalExample" >
-                            <thead>
-                                 <th>No. </th>
-                                 <th>
-                                     Target Winning Technical Competencies <br> (Technical Competencies in JCM)
-                                 </th>
-                                 <th>
-                                     Development Activities <br> (Individual Driven, Manager Supported, Organizatonal Sponsored)
-                                 </th>
-                                 <th>
-                                     Timeframe
-                                 </th>
-                                 <th>
-                                     Expected Outcomes <br> (How will I know if and when Ihave been successful)
-                                 </th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                    
-                            </tbody>
-                        </table>
-                    </div> 
-                    <br>
-                    <div>
-                        <table class="table table-bordered text-center table-striped">
+                    <table class="table table-bordered text-center table-striped">
+                        <thead>
                             <tr>
+                                <th>No.</th>
+                                <th>
+                                    Objective Category
+                                </th>
+                                <th>
+                                    SMART Objectives and Monthly Milestone <br> (MSC)(Verb/Ojective/Timing/Result)
+                                </th>
+                                <th>
+                                    Target
+                                </th>
+                                <th>
+                                    Criteria for Success
+                                </th>
+                                <th>
+                                    Action Plans to Achieve Objectives
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
                                 <td>
-                                    Manager Signature:
+                                    <input type="text" name="smart">
                                 </td>
                                 <td>
-                                    <input type="text" name="manager">
+                                    <input type="text" name="target">
                                 </td>
                                 <td>
-                                    HR Singature:
+                                    <input type="text" name="criteria">
                                 </td>
                                 <td>
-                                    <input type="text" name="hr">
+                                    <input type="text" name="action-plans">
+                                </td>
+                              
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                             
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                        
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
                                 </td>
                             </tr>
                             <tr>
+                                <td>4</td>
+                                <td></td>
                                 <td>
-                                    Employee Signature:
+                                    <input type="text" name="smart">
                                 </td>
                                 <td>
-                                     <input type="text" name="employee">
+                                    <input type="text" name="target">
                                 </td>
                                 <td>
-                                    Date:
+                                    <input type="text" name="criteria">
                                 </td>
                                 <td>
-                                    <input type="text" name="date">
+                                    <input type="text" name="action-plans">
                                 </td>
+                              
                             </tr>
-                        </table>
-                    </div>
+                            <tr>
+                                <td>5</td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                            
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                       
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                            
+                            </tr>
+                        </tbody>
+                    </table>
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">

@@ -16,19 +16,20 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Building My MSC Objectives / Approving My Employees MSC Objectives / Approving My Employees Annual MSC Objectives
+                    Performance Management / Rating Performance / Rating My Performance / Rating My Monthly Performance
                 </div>
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('postIATP')}}" method="post">
+                    <form action="" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL MSC OBJECTIVES</b></h3><br>
+                    <h3 class="text-center" ><b>RATING MY MONTHLY PERFORMANCE</b></h3><br>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -124,197 +125,165 @@
                         </tr>
                     </table><br>  
                     <div class="table-responsive">
-                    <table class="table table-bordered text-center text-nowrap table-striped">
+                        <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
                             <tr>
-                                <th rowspan="2">
-                                    No.
-                                </th>
-                                <th rowspan="2">
+                                <th>No.</th>
+                                <th>
                                     Objective Category
                                 </th>
-                                <th rowspan="2">
-                                    SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
-                                </th>
-                                <th colspan="12">
-                                    Months
-                                </th>
-                                <th rowspan="2">
-                                    Target to Achienve
-                                </th>
-                            </tr>
-                            <tr>
                                 <th>
-                                    Jan
+                                    SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Ojective/Timing/Result)
                                 </th>
                                 <th>
-                                    Feb
+                                    Result Description 
                                 </th>
                                 <th>
-                                    Mar
+                                    Achieved (√) or Not (x)
                                 </th>
                                 <th>
-                                    Apr
-                                </th>
-                                <th>
-                                    May
-                                </th>
-                                <th>
-                                    Jun
-                                </th>
-                                <th>
-                                    Jul
-                                </th>
-                                <th>
-                                    Aug
-                                </th>
-                                <th>
-                                    Sep
-                                </th>
-                                <th>
-                                    Oct
-                                </th>
-                                <th>
-                                    Nov
-                                </th>
-                                <th>
-                                    Dec
+                                    Achieve Monthly Performance Assesment Agreement
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Must-Do 1
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                              
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Must-Do 2
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                             
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Must-Do 3
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                        
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Must-Do 4
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                              
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Should-Do 1
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                            
                             </tr>
                             <tr>
                                 <td>6</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Should-Do 2
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                       
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    Could-Do 1
+                                </td>
+                                <td>
+                                    <input type="text" name="smart">
+                                </td>
+                                <td>
+                                    <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
+                                <td>
+                                    <input type="text" name="action-plans">
+                                </td>
+                            
                             </tr>
                         </tbody>
                     </table>
-
                     </div>
-                     <br>
-                    <div class="table-responsive">
+                     <div class="table-responsive">
                         <table class="table table-bordered text-center text-nowrap table-striped">
                             <tr>
                                 <td>
@@ -344,10 +313,10 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="text-center">                            
-                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
-                            <button class="btn btn-danger" >REJECT</button>
-                    </div> 
+                    
+                    <div class="form-group text-center">
+                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
                    </form>
                 </div>
             </div>

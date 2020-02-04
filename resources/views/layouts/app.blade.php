@@ -58,7 +58,7 @@
                                     @endhasanyrole
 
                                     @hasanyrole('department_managers|director|super-admin')
-                                    <a class="dropdown-item" href="{{ route('datp',Auth::user()->id) }}"
+                                    <a class="dropdown-item" href="{{ route('DATP',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Department Training') }}
                                     </a>
@@ -76,10 +76,10 @@
                                             {{ __('Approve Training') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Approve Individual Training Plan') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Approve Group Training Plan') }}</a>
-                                            <a class="dropdown-item" href="{{ route('adatp',Auth::user()->id) }}"onclick="">{{ __('Approve Department Training Plan') }}</a>
-                                            <a class="dropdown-item" href="#"onclick="">{{ __('Approve Company Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('AIATP',Auth::user()->id) }}"onclick="">{{ __('Approve Individual Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('AGATP',Auth::user()->id) }}"onclick="">{{ __('Approve Group Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('ADATP',Auth::user()->id) }}"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                            <a class="dropdown-item" href="{{ route('ACATP',Auth::user()->id) }}"onclick="">{{ __('Approve Company Training Plan') }}</a>
                                         </div>
                                     </div>
                                   
@@ -90,7 +90,7 @@
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="training-implementation-content">
                                             <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('Company Annual Training Plan Schedule') }}</a>
                                             <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Company Annual Training Plan Progress') }}</a>
-                                            <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"onclick="">{{ __('Post Training Evaluation by Participant') }}</a>
+                                            <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"onclick=""> {{ __('Post Training Evaluation by Participant') }}</a>
                                             <a class="dropdown-item" href="{{route('PTECR')}}"onclick="">{{ __('Post Training Evaluation Combined Records') }}</a>
                                         </div>
                                     </div>
@@ -112,9 +112,9 @@
                                                     {{ __('Building My MSC Objectives') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Building My Annual MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Building My Personal Deveopment Plan') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('BMAMO',Auth::user()->id) }}"onclick="">{{ __('Building My Annual MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('BMMMO',Auth::user()->id) }}"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('BMPDP',Auth::user()->id) }}"onclick="">{{ __('Building My Personal Deveopment Plan') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -122,8 +122,8 @@
                                                     {{ __('Approving My Employees MSC Objectives') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Approving My Employees Annual MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Approving My Employees Monthly MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEAMO',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Annual MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEMMO',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly MSC Objectives') }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,8 +138,8 @@
                                                     {{ __('Rating My Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Rating My Annual Performance') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Rating My Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Rating My Annual Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('RMMP',Auth::user()->id) }}"onclick="">{{ __('Rating My Monthly Performance') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -147,8 +147,8 @@
                                                     {{ __('Approving My Emloyees Performance') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Approving My Employees Annual Performance') }}</a>
-                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Approving My Employees Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEAP',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Annual Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEMP',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly Performance') }}</a>
                                                 </div>
                                             </div>
                                         </div>
