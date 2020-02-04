@@ -9,10 +9,19 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    
+
       public function run()
     {
-      $this->call(Users::class);
-    }
+
     
+
+      
+
+
+        $this->call(array(
+            RolesAndPermissionsSeeder::class,
+            UsersSeeder::class));
+    }
 }
+
+
