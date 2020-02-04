@@ -55,9 +55,9 @@ class HomeController extends Controller
   
     public function getIATP($id)
     {
-
+        $course = course::all();
         $personal_info = personal_info::find($id);
-        return view('IATP', compact('personal_info'));
+        return view('IATP', compact('personal_info'), compact('course'));
     }
     public function postIATP(Request $request ){
         $this->validate($request,[
