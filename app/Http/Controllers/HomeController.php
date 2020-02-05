@@ -36,67 +36,29 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    //training-management
     public function getCATP($id) {
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->get();
-        return view('CATP',compact('personal_info'),compact('course'));
+        return view('training_management.CATP',compact('personal_info'),compact('course'));
 
     }
-    // public function postCATP(Request $request){
-    //     $this->validate( $request [
-    //             'fromdate' => 'required',
-    //             'todate' => 'required',
-    //         ],
-    //         [
-    //             'fromdate.required' => 'Please select a training start date!',
-    //             'todate.required' => 'Please select a training end date!'
-    //         ]
-    //     );
-    // }
 
-    public function getdatp($id) {
+    public function getDATP($id) {
         $course = course::all();
-        $personal_info = personal_info::all();
-        return view('layouts.datp', compact('course'), compact('personal_info'));
-    }
-    // public function postdatp(Request $request) {
-
-    // }
-
-    public function getadatp($id) {
-        $course = course::all();
-        $course_count = DB::table('course')->count();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('layouts.adatp',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
-
-    }
-    public function getaaitp($id) {
-        $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('aiatp',['course'=>$course, 'personal_info'=>$personal_info]);
-    }
-    public function getagatp($id) {
-        $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('agatp',['course'=>$course, 'personal_info'=>$personal_info]);
-    }
-    public function getacatp($id) {
-        $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('acatp',['course'=>$course, 'personal_info'=>$personal_info]);
+        $personal_info = personal_info::where('user_id',$id)->get();
+        return view('training_management.DATP',compact('personal_info'),compact('course'));
     }
 
-
-
-
-    public function getIATP($id)
+     public function getIATP($id)
     {
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
         $course_count = DB::table('course')->count();
-        return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
+        return view('training_management.IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
-    public function postIATP($id, Request $request ){
+   public function postIATP($id, Request $request ){
         $this->validate($request,[
             'dateFrom' => 'required',
             'dateTo' => 'required',
@@ -130,119 +92,186 @@ class HomeController extends Controller
 
     }
 
+
+
     public function getGATP()
     {
-        return view('GATP');
+        return view('training_management.GATP');
     }
 
-    // company-annual-training-plan-schedule
+    //approve-training
+    public function getADATP($id) {
+        $course = course::all();
+        $course_count = DB::table('course')->count();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_management.approve_training.ADATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
+
+    }
+    public function getAIATP($id) {
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_management.approve_training.AIATP',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    public function getAGATP($id) {
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_management.approve_training.AGATP',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    public function getACATP($id) {
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_management.approve_training.ACATP',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    //end approve-training
+
+   
+
+    // training-implementation
 
     public function getCATPS()
     {
-        return view('training_implementation/CATPS');
+        return view('training_management.training_implementation.CATPS');
     }
 
     public function getCATPP()
     {
-        return view('training_implementation/CATPP');
+        return view('training_management.training_implementation.CATPP');
     }
 
     public function getPTEBP($id) {
+        $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('training_implementation/PTEBP',compact('personal_info'));
+        return view('training_management.training_implementation.PTEBP',['course'=>$course, 'personal_info'=>$personal_info]);
 
     }
 
     public function getPTECR() {
-        return view('training_implementation/PTECR');
+        return view('training_management.training_implementation.PTECR');
     }
-    // end company-annual-training-plan-schedule
+    // end training-implementation
+    //end training-management
 
+    //performance-management
+
+     //building-my-msc-objecives
+    //building-my-msc-objectives
+    public function getBMPDP($id) {
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMPDP',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    public function getBMMMO($id) {
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    public function getBMAMO($id){
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    //end-building-my-msc-objectives
+
+    //approving-my-employees-msc-objectives
+    public function getAMEAMO($id){
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    public function getAMEMMO($id){
+        $course = course::all();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info]);
+    }
+    //end-approving-my-employees-msc-objectives
+    //end-building-my-msc-objectives
+
+    //performance-management
     //managing-company-performances
     public function getCMPR() {
-        return view('performace_management/managing_company_performances/CMPR');
+        return view('performance_management.performance_management.managing_company_performances/CMPR');
     }
 
     public function getCMMPR() {
-        return view('performace_management/managing_company_performances/CMMPR');
+        return view('performance_management.performance_management.managing_company_performances/CMMPR');
     }
 
     public function getCAPR() {
-        return view('performace_management/managing_company_performances/CAPR');
+        return view('performance_management.performance_management.managing_company_performances/CAPR');
     }
 
     public function getCMAPR() {
-        return view('performace_management/managing_company_performances/CMAPR');
+        return view('performance_management.performance_management.managing_company_performances/CMAPR');
     }
 
     public function getCMPR_FBL() {
-        return view('performace_management/managing_company_performances/CMPR_FBL');
+        return view('performance_management.performance_management.managing_company_performances/CMPR_FBL');
     }
 
     public function getCAPR_FBL() {
-        return view('performace_management/managing_company_performances/CAPR_FBL');
+        return view('performance_management.performance_management.managing_company_performances/CAPR_FBL');
     }
 
     public function getCMAPR_FBL() {
-        return view('performace_management/managing_company_performances/CMAPR_FBL');
+        return view('performance_management.performance_management.managing_company_performances/CMAPR_FBL');
     }
     //end managing-company-performances
 
     //managing-department-performances
     public function getDMPR() {
-        return view('performace_management/managing_department_performances/DMPR');
+        return view('performance_management.performance_management.managing_department_performances/DMPR');
     }
 
     public function getDMMPR() {
-        return view('performace_management/managing_department_performances/DMMPR');
+        return view('performance_management.performance_management.managing_department_performances/DMMPR');
     }
 
     public function getDAPR() {
-        return view('performace_management/managing_department_performances/DAPR');
+        return view('performance_management.performance_management.managing_department_performances/DAPR');
     }
 
     public function getDMAPR() {
-        return view('performace_management/managing_department_performances/DMAPR');
+        return view('performance_management.performance_management.managing_department_performances/DMAPR');
     }
 
 
     public function getDMPR_FBL() {
-        return view('performace_management/managing_department_performances/DMPR_FBL');
+        return view('performance_management.performace_management/managing_department_performances/DMPR_FBL');
     }
 
     public function getDAPR_FBL() {
-        return view('performace_management/managing_department_performances/DAPR_FBL');
+        return view('performance_management.performance_management.managing_department_performances/DAPR_FBL');
     }
 
     public function getDMAPR_FBL() {
-        return view('performace_management/managing_department_performances/DMAPR_FBL');
+        return view('performance_management.performance_management.managing_department_performances/DMAPR_FBL');
     }
     //end managing-department-performances
 
     //managing-employees-performances
     public function getEMPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_employees_performances/EMPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_employees_performances/EMPR', compact('personal_info'));
     }
 
     public function getEMMPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_employees_performances/EMMPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_employees_performances/EMMPR', compact('personal_info'));
     }
 
     public function getEAPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_employees_performances/EAPR', compact('personal_info'));
+        return view('performance_management.performace_management/managing_employees_performances/EAPR', compact('personal_info'));
     }
 
     public function getEMAPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_employees_performances/EMAPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_employees_performances/EMAPR', compact('personal_info'));
     }
 
     public function getEMMPR_FBL($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_employees_performances/EMMPR_FBL', compact('personal_info'));
+        return view('performance_management.performance_management.managing_employees_performances/EMMPR_FBL', compact('personal_info'));
     }
 
     public function getEMAPR_FBL($id) {
@@ -254,85 +283,75 @@ class HomeController extends Controller
     //managing-my-performances
     public function getMMPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MMPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MMPR', compact('personal_info'));
     }
 
     public function getMMMPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MMMPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MMMPR', compact('personal_info'));
     }
 
     public function getMAPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MAPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MAPR', compact('personal_info'));
     }
 
     public function getMMAPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MMAPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MMAPR', compact('personal_info'));
     }
 
     public function getMMMPR_FBL($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MMMPR_FBL', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MMMPR_FBL', compact('personal_info'));
     }
 
     public function getMMAPR_FBL($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performace_management/managing_my_performances/MMAPR_FBL', compact('personal_info'));
+        return view('performance_management.performance_management.managing_my_performances/MMAPR_FBL', compact('personal_info'));
     }
     //end managing-my-performances
+    //end-performance-management
 
-    //performance management
-    //building my msc objectives
-    public function getbmpdp($id) {
+    //rating-performance
+    //rating-my-performance
+    public function getRMAP($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('layouts.bmpdp',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
-    public function getbmmmo($id) {
+    public function getRMMP($id) {
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('bmmmo',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
-    public function getbmamo($id){
-        $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('bmamo',['course'=>$course, 'personal_info'=>$personal_info]);
-    }
+    // end-rating-my-performance
 
-    //approving my employees msc objectives
-    public function getameamo($id){
+    //approving-my-employees-performance
+    public function getAMEAP($id) {
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('ameamo',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
-    public function getamemmo($id){
+    public function getAMEMP($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('amemmo',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
 
-    //rating performance
-    //rating my performance
-    public function getrmap($id){
-        $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('rmap',['course'=>$course, 'personal_info'=>$personal_info]);
-    }
-
+    //end-approving-my-employees-performance
     //administrator
-    //user management
+    //user-management
 
     public function getAddNewUserAccount(){
-        return view('administrator/user_management/addNewUserAccount');
+        return view('performance_management.administrator/user_management.addNewUserAccount');
     }
 
     public function getEditeUserAccount(){
-        return view('administrator/user_management/editeUserAccount');
+        return view('performance_management.administrator/user_management.editeUserAccount');
     }
 
     public function getDeleteUserAccount(){
-        return view('administrator/user_management/deleteUserAccount');
+        return view('performance_management.administrator/user_management.deleteUserAccount');
     }
 }

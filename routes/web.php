@@ -23,6 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['role:employees|super-admin']], function () {
     Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
     Route::post('/individual-annual-training-plan/{id}', 'HomeController@postIATP')->name('postIATP');
+
     Route::group(['prefix'=>'training-implementation'],function(){
 		Route::get('/company-annual-training-plan-schedule', 'HomeController@getCATPS')->name('CATPS');
 		Route::get('/company-annual-training-plan-progress', 'HomeController@getCATPP')->name('CATPP');
@@ -71,22 +72,34 @@ Route::group(['middleware' => ['role:supervisors|super-admin']], function () {
 	Route::get('/group-annual-training-plan', 'HomeController@getGATP')->name('GATP');
 });
 Route::group(['middleware' => ['role:department_managers|super-admin']], function () {
-	Route::get('/department-annual-training-plan/{id}','HomeController@getdatp')->name('datp');
+	Route::get('/department-annual-training-plan/{id}','HomeController@getDATP')->name('DATP');
 });
 Route::group(['middleware' => ['role:director|super-admin']], function () {
-	Route::get('/approve-training/approve-department-annual-training-plan/{id}','HomeController@getadatp')->name('adatp');
-	Route::get('/approve-training/approve-individual-annual-training-plan/{id}','HomeController@getaaitp')->name('aiatp');
-	Route::get('/approve-training/approve-group-annual-training-plan/{id}','HomeController@getagatp')->name('agatp');
-	Route::get('/approve-training/approve-company-annual-training-plan/{id}','HomeController@getacatp')->name('acatp');
 
-	Route::get('building-my-msc-objectives/building-my-msc-objectives/building-my-personal-development-plan/{id}','HomeController@getbmpdp')->name('bmpdp');
-	Route::get('building-my-msc-objectives/building-my-msc-objectives/building-my-monthly-msc-objectives/{id}','HomeController@getbmmmo')->name('bmmmo');
-	Route::get('building-my-msc-objectives/building-my-msc-objectives/building-my-annual-msc-objectives/{id}','HomeController@getbmamo')->name('bmamo');
+	Route::group(['prefix'=>'approve-training'], function() {
+		Route::get('/approve-department-annual-training-plan/{id}','HomeController@getADATP')->name('ADATP');
+		Route::get('/approve-individual-annual-training-plan/{id}','HomeController@getAIATP')->name('AIATP');
+		Route::get('/approve-group-annual-training-plan/{id}','HomeController@getAGATP')->name('AGATP');
+		Route::get('/approve-company-annual-training-plan/{id}','HomeController@getACATP')->name('ACATP');
+	});
 
-	Route::get('building-my-msc-objectives/approving-my-employees-msc-objectives/approving-my-employees-annual-msc-objectives/{id}','HomeController@getameamo')->name('ameamo');
-	Route::get('building-my-msc-objectives/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getamemmo')->name('amemmo');
+	Route::group(['prefix'=>'building-my-msc-objectives'], function() {
+		Route::get('/building-my-msc-objectives/building-my-personal-development-plan/{id}','HomeController@getBMPDP')->name('BMPDP');
+		Route::get('/building-my-msc-objectives/building-my-monthly-msc-objectives/{id}','HomeController@getBMMMO')->name('BMMMO');
+		Route::get('/building-my-msc-objectives/building-my-annual-msc-objectives/{id}','HomeController@getBMAMO')->name('BMAMO');
 
-	Route::get('rating-performance/rating-my-performance/rating-my-annual-performance/{id}','HomeController@getrmap')->name('rmap');
+		Route::get('/approving-my-employees-msc-objectives/approving-my-employees-annual-msc-objectives/{id}','HomeController@getAMEAMO')->name('AMEAMO');
+		Route::get('/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getAMEMMO')->name('AMEMMO');
+	});
+
+	Route::group(['prefix'=>'rating-performance'], function () {
+		Route::get('/rating-my-annual-performance/{id}','HomeController@getRMAP')->name('RMAP');
+		Route::get('/rating-my-monthly-performance/{id}','HomeController@getRMMP')->name('RMMP');
+	});
+	Route::group(['prefix'=>'approving-my-employees-performance'], function() {
+		Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
+		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
+	});
 
 });
 Route::group(['middleware' => ['role:general_director|super-admin']], function () {
