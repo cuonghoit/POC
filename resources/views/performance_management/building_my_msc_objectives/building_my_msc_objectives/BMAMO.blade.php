@@ -121,50 +121,19 @@
                                 <th rowspan="2">
                                     SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
                                 </th>
-                                <th colspan="12">
-                                    Months
-                                </th>
+    
                                 <th rowspan="2">
                                     Target to Archive
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    Jan
+                                    From Date
                                 </th>
                                 <th>
-                                    Feb
+                                    To Date
                                 </th>
-                                <th>
-                                    Mar
-                                </th>
-                                <th>
-                                    Apr
-                                </th>
-                                <th>
-                                    May
-                                </th>
-                                <th>
-                                    Jun
-                                </th>
-                                <th>
-                                    Jul
-                                </th>
-                                <th>
-                                    Aug
-                                </th>
-                                <th>
-                                    Sep
-                                </th>
-                                <th>
-                                    Oct
-                                </th>
-                                <th>
-                                    Nov
-                                </th>
-                                <th>
-                                    Dec
-                                </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -175,16 +144,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -193,16 +162,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -211,16 +180,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -229,16 +198,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                             <tr>
                                 <td>5</td>
@@ -247,16 +216,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                             </tr>
                             <tr>
                                 <td>6</td>
@@ -265,16 +234,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -283,16 +252,16 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             </tr>
                         </tbody>
                     </table>
