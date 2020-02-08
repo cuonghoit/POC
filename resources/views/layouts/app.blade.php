@@ -39,6 +39,83 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Pre-Test Management System') }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
+                                    <div class="dropright dropdown-item submenu">
+                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Candidate Page') }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Test Invitation Email') }}
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Input Personal Info') }}
+                                            </a>
+                                            <div class="dropright dropdown-item submenu">
+                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{ __('Test Selection') }}
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test') }}</a>
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test') }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="dropright dropdown-item submenu">
+                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{ __('Test Results') }}
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test Results') }}</a>
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test Results') }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropright dropdown-item submenu">
+                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Recruiter Page') }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Candidate List') }}
+                                            </a>
+                                            <div class="dropright dropdown-item submenu">
+                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{ __('Test Results Selection') }}
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selectioni by Candidate') }}</a>
+                                                    <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selection by Job Titles') }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropright dropdown-item submenu">
+                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('Admin Page') }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Add the Questions') }}
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Delete the Questions') }}
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Edit the Questions') }}
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('Edit the Tests') }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('Training Management') }} <span class="caret"></span>
                                 </a>
 
@@ -47,13 +124,6 @@
                                     <a class="dropdown-item" href="{{   route('IATP',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Individual Training') }}
-                                    </a>
-                                    @endhasanyrole
-
-                                    @hasanyrole('supervisors|super-admin')
-                                    <a class="dropdown-item" href="{{route('GATP',Auth::user()->id)}}"
-                                       onclick="">
-                                        {{ __('Group Training') }}
                                     </a>
                                     @endhasanyrole
 
@@ -70,7 +140,7 @@
                                         {{ __('Company Training') }}
                                     </a>
                                     @endrole
-                                    
+
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Approve Training') }}
@@ -82,7 +152,7 @@
                                             <a class="dropdown-item" href="{{ route('ACATP',Auth::user()->id) }}"onclick="">{{ __('Approve Company Training Plan') }}</a>
                                         </div>
                                     </div>
-                                  
+
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-training-implementation" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Training Implementation') }}
@@ -114,7 +184,6 @@
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                                     <a class="dropdown-item" href="{{ route('BMAMO',Auth::user()->id) }}"onclick="">{{ __('Building My Annual MSC Objectives') }}</a>
                                                     <a class="dropdown-item" href="{{ route('BMMMO',Auth::user()->id) }}"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('BMPDP',Auth::user()->id) }}"onclick="">{{ __('Building My Personal Deveopment Plan') }}</a>
                                                 </div>
                                             </div>
                                             <div class="dropright dropdown-item submenu">
@@ -153,163 +222,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="dropright dropdown-item submenu">
-                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ __('Performance Management') }}
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Managing Company Performances') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{route('CMPR')}}"onclick="">{{ __('Company Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CMMPR')}}"onclick="">{{ __('Company Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CAPR')}}"onclick="">{{ __('Company Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CMAPR')}}"onclick="">{{ __('Company Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CMPR_FBL')}}"onclick="">{{ __('Company Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CAPR_FBL')}}"onclick="">{{ __('Company Annual Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="{{route('CMAPR_FBL')}}"onclick="">{{ __('Company Multi-Annual Performance  Report - Filter by Level') }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Managing Department Performances') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{route('DMPR')}}"onclick="">{{ __('Department Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DMMPR')}}"onclick="">{{ __('Department Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DAPR')}}"onclick="">{{ __('Department Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DMAPR')}}"onclick="">{{ __('Department Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DMPR_FBL')}}"onclick="">{{ __('Department Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DAPR_FBL')}}"onclick="">{{ __('Department Annual Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="{{route('DMAPR_FBL')}}"onclick="">{{ __('Department Multi-Annual Performance  Report - Filter by Level') }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Managing Employees Performances') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{route('EMPR',Auth::user()->id)}}"onclick="">{{ __('Employees Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('EMMPR',Auth::user()->id)}}"onclick="">{{ __('Employees Multi-Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('EAPR',Auth::user()->id)}}"onclick="">{{ __('Employees Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('EMAPR',Auth::user()->id)}}"onclick="">{{ __('Employees Multi-Anual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('EMMPR_FBL',Auth::user()->id)}}"onclick="">{{ __('Employees Monthly Performance Report - Filter by Level') }}</a>
-                                                    <a class="dropdown-item" href="{{route('EMAPR_FBL',Auth::user()->id)}}"onclick="">{{ __('Employees Annual Performance Report - Filter by Level') }}</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Managing My Performances') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{route('MMPR',Auth::user()->id)}}"onclick="">{{ __('My Monthly Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('MMMPR',Auth::user()->id)}}"onclick="">{{ __('My Multi-Month Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('MAPR',Auth::user()->id)}}"onclick="">{{ __('My Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('MMAPR',Auth::user()->id)}}"onclick="">{{ __('My Multi-Annual Performance Report') }}</a>
-                                                    <a class="dropdown-item" href="{{route('MMMPR_FBL',Auth::user()->id)}}"onclick="">{{ __('My Multi-Month Performance Report - Filter by Levels') }}</a>
-                                                    <a class="dropdown-item" href="{{route('MMAPR_FBL',Auth::user()->id)}}"onclick="">{{ __('My Multi-Annual Performance Report - Filter by Levels') }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dropright dropdown-item submenu">
-                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ __('Administrator') }}
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('User Management') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{route('addNewUserAccount')}}"onclick="">{{ __('Add new User Account') }}</a>
-                                                    <a class="dropdown-item" href="{{route('editeUserAccount')}}"onclick="">{{ __('Edite User Account') }}</a>
-                                                    <a class="dropdown-item" href="{{route('deleteUserAccount')}}"onclick="">{{ __('Delete User Account') }}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a class="dropdown-item" href="{{route('CMPR')}}">
+                                        {{ __('Performance Management') }}
+                                    </a>
                                 </div>
                             </li>
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ __('Pre-Test Management System') }} <span class="caret"></span>
-                                    </a>
 
-                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
-                                        <div class="dropright dropdown-item submenu">
-                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                {{ __('Candidate Page') }}
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Test Invitation Email') }}
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Input Personal Info') }}
-                                                </a>
-                                                <div class="dropright dropdown-item submenu">
-                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        {{ __('Test Selection') }}
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test') }}</a>
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test') }}</a>
-                                                    </div>
-                                                </div>
-                                                <div class="dropright dropdown-item submenu">
-                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        {{ __('Test Results') }}
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Personality Test Results') }}</a>
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('IQ/Aptitude Test Results') }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="dropright dropdown-item submenu">
-                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                {{ __('Recruiter Page') }}
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Candidate List') }}
-                                                </a>
-                                                <div class="dropright dropdown-item submenu">
-                                                    <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        {{ __('Test Results Selection') }}
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selectioni by Candidate') }}</a>
-                                                        <a class="dropdown-item" href="#"onclick="">{{ __('Test Results Selection by Job Titles') }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="dropright dropdown-item submenu">
-                                            <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                {{ __('Admin Page') }}
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Add the Questions') }}
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Delete the Questions') }}
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Edit the Questions') }}
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    {{ __('Edit the Tests') }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
                         @endguest
                     </ul>
 

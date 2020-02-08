@@ -37063,23 +37063,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  /*$('.navbar .dropright.dropdown-item.submenu').on('click', function (e) {
-      var $el = $(this).children('.dropdown-toggle');
-      var $parent = $el.offsetParent(".dropdown-menu");
-      $(this).parent("li").toggleClass('open');
-       if (!$parent.parent().hasClass('dropright')) {
-          if ($parent.hasClass('show')) {
-              $parent.removeClass('show');
-              $el.next().removeClass('show');
-          } else {
-              $parent.parent().find('.show').removeClass('show');
-              $parent.addClass('show');
-              $el.next().addClass('show')
-          }
-          e.preventDefault();
-          e.stopPropagation();
-      }
-  });*/
   $('.navbar .dropright.dropdown-item.submenu .dropdown-toggle').on('click', function (e) {
     var $el = $(this);
     var $parent = $(this).offsetParent(".dropdown-menu");
