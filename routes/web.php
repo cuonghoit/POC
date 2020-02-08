@@ -108,6 +108,4 @@ Route::group(['middleware' => ['role:director|super-admin']], function () {
 		Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
 		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
 	});
-
-
-
+});
