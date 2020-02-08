@@ -102,9 +102,10 @@
                         <tr>
                             <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
-                                <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
+                                <td><b>From Year:</b></td>
+                                <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
+                                <td><b>To Year: </b></td>
+                                <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
                             </div>
                         </tr>
                     </table><br>  

@@ -37,22 +37,17 @@
                            	</div>
                            	
                            	<p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
-                           	<div class="row">
-		                    	
-                                <div class="col-md-3">
-									<label for="department">Training Development Period From: </label>
-								</div>
-								 <div class="col-md-3">
-									<input type="date" name="department" id="department"  size="50" value="">
-                                </div>
-                            	<div class="col-md-3">
-									<label for="company">To: </label>
-								</div>
-								 <div class="col-md-3">
-									<input type="date" name="company" id="company"  size="50">
-                            	</div>
-                            	
-                           	</div>
+                           	<table style="width: 100%;">
+                                <tr>
+                                    <td>Training & Development period from:</td>
+                                    <div class="form-group">
+                                        <td><b>From Year:</b></td>
+                                        <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
+                                        <td><b>To Year: </b></td>
+                                        <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
+                                    </div>
+                                </tr>
+                            </table><br>
                            
                            	<div class="table-responsive">
                             <table class="table table-bordered text-center table-striped" style="white-space: nowrap;" >
@@ -82,7 +77,8 @@
                                         Location
                                     </th>
                                     <th colspan="2">Traning Free</td>
-                                    <th colspan="12">Training & Development Schedule</td>
+                                    <td rowspan="2">From Date</td>
+                                    <td rowspan="2">To Date</td>
                                 </tr>
                                 <tr class="bg-secondary">
                                     <th >
@@ -91,78 +87,14 @@
                                     <th>
                                         VND
                                     </th>
-                                    <th>
-                                        Jan
-                                    </th>
-                                    <th>
-                                        Feb
-                                    </th>
-                                    <th>
-                                        Mar
-                                    </th>
-                                    <th>
-                                        Apr
-                                    </th>
-                                    <th>
-                                        May
-                                    </th>
-                                    <th>
-                                        Jun
-                                    </th>
-                                    <th>
-                                        Jul
-                                    </th>
-                                    <th>
-                                        Aug
-                                    </th>
-                                    <th>
-                                        Sep
-                                    </th>
-                                    <th>
-                                        Oct
-                                    </th>
-                                    <th>
-                                        Now
-                                    </th>
-                                    <th>
-                                        Dec
-                                    </th>
                                   
                                 </tr>
-                                	
+                                    
                                  
                                 <tr >
                                    
                                     <td>1</td>
                                  
-                                    <td>
-                                       
-                                    </td>
-                                      
-                                  
-                                    <td>
-                                      
-                                      
-                                    </td>
-                                    
-                                    <td>
-                                      
-                                    </td>
-                                    <td>
-                                       
-                                    </td>
-                                    <td>
-                                         
-                                    </td>
-                                    <td>
-                                         
-                                    </td>
-                                    <td>
-                                       
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -190,29 +122,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                 <tr >
                                     <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -239,29 +151,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                    <tr>
                                     <td>5</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -287,29 +179,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
