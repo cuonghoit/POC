@@ -19,6 +19,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="app">
@@ -272,4 +275,11 @@
         </main>
     </div>
 </body>
+<script type="text/javascript">
+    $(".datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years", 
+        minViewMode: "years"
+    });
+</script>
 </html>
