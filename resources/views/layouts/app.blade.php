@@ -222,7 +222,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="{{route('CMPR')}}">
+                                    <a class="dropdown-item" href="{{route('performaceManagement')}}">
                                         {{ __('Performance Management') }}
                                     </a>
                                 </div>

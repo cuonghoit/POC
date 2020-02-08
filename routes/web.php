@@ -31,6 +31,8 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
 		Route::get('/post-training-evaluation-combined-records', 'HomeController@getPTECR')->name('PTECR');
 	});
 	Route::group(['prefix'=>'performace-management'],function(){
+		Route::get('/performance-management-report', 'HomeController@getPerformaceManagement')->name('performaceManagement');
+
 		Route::group(['prefix'=>'managing-company-performances'],function(){
 			Route::get('/company-monthly-performance-report', 'HomeController@getCMPR')->name('CMPR');
 			Route::get('/company-multi-monthly-performance-report', 'HomeController@getCMMPR')->name('CMMPR');

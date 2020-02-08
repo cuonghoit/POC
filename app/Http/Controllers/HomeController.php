@@ -188,6 +188,10 @@ class HomeController extends Controller
 
     //performance-management
     //managing-company-performances
+    public function getPerformaceManagement() {
+        return view('performance_management/performance_management');
+    }
+
     public function getCMPR() {
         return view('performance_management.performance_management.managing_company_performances/CMPR');
     }
