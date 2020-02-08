@@ -54,8 +54,10 @@ class HomeController extends Controller
      public function getIATP($id)
     {
         $course = course::all();
+
         $personal_info = personal_info::where('user_id',$id)->first();
         $course_count = DB::table('course')->count();
+        return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
         return view('training_management.IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
    public function postIATP($id, Request $request ){
