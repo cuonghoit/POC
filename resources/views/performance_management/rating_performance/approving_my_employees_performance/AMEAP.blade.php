@@ -32,45 +32,28 @@
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL PERFORMANCE</b></h3><br>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
-                        <tr>
+                                                <tr>
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="Background">Background:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
-                            </div>
-                            <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
                             </div>
-                        </tr>
-                        <tr>
                             <div class="form-group">
                                 <td><label for="Staff_Number">Staff number:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Education">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
-                            </div>
+                        </tr>
+                        <tr>
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="email">Email:
-                                </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
@@ -78,10 +61,11 @@
                                 <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="supervisorEmail">Supervisor Email:
+                                <td><label for="workingLocation">Working location:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}" disabled="disabled" ><td></td>
                             </div>
+
                         </tr>
                         <tr>
                             <div class="form-group">
@@ -352,32 +336,23 @@
                 </div>
                 <br>
                      <div class="table-responsive">
-                        <table class="table table-bordered text-center text-nowrap table-striped">
+                        <table class="table">
                             <tr>
-                                <td>
-                                    Staff Signature: 
-                                </td>
-                                <td>
-                                    <input type="text" name="staff_sign">
-                                </td>
-                                <td>Signature of the Line Manager's Supervisor: </td>
-                                <td>
-                                   <input type="text" name="supervisor_sign">
-                                </td>
-                            </tr>
-                             <tr>
-                                <td>
-                                    Line Manager's Signature:
-                                </td>
-                                <td>
-                                    <input type="text" name="manager_sign">
-                                </td>
-                                <td>
-                                    HRM Recorded by HRM:
-                                </td>
-                                <td>
-                                    <input type="text" name="hrm">
-                                </td>
+                                <div class="form-group">
+                                    <td><label for="staff_sign">Staff Signature: 
+                                    </label></td>
+                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
+                                </div>
+                                <div class="form-group">
+                                    <td><label for="manager_sign">Line Manager's Signature:
+                                    </label></td>
+                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"></td>
+                                </div>
+                                <div class="form-group">
+                                    <td><label for="hrm">HRM Recorded by HRM:
+                                    </label></td>
+                                    <td><input type="text" class="form-control col-md-12" name="hrm"></td>
+                                </div>
                             </tr>
                         </table>
                     </div>

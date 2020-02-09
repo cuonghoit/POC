@@ -39,38 +39,21 @@
                                 <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="Background">Background:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
-                            </div>
-                            <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
                             </div>
-                        </tr>
-                        <tr>
                             <div class="form-group">
                                 <td><label for="Staff_Number">Staff number:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Education">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
-                            </div>
+                        </tr>
+                        <tr>
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="email">Email:
-                                </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
@@ -78,10 +61,11 @@
                                 <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
-                                <td><label for="supervisorEmail">Supervisor Email:
+                                <td><label for="workingLocation">Working location:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}" disabled="disabled" ><td></td>
                             </div>
+
                         </tr>
                         <tr>
                             <div class="form-group">

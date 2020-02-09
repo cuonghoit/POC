@@ -20,6 +20,14 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+
+Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
+Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
+
+Route::get('/Company-Annual-Trainning-Plan/{id}','HomeController@getCATP')->name('CATP');
+
+
+
 Route::group(['middleware' => ['role:employees|super-admin']], function () {
     Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
     Route::post('/individual-annual-training-plan/{id}', 'HomeController@postIATP')->name('postIATP');
@@ -31,6 +39,8 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
 		Route::get('/post-training-evaluation-combined-records', 'HomeController@getPTECR')->name('PTECR');
 	});
 	Route::group(['prefix'=>'performace-management'],function(){
+		Route::get('/performance-management-report', 'HomeController@getPerformaceManagement')->name('performaceManagement');
+
 		Route::group(['prefix'=>'managing-company-performances'],function(){
 			Route::get('/company-monthly-performance-report', 'HomeController@getCMPR')->name('CMPR');
 			Route::get('/company-multi-monthly-performance-report', 'HomeController@getCMMPR')->name('CMMPR');
@@ -100,19 +110,4 @@ Route::group(['middleware' => ['role:director|super-admin']], function () {
 		Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
 		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
 	});
-
 });
-Route::group(['middleware' => ['role:general_director|super-admin']], function () {
-    Route::get('/company-annual-trainning-plan/{id}','HomeController@getCATP')->name('CATP');
-    Route::post('/company-annual-trainning-plan','HomeController@postCATP')->name('postCATP');
-});
-Route::group(['middleware' => ['role:super-admin']], function () {
-	Route::group(['prefix'=>'administrator'],function(){
-		Route::group(['prefix'=>'user-management'],function(){
-			Route::get('/add-new-user-account', 'HomeController@getAddNewUserAccount')->name('addNewUserAccount');
-			Route::get('/edite-user-account', 'HomeController@getEditeUserAccount')->name('editeUserAccount');
-			Route::get('/delete-user-account', 'HomeController@getDeleteUserAccount')->name('deleteUserAccount');
-		});
-	});
-});
-
