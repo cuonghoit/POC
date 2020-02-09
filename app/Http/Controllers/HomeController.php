@@ -176,7 +176,7 @@ class HomeController extends Controller
     public function getAMEAMO($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getAMEMMO($id){
         $course = course::all();
@@ -261,7 +261,7 @@ class HomeController extends Controller
 
     public function getEAPR($id) {
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.performace_management/managing_employees_performances/EAPR', compact('personal_info'));
+        return view('performance_management.performance_management.managing_employees_performances/EAPR', compact('personal_info'));
     }
 
     public function getEMAPR($id) {

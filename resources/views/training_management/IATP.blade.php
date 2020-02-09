@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
-                <div class="card-header">Training Management / Indidual Training</div>
+                <div class="card-header">Training Management / Individual Training</div>
 
                 <div class="card-body">
                     @if (session('status'))
