@@ -10,14 +10,8 @@
     }
     
 </style>
-<script type="text/javascript">
-    $(function (){ 
-    $("#datepicker").datepicker({
-      
-      format: "YYYY",
-      viewMode: "years" });
-    });
-</script>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -117,9 +111,9 @@
                             <td>Training & Development period from:</td>
                             <div class="form-group">
 
-                                <td><input type="text" id="datepicker" name="dateFrom" class="form-control col-md-8" ></td>
+                                <td><input type="text"  name="dateFrom" class="datepicker form-control col-md-8 " ></td>
                                 <td><b>To</b></td>
-                                <td><input type="text" id="datepicker"  name="dateTo" class="form-control col-md-8" ></td>
+                                <td><input type="text"   name="dateTo" class="datepicker form-control col-md-8 " ></td>
                             </div>
                         </tr>
                     </table><br>  

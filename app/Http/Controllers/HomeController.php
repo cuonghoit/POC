@@ -57,7 +57,7 @@ class HomeController extends Controller
 
         $personal_info = personal_info::where('user_id',$id)->first();
         $course_count = DB::table('course')->count();
-        return view('IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
+        
         return view('training_management.IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
    public function postIATP($id, Request $request ){
@@ -176,8 +176,11 @@ class HomeController extends Controller
 
     //approving-my-employees-msc-objectives
     public function getAMEAMO($id){
+
+
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
+        
         return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getAMEMMO($id){
