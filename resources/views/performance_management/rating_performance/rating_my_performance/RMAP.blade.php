@@ -125,6 +125,9 @@
                                 <th rowspan="2">
                                     Monthly Performance Appraisal Level
                                 </th>
+                                <th rowspan="2">
+                                    Note
+                                </th>
                             </tr>
                             <tr>
                                 <th>Must-Do 1</th>
@@ -152,6 +155,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
+                                <td></td>                               
                             </tr>
                             <tr>
                                 <td>
@@ -166,6 +170,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
+                                <td></td>                               
                             </tr>
                             <tr>
                                 <td>
@@ -177,6 +182,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
@@ -190,6 +196,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -203,6 +210,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -217,6 +225,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -230,6 +239,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -244,6 +254,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -260,6 +271,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -273,6 +285,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -289,6 +302,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>                               
@@ -302,6 +316,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>                               
                                 <td></td>
                                 <td></td>
                                 <td></td>

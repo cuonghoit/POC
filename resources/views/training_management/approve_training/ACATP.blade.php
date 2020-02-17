@@ -65,6 +65,7 @@
                                     <th colspan="2" >Traning Free</td>
                                     <th rowspan="2" >From Date</td>
                                     <th rowspan="2" >To Date</th>
+                                    <th rowspan="2" >Note</th>
                                 </tr>
                                 <tr class="bg-secondary">
                                     <th >
@@ -97,6 +98,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 
                                 <tr>
@@ -112,9 +114,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr >
                                     <td>3</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -147,9 +151,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                    <tr>
                                     <td>5</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -175,9 +181,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>7</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

@@ -121,6 +121,7 @@
                                     <th colspan="2">Training Fee</th>
                                     <th  rowspan="2">From Date</th>
                                     <th  rowspan="2">To Date</th>
+                                    <th  rowspan="2">Note</th>
                                 </tr>
                                 <tr>
                                     <th>US</th>
@@ -142,10 +143,12 @@
                                     <td><input type="text" name="vnd" class="form-control" ></td>
                                     <td><input type="text" name="us" class="form-control" ></td>
                                     <td><input type="text" name="vnd" class="form-control" ></td>
+                                    <td><input type="text" name="vnd" class="form-control" ></td>
 
                                 </tr>
                                 <tr>
                                     <td>2</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -169,6 +172,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -182,9 +186,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>5</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -211,6 +217,7 @@
                                 </tr>
                                 <tr>
                                     <td>7</td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

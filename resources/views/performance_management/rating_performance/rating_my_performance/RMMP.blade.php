@@ -159,6 +159,9 @@
                                 <th>
                                     Achieved (√) or Not (x)
                                 </th>
+                                <th>
+                                    Note
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -176,6 +179,9 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -187,6 +193,9 @@
                                 </td>
                                 <td>
                                     <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
                                 </td>
                                 <td>
                                     <input type="text" name="criteria">
@@ -207,6 +216,9 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -218,6 +230,9 @@
                                 </td>
                                 <td>
                                     <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
                                 </td>
                                 <td>
                                     <input type="text" name="criteria">
@@ -238,6 +253,9 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>
                             
                             </tr>
                             <tr>
@@ -253,7 +271,10 @@
                                 </td>
                                 <td>
                                     <input type="text" name="criteria">
-                                </td>                       
+                                </td> 
+                                <td>
+                                    <input type="text" name="criteria">
+                                </td>                      
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -265,6 +286,9 @@
                                 </td>
                                 <td>
                                     <input type="text" name="target">
+                                </td>
+                                <td>
+                                    <input type="text" name="criteria">
                                 </td>
                                 <td>
                                     <input type="text" name="criteria">
