@@ -22,7 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
-    
+
 </head>
 <body>
     <div id="app">
@@ -163,6 +163,18 @@
                                             @endhasanyrole
                                         </div>
                                     </div>
+                                    @hasanyrole('employees|super-admin')
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Individual Training') }}
+                                    </a>
+                                    @endhasanyrole
+                                    @hasanyrole('department_managers|director|super-admin')
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Individual Training') }}
+                                    </a>
+                                    @endhasanyrole
 
                                     @hasanyrole('general_director|super-admin')
                                     <div class="dropright dropdown-item submenu">
@@ -170,10 +182,8 @@
                                             {{ __('Training Implementation') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="training-implementation-content">
-                                            <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('Company Annual Training Plan Schedule') }}</a>
-                                            <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Company Annual Training Plan Progress') }}</a>
-                                            <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"onclick=""> {{ __('Post Training Evaluation by Participant') }}</a>
-                                            <a class="dropdown-item" href="{{route('PTECR')}}"onclick="">{{ __('Post Training Evaluation Combined Records') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('New Trainning Course') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Training Implementation') }}</a>
                                         </div>
                                     </div>
                                     @endhasanyrole
