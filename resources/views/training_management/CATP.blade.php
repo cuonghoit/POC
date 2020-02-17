@@ -33,7 +33,7 @@
                                 <div class="col-md-3">
                                      <input type="text" name="fromdate" class="datepicker form-control">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <label fromto>
                                         <b> To: </b>
                                     </label>

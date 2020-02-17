@@ -47,7 +47,7 @@
                              <div class="form-group">
                                 <td><label for="workingLocation">Working Location:</label></td>
                                 <td>
-                                    <input type="text" class="form-control col-md-10" name="workingLocation"  disabled="disabled">
+                                    <input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}"  disabled="disabled">
                                 </td>
 
                             </div>
@@ -64,6 +64,11 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
                             </div>
+                            <div class="form-group">
+                                <td><label for="dateOfHire">Date joining:
+                                </label></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
+                            </div>
                         </tr>
                         <tr>
                             
@@ -77,21 +82,14 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
                             </div>
-                        
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="dateOfHire">Date joining:
-                                </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
-                            </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
-                           
+                        
                         </tr>
+                            
                     </table><br>
                     <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
