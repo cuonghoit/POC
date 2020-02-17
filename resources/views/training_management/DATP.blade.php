@@ -40,7 +40,7 @@
 								 <div class="col-md-3">
 									<input type="text" name="department" id="department"  size="50" class="datepicker form-control">
                                 </div>
-                            	<div class="col-md-3">
+                            	<div class="col-md-1">
 									<label for="company">To: </label>
 								</div>
 								 <div class="col-md-3">
@@ -48,7 +48,7 @@
                             	</div>
                             	
                            	</div>
-                            <br>    
+                            <br>        
                            	<div class="table-responsive">
                             <table class="table table-bordered text-center table-striped" style="white-space: nowrap;" >
                                 <tr class="bg-secondary" >
@@ -71,7 +71,7 @@
                                         Type of Program <br> (e-Learning, Classroom …)
                                     </th>
                                     <th rowspan="2">
-                                        Purpose of Program <br> (Close Competency Gaps, <br>Develop Competencies, Doctorate …)
+                                        Purpose of Program <br> (Close Competency Gaps, <br>Develop Competencies, Doctorate …)  
                                     </th>
                                     <th rowspan="2">
                                         Provider
