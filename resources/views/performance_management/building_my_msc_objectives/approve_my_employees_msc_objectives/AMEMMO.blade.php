@@ -38,15 +38,18 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Background">Background:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
+                            </div>
+                             <div class="form-group">
+                                <td><label for="workingLocation">Working Location:</label></td>
+                                <td>
+                                    <input type="text" class="form-control col-md-10" name="workingLocation"  disabled="disabled">
+                                </td>
+
                             </div>
                         </tr>
                         <tr>
@@ -55,11 +58,7 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Education">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
@@ -67,21 +66,18 @@
                             </div>
                         </tr>
                         <tr>
-                            <div class="form-group">
-                                <td><label for="email">Email:
-                                </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="supervisorEmail">Supervisor Email:
+                             <div class="form-group">
+                                <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
                             </div>
+                        
                         </tr>
                         <tr>
                             <div class="form-group">
@@ -94,11 +90,7 @@
                                 </label></td>
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="department">Department:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
-                            </div>
+                           
                         </tr>
                     </table><br>
                     <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
@@ -118,9 +110,9 @@
                         <tr>
                             <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
+                                <td><input type="month" name="dateFrom" class="form-control col-md-8" value=""></td>
                                 <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
+                                <td><input type="month" name="dateTo" class="form-control col-md-8" value=""></td>
                             </div>
                         </tr>
                     </table><br>  
@@ -136,54 +128,62 @@
                                     SMART Objectives and Monthly Milestone <br> (MSC)(Verb/Ojective/Timing/Result)
                                 </th>
                                 <th>
-                                    Target
+                                    Milestone
                                 </th>
-                                <th>
-                                    Criteria for Success
-                                </th>
+                               
                                 <th>
                                     Action Plans to Achieve Objectives
+                                </th>
+                                <th>
+                                    Note
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td></td>
+                                <td>
+                                    Must-Do 1
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
+                                </td>
+                                 <td>
+                                    <input type="text" name="note">
                                 </td>
                               
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td></td>
+                                <td>
+                                    Must-Do 2
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
                                 </td>
-                             
+                                 <td>
+                                    <input type="text" name="note">
+                                </td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td></td>
+                                <td>
+                                    Must-Do 3
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
@@ -191,80 +191,89 @@
                                     <input type="text" name="target">
                                 </td>
                         
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
+                                </td>
+                                 <td>
+                                    <input type="text" name="note">
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td></td>
+                                <td>
+                                    Must-Do 4
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
                                 </td>
-                              
+                                 <td>
+                                    <input type="text" name="note">
+                                </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td></td>
+                                <td>
+                                    Should-Do 1
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
                                 </td>
-                            
+                                 <td>
+                                    <input type="text" name="note">
+                                </td>
                             </tr>
                             <tr>
                                 <td>6</td>
-                                <td></td>
+                                <td>
+                                    Should-Do 2
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
                                 </td>
-                       
+                                 <td>
+                                    <input type="text" name="note">
+                                </td>
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td></td>
+                                <td>
+                                    Could-Do 1
+                                </td>
                                 <td>
                                     <input type="text" name="smart">
                                 </td>
                                 <td>
                                     <input type="text" name="target">
                                 </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
+                               
                                 <td>
                                     <input type="text" name="action-plans">
                                 </td>
-                            
+                                 <td>
+                                    <input type="text" name="note">
+                                </td>
                             </tr>
                         </tbody>
                     </table>
