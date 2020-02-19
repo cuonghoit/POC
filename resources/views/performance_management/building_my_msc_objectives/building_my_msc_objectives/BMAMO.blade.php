@@ -65,10 +65,7 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}" ><td></td>
                             </div>
-
-                        </tr>
-                        <tr>
-                            <div class="form-group">
+                             <div class="form-group">
                                 <td><label for="dateOfHire">Date joining:
                                 </label></td>
                                 <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" ><td></td>
@@ -78,6 +75,11 @@
                                 </label></td>
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" ><td></td>
                             </div>
+
+                        </tr>
+                        <tr>
+                           
+                            
                             <div class="form-group">
                                 <td><label for="department">Department:
                                 </label></td>

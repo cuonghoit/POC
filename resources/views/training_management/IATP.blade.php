@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
-                <div class="card-header">Training Management / Indidual Training</div>
+                <div class="card-header">Training Management / Individual Training</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,17 +34,20 @@
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="satffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}}" disabled="disabled"><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Background">Background:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
+                            </div>
+                            <div class="form-group">
+                                <td><label for="workingLocation">Working Location:</label></td>
+                                <td>
+                                    <input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}"  disabled="disabled">
+                                </td>
+
                             </div>
                         </tr>
                         <tr>
@@ -53,51 +56,43 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Education">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
-                            </div>
+                           
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
                             </div>
+                            <div class="form-group">
+                                <td><label for="dateOfHire">Date joining:
+                                </label></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
+                            </div>
                         </tr>
                         <tr>
-                            <div class="form-group">
-                                <td><label for="email">Email:
-                                </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="supervisorEmail">Supervisor Email:
+                              <div class="form-group">
+                                <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="dateOfHire">Date joining:
-                                </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="department">Department:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
-                            </div>
                         </tr>
+                        
+                            
+                            
+
+
+                          
+                        
                     </table><br>
                     <p class="text-left" ><b>ANNUAL TRAINING PLAN</b></p>
                     @if(count($errors)>0)
@@ -116,9 +111,9 @@
                         <tr>
                             <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
+                                <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
                                 <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
+                                <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
                             </div>
                         </tr>
                     </table><br>  
@@ -132,25 +127,22 @@
                                     <th rowspan="2">Type of Program<br>(e-Learning, Classroom …)</th>
                                     <th rowspan="2">Purpose of program<br>(Close Competency Gaps, Develop Competencies, Doctorate …)</th>
                                     <th rowspan="2">Provider</th>
+                                    <th rowspan="2">Training Facilitator</th>
                                     <th rowspan="2">Location</th>
                                     <th colspan="2">Training Fee</th>
-                                    <th colspan="12">Training & Development Schedule</th>
+                                    <th colspan="2">Training & Development Schedule</th>
+                                    <th rowspan="2">Note</th>
+                                    <th colspan="3">Status</th>
                                 </tr>
                                 <tr>
-                                    <th>US</th>
+                                    <th>US$</th>
                                     <th>VND</th>
-                                    <th>Jan</th>
-                                    <th>Feb</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Now</th>
-                                    <th>Dec</th>
+                                    <th>From Date</th>
+                                    <th>To Date </th>
+                                    <th>Finished</th>
+                                    <th>Unfinished</th>
+                                    <th>Submitted</th>
+                                  
                                 </tr>
                             </thead>
                             
@@ -163,25 +155,22 @@
                                     <td ><input type="text" name="course_type" value="{{$course->course_type}}" class="form-control"></td>
                                     <td ><input type="text" name="course_objectives" value="{{$course->course_objectives}}" class="form-control"></td>
                                     <td ><input type="text" name="provider" value="{{$course->provider}}" class="form-control"></td>
-                                    @if(!isset($i))
-                                    <td rowspan="{{$course_count}}"><input type="text" name="location" class="form-control"></td>
-                                    <td rowspan="{{$course_count}}"><input type="text" name="us" class="form-control" ></td>
-                                    <td rowspan="{{$course_count}}"><input type="text" name="vnd" class="form-control" ></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="1"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="2"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="3"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="4"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="5"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="6"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="7"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="8"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="9"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="10"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="11"></td>
-                                    <td rowspan="{{$course_count}}"><input type="checkbox" name="month[]" value="12"></td>
-                                    @endif
+                                   
+                                    <td rowspan=""><input type="text" name="location" class="form-control"></td>
+                                    <td rowspan=""><input type="text" name="us" class="form-control" ></td>
+                                    <td rowspan=""><input type="text" name="vnd" class="form-control" ></td>
+                                    <td ><input type="text" name="FromDate" class="form-control"></td>
+                                    <td ><input type="text" name="ToDate" class="form-control"></td>
+                                    <td>
+                                        <input type="text" name="note" class="form-control">
+                                    </td>
+                                    <td><input type="text" name="Facilitator" class="form-control"> </td>
+                                    <td><input type="checkbox" name="finished" class="form-control"> </td>
+                                    <td><input type="checkbox" name="unfinished" class="form-control"> </td>
+                                    <td><input type="checkbox" name="submitted" class="form-control"> </td>
+
                                 </tr>
-                                <?php $i=1; ?>
+                            
                                 @endforeach
                             </tbody>
                         </table>

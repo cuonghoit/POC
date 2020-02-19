@@ -31,18 +31,18 @@
                                         </label>
                                 </div>
                                 <div class="col-md-3">
-                                     <input type="date" name="fromdate">
+                                     <input type="text" name="fromdate" class="datepicker form-control">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-1">
                                     <label fromto>
                                         <b> To: </b>
                                     </label>
                                 </div>
                                 <div class="col-md-3">
-                                      <input type="date" name="todate">
+                                      <input type="text" name="todate" class="datepicker form-control">
                                 </div>
                             </div>
-                              
+                              <br>
                             </table>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped text-center" style="white-space: nowrap;" >
@@ -52,6 +52,9 @@
                                     </th>
                                     <th rowspan="2">
                                         Name of Staff
+                                    </th>
+                                    <th rowspan="2">
+                                        Staff Number
                                     </th>
                                     <th rowspan="2">
                                         Name of Training & <br> Development Program
@@ -71,8 +74,11 @@
                                     <th rowspan="2">
                                         Location
                                     </th>
-                                    <th colspan="2">Traning Free</td>
-                                    <th colspan="12">Training & Development Schedule</td>
+                                    <th colspan="2">Traning Free</th>
+                                    <th colspan="2">Training & Development Schedule</th>
+                                    <th rowspan="2">Note</th>
+                                    <th colspan="3">Status</th>
+
                                 </tr>
                                 <tr class="bg-secondary">
                                     <th >
@@ -82,41 +88,14 @@
                                         VND
                                     </th>
                                     <th>
-                                        Jan
+                                        From Date
                                     </th>
                                     <th>
-                                        Feb
+                                        To Date
                                     </th>
-                                    <th>
-                                        Mar
-                                    </th>   
-                                    <th>
-                                        Apr
-                                    </th>
-                                    <th>
-                                        May
-                                    </th>
-                                    <th>
-                                        Jun
-                                    </th>
-                                    <th>
-                                        Jul
-                                    </th>
-                                    <th>
-                                        Aug
-                                    </th>
-                                    <th>
-                                        Sep
-                                    </th>
-                                    <th>
-                                        Oct
-                                    </th>
-                                    <th>
-                                        Now
-                                    </th>
-                                    <th>
-                                        Dec
-                                    </th>
+                                    <th>Finished</th>
+                                    <th>Unfinished</th>
+                                    <th>Submitted</th>
                                   
                                 </tr>
                                 <tr class="bg-primary">
@@ -129,34 +108,11 @@
                                  
                                 <tr >
                                     
-                                    <td>1</td>
-                                    
-                                    <td>
-                                        
-                                     
-                                    </td>
-                                        
-                                        
-                                    </td>
-                                    
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                       
-                                    </td>
-                                    <td>
-                                    
-                                    
-                                    </td>
+                                    <td>1</td>                                  
                                     <td></td>
                                     <td></td>
+                                    <td></td>  
+                                    <td></td>     
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -190,19 +146,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                 <tr >
                                     <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -245,11 +191,6 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                    <tr>
                                     <td>5</td>
@@ -269,19 +210,10 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                          
                                 </tr>
                                    <tr>
                                     <td>6</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -316,11 +248,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td></td>   
 
                                 </tr>
                             </table>

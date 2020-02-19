@@ -8,10 +8,8 @@
     .Training table tbody td input[type=text]{
         width: 150px;
     }
-
-    
 </style>
-<div class="container">
+ --><div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -100,11 +98,45 @@
                     @endif
                     <table style="width: 100%;">
                         <tr>
-                            <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
-                                <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
+                                <td><b>Training & Development period from:</b></td>
+                                <td>Month: </td>
+                               <td><select name="fromMonth" class="form-control col-md-10">
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select></td>
+                                <td>Year: </td>
+                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
+                            </div>
+                            <td><b>To:</b></td>
+                            <div class="form-group">
+                                <td>Month:</td>
+                               <td><select name="toMonth" class="form-control col-md-10">
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select></td>
+                                <td>Year: </td>
+                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
                             </div>
                         </tr>
                     </table><br>  

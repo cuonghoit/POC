@@ -8,9 +8,10 @@
     .Training table tbody td input[type=text]{
         width: 150px;
     }
-
     
 </style>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -37,15 +38,18 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Background">Background:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="backGround" value="{{$personal_info->background}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" disabled="disabled" ><td></td>
+                            </div>
+                            <div class="form-group">
+                                <td><label for="workingLocation">Working Location:</label></td>
+                                <td>
+                                    <input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}"  disabled="disabled">
+                                </td>
+
                             </div>
                         </tr>
                         <tr>
@@ -54,51 +58,43 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="Education">Education/Academic degree:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="education" value="{{$personal_info->education}}" disabled="disabled" ><td></td>
-                            </div>
+                           
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" disabled="disabled" ><td></td>
                             </div>
+                            <div class="form-group">
+                                <td><label for="dateOfHire">Date joining:
+                                </label></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
+                            </div>
                         </tr>
                         <tr>
-                            <div class="form-group">
-                                <td><label for="email">Email:
-                                </label></td>
-                                <td><input type="email" class="form-control col-md-10" name="email" value="{{$personal_info->email}}" disabled="disabled" ><td></td>
-                            </div>
+                            
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="supervisorEmail">Supervisor Email:
+                              <div class="form-group">
+                                <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorEmail" value="{{$personal_info->supervisor_email}}" disabled="disabled" ><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="dateOfHire">Date joining:
-                                </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" disabled="disabled" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
-                            <div class="form-group">
-                                <td><label for="department">Department:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" disabled="disabled" ><td></td>
-                            </div>
                         </tr>
+                        
+                            
+                            
+
+
+                          
+                        
                     </table><br>
                     <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
@@ -117,9 +113,10 @@
                         <tr>
                             <td>Training & Development period from:</td>
                             <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
+
+                                <td><input type="text"  name="dateFrom" class="datepicker form-control col-md-8 " ></td>
                                 <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
+                                <td><input type="text"   name="dateTo" class="datepicker form-control col-md-8 " ></td>
                             </div>
                         </tr>
                     </table><br>  
@@ -127,187 +124,103 @@
                     <table class="table table-bordered text-center text-nowrap table-striped">
                         <thead>
                             <tr>
-                                <th rowspan="2">
+                                <th >
                                     No.
                                 </th>
-                                <th rowspan="2">
+                                <th >
                                     Objective Category
                                 </th>
-                                <th rowspan="2">
+                                <th >
                                     SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
                                 </th>
-                                <th colspan="12">
-                                    Months
+                                <th >
+                                    From Date
                                 </th>
-                                <th rowspan="2">
-                                    Target to Achienve
+                                <th >
+                                    To Date
                                 </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Jan
-                                </th>
-                                <th>
-                                    Feb
-                                </th>
-                                <th>
-                                    Mar
-                                </th>
-                                <th>
-                                    Apr
-                                </th>
-                                <th>
-                                    May
-                                </th>
-                                <th>
-                                    Jun
-                                </th>
-                                <th>
-                                    Jul
-                                </th>
-                                <th>
-                                    Aug
-                                </th>
-                                <th>
-                                    Sep
-                                </th>
-                                <th>
-                                    Oct
-                                </th>
-                                <th>
-                                    Nov
-                                </th>
-                                <th>
-                                    Dec
+                                <th >
+                                    Target to Archive
                                 </th>
                             </tr>
+                        
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
+                                <td>
+                                    Musd-Do 1
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                               
                             </tr>
                             <tr>
                                 <td>2</td>
+                                <td>
+                                    Must-Do 2
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
                             </tr>
                             <tr>
                                 <td>3</td>
+                                <td>
+                                    Must-Do 3
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
                             <tr>
                                 <td>4</td>
+                                <td>
+                                    Must-Do 4
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                              
                             </tr>
                             <tr>
                                 <td>5</td>
+                                <td>
+                                    Should-Do 1
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                               
+                                
                             </tr>
                             <tr>
                                 <td>6</td>
+                                <td>
+                                    Should-Do 2
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                               
                             </tr>
                             <tr>
                                 <td>7</td>
+                                <td>
+                                    Could-Do 1
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
                             </tr>
                         </tbody>
                     </table>
@@ -323,12 +236,7 @@
                                 <td>
                                     <input type="text" name="staff_sign">
                                 </td>
-                                <td>Signature of the Line Manager's Supervisor: </td>
-                                <td>
-                                   <input type="text" name="supervisor_sign">
-                                </td>
-                            </tr>
-                             <tr>
+                                
                                 <td>
                                     Line Manager's Signature:
                                 </td>

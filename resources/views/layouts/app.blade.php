@@ -22,6 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
 </head>
 <body>
     <div id="app">
@@ -40,6 +41,7 @@
                         @guest
                             <!-- Left Side Of Navbar -->
                         @else
+                            @hasanyrole('general_director|super-admin')
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('Pre-Test Management System') }} <span class="caret"></span>
@@ -117,6 +119,7 @@
                                     </div>
                                 </div>
                             </li>
+                            @endhasanyrole
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('Training Management') }} <span class="caret"></span>
@@ -142,31 +145,48 @@
                                        onclick="">
                                         {{ __('Company Training') }}
                                     </a>
-                                    @endrole
+                                    @endhasanyrole
 
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Approve Training') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            @hasanyrole('employees|super-admin')
                                             <a class="dropdown-item" href="{{ route('AIATP',Auth::user()->id) }}"onclick="">{{ __('Approve Individual Training Plan') }}</a>
-                                            <a class="dropdown-item" href="{{ route('AGATP',Auth::user()->id) }}"onclick="">{{ __('Approve Group Training Plan') }}</a>
+                                            @endhasanyrole
+                                            @hasanyrole('department_managers|director|super-admin')
                                             <a class="dropdown-item" href="{{ route('ADATP',Auth::user()->id) }}"onclick="">{{ __('Approve Department Training Plan') }}</a>
+                                            @endhasanyrole
+                                            @hasanyrole('general_director|super-admin')
                                             <a class="dropdown-item" href="{{ route('ACATP',Auth::user()->id) }}"onclick="">{{ __('Approve Company Training Plan') }}</a>
+                                            @endhasanyrole
                                         </div>
                                     </div>
+                                    @hasanyrole('employees|super-admin')
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Individual Training') }}
+                                    </a>
+                                    @endhasanyrole
+                                    @hasanyrole('department_managers|director|super-admin')
+                                    <a class="dropdown-item" href="#"
+                                       onclick="">
+                                        {{ __('Individual Training') }}
+                                    </a>
+                                    @endhasanyrole
 
+                                    @hasanyrole('general_director|super-admin')
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-training-implementation" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Training Implementation') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="training-implementation-content">
-                                            <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('Company Annual Training Plan Schedule') }}</a>
-                                            <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Company Annual Training Plan Progress') }}</a>
-                                            <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"onclick=""> {{ __('Post Training Evaluation by Participant') }}</a>
-                                            <a class="dropdown-item" href="{{route('PTECR')}}"onclick="">{{ __('Post Training Evaluation Combined Records') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPS')}}"onclick="">{{ __('New Trainning Course') }}</a>
+                                            <a class="dropdown-item" href="{{route('CATPP')}}"onclick="">{{ __('Training Implementation') }}</a>
                                         </div>
                                     </div>
+                                    @endhasanyrole
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -180,6 +200,7 @@
                                             {{ __('Building My MSC Objectives') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            @hasanyrole('employees|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Building My MSC Objectives') }}
@@ -189,6 +210,8 @@
                                                     <a class="dropdown-item" href="{{ route('BMMMO',Auth::user()->id) }}"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
                                                 </div>
                                             </div>
+                                            @endhasanyrole
+                                            @hasanyrole('department_managers|director|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Approving My Employees MSC Objectives') }}
@@ -198,6 +221,7 @@
                                                     <a class="dropdown-item" href="{{ route('AMEMMO',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly MSC Objectives') }}</a>
                                                 </div>
                                             </div>
+                                            @endhasanyrole
                                         </div>
                                     </div>
                                     <div class="dropright dropdown-item submenu">
@@ -205,6 +229,7 @@
                                             {{ __('Rating Performance') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            @hasanyrole('employees|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Rating My Performances') }}
@@ -214,6 +239,8 @@
                                                     <a class="dropdown-item" href="{{ route('RMMP',Auth::user()->id) }}"onclick="">{{ __('Rating My Monthly Performance') }}</a>
                                                 </div>
                                             </div>
+                                            @endhasanyrole
+                                            @hasanyrole('department_managers|director|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Approving My Emloyees Performance') }}
@@ -223,11 +250,14 @@
                                                     <a class="dropdown-item" href="{{ route('AMEMP',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly Performance') }}</a>
                                                 </div>
                                             </div>
+                                            @endhasanyrole
                                         </div>
                                     </div>
+                                    @hasanyrole('general_director|super-admin')
                                     <a class="dropdown-item" href="{{route('performaceManagement')}}">
                                         {{ __('Performance Management') }}
                                     </a>
+                                    @endhasanyrole
                                 </div>
                             </li>
 
@@ -278,7 +308,7 @@
 <script type="text/javascript">
     $(".datepicker").datepicker({
         format: "yyyy",
-        viewMode: "years", 
+        viewMode: "years",
         minViewMode: "years"
     });
 </script>
