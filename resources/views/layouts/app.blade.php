@@ -164,15 +164,15 @@
                                         </div>
                                     </div>
                                     @hasanyrole('employees|super-admin')
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="{{route('TI')}}"
                                        onclick="">
-                                        {{ __('Individual Training') }}
+                                        {{ __('Training Implementation') }}
                                     </a>
                                     @endhasanyrole
                                     @hasanyrole('department_managers|director|super-admin')
                                     <a class="dropdown-item" href="#"
                                        onclick="">
-                                        {{ __('Individual Training') }}
+                                        {{ __('Training Implementation') }}
                                     </a>
                                     @endhasanyrole
 

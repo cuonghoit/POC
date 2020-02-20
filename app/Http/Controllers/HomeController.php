@@ -94,6 +94,11 @@ class HomeController extends Controller
 
     }
 
+    public function getTI(){
+        
+        return view('training_management/TI');
+    }
+
 
 
     public function getGATP()
@@ -106,7 +111,7 @@ class HomeController extends Controller
         $course = course::all();
         $course_count = DB::table('course')->count();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('training_management.approve_training.ADATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
+        return view('training_management.approve_training.ADATP',['course'=>$course,'personal_info'=>$personal_info]);
 
     }
     public function getAIATP($id) {
