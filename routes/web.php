@@ -23,8 +23,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
 Route::post('/individual-annual-training-plan', 'HomeController@postIATP')->name('postIATP');
-
 Route::get('/Company-Annual-Trainning-Plan/{id}','HomeController@getCATP')->name('CATP');
+
 
 
 
@@ -32,6 +32,8 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
     Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
     Route::post('/individual-annual-training-plan/{id}', 'HomeController@postIATP')->name('postIATP');
 
+    Route::get('/training-implementation','HomeController@getTI')->name('TI');
+    
     Route::group(['prefix'=>'training-implementation'],function(){
 		Route::get('/company-annual-training-plan-schedule', 'HomeController@getCATPS')->name('CATPS');
 		Route::get('/company-annual-training-plan-progress', 'HomeController@getCATPP')->name('CATPP');
