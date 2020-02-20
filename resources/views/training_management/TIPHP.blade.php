@@ -16,13 +16,14 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Monthly MSC Objectives
+                    Training Management / Training Implementation
                 </div>
 
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
+                    
                         </div>
                     @endif
                     <form action="" method="post">
