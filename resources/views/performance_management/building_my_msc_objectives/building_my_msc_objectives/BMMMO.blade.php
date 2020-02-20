@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 
 @section('content')
 <style type="text/css">
@@ -116,6 +116,7 @@
                                     <option value="11">Nov</option>
                                     <option value="12">Dec</option>
                                 </select></td>
+                                <td><input type="text" name="" class="datepicker"></td>
                                 <td><b>To</b></td>
                                 <td><select name="month" class="form-control col-md-10">
                                     <option value="1">Jan</option>
@@ -131,6 +132,7 @@
                                     <option value="11">Nov</option>
                                     <option value="12">Dec</option>
                                 </select></td>
+                                <td><input type="text" name="" class="datepicker"></td>
                             </div>
                         </tr>
                     </table><br>  
