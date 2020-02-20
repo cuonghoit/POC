@@ -63,3 +63,11 @@
 		WHERE training_record.Staff_Number=234234
 		AND training_record.Course_ID='Certificaed Scrum Master'
 	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=332123
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	
+		UPDATE training_record SET Training_Approval_Status=1
+		WHERE training_record.Staff_Number=332123
+		AND training_record.Course_ID='Certificaed Scrum Master'
+	

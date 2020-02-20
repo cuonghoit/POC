@@ -194,64 +194,68 @@
                                     {{ __('Perfomance Management') }} <span class="caret"></span>
                                 </a>
 
+                                @hasanyrole('department_managers|director|super-admin')
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ __('Building My MSC Objectives') }}
+                                            {{ __('My Performance') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            @endhasanyrole
                                             @hasanyrole('employees|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Building My MSC Objectives') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{ route('BMAMO',Auth::user()->id) }}"onclick="">{{ __('Building My Annual MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('BMMMO',Auth::user()->id) }}"onclick="">{{ __('Building My Monthly MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('BMAMO',Auth::user()->id) }}"onclick="">{{ __('Annual MSC') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('BMMMO',Auth::user()->id) }}"onclick="">{{ __('Monthly MSC') }}</a>
                                                 </div>
                                             </div>
                                             @endhasanyrole
-                                            @hasanyrole('department_managers|director|general_director|super-admin')
-                                            <div class="dropright dropdown-item submenu">
-                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Approving My Employees MSC Objectives') }}
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{ route('AMEAMO',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Annual MSC Objectives') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('AMEMMO',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly MSC Objectives') }}</a>
-                                                </div>
-                                            </div>
-                                            @endhasanyrole
-                                        </div>
-                                    </div>
-                                    <div class="dropright dropdown-item submenu">
-                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ __('Rating Performance') }}
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                             @hasanyrole('employees|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Rating My Performances') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Rating My Annual Performance') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('RMMP',Auth::user()->id) }}"onclick="">{{ __('Rating My Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Annual Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('RMMP',Auth::user()->id) }}"onclick="">{{ __('Monthly Performance') }}</a>
                                                 </div>
                                             </div>
                                             @endhasanyrole
-                                            @hasanyrole('department_managers|director|general_director|super-admin')
+                                            @hasanyrole('department_managers|director|super-admin')
+
+                                        </div>
+                                    </div>
+                                    <div class="dropright dropdown-item submenu">
+                                        <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ __('My Staff Performance') }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                            @endhasanyrole
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Approving My Emloyees Performance') }}
+                                                    {{ __('Approving My Staff MSC Objectives') }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{ route('AMEAP',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Annual Performance') }}</a>
-                                                    <a class="dropdown-item" href="{{ route('AMEMP',Auth::user()->id) }}"onclick="">{{ __('Approving My Employees Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEAMO',Auth::user()->id) }}"onclick="">{{ __('Annual MSC Objectives') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEMMO',Auth::user()->id) }}"onclick="">{{ __('Monthly MSC Objectives') }}</a>
                                                 </div>
                                             </div>
-                                            @endhasanyrole
+                                            @hasanyrole('department_managers|director|super-admin')
+                                            <div class="dropright dropdown-item submenu">
+                                                <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{ __('Approving My Staff Performance') }}
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
+                                                    <a class="dropdown-item" href="{{ route('AMEMP',Auth::user()->id) }}"onclick="">{{ __('Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('AMEAP',Auth::user()->id) }}"onclick="">{{ __('Annual Performance') }}</a>
+                                                </div>
+                                            </div>
+
                                         </div>
+                                        @endhasanyrole
                                     </div>
                                     @hasanyrole('general_director|super-admin')
                                     <a class="dropdown-item" href="{{route('performaceManagement')}}">
