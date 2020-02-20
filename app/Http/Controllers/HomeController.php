@@ -96,7 +96,7 @@ class HomeController extends Controller
 
     public function getTI(){
         
-        return view('training_management/TI');
+        return view('training_management.TI');
     }
 
 

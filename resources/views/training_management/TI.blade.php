@@ -24,7 +24,7 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                     
-                        </div>
+                    	    </div>
                     @endif
                     <form action="" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
