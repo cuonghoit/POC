@@ -94,9 +94,11 @@ class HomeController extends Controller
 
     }
 
-    public function getTI(){
-        
-        return view('training_management.TI');
+    public function getTI($id){
+        $course = course::all();
+        $course_count = DB::table('course')->count();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('training_management.TI',['course'=>$course,'personal_info'=>$personal_info]);
     }
 
 

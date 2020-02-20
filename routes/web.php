@@ -32,7 +32,7 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
     Route::get('/individual-annual-training-plan/{id}', 'HomeController@getIATP')->name('IATP');
     Route::post('/individual-annual-training-plan/{id}', 'HomeController@postIATP')->name('postIATP');
 
-    Route::get('/training-implementation','HomeController@getTI')->name('TI');
+    Route::get('/training-employees/{id}','HomeController@getTI')->name('TI');
     
     Route::group(['prefix'=>'training-implementation'],function(){
 		Route::get('/company-annual-training-plan-schedule', 'HomeController@getCATPS')->name('CATPS');

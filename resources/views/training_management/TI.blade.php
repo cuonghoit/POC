@@ -1,16 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style type="text/css">
-    #dtHorizontalExample th, td {
-    white-space: nowrap;
-    }
-    .Training table tbody td input[type=text]{
-        width: 150px;
-    }
 
-    
-</style>
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -26,305 +17,171 @@
                     
                     	    </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>BUILDING MY ANNUAL MSC OBJECTIVES</b></h3><br>
-                    <p class="text-left" ><b>GENERAL INFO</b></p>
-                    <table style="width: 100%;">
-                                                <tr>
-                            <div class="form-group">
-                                <td><label for="Satff_Name">Staff name:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} "><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="Supervisor">Supervisor:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" ><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="Staff_Number">Staff number:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" ><td></td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="supervisorJobTitle">Supersivor Job title:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" ><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="jobTitle">Job title:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" ><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="workingLocation">Working location:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}" ><td></td>
-                            </div>
+                    <h3 class="text-center" ><b>TRAINING REQUEST</b></h3><br>
+                    <div class="row">
+	                    <div class="col-md-1 font-weight-bold">
+	                    	Ref:
+	                    </div>
+	                    <div class="col-md-5 "> No. / YYYY / PQPOC-HRM </div>
+	                    <div class="col-md-1 font-weight-bold"> Date:
+	                    </div>
+	                    <div class="col-md-5 "> HCMC, DD/MM/YYYY</div>
+                  	</div>
+                  	<br>
+                  	<table class=" table table-bordered table-striped">
+                  		<tr>
+                  			<td class="font-weight-bold">Program title:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Training purpose:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Training participant:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Course content:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Duration:</td>
+                  			<td>… days (From….. to…..)</td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Venue:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Training provider:</td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Supporting document:</td>
+                  			<td>
+                  				-	Attachment #1: Course content. <br>
+								-	Attachment #2: Quotation. <br>
+								-	Attachment #3: Participant’s Training & Financial Commitment signed with PQPOC. <br>
+								-	…
 
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td><label for="dateOfHire">Date joining:
-                                </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" ><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="dateInCurrentJobTitle">Date in current position:
-                                </label></td>
-                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" ><td></td>
-                            </div>
-                            <div class="form-group">
-                                <td><label for="department">Department:
-                                </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" ><td></td>
-                            </div>
-                        </tr>
-                    </table><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
-                    @if(count($errors)>0)
-                        <div class="atler">
-                            @foreach($errors->all() as $er)
-                                <b class="text-danger">{{$er}}</b><br>
-                            @endforeach
-                        </div>
-                    @endif
-                    @if(session('notice'))
-                        <div class="text-danger">
-                            <b>{{session('notice')}}</b>
-                        </div>
-                    @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <td>Training & Development period from:</td>
-                            <div class="form-group">
-                                <td><input type="date" name="dateFrom" class="form-control col-md-8" value=""></td>
-                                <td><b>To</b></td>
-                                <td><input type="date" name="dateTo" class="form-control col-md-8" value=""></td>
-                            </div>
-                        </tr>
-                    </table><br>  
-                    <div class="table-responsive">
-                    <table class="table table-bordered text-center text-nowrap table-striped">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">
-                                    No.
-                                </th>
-                                <th rowspan="2">
-                                    Objective Category
-                                </th>
-                                <th rowspan="2">
-                                    SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
-                                </th>
-                                <th colspan="12">
-                                    Months
-                                </th>
-                                <th rowspan="2">
-                                    Target to Archive
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Jan
-                                </th>
-                                <th>
-                                    Feb
-                                </th>
-                                <th>
-                                    Mar
-                                </th>
-                                <th>
-                                    Apr
-                                </th>
-                                <th>
-                                    May
-                                </th>
-                                <th>
-                                    Jun
-                                </th>
-                                <th>
-                                    Jul
-                                </th>
-                                <th>
-                                    Aug
-                                </th>
-                                <th>
-                                    Sep
-                                </th>
-                                <th>
-                                    Oct
-                                </th>
-                                <th>
-                                    Nov
-                                </th>
-                                <th>
-                                    Dec
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                  			</td>
+                  		</tr>
+                  		<tr >
+                  			<td class="font-weight-bold"></td>
+                  			<td> - </td>
+                  		</tr>
 
-                    </div>
-                     <br>
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-center text-nowrap table-striped">
-                            <tr>
-                                <div class="form-group">
-                                    <td><label for="staff_sign">Staff Signature: 
-                                    </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
-                                </div>
-                                <div class="form-group">
-                                    <td><label for="manager_sign">Line Manager's Signature:
-                                    </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"></td>
-                                </div>
-                                <div class="form-group">
-                                    <td><label for="hrm">HRM Recorded by HRM:
-                                    </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="hrm"></td>
-                                </div>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
-                    </div>
+                  	</table>
+                  	<table class=" table table-bordered table-striped">
+                  		<tr>
+                  			<td class="font-weight-bold">Total estimated cost: <br> Including:
+</td>
+                  			<td> … USD/VND</td>
+                  			<td> Budget Cost Code: </td>
+                  			<td> G0311 </td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Tuition fee:</td>
+                  			<td> … USD/VND </td>
+                  			<td> Taxes (VAT/CIT -if any): </td>
+                  			<td></td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Logistic fee (travel, accommodation):</td>
+                  			<td>Refer to Company Staff policy</td>
+                  			<td> Other fees (if any):</td>
+                  			<td> … USD/VND</td>
+                  		</tr>
+                  	</table>
+                  	<table class=" table table-bordered table-striped">
+                  		<tr colspan="7" class="font-weight-bold">
+                  			Registration:
+                  		</tr>
+                  		<tr>
+                  			<th>No.</th>
+                  			<th>Staff name</th>
+                  			<th> Position/Department </th>
+                  			<th> Cost/Pax</th>
+                  			<th> Employee Code</th>
+                  			<th> Staff signature </th>
+                  			<th> Supervisor’s approval </th>
+
+                  		</tr>
+                  		<tr>
+                  			<td>1</td>
+                  			<td></td>
+                  			<td></td>
+                  			<td></td>
+                  			<td></td>
+                  			<td> Date: </td>
+                  			<td> Date: </td>
+                  			<td> </td>
+                  		</tr>
+                  		<tr>
+                  			<td>2</td>
+                  			<td></td>
+                  			<td></td>
+                  			<td></td>
+                  			<td></td>
+                  			<td>Date:</td>
+                  			<td> Date:</td>
+                  		</tr>
+
+                  	</table>
+                  	<table class=" table table-bordered table-striped">
+                  		<tr>
+                  			<td class="font-weight-bold">Commitment:</td>
+                  			<td>
+                  				<p>Training participant must commit to follow PVN’s Training Policy and Training & Financial Commitment signed with PQPOC.</p>
+                  			</td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Remark:</td>
+                  			<td>
+                  				• &nbsp Participant is requested to do post-training evaluation along with a presentation slide to HRM in 14 days from the training completion date. This report includes training summary, comments and recommendation about the training event. <br>
+                  				• &nbsp Participant shall arrange to present about what they have learnt and benefited from the training course to their Line manager and other team members.
+                  			</td>
+                  		</tr>
+                  	</table>
+                  	<table class=" table table-bordered table-striped">
+                  		<tr>
+                  			<td class="font-weight-bold">Prepared by HRM -training & development:</td>
+                  			<td>(*signature of HRM training specialist)</td>
+                  			<td>
+                  				Name: <br>
+                  				Date:
+                  			</td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Verified by HRM Manager:</td>
+                  			<td>(*signature of HRM Manager)</td>
+                  			<td>
+                  				Name: <br>
+                  				Date:
+                  			</td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Checked by Chief Accountant:</td>
+                  			<td>(*signature of Chief Accountant)</td>
+                  			<td>
+                  				Name: <br>
+                  				Date:
+                  			</td>
+                  		</tr>
+                  		<tr>
+                  			<td class="font-weight-bold">Approved by General Director:</td>
+                  			<td>(*signature of GD)</td>
+                  			<td>
+                  				Name: <br>
+                  				Date:
+                  			</td>
+                  		</tr>
+                  	</table>
                    </form>
                 </div>
             </div>

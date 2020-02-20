@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
                                     @hasanyrole('employees|super-admin')
-                                    <a class="dropdown-item" href="{{route('TI')}}"
+                                    <a class="dropdown-item" href="{{ route('TI',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Training Implementation') }}
                                     </a>
