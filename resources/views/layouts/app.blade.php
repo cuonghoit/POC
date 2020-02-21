@@ -194,14 +194,12 @@
                                     {{ __('Perfomance Management') }} <span class="caret"></span>
                                 </a>
 
-                                @hasanyrole('department_managers|director|super-admin')
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('My Performance') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            @endhasanyrole
                                             @hasanyrole('employees|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -224,16 +222,14 @@
                                                 </div>
                                             </div>
                                             @endhasanyrole
-                                            @hasanyrole('department_managers|director|super-admin')
-
                                         </div>
                                     </div>
+                                    @hasanyrole('department_managers|director|super-admin')
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('My Staff Performance') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            @endhasanyrole
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Approving My Staff MSC Objectives') }}
@@ -243,7 +239,6 @@
                                                     <a class="dropdown-item" href="{{ route('AMEMMO',Auth::user()->id) }}"onclick="">{{ __('Monthly MSC Objectives') }}</a>
                                                 </div>
                                             </div>
-                                            @hasanyrole('department_managers|director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Approving My Staff Performance') }}
@@ -255,9 +250,9 @@
                                             </div>
 
                                         </div>
-                                        @endhasanyrole
                                     </div>
-                                    @hasanyrole('general_director|super-admin')
+                                    @endhasanyrole
+                                    @hasanyrole('employees|general_director|super-admin')
                                     <a class="dropdown-item" href="{{route('performaceManagement')}}">
                                         {{ __('Performance Management') }}
                                     </a>
