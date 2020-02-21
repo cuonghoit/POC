@@ -133,12 +133,16 @@
                                 <th>
                                     To Date
                                 </th>
+                                <th>
+                                    NOTE
+                                </th>
                                 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -162,7 +166,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+                                <td></td>
                                 
                                 
                                 
@@ -180,7 +184,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+                                <td></td>
                                 
                                 
                                 
@@ -198,7 +202,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+                                <td></td>
                                 
                                 
                                 
@@ -211,6 +215,7 @@
                             </tr>
                             <tr>
                                 <td>5</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -234,7 +239,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+                                <td></td>
                                 
                                 
                                 
@@ -247,6 +252,7 @@
                             </tr>
                             <tr>
                                 <td>7</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
