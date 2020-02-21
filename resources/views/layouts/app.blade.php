@@ -200,7 +200,7 @@
                                             {{ __('My Performance') }}
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            @hasanyrole('employees|general_director|super-admin')
+                                            @hasanyrole('employees|department_managers|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Building My MSC Objectives') }}
@@ -211,7 +211,7 @@
                                                 </div>
                                             </div>
                                             @endhasanyrole
-                                            @hasanyrole('employees|general_director|super-admin')
+                                            @hasanyrole('employees|department_managers|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     {{ __('Rating My Performances') }}
