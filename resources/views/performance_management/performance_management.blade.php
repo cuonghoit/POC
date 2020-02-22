@@ -8,7 +8,7 @@
     table{
         width: 100%;
     }
-    
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -22,7 +22,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="{{route('printPerformanceReport')}}" method="get">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
