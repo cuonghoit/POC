@@ -4560,6 +4560,7 @@ return array(
     'phpDocumentor\\Reflection\\Types\\String_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/String_.php',
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+    'rate_monthly_performance' => $baseDir . '/database/seeds/rate_monthly_performance.php',
     'statusTableSeeder' => $baseDir . '/database/seeds/statusTableSeeder.php',
     'training_recordTableSeeder' => $baseDir . '/database/seeds/training_recordTableSeeder.php',
 );

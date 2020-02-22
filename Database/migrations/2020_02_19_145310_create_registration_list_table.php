@@ -17,10 +17,10 @@ class CreateRegistrationListTable extends Migration
             Schema::create('registration_list', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('training_implementation_id');
-                $table->unsignedBigInteger('personal_info_id');
+                $table->unsignedBigInteger('user_id');
                 $table->timestamps();
                 $table->foreign('training_implementation_id')->references('id')->on('training_implementation')->onDelete('cascade');
-                $table->foreign('personal_info_id')->references('id')->on('personal_info')->onDelete('cascade');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             });
         }

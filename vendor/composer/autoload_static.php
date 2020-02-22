@@ -5028,6 +5028,7 @@ class ComposerStaticInit574098390db214822984fba84916c9fb
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'rate_monthly_performance' => __DIR__ . '/../..' . '/database/seeds/rate_monthly_performance.php',
         'statusTableSeeder' => __DIR__ . '/../..' . '/database/seeds/statusTableSeeder.php',
         'training_recordTableSeeder' => __DIR__ . '/../..' . '/database/seeds/training_recordTableSeeder.php',
     );

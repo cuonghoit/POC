@@ -36,34 +36,34 @@
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} "><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="staffName" disabled="disabled" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} "><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisor" value="{{$personal_info->supervisor_name}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisor" disabled="disabled" value="{{$personal_info->supervisor_name}}" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="Staff_Number">Staff number:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="staffNumber" disabled="disabled" value="{{$personal_info->staff_number}}" ><td></td>
                             </div>
                         </tr>
                         <tr>
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" value="{{$personal_info->supervisor_job_title}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" disabled="disabled" value="{{$personal_info->supervisor_job_title}}" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="jobTitle" value="{{$personal_info->job_title}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="jobTitle" disabled="disabled" value="{{$personal_info->job_title}}" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="workingLocation">Working location:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="workingLocation" value="{{$personal_info->working_location}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="workingLocation" disabled="disabled" value="{{$personal_info->working_location}}" ><td></td>
                             </div>
 
                         </tr>
@@ -71,17 +71,17 @@
                             <div class="form-group">
                                 <td><label for="dateOfHire">Date joining:
                                 </label></td>
-                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" value="{{$personal_info->date_of_hire}}" ><td></td>
+                                <td><input type="Date" class="form-control col-md-10" name="dateOfHire" disabled="disabled" value="{{$personal_info->date_of_hire}}" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="dateInCurrentJobTitle">Date in current position:
                                 </label></td>
-                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" ><td></td>
+                                <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" disabled="disabled" value="{{$personal_info->date_in_current_job_title}}" ><td></td>
                             </div>
                             <div class="form-group">
                                 <td><label for="department">Department:
                                 </label></td>
-                                <td><input type="text" class="form-control col-md-10" name="department" value="{{$personal_info->department}}" ><td></td>
+                                <td><input type="text" class="form-control col-md-10" name="department" disabled="disabled" value="{{$personal_info->department}}" ><td></td>
                             </div>
                         </tr>
                     </table><br>

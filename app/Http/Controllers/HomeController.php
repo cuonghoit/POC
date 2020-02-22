@@ -2,21 +2,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Support\Facades\DB;
-
-
-
-
 use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
+<<<<<<< HEAD
+use App\Model\rate_monthly_performance;
+=======
+use Illuminate\Support\Facades\Auth;
+>>>>>>> b357b2dfec183c8ae7e035f15bccb782e360881a
 
 
 class HomeController extends Controller
 {
+    public const STATUS_PENDING = 1;
+    public const STATUS_SUBMITED = 2;
+    public const STATUS_APPROVED = 3;
+    public const STATUS_REJECTED = 4;
+    public const STATUS_COMPLETED = 5;
     /**
      * Create a new controller instance.
      *
@@ -40,14 +44,14 @@ class HomeController extends Controller
     //training-management
     public function getCATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->get();
+        $personal_info = personal_info::where('id',$id)->get();
         return view('training_management.CATP',compact('personal_info'),compact('course'));
 
     }
 
     public function getDATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->get();
+        $personal_info = personal_info::where('id',$id)->get();
         return view('training_management.DATP',compact('personal_info'),compact('course'));
     }
 
@@ -55,9 +59,9 @@ class HomeController extends Controller
     {
         $course = course::all();
 
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         $course_count = DB::table('course')->count();
-        
+
         return view('training_management.IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
     }
    public function postIATP($id, Request $request ){
@@ -112,28 +116,28 @@ class HomeController extends Controller
     public function getADATP($id) {
         $course = course::all();
         $course_count = DB::table('course')->count();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.ADATP',['course'=>$course,'personal_info'=>$personal_info]);
 
     }
     public function getAIATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.AIATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getAGATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.AGATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getACATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.ACATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     //end approve-training
 
-   
+
 
     // training-implementation
 
@@ -187,7 +191,7 @@ class HomeController extends Controller
 
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        
+
         return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getAMEMMO($id){
@@ -338,8 +342,9 @@ class HomeController extends Controller
     }
     public function getRMMP($id) {
         $course = course::all();
+        $rate_monthly_performance = rate_monthly_performance::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
     // end-rating-my-performance
 
@@ -369,5 +374,29 @@ class HomeController extends Controller
 
     public function getDeleteUserAccount(){
         return view('performance_management.administrator/user_management.deleteUserAccount');
+    }
+
+    public function getCurrentUserStatus() {
+        $status = array();
+        $currentUser = Auth::user();
+        $userRoles = $currentUser->getRoleNames();
+        foreach ($userRoles as $role) {
+            switch ($role) {
+                case 'employees':
+                    array_push($status, $this::STATUS_PENDING);
+                    array_push($status, $this::STATUS_REJECTED);
+                    break;
+                case 'employees':
+                    array_push($status, $this::STATUS_SUBMITED);
+                    break;
+                case 'general_director':
+                    array_push($status, $this::STATUS_APPROVED);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return $status;
     }
 }
