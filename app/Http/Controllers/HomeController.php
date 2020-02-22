@@ -7,12 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
-<<<<<<< HEAD
 use App\Model\rate_monthly_performance;
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> b357b2dfec183c8ae7e035f15bccb782e360881a
-
 
 class HomeController extends Controller
 {
