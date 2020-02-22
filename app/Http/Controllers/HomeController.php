@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
+use App\Model\rate_monthly_performance;
 
 
 class HomeController extends Controller
@@ -40,14 +41,14 @@ class HomeController extends Controller
     //training-management
     public function getCATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->get();
+        $personal_info = personal_info::where('id',$id)->get();
         return view('training_management.CATP',compact('personal_info'),compact('course'));
 
     }
 
     public function getDATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->get();
+        $personal_info = personal_info::where('id',$id)->get();
         return view('training_management.DATP',compact('personal_info'),compact('course'));
     }
 
@@ -55,7 +56,7 @@ class HomeController extends Controller
     {
         $course = course::all();
 
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         $course_count = DB::table('course')->count();
         
         return view('training_management.IATP',['course_count'=>$course_count,'course'=>$course,'personal_info'=>$personal_info]);
@@ -112,23 +113,23 @@ class HomeController extends Controller
     public function getADATP($id) {
         $course = course::all();
         $course_count = DB::table('course')->count();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.ADATP',['course'=>$course,'personal_info'=>$personal_info]);
 
     }
     public function getAIATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.AIATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getAGATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.AGATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     public function getACATP($id) {
         $course = course::all();
-        $personal_info = personal_info::where('user_id',$id)->first();
+        $personal_info = personal_info::where('id',$id)->first();
         return view('training_management.approve_training.ACATP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     //end approve-training
@@ -338,8 +339,9 @@ class HomeController extends Controller
     }
     public function getRMMP($id) {
         $course = course::all();
+        $rate_monthly_performance = rate_monthly_performance::all();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
     // end-rating-my-performance
 

@@ -145,7 +145,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
-                            <tr>
+                            <tr class="bg-secondary">
                                 <th>No.</th>
                                 <th>
                                     Objective Category
@@ -162,26 +162,36 @@
                                 <th>
                                     Note
                                 </th>
+                                <th>
+                                    Status
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
+                                @foreach($rate_monthly_performance as $rmp)
                                 <td>
-                                    Must-Do 1
+                                    {{ $rmp->id}}
                                 </td>
                                 <td>
-                                    <input type="text" name="smart">
+                                    {{ $rmp->objective_category }}
                                 </td>
                                 <td>
-                                    <input type="text" name="target">
+                                    {{  $rmp->objective_and_milestone }}
                                 </td>
                                 <td>
-                                    <input type="text" name="criteria">
+                                    {{ $rmp->result }}
                                 </td>
                                 <td>
-                                    <input type="text" name="criteria">
+                                    {{ $rmp->achieve}}
                                 </td>
+                                <td>
+                                    {{ $rmp->note}}
+                                </td>
+                                <td>
+                                    {{ $rmp->status}}
+                                </td>
+                                @endforeach
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -200,6 +210,7 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -219,6 +230,7 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>4</td>
@@ -237,6 +249,7 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
+                                <td></td>
                               
                             </tr>
                             <tr>
@@ -256,7 +269,7 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
-                            
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>6</td>
@@ -274,7 +287,8 @@
                                 </td> 
                                 <td>
                                     <input type="text" name="criteria">
-                                </td>                      
+                                </td>
+                                <td></td>                      
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -293,7 +307,7 @@
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
-                            
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
