@@ -11,6 +11,4 @@ class training_record extends Model
 
     protected $table = 'training_record';
 
-    protected $table = "training_record";
-
 }
