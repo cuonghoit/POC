@@ -93,7 +93,7 @@ Route::group(['middleware' => ['role:department_managers|super-admin']], functio
 	Route::get('/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getAMEMMO')->name('AMEMMO');
 
 	Route::group(['prefix'=>'approving-my-employees-performance'], function() {
-		Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
+            Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
 		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
 	});
 
