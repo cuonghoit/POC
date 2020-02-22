@@ -323,12 +323,12 @@
                                 <td></td>                               
                             </tr>
                             <tr>
-                                <td class="text-left" colspan="10">
+                                <td class="text-left" colspan="11">
                                     Annual Average Rate:
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-left" colspan="10">
+                                <td class="text-left" colspan="11">
                                     Convert to Annual Performance Appraisal Level:
                                 </td>
                             </tr>
