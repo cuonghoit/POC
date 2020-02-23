@@ -163,16 +163,15 @@
                         @foreach($msc_performance as $msc_performance)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td></td>
                                 <td>
                                     <input type="text" name="smart" value="{{$msc_performance->objective_category}}" >
                                 </td>
                                 <td>
                                     <input type="text" name="Milestone" value="{{$msc_performance->milestone_behavior}}">
-                                </td>
 
+                                </td>
                                 <td>
-                                    <input type="text" name="action-plans" value="{{$msc_performance->milestone}}" >
+                                <input type="text" name="action-plans" value="{{$msc_performance->milestone}}" >
                                 </td>
                                 <td>
                                     <input type="text" name="" value="{{$msc_performance->action_to_chieve}}" >

@@ -145,14 +145,12 @@
                             @foreach($msc_performance as $msc_performance  )
                             <tr>
                                 <td>{{$i++}}</td>
+                                <td>{{$msc_performance->objective_category}}</td>
+                                <td>{{$msc_performance->milestone_behavior}}</td>
                                 <td>{{$msc_performance->target_to_archive}}</td>
                                 <td>{{$msc_performance->from_date}}</td>
                                 <td>{{$msc_performance->to_date}}</td>
                                 <td>{{$msc_performance->note}}</td>
-                                <td>{{$msc_performance->type}}</td>
-                                <td>{{$msc_performance->status}}</td>
-                                <td>{{$msc_performance->milestone}}</td>
-                                <td>{{$msc_performance->action_to_chieve}}</td>
                             </tr>
                             @endforeach
                         </tbody>
