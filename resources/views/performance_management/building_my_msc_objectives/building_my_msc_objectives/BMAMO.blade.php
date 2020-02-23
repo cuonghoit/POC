@@ -137,6 +137,9 @@
                                 <th>
                                     NOTE
                                 </th>
+                                <th>
+                                    STATUS
+                                </th>
 
                             </tr>
                         </thead>
@@ -151,6 +154,7 @@
                                 <td>{{$msc_performance->from_date}}</td>
                                 <td>{{$msc_performance->to_date}}</td>
                                 <td>{{$msc_performance->note}}</td>
+                                <td>{{$msc_performance->status}}</td>
                             </tr>
                             @endforeach
                         </tbody>
