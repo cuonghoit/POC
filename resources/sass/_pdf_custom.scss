@@ -1,0 +1,25 @@
+@media (min-width: 768px) {
+    .navbar-expand-md .dropright.submenu .nav-link {
+        padding: 0;
+    }
+}
+@media (min-width: 576px) {
+    .navbar-expand-md .dropright.submenu .nav-link {
+        padding: 0
+    }
+}
+.dropdown-item.submenu {
+    .dropdown-menu {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 1200px){
+    .container-xl, .container-lg, .container-md, .container-sm, .container {
+        max-width: 100%;
+    }
+}
+
+.container {
+    margin: 0 auto !important;
+}

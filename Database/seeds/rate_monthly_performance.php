@@ -14,7 +14,7 @@ class rate_monthly_performance extends Seeder
         DB::table('rate_monthly_performance')->insert(
         	[
         		'id'=>'2',
-        		'user_id'=>'7',
+        		'user_id'=>'1',
         		'objective_category'=>'Must-Do 2',
         		'objective_and_milestone'=>'Cach_mang_thang_8',
         		'result'=>'Victory',
@@ -24,7 +24,7 @@ class rate_monthly_performance extends Seeder
         	],
             [
                 'id'=>'3',
-                'user_id'=>'10',
+                'user_id'=>'1',
                 'objective_category'=>'Must-Do 3',
                 'objective_and_milestone'=>'Tang truog kinh te',
                 'result'=>'Lose',
@@ -34,7 +34,7 @@ class rate_monthly_performance extends Seeder
             ],
             [
                 'id'=>'4',
-                'user_id'=>'8',
+                'user_id'=>'3',
                 'objective_category'=>'Could-Do 2',
                 'objective_and_milestone'=>'Cong nghe hoa',
                 'result'=>'Victory',
@@ -43,5 +43,5 @@ class rate_monthly_performance extends Seeder
                 'status'=>'3'
             ]);
     }
-        
+
 }
