@@ -195,6 +195,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
+                                    @hasanyrole('employees|super-admin')
+                                    <a class="dropdown-item" href="{{ URL::to('pdf/guidelines_MSC.pdf') }}"
+                                       onclick="" target="_blank">
+                                        {{ __('Guideline for MSC Performance Management System ')  }}
+                                    </a>
+                                    @endhasanyrole
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @hasanyrole('general_director')
