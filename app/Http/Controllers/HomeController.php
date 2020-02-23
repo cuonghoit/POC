@@ -7,16 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
-
-
-use App\Model\rate_monthly_performance;
-
-use Illuminate\Support\Facades\Auth;
-
-
 use App\Model\rate_monthly_performance;
 use Illuminate\Support\Facades\Auth;
-
 
 class HomeController extends Controller
 {
@@ -386,11 +378,10 @@ class HomeController extends Controller
         $userRoles = $currentUser->getRoleNames();
         foreach ($userRoles as $role) {
             switch ($role) {
-                case 'employees':
-                    array_push($status, $this::STATUS_PENDING);
-                    array_push($status, $this::STATUS_REJECTED);
+                case 'department_managers':
+                    array_push($status, $this::STATUS_SUBMITED);
                     break;
-                case 'employees':
+                case 'director':
                     array_push($status, $this::STATUS_SUBMITED);
                     break;
                 case 'general_director':
