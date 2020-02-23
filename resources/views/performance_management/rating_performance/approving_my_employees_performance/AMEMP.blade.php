@@ -139,7 +139,7 @@
                                 <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <div class="table-responsive">
                         <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
@@ -152,7 +152,7 @@
                                     SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Ojective/Timing/Result)
                                 </th>
                                 <th>
-                                    Result Description 
+                                    Result Description
                                 </th>
                                 <th>
                                     Achieved (√) or Not (x)
@@ -160,151 +160,43 @@
                                 <th>
                                     Supervisor Comments
                                 </th>
+                                <th>
+                                    Status
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=1; ?>
+                        @foreach($rate_monthly_performance as $rate_monthly_performance)
                             <tr>
-                                <td>1</td>
+                                <td>{{$i++}}</td>
                                 <td>
-                                    Must-Do 1
+                                    {{$rate_monthly_performance->objective_category}}
                                 </td>
                                 <td>
-                                    <input type="text" name="smart">
+                                    <input type="text" name="smart" value="{{$rate_monthly_performance->objective_and_milestone}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="target">
+                                    <input type="text" name="target" value="{{$rate_monthly_performance->result}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="criteria">
+                                    <input type="text" name="criteria" value="{{$rate_monthly_performance->achieve}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="action-plans">
+                                    <input type="text" name="action-plans" value="{{$rate_monthly_performance->note}}">
                                 </td>
-                              
+                                <td>{{ App\Http\Controllers\HomeController::getStatus($rate_monthly_performance->status) }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    Must-Do 2
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                             
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    Must-Do 3
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                        
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    Must-Do 4
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                              
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    Should-Do 1
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>
-                                    Should-Do 2
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                       
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>
-                                    Could-Do 1
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                            
-                            </tr>
+                         @endforeach
                         </tbody>
                     </table>
                     </div>
-                     
-                    
-                    <div class="text-center">                            
-                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
+
+
+                    <div class="text-center">
+                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
                             <button class="btn btn-danger" >REJECT</button>
-                    </div> 
+                    </div>
                    </form>
                 </div>
             </div>

@@ -8,6 +8,7 @@ use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
 use App\Model\rate_monthly_performance;
+use App\Model\status;
 use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
@@ -199,15 +200,20 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
-            ->whereIn('user_id', $userIds)->where('type', 0)->get();
+            ->whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
 
-        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance]);
     }
     public function getAMEMMO($id){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
-            ->where('user_id', $personal_info->department_id)->where('type', 1)->get();
+            ->whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
         return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info]);
     }
     //end-approving-my-employees-msc-objectives
@@ -365,13 +371,15 @@ class HomeController extends Controller
     //approving-my-employees-performance
     public function getAMEAP($id) {
         $course = course::all();
+        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance]);
     }
     public function getAMEMP($id){
         $course = course::all();
+        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
 
     //end-approving-my-employees-performance
@@ -412,6 +420,12 @@ class HomeController extends Controller
 
         return $status;
     }
+
+    public static function getStatus($status){
+        $status_name = status::where('id', $status)->first();
+        $status_name = $status_name->name;
+        return $status_name;
+        }
 
     public function submitMscMothy($id) {
         $course = course::all();

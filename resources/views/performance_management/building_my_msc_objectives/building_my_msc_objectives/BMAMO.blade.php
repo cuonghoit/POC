@@ -126,8 +126,6 @@
                                 <th rowspan="2">
                                     Target to Archive
                                 </th>
-                            </tr>
-                            <tr>
                                 <th>
                                     From Date
                                 </th>
