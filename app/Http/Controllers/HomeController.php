@@ -7,14 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
-
-
 use App\Model\rate_monthly_performance;
-
-use Illuminate\Support\Facades\Auth;
-
-
-use App\Model\rate_monthly_performance;
+use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -341,8 +335,9 @@ class HomeController extends Controller
     //rating-my-performance
     public function getRMAP($id){
         $course = course::all();
+        $rate_annual_performance = rate_annual_performance::where('user_id',$id)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance]);
     }
     public function getRMMP($id) {
         $course = course::all();

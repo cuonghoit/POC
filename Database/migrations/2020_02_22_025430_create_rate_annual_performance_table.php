@@ -26,11 +26,12 @@ class CreateRateAnnualPerformanceTable extends Migration
             $table->text('could_do_1');
             $table->bigInteger('monthly_rate');
             $table->text('monthly_performance_level');
-            $table->bigInteger('status');
+            $table->unsignedBigInteger('status');
             $table->bigInteger('type');
-            $table->bigInteger('note');
+            $table->text('note');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('status')->references('id')->on('status')->onDelete('cascade');
         });
     }
 

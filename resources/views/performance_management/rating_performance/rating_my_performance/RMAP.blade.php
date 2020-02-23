@@ -9,7 +9,7 @@
         width: 150px;
     }
 
-    
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -108,7 +108,7 @@
                                 <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
@@ -137,191 +137,26 @@
                                 <th>Should-Do 1</th>
                                 <th>Should-Do 2</th>
                                 <th>Could-Do 1</th>
-                         
+
 
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($rate_annual_performance as $rate_annual_performance )
                             <tr>
-                                <td>
-                                    01/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>                               
+                                <td>{{$rate_annual_performance->date}}</td>
+                                <td>{{$rate_annual_performance->must_do_1}}</td>
+                                <td>{{$rate_annual_performance->must_do_2}}</td>
+                                <td>{{$rate_annual_performance->must_do_3}}</td>
+                                <td>{{$rate_annual_performance->must_do_4}}</td>
+                                <td>{{$rate_annual_performance->should_do_1}}</td>
+                                <td>{{$rate_annual_performance->should_do_2}}</td>
+                                <td>{{$rate_annual_performance->could_do_1}}</td>
+                                <td>{{$rate_annual_performance->monthly_rate}}</td>
+                                <td>{{$rate_annual_performance->monthly_performance_level}}</td>
+                                <td>{{$rate_annual_performance->note}}</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    02/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    03/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    04/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    05/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    06/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    07/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    08/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    09/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    10/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    11/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
-                            <tr>
-                                <td>
-                                    12/2020
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>                               
-                            </tr>
+                            @endforeach
                             <tr>
                                 <td class="text-left" colspan="11">
                                     Annual Average Rate:
@@ -340,7 +175,7 @@
 <table class="table">
                             <tr>
                                 <div class="form-group">
-                                    <td><label for="staff_sign">Staff Signature: 
+                                    <td><label for="staff_sign">Staff Signature:
                                     </label></td>
                                     <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
                                 </div>
@@ -357,7 +192,7 @@
                             </tr>
                         </table>
                     </div>
-                   
+
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
