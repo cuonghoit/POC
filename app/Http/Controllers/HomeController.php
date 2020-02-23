@@ -8,6 +8,7 @@ use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
 use App\Model\rate_monthly_performance;
+use App\Model\status;
 use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
@@ -370,13 +371,15 @@ class HomeController extends Controller
     //approving-my-employees-performance
     public function getAMEAP($id) {
         $course = course::all();
+        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance]);
     }
     public function getAMEMP($id){
         $course = course::all();
+        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
 
     //end-approving-my-employees-performance
@@ -417,6 +420,12 @@ class HomeController extends Controller
 
         return $status;
     }
+
+    public static function getStatus($status){
+        $status_name = status::where('id', $status)->first();
+        $status_name = $status_name->name;
+        return $status_name;
+        }
 
     public function submitMscMothy($id) {
         $course = course::all();
