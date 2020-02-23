@@ -44,6 +44,7 @@ Route::group(['middleware' => ['role:employees|super-admin']], function () {
 
 	Route::group(['prefix'=>'performace-management'],function(){
 		Route::get('/performance-management-report', 'HomeController@getPerformaceManagement')->name('performaceManagement');
+        Route::get('/print-performance-report', 'PdfController@printPerformanceReport')->name('printPerformanceReport');
 
 		Route::group(['prefix'=>'managing-company-performances'],function(){
 			Route::get('/company-monthly-performance-report', 'HomeController@getCMPR')->name('CMPR');
@@ -93,7 +94,7 @@ Route::group(['middleware' => ['role:department_managers|super-admin']], functio
 	Route::get('/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getAMEMMO')->name('AMEMMO');
 
 	Route::group(['prefix'=>'approving-my-employees-performance'], function() {
-		Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
+            Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
 		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
 	});
 

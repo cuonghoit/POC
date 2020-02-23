@@ -8,8 +8,13 @@ use App\Model\course;
 use App\Model\personal_info;
 use App\Model\training_record;
 
+
 use App\Model\rate_monthly_performance;
 
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Model\rate_monthly_performance;
 use Illuminate\Support\Facades\Auth;
 
 
