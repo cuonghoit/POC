@@ -8,7 +8,7 @@
     .Training table tbody td input[type=text]{
         width: 150px;
     }
-    
+
 </style>
 
 
@@ -38,7 +38,7 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffName" value="{{$personal_info->first_name}} {{$personal_info->middle_name}} {{$personal_info->last_name}} " disabled="disabled"><td></td>
                             </div>
-                            
+
                             <div class="form-group">
                                 <td><label for="Supervisor">Supervisor:
                                 </label></td>
@@ -58,7 +58,7 @@
                                 </label></td>
                                 <td><input type="text" class="form-control col-md-10" name="staffNumber" value="{{$personal_info->staff_number}}" disabled="disabled" ><td></td>
                             </div>
-                           
+
                             <div class="form-group">
                                 <td><label for="supervisorJobTitle">Supersivor Job title:
                                 </label></td>
@@ -71,7 +71,7 @@
                             </div>
                         </tr>
                         <tr>
-                            
+
                             <div class="form-group">
                                 <td><label for="jobTitle">Job title:
                                 </label></td>
@@ -88,13 +88,13 @@
                                 <td><input type="date" class="form-control col-md-10" name="dateInCurrentJobTitle" value="{{$personal_info->date_in_current_job_title}}" disabled="disabled" ><td></td>
                             </div>
                         </tr>
-                        
-                            
-                            
 
 
-                          
-                        
+
+
+
+
+
                     </table><br>
                     <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
@@ -119,34 +119,55 @@
                                 <td><input type="text"   name="dateTo" class="datepicker form-control col-md-8 " ></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
                         <thead>
-                            <tr>
-                                <th >
-                                    No.
-                                </th>
-                                <th >
-                                    Objective Category
-                                </th>
-                                <th >
-                                    SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
-                                </th>
-                                <th >
-                                    From Date
-                                </th>
-                                <th >
-                                    To Date
-                                </th>
-                                <th >
-                                    Target to Archive
-                                </th>
-                            </tr>
-                        
+                        <tr>
+                            <th rowspan="2">
+                                No.
+                            </th>
+                            <th rowspan="2">
+                                Objective Category
+                            </th>
+                            <th rowspan="2">
+                                SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
+                            </th>
+
+                            <th rowspan="2">
+                                Target to Archive
+                            </th>
+                            <th>
+                                From Date
+                            </th>
+                            <th>
+                                To Date
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                NOTE
+                            </th>
+
+                        </tr>
+
                         </thead>
                         <tbody>
+                        <?php $i=1;?>
+                        @foreach($msc_performance as $msc_performance  )
                             <tr>
+                                <td>{{$i++}}</td>
+                                <td>{{$msc_performance->objective_category}}</td>
+                                <td>{{$msc_performance->milestone_behavior}}</td>
+                                <td>{{$msc_performance->target_to_archive}}</td>
+                                <td>{{$msc_performance->from_date}}</td>
+                                <td>{{$msc_performance->to_date}}</td>
+                                <td>{{$msc_performance->name}}</td>
+                                <td>{{$msc_performance->note}}</td>
+                            </tr>
+                        @endforeach
+                            {{--<tr>
                                 <td>1</td>
                                 <td>
                                     Musd-Do 1
@@ -155,7 +176,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                               
+
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -166,7 +187,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -186,7 +207,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                              
+
                             </tr>
                             <tr>
                                 <td>5</td>
@@ -197,8 +218,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                               
-                                
+
+
                             </tr>
                             <tr>
                                 <td>6</td>
@@ -209,7 +230,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                               
+
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -220,8 +241,8 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
-                            </tr>
+
+                            </tr>--}}
                         </tbody>
                     </table>
 
@@ -231,12 +252,12 @@
                         <table class="table table-bordered text-center text-nowrap table-striped">
                             <tr>
                                 <td>
-                                    Staff Signature: 
+                                    Staff Signature:
                                 </td>
                                 <td>
                                     <input type="text" name="staff_sign">
                                 </td>
-                                
+
                                 <td>
                                     Line Manager's Signature:
                                 </td>
@@ -252,10 +273,10 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="text-center">                            
-                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE"> 
+                    <div class="text-center">
+                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
                             <button class="btn btn-danger" >REJECT</button>
-                    </div> 
+                    </div>
                    </form>
                 </div>
             </div>
