@@ -154,6 +154,9 @@
                                     Action Plans to Achieve Objectives
                                 </th>
                                 <th>
+                                    Status
+                                </th>
+                                <th>
                                     NOTE
                                 </th>
                             </tr>
@@ -176,6 +179,7 @@
                                 <td>
                                     <input type="text" name="" value="{{$msc_performance->action_to_chieve}}" >
                                 </td>
+                                <td>{{$msc_performance->note}}</td>
                                 <td>
                                     <input type="text" name="" value="{{$msc_performance->note}}" >
                                 </td>

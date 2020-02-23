@@ -135,6 +135,9 @@
                                     To Date
                                 </th>
                                 <th>
+                                    Status
+                                </th>
+                                <th>
                                     NOTE
                                 </th>
                                 <th>
@@ -153,6 +156,7 @@
                                 <td>{{$msc_performance->target_to_archive}}</td>
                                 <td>{{$msc_performance->from_date}}</td>
                                 <td>{{$msc_performance->to_date}}</td>
+                                <td>{{$msc_performance->name}}</td>
                                 <td>{{$msc_performance->note}}</td>
                                 <td>{{$msc_performance->status}}</td>
                             </tr>
