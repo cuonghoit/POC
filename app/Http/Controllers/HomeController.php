@@ -173,13 +173,13 @@ class HomeController extends Controller
     }
     public function getBMMMO($id) {
         $course = course::all();
-        $msc_performance = msc_performance::where('user_id',$id)->get();
+        $msc_performance = msc_performance::where('user_id',$id)->get()->where('type', 1);
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
     }
     public function getBMAMO($id){
         $course = course::all();
-        $msc_performance = msc_performance::where('user_id',$id)->get();
+        $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
     }
@@ -343,7 +343,7 @@ class HomeController extends Controller
     }
     public function getRMMP($id) {
         $course = course::all();
-        $rate_monthly_performance = rate_monthly_performance::all();
+        $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
@@ -398,5 +398,53 @@ class HomeController extends Controller
         }
 
         return $status;
+    }
+
+    public function submitMscMothy($id) {
+        $course = course::all();
+        $msc_performance = msc_performance::where('user_id',$id)->where('type', 1)->where('status', $this::STATUS_PENDING)->get();
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_SUBMITED;
+            $msc->save();
+        }
+        $msc_performance = msc_performance::where('user_id',$id)->where('type', 1)->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+
+        return redirect()->route('BMMMO', ['id' => $id]);
+    }
+
+    public function submitMscAnnual($id) {
+        $course = course::all();
+        $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->where('status', $this::STATUS_PENDING)->get();
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_SUBMITED;
+            $msc->save();
+        }
+        $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return redirect()->route('BMAMO', ['id' => $id]);
+    }
+
+    public function submitRateAnnual($id){
+        $course = course::all();
+        $rate_annual_performance = rate_annual_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
+        foreach ($rate_annual_performance as $rate) {
+            $rate->status = $this::STATUS_SUBMITED;
+            $rate->save();
+        }
+        $rate_annual_performance = rate_annual_performance::where('user_id',$id)->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return redirect()->route('RMAP', ['id' => $id]);
+    }
+    public function submitRateMonthy($id) {
+        $course = course::all();
+        $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
+        foreach ($rate_monthly_performance as $rate) {
+            $rate->status = $this::STATUS_SUBMITED;
+            $rate->save();
+        }
+        $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return redirect()->route('RMMP', ['id' => $id]);
     }
 }

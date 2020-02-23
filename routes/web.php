@@ -102,15 +102,17 @@ Route::group(['middleware' => ['role:department_managers|super-admin']], functio
 
 Route::group(['middleware' => ['role:department_managers|employees|super-admin']], function () {
 
-    Route::group(['prefix' => 'building-my-msc-objectives'], function () {
-        Route::get('/building-my-msc-objectives/building-my-personal-development-plan/{id}', 'HomeController@getBMPDP')->name('BMPDP');
-        Route::get('/building-my-msc-objectives/building-my-monthly-msc-objectives/{id}', 'HomeController@getBMMMO')->name('BMMMO');
-        Route::get('/building-my-msc-objectives/building-my-annual-msc-objectives/{id}', 'HomeController@getBMAMO')->name('BMAMO');
-    });
+    Route::get('/building-my-personal-development-plan/{id}', 'HomeController@getBMPDP')->name('BMPDP');
+    Route::get('/building-my-monthly-msc-objectives/{id}', 'HomeController@getBMMMO')->name('BMMMO');
+    Route::get('/building-my-annual-msc-objectives/{id}', 'HomeController@getBMAMO')->name('BMAMO');
+    Route::post('/submit-monthly-msc-objectives/{id}', 'HomeController@submitMscMothy')->name('submitMscMothy');
+    Route::post('/submit-my-annual-msc-objectives/{id}', 'HomeController@submitMscAnnual')->name('submitMscAnnual');
 
     Route::group(['prefix' => 'rating-performance'], function () {
         Route::get('/rating-my-annual-performance/{id}', 'HomeController@getRMAP')->name('RMAP');
         Route::get('/rating-my-monthly-performance/{id}', 'HomeController@getRMMP')->name('RMMP');
+        Route::post('/submit-rating-my-annual/{id}', 'HomeController@submitRateAnnual')->name('submitRateAnnual');
+        Route::post('/submit-rating-my-monthly/{id}', 'HomeController@submitRateMonthy')->name('submitRateMonthy');
     });
 });
 
