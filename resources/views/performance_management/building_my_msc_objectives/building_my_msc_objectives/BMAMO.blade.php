@@ -9,7 +9,7 @@
         width: 150px;
     }
 
-    
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -107,9 +107,10 @@
                                 <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
+
                         <thead>
                             <tr>
                                 <th rowspan="2">
@@ -121,7 +122,7 @@
                                 <th rowspan="2">
                                     SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Objective/Timing/Result)
                                 </th>
-    
+
                                 <th rowspan="2">
                                     Target to Archive
                                 </th>
@@ -136,139 +137,24 @@
                                 <th>
                                     NOTE
                                 </th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=1;?>
+                            @foreach($msc_performance as $msc_performance  )
                             <tr>
-                                <td>1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+                                <td>{{$i++}}</td>
+                                <td>{{$msc_performance->target_to_archive}}</td>
+                                <td>{{$msc_performance->from_date}}</td>
+                                <td>{{$msc_performance->to_date}}</td>
+                                <td>{{$msc_performance->note}}</td>
+                                <td>{{$msc_performance->type}}</td>
+                                <td>{{$msc_performance->status}}</td>
+                                <td>{{$msc_performance->milestone}}</td>
+                                <td>{{$msc_performance->action_to_chieve}}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
@@ -278,7 +164,7 @@
                         <table class="table table-bordered text-center text-nowrap table-striped">
                             <tr>
                                 <div class="form-group">
-                                    <td><label for="staff_sign">Staff Signature: 
+                                    <td><label for="staff_sign">Staff Signature:
                                     </label></td>
                                     <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
                                 </div>

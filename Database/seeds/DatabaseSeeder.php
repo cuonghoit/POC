@@ -18,7 +18,15 @@ class DatabaseSeeder extends Seeder
 
 
 
-        $this->call(array(courseTableSeeder::class, personal_infoTableSeeder::class, RolesAndPermissionsSeeder::class, training_recordTableSeeder::class, UsersSeeder::class, statusTableSeeder::class));
+        $this->call(array(courseTableSeeder::class,
+            personal_infoTableSeeder::class,
+            RolesAndPermissionsSeeder::class,
+            training_recordTableSeeder::class,
+            UsersSeeder::class,
+            msc_performanceTableSeeder::class,
+            rate_annual_performanceTableSeeder::class,
+            rate_monthly_performance::class,
+            statusTableSeeder::class));
     }
 }
 

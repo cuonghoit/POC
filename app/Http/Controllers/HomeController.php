@@ -10,6 +10,7 @@ use App\Model\training_record;
 use App\Model\rate_monthly_performance;
 use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
+use App\Model\msc_performance;
 
 class HomeController extends Controller
 {
@@ -172,13 +173,15 @@ class HomeController extends Controller
     }
     public function getBMMMO($id) {
         $course = course::all();
+        $msc_performance = msc_performance::where('user_id',$id)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
     }
     public function getBMAMO($id){
         $course = course::all();
+        $msc_performance = msc_performance::where('user_id',$id)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
     }
     //end-building-my-msc-objectives
 

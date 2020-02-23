@@ -16,6 +16,7 @@ class CreateMscPerformanceTable extends Migration
         Schema::create('msc_performance', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->text('objective_category');
             $table->text('milestone_behavior');
             $table->text('target_to_archive');
             $table->date('from_date');

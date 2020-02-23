@@ -11,7 +11,7 @@ class courseTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
+    {
         DB::table('course')->insert(
         [
          'course_name'=>'Certificated Scrum Master',
@@ -20,7 +20,9 @@ class courseTableSeeder extends Seeder
          'course_duration'=>'1 month',
          'course_objectives'=>'Know About PMP',
          'course_outline'=>'N/A',
-         'provider'=>'Scrum.org'
+         'provider'=>'Scrum.org',
+         'status'=>'1',
+         'note'=>'note'
        ]);
         DB::table('course')->insert(
         [
@@ -30,7 +32,9 @@ class courseTableSeeder extends Seeder
          'course_duration'=>'3 month',
          'course_objectives'=>'Know About PMP',
          'course_outline'=>'N/A',
-         'provider'=>'PMI'
+         'provider'=>'PMI',
+        'status'=>'1',
+        'note'=>'note'
        ]);
     }
 

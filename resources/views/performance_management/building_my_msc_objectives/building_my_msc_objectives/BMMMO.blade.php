@@ -9,7 +9,7 @@
         width: 150px;
     }
 
-    
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -135,7 +135,7 @@
                                 <td><input type="text" name="" class="datepicker"></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
@@ -149,7 +149,7 @@
                                 <th>
                                     Milestone
                                 </th>
-                                
+
                                 <th>
                                     Action Plans to Achieve Objectives
                                 </th>
@@ -159,132 +159,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=1 ?>
+                        @foreach($msc_performance as $msc_performance)
                             <tr>
-                                <td>1</td>
+                                <td>{{$i++}}</td>
                                 <td></td>
                                 <td>
-                                    <input type="text" name="smart">
+                                    <input type="text" name="smart" value="{{$msc_performance->objective_category}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="Milestone">
+                                    <input type="text" name="Milestone" value="{{$msc_performance->milestone_behavior}}">
                                 </td>
-                                
+
                                 <td>
-                                    <input type="text" name="action-plans">
+                                    <input type="text" name="action-plans" value="{{$msc_performance->milestone}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="NOTE">
+                                    <input type="text" name="" value="{{$msc_performance->action_to_chieve}}" >
                                 </td>
-                              
+                                <td>
+                                    <input type="text" name="" value="{{$msc_performance->note}}" >
+                                </td>
+
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                             
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                        
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                              
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                            
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                       
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td></td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="Milestone">
-                                </td>
-                                
-                                <td>
-                                    <input type="text" name="action-plans">
-                                </td>
-                                <td>
-                                    <input type="text" name="NOTE">
-                                </td>
-                            
-                            </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                     <div class="form-group text-center">
