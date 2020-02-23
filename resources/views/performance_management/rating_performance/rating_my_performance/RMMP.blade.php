@@ -168,8 +168,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                             @foreach($rate_monthly_performance as $rmp)
                             <tr>
-                                @foreach($rate_monthly_performance as $rmp)
+                               
                                 <td>
                                     {{ $rmp->id}}
                                 </td>
@@ -191,47 +192,10 @@
                                 <td>
                                     {{ $rmp->status}}
                                 </td>
-                                @endforeach
+                               
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    Must-Do 2
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    Must-Do 3
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                        
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-                            </tr>
+                             @endforeach
+                            
                             <tr>
                                 <td>4</td>
                                 <td>
@@ -309,6 +273,7 @@
                                 </td>
                                 <td></td>
                             </tr>
+
                         </tbody>
                     </table>
                     </div>

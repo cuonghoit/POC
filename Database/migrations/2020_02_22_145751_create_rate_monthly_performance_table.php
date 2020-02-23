@@ -15,14 +15,15 @@ class CreateRateMonthlyPerformanceTable extends Migration
     {
         Schema::create('rate_monthly_performance', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBiginteger('user_id');
             $table->string('objective_category');
             $table->string('objective_and_milestone');
             $table->string('result');
-            $table->tinyinteger('achieve');
+            $table->string('achieve');
             $table->string('note');
-            $table->tinyinteger('status');
-            $table->foreign('status')->reference('id')->on('status')->onDelete('cascade');
+            $table->unsignedBiginteger('status');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('status')->references('id')->on('status')->onDelete('cascade');
         });
     }
 
