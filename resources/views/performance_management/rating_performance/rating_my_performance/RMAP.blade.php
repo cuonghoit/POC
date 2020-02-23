@@ -126,6 +126,9 @@
                                     Monthly Performance Appraisal Level
                                 </th>
                                 <th rowspan="2">
+                                    Status
+                                </th>
+                                <th rowspan="2">
                                     Note
                                 </th>
                             </tr>
@@ -154,6 +157,7 @@
                                 <td>{{$rate_annual_performance->could_do_1}}</td>
                                 <td>{{$rate_annual_performance->monthly_rate}}</td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
+                                <td>{{$rate_annual_performance->name}}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
                             </tr>
                             @endforeach

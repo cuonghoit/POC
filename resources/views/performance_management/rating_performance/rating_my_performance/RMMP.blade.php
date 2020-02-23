@@ -160,11 +160,12 @@
                                     Achieved (√) or Not (x)
                                 </th>
                                 <th>
-                                    Note
-                                </th>
-                                <th>
                                     Status
                                 </th>
+                                <th>
+                                    Note
+                                </th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -187,11 +188,12 @@
                                     {{ $rmp->achieve}}
                                 </td>
                                 <td>
-                                    {{ $rmp->note}}
+                                    {{ $rmp->name}}
                                 </td>
                                 <td>
-                                    {{ $rmp->status}}
+                                    {{ $rmp->note}}
                                 </td>
+
 
                             </tr>
                              @endforeach
