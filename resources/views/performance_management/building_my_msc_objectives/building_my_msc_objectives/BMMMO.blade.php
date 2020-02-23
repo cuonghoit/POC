@@ -163,25 +163,25 @@
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
-                        @foreach($msc_performance as $msc_performance)
+                        @foreach($msc_performance as $msc)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>
-                                    <input type="text" name="smart" value="{{$msc_performance->objective_category}}" >
+                                    <input type="text" name="smart" value="{{$msc->objective_category}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="Milestone" value="{{$msc_performance->milestone_behavior}}">
+                                    <input type="text" name="Milestone" value="{{$msc->milestone_behavior}}">
 
                                 </td>
                                 <td>
-                                <input type="text" name="action-plans" value="{{$msc_performance->milestone}}" >
+                                <input type="text" name="action-plans" value="{{$msc->milestone}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="" value="{{$msc_performance->action_to_chieve}}" >
+                                    <input type="text" name="" value="{{$msc->action_to_chieve}}" >
                                 </td>
-                                <td>{{$msc_performance->note}}</td>
+                                <td>{{$msc->name}}</td>
                                 <td>
-                                    <input type="text" name="" value="{{$msc_performance->note}}" >
+                                    <input type="text" name="" value="{{$msc->note}}" >
                                 </td>
 
                             </tr>

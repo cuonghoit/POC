@@ -25,7 +25,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="{{ route('rejectMyEmployeeMscMonthly',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
@@ -133,10 +133,10 @@
                                     Action Plans to Achieve Objectives
                                 </th>
                                 <th>
-                                    Note
+                                    STATUS
                                 </th>
                                 <th>
-                                    STATUS
+                                    Note
                                 </th>
                             </tr>
                         </thead>
@@ -159,10 +159,10 @@
                                     <input type="text" name="note" value="{{$msc_performance->action_to_chieve}}">
                                 </td>
                                  <td>
-                                     <input type="text" name="note" value="{{$msc_performance->note}}">
+                                     <input type="text" name="note" value="{{$msc_performance->name}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="note" value="{{$msc_performance->status}}">
+                                    <input type="text" name="note" value="{{$msc_performance->note}}">
                                 </td>
 
                             </tr>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="text-center">
                             <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
-                            <button class="btn btn-danger" >REJECT</button>
+                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeMscMonthly',Auth::user()->id) }}"  >REJECT</button>
                     </div>
                    </form>
                 </div>

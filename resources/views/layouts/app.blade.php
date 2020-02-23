@@ -197,13 +197,21 @@
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarTrainningManagement">
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ __('My Performance') }}
+                                            @hasanyrole('general_director')
+                                            {{ __('Company Performance') }}
+                                            @else
+                                                {{ __('My Performance') }}
+                                            @endif
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                            @hasanyrole('employees|department_managers|super-admin')
+                                            @hasanyrole('employees|department_managers|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Building My MSC Objectives') }}
+                                                    @hasanyrole('general_director')
+                                                        {{ __('Company MSC Performance') }}
+                                                    @else
+                                                        {{ __('Building My MSC Objectives') }}
+                                                    @endif
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                                     <a class="dropdown-item" href="{{ route('BMAMO',Auth::user()->id) }}"onclick="">{{ __('Annual MSC') }}</a>
@@ -211,10 +219,14 @@
                                                 </div>
                                             </div>
                                             @endhasanyrole
-                                            @hasanyrole('employees|department_managers|super-admin')
+                                            @hasanyrole('employees|department_managers|general_director|super-admin')
                                             <div class="dropright dropdown-item submenu">
                                                 <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    {{ __('Rating My Performances') }}
+                                                    @hasanyrole('general_director')
+                                                        {{ __('Company Rate MSC Performance') }}
+                                                    @else
+                                                        {{ __('Rating My Performances') }}
+                                                    @endif
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
                                                     <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Annual Performance') }}</a>
@@ -252,9 +264,13 @@
                                         </div>
                                     </div>
                                     @endhasanyrole
-                                    @hasanyrole('employees|general_director|super-admin')
+                                    @hasanyrole('employees|department_managers|director|general_director|super-admin')
                                     <a class="dropdown-item" href="{{route('performaceManagement')}}">
-                                        {{ __('Performance Management') }}
+                                        @hasanyrole('general_director')
+                                            {{ __('Company Performance Appraisal Reports') }}
+                                        @else
+                                            {{ __('Performance Management Reports') }}
+                                        @endif
                                     </a>
                                     @endhasanyrole
                                 </div>

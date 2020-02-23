@@ -165,7 +165,7 @@ class HomeController extends Controller
 
     //performance-management
 
-     //building-my-msc-objecives
+    //building-my-msc-objecives
     //building-my-msc-objectives
     public function getBMPDP($id) {
         $course = course::all();
@@ -174,13 +174,21 @@ class HomeController extends Controller
     }
     public function getBMMMO($id) {
         $course = course::all();
-        $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->get()->where('type', 1);
+        if($this->isHR()) {
+            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->get()->where('type', 1);
+        } else {
+            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->get()->where('type', 1);
+        }
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
     }
     public function getBMAMO($id){
         $course = course::all();
-        $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->where('type', 0)->get();
+        if($this->isHR()) {
+            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->where('type', 0)->get();
+        } else {
+            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->where('type', 0)->get();
+        }
 
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
@@ -214,7 +222,7 @@ class HomeController extends Controller
         }
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
             ->whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
-        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info]);
+        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance]);
     }
     //end-approving-my-employees-msc-objectives
     //end-building-my-msc-objectives
@@ -354,15 +362,26 @@ class HomeController extends Controller
     //rating-my-performance
     public function getRMAP($id){
         $course = course::all();
-        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
-            ->where('user_id',$id)->get();
+        if($this->isHR()) {
+            $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+                ->where('status', $this::STATUS_APPROVED)->get();
+        } else {
+            $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+                ->where('user_id',$id)->get();
+
+        }
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance]);
     }
     public function getRMMP($id) {
         $course = course::all();
-        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
-            ->where('user_id',$id)->get();
+        if($this->isHR()) {
+            $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+                ->where('status', $this::STATUS_APPROVED)->get();
+        } else {
+            $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+                ->where('user_id',$id)->get();
+        }
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
@@ -371,13 +390,29 @@ class HomeController extends Controller
     //approving-my-employees-performance
     public function getAMEAP($id) {
         $course = course::all();
-        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')->get();
+        $userIds = array();
+        $users= personal_info::where('department_id', $id)->get();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+            ->whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance]);
     }
     public function getAMEMP($id){
         $course = course::all();
-        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')->get();
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+            ->whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
     }
@@ -396,6 +431,10 @@ class HomeController extends Controller
 
     public function getDeleteUserAccount(){
         return view('performance_management.administrator/user_management.deleteUserAccount');
+    }
+
+    public function isHR() {
+        return $currentUser = Auth::user()->hasRole('general_director');
     }
 
     public function getCurrentUserStatus() {
@@ -428,27 +467,21 @@ class HomeController extends Controller
         }
 
     public function submitMscMothy($id) {
-        $course = course::all();
         $msc_performance = msc_performance::where('user_id',$id)->where('type', 1)->where('status', $this::STATUS_PENDING)->get();
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
         }
-        $msc_performance = msc_performance::where('user_id',$id)->where('type', 1)->get();
-        $personal_info = personal_info::where('user_id',$id)->first();
 
         return redirect()->route('BMMMO', ['id' => $id]);
     }
 
     public function submitMscAnnual($id) {
-        $course = course::all();
         $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->where('status', $this::STATUS_PENDING)->get();
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
         }
-        $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->get();
-        $personal_info = personal_info::where('user_id',$id)->first();
         return redirect()->route('BMAMO', ['id' => $id]);
     }
 
@@ -464,14 +497,175 @@ class HomeController extends Controller
         return redirect()->route('RMAP', ['id' => $id]);
     }
     public function submitRateMonthy($id) {
-        $course = course::all();
         $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
         foreach ($rate_monthly_performance as $rate) {
             $rate->status = $this::STATUS_SUBMITED;
             $rate->save();
         }
-        $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->get();
-        $personal_info = personal_info::where('user_id',$id)->first();
         return redirect()->route('RMMP', ['id' => $id]);
+    }
+
+    public function approveMyEmployeeMscAnnual($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+
+        $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
+
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_APPROVED;
+            $msc->save();
+        }
+
+        return redirect()->route('AMEAMO', ['id' => $id]);
+    }
+
+    public function approveMyEmployeeMscMonthly($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+
+        $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
+
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_APPROVED;
+            $msc->save();
+        }
+
+        return redirect()->route('AMEMMO', ['id' => $id]);
+    }
+
+    public function rejectMyEmployeeMscAnnual($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+
+        $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
+
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_REJECTED;
+            $msc->save();
+        }
+
+        return redirect()->route('AMEAMO', ['id' => $id]);
+    }
+
+    public function rejectMyEmployeeMscMonthly($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+
+        $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
+
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_REJECTED;
+            $msc->save();
+        }
+
+        return redirect()->route('AMEMMO', ['id' => $id]);
+    }
+
+    public function approveMyEmployeeRateAnnual($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+
+        $rate_annual_performance = rate_annual_performance::whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
+
+        foreach ($rate_annual_performance as $rate) {
+            $rate->status = $this::STATUS_APPROVED;
+            $rate->save();
+        }
+
+        return redirect()->route('AMEAP', ['id' => $id]);
+    }
+
+    public function approveMyEmployeeRateMonthly($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+        $rate_monthly_performance = rate_monthly_performance::whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
+
+        foreach ($rate_monthly_performance as $rate) {
+            $rate->status = $this::STATUS_APPROVED;
+            $rate->save();
+        }
+
+        return redirect()->route('AMEMP', ['id' => $id]);
+    }
+
+    public function rejectMyEmployeeRateAnnual($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+        $rate_annual_performance = rate_annual_performance::whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
+
+        foreach ($rate_annual_performance as $rate) {
+            $rate->status = $this::STATUS_REJECTED;
+            $rate->save();
+        }
+
+        return redirect()->route('AMEAP', ['id' => $id]);
+    }
+
+    public function rejectMyEmployeeRateMonthly($id) {
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+        $rate_monthly_performance = rate_monthly_performance::whereIn('user_id', $userIds)
+            ->where('status', $this::STATUS_SUBMITED)
+            ->get();
+
+        foreach ($rate_monthly_performance as $rate) {
+            $rate->status = $this::STATUS_REJECTED;
+            $rate->save();
+        }
+
+        return redirect()->route('AMEMP', ['id' => $id]);
+    }
+
+    public function resetAllStatus() {
+        $rate_monthly_performance = rate_monthly_performance::all();
+
+        foreach ($rate_monthly_performance as $rate) {
+            $rate->status = $this::STATUS_PENDING;
+            $rate->save();
+        }
+
+        $rate_annual_performance = rate_annual_performance::all();
+
+        foreach ($rate_annual_performance as $rate) {
+            $rate->status = $this::STATUS_PENDING;
+            $rate->save();
+        }
+
+        $msc_performance = msc_performance::all();
+
+        foreach ($msc_performance as $msc) {
+            $msc->status = $this::STATUS_PENDING;
+            $msc->save();
+        }
     }
 }

@@ -23,7 +23,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="{{ route('approveMyEmployeeRateMonthly',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
@@ -194,8 +194,8 @@
 
 
                     <div class="text-center">
-                            <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
-                            <button class="btn btn-danger" >REJECT</button>
+                        <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
+                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button>
                     </div>
                    </form>
                 </div>

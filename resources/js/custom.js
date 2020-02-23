@@ -17,5 +17,12 @@ $(document).ready(function () {
             e.stopPropagation();
         }
     });
+    $('.btn-reject').click(function (e) {
+        var form = $(this).closest('form');
+        if(form.length) {
+            $(form[0]).attr('action', $(this).data('action'));
+            $(form[0]).submit();
+        }
+    })
 
 });
