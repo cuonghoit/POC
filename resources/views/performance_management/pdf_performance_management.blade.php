@@ -1,14 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>TEST title</title>
-</head>
-<body>
-<h1>test heading</h1>
-<div>
-    <p>test content</p>
-</div>
-<div class="container">
+@extends('layouts.pdf_app')
+
+@section('content')
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -19,7 +12,7 @@
                             <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                         <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
 
-                        <div class="table-responsive Training">
+                        <div class="">
                             <table class="table table-bordered table-striped text-center">
                                 <tr>
                                     <th rowspan="2">NO.</th>
@@ -143,5 +136,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+@endsection

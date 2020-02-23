@@ -21,7 +21,7 @@ class PdfController extends Controller
 
     public function printPerformanceReport() {
         $data = array();
-        $pdf = PDF::loadView('performance_management/pdf_performance_management', $data);
-        return $pdf->download('invoice.pdf');
+        $pdf = PDF::loadView('performance_management/pdf_performance_management', $data)->setPaper('a4', 'landscape');
+        return $pdf->download('performance_management_report.pdf');
     }
 }

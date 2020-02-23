@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class rate_annual_performanceTableSeeder extends Seeder
+class rate_annual_performanceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class rate_annual_performanceTableSeeder extends Seeder
     {
         DB::table('rate_annual_performance')->insert(
         	[
-        		'user_id'=>'3',
+        		'user_id'=>'1',
         		'date'=>'2020-02-22',
         		'must_do_1'=>'must_do_1',
         		'must_do_2'=>'must_do_2',
@@ -31,7 +31,7 @@ class rate_annual_performanceTableSeeder extends Seeder
 
         DB::table('rate_annual_performance')->insert(
         	[
-        		'user_id'=>'3',
+        		'user_id'=>'1',
         		'date'=>'2020-02-22',
         		'must_do_1'=>'must_do_1',
         		'must_do_2'=>'must_do_2',
@@ -49,7 +49,7 @@ class rate_annual_performanceTableSeeder extends Seeder
 
         DB::table('rate_annual_performance')->insert(
         	[
-        		'user_id'=>'3',
+        		'user_id'=>'1',
         		'date'=>'2020-02-22',
         		'must_do_1'=>'must_do_1',
         		'must_do_2'=>'must_do_2',

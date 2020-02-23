@@ -14,7 +14,7 @@ class personal_infoTableSeeder extends Seeder
     public function run()
     {
        DB::table('personal_info')->insert(
-      	['user_id' => '3',
+      	['user_id' => '1',
        	 'first_name'=>'Ho',
        	 'middle_name'=>'Bien',
        	 'last_name'=>'Cuong',

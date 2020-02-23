@@ -9,7 +9,7 @@
         width: 150px;
     }
 
-    
+
 </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="" method="post">
+                    <form action="{{ route('submitRateMonthy',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
@@ -141,7 +141,7 @@
                                 <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
                             </div>
                         </tr>
-                    </table><br>  
+                    </table><br>
                     <div class="table-responsive">
                         <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
@@ -154,7 +154,7 @@
                                     SMART Objectives and Monthly Milestone <br> (MSC) (Verb/Ojective/Timing/Result)
                                 </th>
                                 <th>
-                                    Result Description 
+                                    Result Description
                                 </th>
                                 <th>
                                     Achieved (√) or Not (x)
@@ -170,7 +170,7 @@
                         <tbody>
                              @foreach($rate_monthly_performance as $rmp)
                             <tr>
-                               
+
                                 <td>
                                     {{ $rmp->id}}
                                 </td>
@@ -192,10 +192,10 @@
                                 <td>
                                     {{ $rmp->status}}
                                 </td>
-                               
+
                             </tr>
                              @endforeach
-                            
+
                             <tr>
                                 <td>4</td>
                                 <td>
@@ -214,7 +214,7 @@
                                     <input type="text" name="criteria">
                                 </td>
                                 <td></td>
-                              
+
                             </tr>
                             <tr>
                                 <td>5</td>
@@ -248,11 +248,11 @@
                                 </td>
                                 <td>
                                     <input type="text" name="criteria">
-                                </td> 
+                                </td>
                                 <td>
                                     <input type="text" name="criteria">
                                 </td>
-                                <td></td>                      
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>7</td>
@@ -281,7 +281,7 @@
                         <table class="table">
                             <tr>
                                 <div class="form-group">
-                                    <td><label for="staff_sign">Staff Signature: 
+                                    <td><label for="staff_sign">Staff Signature:
                                     </label></td>
                                     <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
                                 </div>
@@ -298,7 +298,7 @@
                             </tr>
                         </table>
                     </div>
-                    
+
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
