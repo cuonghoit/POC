@@ -235,8 +235,8 @@
                                                     @endif
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="approve-training-content">
-                                                    <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Annual Performance') }}</a>
                                                     <a class="dropdown-item" href="{{ route('RMMP',Auth::user()->id) }}"onclick="">{{ __('Monthly Performance') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('RMAP',Auth::user()->id) }}"onclick="">{{ __('Annual Performance') }}</a>
                                                 </div>
                                             </div>
                                             @endhasanyrole

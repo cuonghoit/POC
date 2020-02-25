@@ -99,13 +99,46 @@
                         </div>
                     @endif
                     <table style="width: 100%;">
-                        <tr>
-                            <td>Training & Development period from:</td>
+                         <tr>
                             <div class="form-group">
-                                <td><b>From Year:</b></td>
-                                <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
-                                <td><b>To Year: </b></td>
-                                <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
+                                <td><b>Training & Development period from:</b></td>
+                                <td>Month: </td>
+                               <td><select name="fromMonth" class="form-control col-md-10">
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select></td>
+                                <td>Year: </td>
+                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
+                            </div>
+                            <td><b>To:</b></td>
+                            <div class="form-group">
+                                <td>Month:</td>
+                               <td><select name="toMonth" class="form-control col-md-10">
+                                    <option value="1">Jan</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Mar</option>
+                                    <option value="4">Apr</option>
+                                    <option value="5">May</option>
+                                    <option value="6">Jun</option>
+                                    <option value="7">Jul</option>
+                                    <option value="8">Aug</option>
+                                    <option value="9">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select></td>
+                                <td>Year: </td>
+                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
                             </div>
                         </tr>
                     </table><br>
@@ -152,22 +185,25 @@
                                 <td>{{$rate_annual_performance->must_do_2}}</td>
                                 <td>{{$rate_annual_performance->must_do_3}}</td>
                                 <td>{{$rate_annual_performance->must_do_4}}</td>
-                                <td>{{$rate_annual_performance->should_do_1}}</td>
-                                <td>{{$rate_annual_performance->should_do_2}}</td>
-                                <td>{{$rate_annual_performance->could_do_1}}</td>
-                                <td>{{$rate_annual_performance->monthly_rate}}</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="text" placeholder=" {{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td>{{$rate_annual_performance->name}}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
                             </tr>
                             @endforeach
                             <tr>
-                                <td class="text-left" colspan="11">
+                                <td class="text-left" colspan="2">
                                     Annual Average Rate:
+                                </td>
+                                <td class="text-left" colspan="10">
+                                    {{$avg}}
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-left" colspan="11">
+                                <td class="text-left" colspan="12">
                                     Convert to Annual Performance Appraisal Level:
                                 </td>
                             </tr>
