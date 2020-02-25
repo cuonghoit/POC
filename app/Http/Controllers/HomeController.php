@@ -210,7 +210,7 @@ class HomeController extends Controller
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
             ->whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
 
-        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance]);
+        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users]);
     }
     public function getAMEMMO($id){
         $course = course::all();
@@ -222,7 +222,7 @@ class HomeController extends Controller
         }
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
             ->whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
-        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance]);
+        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users]);
     }
     //end-approving-my-employees-msc-objectives
     //end-building-my-msc-objectives

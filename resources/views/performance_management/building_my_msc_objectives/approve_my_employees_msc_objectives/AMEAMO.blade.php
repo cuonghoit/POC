@@ -11,7 +11,7 @@
 
 </style>
 
-
+<link
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -30,6 +30,23 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL MSC OBJECTIVES</b></h3><br>
+
+                        <table>
+
+                            <tr>
+                                <td>Select employees: </td>
+                                <td class="text-left">
+
+                                    <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select employees</option>
+                                        @foreach($users as $users)
+                                        <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -164,7 +181,7 @@
                                 <td>{{$msc_performance->from_date}}</td>
                                 <td>{{$msc_performance->to_date}}</td>
                                 <td>{{$msc_performance->name}}</td>
-                                <td>{{$msc_performance->note}}</td>
+                                <td><input type="text"></td>
                             </tr>
                         @endforeach
                             {{--<tr>

@@ -30,6 +30,21 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVE MY EMPLOYEES MONTHLY MSC OBJECTIVES</b></h3><br>
+                        <table>
+
+                            <tr>
+                                <td>Select employees: </td>
+                                <td class="text-left">
+
+                                    <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select employees</option>
+                                        @foreach($users as $users)
+                                            <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -162,7 +177,7 @@
                                      <input type="text" name="note" value="{{$msc_performance->name}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="note" value="{{$msc_performance->note}}">
+                                    <input type="text">
                                 </td>
 
                             </tr>
