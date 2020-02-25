@@ -16,7 +16,7 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Monthly MSC Objectives
+                Building My MSC Objective / Monthly MSC
                 </div>
 
                 <div class="card-body">
@@ -30,6 +30,38 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY MONTHLY MSC OBJECTIVES</b></h3><br>
+
+                    <p class="text-left" ><b>MONTHLY MSC OBJECTIVES</b></p>
+                    @if(count($errors)>0)
+                        <div class="atler">
+                            @foreach($errors->all() as $er)
+                                <b class="text-danger">{{$er}}</b><br>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('notice'))
+                        <div class="text-danger">
+                            <b>{{session('notice')}}</b>
+                        </div>
+                    @endif
+                    
+                    <div class="row">                       
+                        <div class="col-md-4">
+                            <p>Training & Development period </p>
+                        </div>
+                        <div class="col-md-1">
+                            From:
+                        </div>
+                        <div class="col-md-3">
+                            <input type="month" name="dateFrom" class="form-control col-md-8 " value="">
+                        </div>
+                        <div class="col-md-1">
+                            To:
+                        </div>
+                        <div class="col-md-3">
+                            <input type="month" name="dateTo" class="form-control col-md-8 " value="">
+                        </div>
+                    </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>
@@ -85,59 +117,10 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>MONTHLY MSC OBJECTIVES</b></p>
-                    @if(count($errors)>0)
-                        <div class="atler">
-                            @foreach($errors->all() as $er)
-                                <b class="text-danger">{{$er}}</b><br>
-                            @endforeach
-                        </div>
-                    @endif
-                    @if(session('notice'))
-                        <div class="text-danger">
-                            <b>{{session('notice')}}</b>
-                        </div>
-                    @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <td class="text-right">Training & Development period from:</td>
-                            <div class="form-group">
-                                <td><select name="month" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td><input type="text" name="" class="datepicker"></td>
-                                <td><b>To</b></td>
-                                <td><select name="month" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td><input type="text" name="" class="datepicker"></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    
+                    
                     <table class="table table-bordered text-center table-striped">
-                        <thead>
+                        <thead class="bg-success">
                             <tr>
                                 <th>No.</th>
                                 <th>
@@ -147,7 +130,7 @@
                                     SMART Objectives and Monthly Milestone <br> (MSC)(Verb/Ojective/Timing/Result)
                                 </th>
                                 <th>
-                                    Milestone
+                                    Target to Achieve
                                 </th>
 
                                 <th>
@@ -174,14 +157,14 @@
 
                                 </td>
                                 <td>
-                                <input type="text" name="action-plans" value="{{$msc->milestone}}" >
+                                <input type="text" name="action-plans" value="{{$msc->target_to_archive}}" >
                                 </td>
                                 <td>
                                     <input type="text" name="" value="{{$msc->action_to_chieve}}" >
                                 </td>
                                 <td>{{$msc->name}}</td>
                                 <td>
-                                    <input type="text" name="" value="{{$msc->note}}" >
+                                    {{$msc->note}}
                                 </td>
 
                             </tr>

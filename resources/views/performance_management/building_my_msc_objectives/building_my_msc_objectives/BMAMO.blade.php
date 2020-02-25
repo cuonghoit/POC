@@ -16,7 +16,7 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                    Performance Management / Building My MSC Objectives / Building My MSC Objectives / Building My Monthly MSC Objectives
+                Building My MSC Objective / Annual MSC
                 </div>
 
                 <div class="card-body">
@@ -30,6 +30,37 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY ANNUAL MSC OBJECTIVES</b></h3><br>
+                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
+                    @if(count($errors)>0)
+                        <div class="atler">
+                            @foreach($errors->all() as $er)
+                                <b class="text-danger">{{$er}}</b><br>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('notice'))
+                        <div class="text-danger">
+                            <b>{{session('notice')}}</b>
+                        </div>
+                    @endif                    
+                   
+                    <div class="row">                       
+                        <div class="col-md-4">
+                            <p>Training & Development period </p>
+                        </div>
+                        <div class="col-md-1">
+                            From:
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="dateFrom" class="datepicker form-control col-md-8 " value="">
+                        </div>
+                        <div class="col-md-1">
+                            To:
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" name="dateTo" class="datepicker form-control col-md-8 " value="">
+                        </div>
+                    </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>
@@ -85,34 +116,12 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
-                    @if(count($errors)>0)
-                        <div class="atler">
-                            @foreach($errors->all() as $er)
-                                <b class="text-danger">{{$er}}</b><br>
-                            @endforeach
-                        </div>
-                    @endif
-                    @if(session('notice'))
-                        <div class="text-danger">
-                            <b>{{session('notice')}}</b>
-                        </div>
-                    @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <td>Training & Development period from:</td>
-                            <div class="form-group">
-                                <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
-                                <td><b>To</b></td>
-                                <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
 
-                        <thead>
-                            <tr>
+                        <thead class="bg-success">
+                            <tr >
                                 <th rowspan="2">
                                     No.
                                 </th>
@@ -124,39 +133,91 @@
                                 </th>
 
                                 <th rowspan="2">
-                                    Target to Archive
+                                    Target to Achieve
                                 </th>
-                                <th>
-                                    From Date
+                                <th colspan="12">
+                                    Training & Development Schedule
                                 </th>
-                                <th>
-                                    To Date
-                                </th>
-                                <th>
+                                <th rowspan="2">
                                     Status
                                 </th>
-                                <th>
+                                <th rowspan="2">
                                     NOTE
-                                </th>
-                                <th>
-                                    STATUS
-                                </th>
-
+                                </th>                          
+                            </tr>
+                            <tr>
+                                <th>Jan</th>
+                                <th>Feb</th>
+                                <th>Mar</th>
+                                <th>Apr</th>
+                                <th>May</th>
+                                <th>Jun</th>
+                                <th>Jul</th>
+                                <th>Aug</th>
+                                <th>Sep</th>
+                                <th>Oct</th>
+                                <th>Nov</th>
+                                <th>Dec</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1;?>
-                            @foreach($msc_performance as $msc_performance  )
+                            <?php $i = 1;  ?>
+                            @foreach($msc_performance as $mp)
                             <tr>
-                                <td>{{$i++}}</td>
-                                <td>{{$msc_performance->objective_category}}</td>
-                                <td>{{$msc_performance->milestone_behavior}}</td>
-                                <td>{{$msc_performance->target_to_archive}}</td>
-                                <td>{{$msc_performance->from_date}}</td>
-                                <td>{{$msc_performance->to_date}}</td>
-                                <td>{{$msc_performance->name}}</td>
-                                <td>{{$msc_performance->note}}</td>
-                                <td>{{$msc_performance->status}}</td>
+                                <td>
+                                    <input type="text" name="num"  value="{{$i++}}" >
+                                </td>
+                                <td>
+                                    <input type="text" name="objective_category"  value="{{$mp->objective_category}}" >
+                                </td>
+                                <td>
+                                    <input type="text" name="milestone"  value="{{$mp->milestone_behavior}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="target"  value="{{$mp->target_to_archive}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="jan" value="jan" >
+                                </td>
+                                <td>
+                                    <input type="text" name="feb" value="feb">
+                                </td>                               
+                                <td>
+                                    <input type="text" name="mar" value="mar">
+                                </td>
+                                <td>
+                                    <input type="text" name="apr" value="apr">
+                                </td>                               
+                                <td>
+                                    <input type="text" name="may" value="may">
+                                </td>
+                                <td>
+                                    <input type="text" name="jun" value="jun">
+                                </td>
+                                <td>
+                                    <input type="text" name="jul" value="jul">
+                                </td>
+                                <td>
+                                    <input type="text" name="aug" value="aug">
+                                </td>
+                                <td>
+                                    <input type="text" name="sep" value="sep">
+                                </td>
+                                <td>
+                                    <input type="text" name="oct" value="oct">
+                                </td>
+                                <td>
+                                    <input type="text" name="nov" value="nov">
+                                </td>
+                                <td>
+                                    <input type="text" name="dec" value="dec">
+                                </td>
+                                <td>
+                                    {{$mp->name}}                           
+                                </td>
+                                <td>
+                                    {{$mp->note}}
+                                </td>  
                             </tr>
                             @endforeach
                         </tbody>
