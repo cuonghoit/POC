@@ -12,6 +12,7 @@ use App\Model\status;
 use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
+use PHPUnit\Framework\Constraint\Count;
 
 class HomeController extends Controller
 {
@@ -370,8 +371,13 @@ class HomeController extends Controller
                 ->where('user_id',$id)->get();
 
         }
+        $avg = 0;
+        foreach ($rate_annual_performance as $rate){
+            $avg += $rate->monthly_rate;
+        }
+        $avg = $avg/count($rate_annual_performance);
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
     }
     public function getRMMP($id) {
         $course = course::all();
