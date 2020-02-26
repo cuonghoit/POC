@@ -186,9 +186,9 @@ class HomeController extends Controller
     public function getBMAMO($id){
         $course = course::all();
         if($this->isHR()) {
-            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->where('type', 0)->get();
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0)->get();
         } else {
-            $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->where('type', 0)->get();
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 0)->get();
         }
 
         $personal_info = personal_info::where('user_id',$id)->first();

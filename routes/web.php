@@ -117,6 +117,9 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::post('/submit-monthly-msc-objectives/{id}', 'HomeController@submitMscMothy')->name('submitMscMothy');
     Route::post('/submit-my-annual-msc-objectives/{id}', 'HomeController@submitMscAnnual')->name('submitMscAnnual');
 
+    Route::post('/save-monthly-msc-objectives/{id}', 'MscController@saveMscMonthly')->name('saveMscMonthly');
+    Route::post('/save-annual-msc-objectives/{id}', 'MscController@saveMscAnnual')->name('saveMscAnnual');
+
     Route::group(['prefix' => 'rating-performance'], function () {
         Route::get('/rating-my-annual-performance/{id}', 'HomeController@getRMAP')->name('RMAP');
         Route::get('/rating-my-monthly-performance/{id}', 'HomeController@getRMMP')->name('RMMP');

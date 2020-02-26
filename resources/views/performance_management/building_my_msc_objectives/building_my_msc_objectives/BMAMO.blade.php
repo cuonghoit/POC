@@ -42,9 +42,9 @@
                         <div class="text-danger">
                             <b>{{session('notice')}}</b>
                         </div>
-                    @endif                    
-                   
-                    <div class="row">                       
+                    @endif
+
+                    <div class="row">
                         <div class="col-md-4">
                             <p>Training & Development period </p>
                         </div>
@@ -116,7 +116,7 @@
                             </div>
                         </tr>
                     </table><br>
-                    
+
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
 
@@ -143,7 +143,7 @@
                                 </th>
                                 <th rowspan="2">
                                     NOTE
-                                </th>                          
+                                </th>
                             </tr>
                             <tr>
                                 <th>Jan</th>
@@ -165,59 +165,58 @@
                             @foreach($msc_performance as $mp)
                             <tr>
                                 <td>
-                                    <input type="text" name="num"  value="{{$i++}}" >
+                                    {{$i++}}
+                                    <input type="hidden" name="id[]"  value="{{$mp->id}}">
+                                </td>
+                                <td>{{$mp->objective_category}}</td>
+                                <td>
+                                    <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="objective_category"  value="{{$mp->objective_category}}" >
+                                    <input type="text" name="target[]"  value="{{$mp->target_to_archive}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="milestone"  value="{{$mp->milestone_behavior}}">
+                                    <input type="text" name="jan[]" value="jan" >
                                 </td>
                                 <td>
-                                    <input type="text" name="target"  value="{{$mp->target_to_archive}}">
+                                    <input type="text" name="feb[]" value="feb">
                                 </td>
                                 <td>
-                                    <input type="text" name="jan" value="jan" >
+                                    <input type="text" name="mar[]" value="mar">
                                 </td>
                                 <td>
-                                    <input type="text" name="feb" value="feb">
-                                </td>                               
-                                <td>
-                                    <input type="text" name="mar" value="mar">
+                                    <input type="text" name="apr[]" value="apr">
                                 </td>
                                 <td>
-                                    <input type="text" name="apr" value="apr">
-                                </td>                               
-                                <td>
-                                    <input type="text" name="may" value="may">
+                                    <input type="text" name="may[]" value="may">
                                 </td>
                                 <td>
-                                    <input type="text" name="jun" value="jun">
+                                    <input type="text" name="jun[]" value="jun">
                                 </td>
                                 <td>
-                                    <input type="text" name="jul" value="jul">
+                                    <input type="text" name="jul[]" value="jul">
                                 </td>
                                 <td>
-                                    <input type="text" name="aug" value="aug">
+                                    <input type="text" name="aug[]" value="aug">
                                 </td>
                                 <td>
-                                    <input type="text" name="sep" value="sep">
+                                    <input type="text" name="sep[]" value="sep">
                                 </td>
                                 <td>
-                                    <input type="text" name="oct" value="oct">
+                                    <input type="text" name="oct[]" value="oct">
                                 </td>
                                 <td>
-                                    <input type="text" name="nov" value="nov">
+                                    <input type="text" name="nov[]" value="nov">
                                 </td>
                                 <td>
-                                    <input type="text" name="dec" value="dec">
+                                    <input type="text" name="dec[]" value="dec">
                                 </td>
                                 <td>
-                                    {{$mp->name}}                           
+                                    {{$mp->name}}
                                 </td>
                                 <td>
                                     {{$mp->note}}
-                                </td>  
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -247,8 +246,9 @@
                         </table>
                     </div>
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
+                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL:</b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                     </div>
                    </form>
                 </div>
