@@ -30,6 +30,17 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY ANNUAL PERFORMANCE</b></h3><br>
+
+                     <table style="width: 50%;">
+                       <tr>
+                            <div class="form-group">
+                                <td>Select Year:</td>
+                                <td class="text-left"><input type="text" name="fromYear" class="datepicker text-center form-control col-md-10"></td>
+                            </div>
+                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                        </tr>
+                    </table><br>
+
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -85,7 +96,6 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -98,50 +108,6 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-                    <table style="width: 100%;">
-                         <tr>
-                            <div class="form-group">
-                                <td><b>Training & Development period from:</b></td>
-                                <td>Month: </td>
-                               <td><select name="fromMonth" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td>Year: </td>
-                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
-                            </div>
-                            <td><b>To:</b></td>
-                            <div class="form-group">
-                                <td>Month:</td>
-                               <td><select name="toMonth" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td>Year: </td>
-                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
-                            </div>
-                        </tr>
-                    </table><br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
@@ -180,11 +146,12 @@
                         <tbody>
                             @foreach($rate_annual_performance as $rate_annual_performance )
                             <tr>
+                                <input type="hidden" name="id[]" value="{{$rate_annual_performance->id}}">
                                 <td>{{$rate_annual_performance->date}}</td>
-                                <td>{{$rate_annual_performance->must_do_1}}</td>
-                                <td>{{$rate_annual_performance->must_do_2}}</td>
-                                <td>{{$rate_annual_performance->must_do_3}}</td>
-                                <td>{{$rate_annual_performance->must_do_4}}</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
                                 <td><input type="checkbox"></td>
