@@ -149,7 +149,7 @@ return array(
          * Used if no suitable fonts can be found. This must exist in the font folder.
          * @var string
          */
-        "default_font" => "serif",
+        "default_font" => "EB Garamond",
 
         /**
          * Image DPI setting
@@ -184,7 +184,7 @@ return array(
          *
          * @var int
          */
-        "dpi" => 96,
+        "dpi" => 84,
 
         /**
          * Enable inline PHP
@@ -232,7 +232,7 @@ return array(
         /**
          * A ratio applied to the fonts height to be more like browsers' line height
          */
-        "font_height_ratio" => 1.1,
+        "font_height_ratio" => 1,
 
         /**
          * Use the more-than-experimental HTML5 Lib parser

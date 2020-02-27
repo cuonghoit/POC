@@ -8,9 +8,9 @@
                 <!--  <div class="card-header">Training Management / Training-implementation</div> -->
 
                 <div class="card-body">
-                        <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                            <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
-                        <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
+                        <h5 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
+                            <b>PERFORMANCE MANAGEMENT SYSTEM</b></h5><br>
+                        <h4 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h4><br>
 
                         <div class="">
                             <table class="table table-bordered table-striped text-center">
