@@ -9,7 +9,7 @@
         width: 150px;
     }
 </style>
- --><div class="container">
+ <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -175,7 +175,7 @@
                     </table><br>
                     <div class="text-center">
                         <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
-                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateAnnual',Auth::user()->id) }}"  >REJECT</button>
+                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button>
                     </div>
                    </form>
                 </div>

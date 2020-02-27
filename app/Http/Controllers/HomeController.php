@@ -366,10 +366,10 @@ class HomeController extends Controller
     public function getRMAP($id){
         $course = course::all();
         if($this->isHR()) {
-            $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
                 ->where('status', $this::STATUS_APPROVED)->get();
         } else {
-            $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
                 ->where('user_id',$id)->get();
 
         }
@@ -381,6 +381,90 @@ class HomeController extends Controller
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
     }
+
+    public function saveRMAP($id, Request $request){
+        if($request->isMethod('post') && $request->has("id")) {
+            $count = count($request->input("id"));
+            $ids = $request->input("id");
+            $must_do_1 = $request->input('must_do_1');
+            $must_do_2 = $request->input('must_do_2');
+            $must_do_3 = $request->input('must_do_3');
+            $must_do_4 = $request->input('must_do_4');
+            $should_do_1 = $request->input('should_do_1');
+            $should_do_2 = $request->input('should_do_2');
+            $could_do_1 = $request->input('could_do_1');
+            $monthly_rate = $request->input('monthly_rate');
+
+            for($i = 0; $i < $count; $i++) {
+                $rate_annual_performance = rate_annual_performance::find($ids[$i]);
+                if($rate_annual_performance->id) {
+                    $rate_annual_performance->monthly_rate = $monthly_rate[$i];
+                    if(isset($must_do_1[$i])){
+                        $rate_annual_performance->must_do_1 = 1;
+                    }else{
+                        $rate_annual_performance->must_do_1 = 0;
+                    }
+
+                    if(isset($must_do_2[$i])){
+                        $rate_annual_performance->must_do_2 = 1;
+                    }else{
+                        $rate_annual_performance->must_do_2 = 0;
+                    }
+
+                    if(isset($must_do_3[$i])){
+                        $rate_annual_performance->must_do_3 = 1;
+                    }else{
+                        $rate_annual_performance->must_do_3 = 0;
+                    }
+
+                    if(isset($must_do_4[$i])){
+                        $rate_annual_performance->must_do_4 = 1;
+                    }else{
+                        $rate_annual_performance->must_do_4 = 0;
+                    }
+
+                    if(isset($should_do_1[$i])){
+                        $rate_annual_performance->should_do_1 = 1;
+                    }else{
+                        $rate_annual_performance->should_do_1 = 0;
+                    }
+
+                    if(isset($should_do_2[$i])){
+                        $rate_annual_performance->should_do_2 = 1;
+                    }else{
+                        $rate_annual_performance->should_do_2 = 0;
+                    }
+                    if(isset($could_do_1[$i])){
+                        $rate_annual_performance->could_do_1 = 1;
+                    }else{
+                        $rate_annual_performance->could_do_1 = 0;
+                    }
+                    if($monthly_rate[$i]<2.5){
+                        $rate_annual_performance->monthly_performance_level = 'Poor';
+                    }
+                    if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
+                        $rate_annual_performance->monthly_performance_level = 'Average';
+                    }
+                    if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
+                        $rate_annual_performance->monthly_performance_level = 'Good';
+                    }
+                    if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
+                        $rate_annual_performance->monthly_performance_level = 'Very Good';
+                    }
+                    if($monthly_rate[$i]<=5 && $monthly_rate[$i]>=3.5){
+                        $rate_annual_performance->monthly_performance_level = 'Outstanding';
+                    }
+                    // Set another data here
+                    $rate_annual_performance->save();
+                }
+            }
+        }
+
+
+        return redirect()->route('RMAP',Auth::user()->id);
+    }
+
+
     public function getRMMP($id) {
         $course = course::all();
         if($this->isHR()) {
@@ -608,9 +692,10 @@ class HomeController extends Controller
         return redirect()->route('AMEMMO', ['id' => $id]);
     }
 
-    public function approveMyEmployeeRateAnnual($id) {
+    public function approveMyEmployeeRateAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
+        $comment = $request->input('comment');
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -620,6 +705,7 @@ class HomeController extends Controller
             ->get();
 
         foreach ($rate_annual_performance as $rate) {
+            $rate->note = $comment;
             $rate->status = $this::STATUS_APPROVED;
             $rate->save();
         }
@@ -627,9 +713,10 @@ class HomeController extends Controller
         return redirect()->route('AMEAP', ['id' => $id]);
     }
 
-    public function approveMyEmployeeRateMonthly($id) {
+    public function approveMyEmployeeRateMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
+        $comment = $request->input('comment');
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -638,6 +725,7 @@ class HomeController extends Controller
             ->get();
 
         foreach ($rate_monthly_performance as $rate) {
+            $rate->note = $comment;
             $rate->status = $this::STATUS_APPROVED;
             $rate->save();
         }
@@ -645,9 +733,10 @@ class HomeController extends Controller
         return redirect()->route('AMEMP', ['id' => $id]);
     }
 
-    public function rejectMyEmployeeRateAnnual($id) {
+    public function rejectMyEmployeeRateAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
+        $comment = $request->input('comment');
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -656,6 +745,7 @@ class HomeController extends Controller
             ->get();
 
         foreach ($rate_annual_performance as $rate) {
+            $rate->note = $comment;
             $rate->status = $this::STATUS_REJECTED;
             $rate->save();
         }
@@ -663,9 +753,10 @@ class HomeController extends Controller
         return redirect()->route('AMEAP', ['id' => $id]);
     }
 
-    public function rejectMyEmployeeRateMonthly($id) {
+    public function rejectMyEmployeeRateMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
+        $comment = $request->input('comment');
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -674,6 +765,7 @@ class HomeController extends Controller
             ->get();
 
         foreach ($rate_monthly_performance as $rate) {
+            $rate->note = $comment;
             $rate->status = $this::STATUS_REJECTED;
             $rate->save();
         }
