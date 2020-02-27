@@ -25,22 +25,23 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ route('submitRateAnnual',Auth::user()->id) }}" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY ANNUAL PERFORMANCE</b></h3><br>
-
+                    <form action="{{ route('searchRMAP',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                      <table style="width: 50%;">
                        <tr>
                             <div class="form-group">
                                 <td>Select Year:</td>
-                                <td class="text-left"><input type="text" name="fromYear" class="datepicker text-center form-control col-md-10"></td>
+                                <td class="text-left"><input type="text" name="year" class="datepicker text-center form-control col-md-10"></td>
                             </div>
                             <td class="text-left" ><button class="btn btn-success">Search</button></td>
                         </tr>
                     </table><br>
-
+                    </form>
+                    <form action="{{ route('submitRateAnnual',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -158,7 +159,7 @@
                                 <td><input type="checkbox" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
                                 <td><input type="text" name="monthly_rate[]" value="{{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
-                                <td>{{$rate_annual_performance->name}}</td>
+                                <td>{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
                             </tr>
                             <?php $i++;?>

@@ -382,6 +382,21 @@ class HomeController extends Controller
         return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
     }
 
+    public function searchRMAP($id, Request $request){
+        $course = course::all();
+        $year = $request->input('year');
+        $personal_info = personal_info::where('user_id',$id)->first();
+        $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$id)->get();
+        $avg = 0;
+        foreach ($rate_annual_performance as $rate){
+            $avg += $rate->monthly_rate;
+        }
+        if($avg!= 0){
+            $avg = $avg/count($rate_annual_performance);
+        }
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
+    }
+
     public function saveRMAP($id, Request $request){
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
@@ -451,7 +466,7 @@ class HomeController extends Controller
                     if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                         $rate_annual_performance->monthly_performance_level = 'Very Good';
                     }
-                    if($monthly_rate[$i]<=5 && $monthly_rate[$i]>=3.5){
+                    if($monthly_rate[$i]>=3.5){
                         $rate_annual_performance->monthly_performance_level = 'Outstanding';
                     }
                     // Set another data here
@@ -504,6 +519,23 @@ class HomeController extends Controller
 
         return redirect()->route('RMMP',Auth::user()->id);
     }
+
+    public function searchRMMP($id, Request $request){
+
+        $course = course::all();
+        $month_year = $request->input('month_year');
+//        if($this->isHR()) {
+//            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
+//                ->where('status', $this::STATUS_APPROVED)->get();
+//        } else {
+//            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
+//                ->where('user_id',$id)->get();
+//        }
+        $personal_info = personal_info::where('user_id',$id)->first();
+        $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$id)->get();
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
+    }
+
     // end-rating-my-performance
 
     //approving-my-employees-performance
@@ -521,6 +553,25 @@ class HomeController extends Controller
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
     }
+
+    public function searchAMEAP($id, Request $request) {
+        $course = course::all();
+        $userIds = array();
+        $users= personal_info::where('department_id', $id)->get();
+        $year = $request->input('year');
+        $employee =$request->input('employee');
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+//        $rate_annual_performance = rate_annual_performance::join('status', 'status.id', '=', 'status')
+//            ->whereIn('user_id', $userIds)
+//            ->where('status', $this::STATUS_SUBMITED)
+//            ->get();
+        $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
+    }
+
     public function getAMEMP($id){
         $course = course::all();
         $users= personal_info::where('department_id', $id)->get();
@@ -532,6 +583,25 @@ class HomeController extends Controller
             ->whereIn('user_id', $userIds)
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
+    }
+
+    public function searchAMEMP($id, Request $request){
+        $course = course::all();
+        $users= personal_info::where('department_id', $id)->get();
+        $userIds = array();
+        $month_year = $request->input('month_year');
+        $employee = $request->input('employee');
+        foreach ($users as $user) {
+            $userIds[] = $user->user_id;
+        }
+//        $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+//            ->whereIn('user_id', $userIds)
+//            ->where('status', $this::STATUS_SUBMITED)
+//            ->get();
+
+        $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
     }
