@@ -25,30 +25,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ route('approveMyEmployeeRateAnnual',Auth::user()->id) }}" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL PERFORMANCE</b></h3><br>
-
-                    <table style="width: 50%;">
-                       <tr>
-                            <div class="form-group">
-                                <td>Select Year:</td>
-                                <td class="text-left"><input type="text" name="fromYear" class="datepicker text-center form-control col-md-10"></td>
-                            </div>
-                            <td class="text-left">
-                                    <select class="selectpicker form-control" data-live-search="true">
-                                        <option>Select employees</option>
-                                        @foreach($users as $users)
-                                        <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
-                        </tr>
-                    </table><br>
-
+                    <form action="{{ route('searchAMEAP',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <table style="width: 50%;">
+                           <tr>
+                                <div class="form-group">
+                                    <td>Select Year:</td>
+                                    <td class="text-left"><input type="text" name="year" class="datepicker text-center form-control col-md-10"></td>
+                                </div>
+                                <td class="text-left">
+                                        <select class="selectpicker form-control" data-live-search="true" name="employee">
+                                            <option>Select employees</option>
+                                            @foreach($users as $users)
+                                            <option value="{{$users->user_id}}">{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                            </tr>
+                        </table><br>
+                    </form>
+                    <form action="{{ route('approveMyEmployeeRateAnnual',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>

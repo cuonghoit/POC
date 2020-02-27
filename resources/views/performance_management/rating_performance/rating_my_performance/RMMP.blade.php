@@ -25,22 +25,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ route('submitRateMonthy',Auth::user()->id) }}" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY MONTHLY PERFORMANCE</b></h3><br>
-
-                    <table style="width: 50%;">
-                       <tr>
-                            <div class="form-group">
-                                <td>Select Month/Year:</td>
-                                <td class="text-left"><input type="month" name="fromYear" class="form-control col-md-10"></td>
-                            </div>
-                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
-                        </tr>
-                    </table><br>
-
+                    <form action="{{ route('searchRMMP',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <table style="width: 50%;">
+                           <tr>
+                                <div class="form-group">
+                                    <td>Select Month/Year:</td>
+                                    <td class="text-left"><input type="month" name="month_year" class="form-control col-md-10"></td>
+                                </div>
+                                <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                            </tr>
+                        </table><br>
+                    </form>
+                    <form action="{{ route('submitRateMonthy',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -156,7 +158,7 @@
                                     <input type="checkbox" name="achieve[{{$i-1}}]" @if($rmp->achieve == 1) checked = "checked" @endif>
                                 </td>
                                 <td>
-                                    {{ $rmp->name}}
+                                    {{ App\Http\Controllers\HomeController::getStatus($rmp->status) }}
                                 </td>
                                 <td>
                                     {{ $rmp->note}}
