@@ -175,16 +175,18 @@ class HomeController extends Controller
     }
     public function getBMMMO($id) {
         $course = course::all();
+        $users= personal_info::where('staff_role_id', 3)->get();
         if($this->isHR()) {
             $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->get()->where('type', 1);
         } else {
             $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')->where('user_id',$id)->get()->where('type', 1);
         }
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=> $users]);
     }
     public function getBMAMO($id){
         $course = course::all();
+        $users= personal_info::where('staff_role_id', 3)->get();
         if($this->isHR()) {
             $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0)->get();
         } else {
@@ -192,7 +194,7 @@ class HomeController extends Controller
         }
 
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users]);
     }
     //end-building-my-msc-objectives
 

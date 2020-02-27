@@ -30,7 +30,7 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY ANNUAL MSC OBJECTIVES</b></h3><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
+                    
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -45,21 +45,31 @@
                     @endif
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <p>Training & Development period </p>
+                        @if($personal_info->user_id == 5)
+                        <div class="col-md-2">
+                            <p>Select Department:</p>
                         </div>
-                        <div class="col-md-1">
-                            From:
+                        <div class="col-md-3">
+                            <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select Department</option>
+                                        @foreach($users as $pi)
+                                        <option>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                        @endforeach
+                            </select>
+                        </div> 
+                        @endif
+
+                        <div class="col-md-2">
+                            <p>Select a Year:</p>
                         </div>
                         <div class="col-md-3">
                             <input type="text" name="dateFrom" class="datepicker form-control col-md-8 " value="">
                         </div>
-                        <div class="col-md-1">
-                            To:
+                        <div class="col-md-2">
+                            <button class="btn btn-success">Search</button>
                         </div>
-                        <div class="col-md-3">
-                            <input type="text" name="dateTo" class="datepicker form-control col-md-8 " value="">
-                        </div>
+
+                                                               
                     </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
@@ -161,7 +171,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1;  ?>
+                            <?php $i = 1;?>
                             @foreach($msc_performance as $mp)
                             <tr>
                                 <td>
@@ -176,40 +186,40 @@
                                     <input type="text" name="target[]"  value="{{$mp->target_to_archive}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="jan[]" value="jan" >
+                                    <input type="text" name="jan[]" value="{{$mp->jan}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="feb[]" value="feb">
+                                    <input type="text" name="feb[]" value="{{$mp->feb}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="mar[]" value="mar">
+                                    <input type="text" name="mar[]" value="{{$mp->mar}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="apr[]" value="apr">
+                                    <input type="text" name="apr[]" value="{{$mp->apr}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="may[]" value="may">
+                                    <input type="text" name="may[]" value="{{$mp->may}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="jun[]" value="jun">
+                                    <input type="text" name="jun[]" value="{{$mp->jun}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="jul[]" value="jul">
+                                    <input type="text" name="jul[]" value="{{$mp->jul}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="aug[]" value="aug">
+                                    <input type="text" name="aug[]" value="{{$mp->aug}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="sep[]" value="sep">
+                                    <input type="text" name="sep[]" value="{{$mp->sep}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="oct[]" value="oct">
+                                    <input type="text" name="oct[]" value="{{$mp->oct}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="nov[]" value="nov">
+                                    <input type="text" name="nov[]" value="{{$mp->nov}}">
                                 </td>
                                 <td>
-                                    <input type="text" name="dec[]" value="dec">
+                                    <input type="text" name="dec[]" value="{{$mp->dec}}">
                                 </td>
                                 <td>
                                     {{$mp->name}}

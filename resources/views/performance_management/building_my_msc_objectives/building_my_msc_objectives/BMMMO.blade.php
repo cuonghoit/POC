@@ -31,7 +31,7 @@
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY MONTHLY MSC OBJECTIVES</b></h3><br>
 
-                    <p class="text-left" ><b>MONTHLY MSC OBJECTIVES</b></p>
+                    
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -45,22 +45,30 @@
                         </div>
                     @endif
                     
-                    <div class="row">                       
-                        <div class="col-md-4">
-                            <p>Training & Development period </p>
-                        </div>
-                        <div class="col-md-1">
-                            From:
+                    <div class="row">
+                         @if($personal_info->user_id== 5)
+                        <div class="col-md-2">
+                            <p>Select Department:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="month" name="dateFrom" class="form-control col-md-8 " value="">
-                        </div>
-                        <div class="col-md-1">
-                            To:
+                            <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select Department</option>
+                                        @foreach($users as $pi)
+                                        <option>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                        @endforeach
+                            </select>
+                        </div> 
+                        @endif
+
+                        <div class="col-md-2">
+                            <p>Select Month/Year:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="month" name="dateTo" class="form-control col-md-8 " value="">
+                            <input type="month" name="dateFrom" class="form-control col-md-10 " value="">
                         </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-success">Search</button>
+                        </div>                                        
                     </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">

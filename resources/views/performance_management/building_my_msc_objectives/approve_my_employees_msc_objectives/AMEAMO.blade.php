@@ -11,7 +11,7 @@
 
 </style>
 
-<link
+
 <div class="container">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -30,22 +30,32 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL MSC OBJECTIVES</b></h3><br>
-
-                        <table>
-
-                            <tr>
-                                <td>Select employees: </td>
-                                <td class="text-left">
-
-                                    <select class="selectpicker form-control" data-live-search="true">
+                    <div class="row">   
+                   
+                    
+                        <div class="col-md-2">
+                            <p>Select Employees:</p>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="selectpicker form-control" data-live-search="true">
                                         <option>Select employees</option>
                                         @foreach($users as $users)
                                         <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
                                         @endforeach
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <p>Select Month/Year:</p>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="textt" name="dateFrom" class="datepicker form-control col-md-10 " value="">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-success">Search</button>
+                        </div>  
+                    </div>
+                            
 
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
@@ -113,7 +123,7 @@
 
 
                     </table><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
+                    
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -126,21 +136,11 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <td>Training & Development period from:</td>
-                            <div class="form-group">
-
-                                <td><input type="text"  name="dateFrom" class="datepicker form-control col-md-8 " ></td>
-                                <td><b>To</b></td>
-                                <td><input type="text"   name="dateTo" class="datepicker form-control col-md-8 " ></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    <br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
                         <thead>
-                        <tr>
+                        <tr class="bg-success">
                             <th rowspan="2">
                                 No.
                             </th>
@@ -181,7 +181,7 @@
                                 <td>{{$msc_performance->from_date}}</td>
                                 <td>{{$msc_performance->to_date}}</td>
                                 <td>{{$msc_performance->name}}</td>
-                                <td><input type="text"></td>
+                                <td><input type="text" disabled="disabled"></td>
                             </tr>
                         @endforeach
                             {{--<tr>
@@ -260,6 +260,12 @@
                                 <td></td>
 
                             </tr>--}}
+                            <tr colspan="7">
+                                <td colspan="8" class="text-left">
+                                    Comment: 
+                                    <input type="text" name="coment" class="col-md-6">
+                                </td> 
+                            </tr>
                         </tbody>
                     </table>
 
