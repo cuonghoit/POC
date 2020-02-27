@@ -384,14 +384,41 @@ class HomeController extends Controller
     public function getRMMP($id) {
         $course = course::all();
         if($this->isHR()) {
-            $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
                 ->where('status', $this::STATUS_APPROVED)->get();
         } else {
-            $rate_monthly_performance = rate_monthly_performance::join('status', 'status.id', '=', 'status')
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
                 ->where('user_id',$id)->get();
         }
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
+    }
+    public function saveRMMP($id, Request $request){
+        if($request->isMethod('post') && $request->has("id")) {
+            $count = count($request->input("id"));
+            $ids = $request->input("id");
+            $objective_and_milestone = $request->input('objective_and_milestone');
+            $result = $request->input('result');
+            $achieve = $request->input('achieve');
+
+            for($i = 0; $i < $count; $i++) {
+                $rate_monthly_performance = rate_monthly_performance::find($ids[$i]);
+                if($rate_monthly_performance->id) {
+                    $rate_monthly_performance->objective_and_milestone = $objective_and_milestone[$i];
+                    $rate_monthly_performance->result = $result[$i];
+                    if(is_null($achieve[$i])){
+                        $rate_monthly_performance->achieve = 0;
+                    }else{
+                        $rate_monthly_performance->achieve = 1;
+                    }
+                    // Set another data here
+                    $rate_monthly_performance->save();
+                }
+            }
+        }
+
+
+        return redirect()->route('RMMP',Auth::user()->id);
     }
     // end-rating-my-performance
 

@@ -203,6 +203,7 @@
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button class="btn btn-success">Save</button>
                    </form>
                 </div>
             </div>
