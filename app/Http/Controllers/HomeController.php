@@ -178,7 +178,7 @@ class HomeController extends Controller
         $users= personal_info::where('staff_role_id', 3)->get();
         $departmentList = personal_info::whereNotNull('department_id')->get();
         $departmentIds = array();
-        foreach ($departmentIds as $user) {
+        foreach ($departmentList as $user) {
             if( !in_array($user->department_id, $departmentIds) ) {
                 $departmentIds[] = $user->department_id;
             }
@@ -223,7 +223,7 @@ class HomeController extends Controller
         $users= personal_info::where('staff_role_id', 3)->get();
         $departmentList = personal_info::whereNotNull('department_id')->get();
         $departmentIds = array();
-        foreach ($departmentIds as $user) {
+        foreach ($departmentList as $user) {
             if( !in_array($user->department_id, $departmentIds) ) {
                 $departmentIds[] = $user->department_id;
             }
