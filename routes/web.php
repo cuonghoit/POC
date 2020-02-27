@@ -91,14 +91,14 @@ Route::group(['middleware' => ['role:department_managers|super-admin']], functio
 	Route::get('/department-annual-training-plan/{id}','HomeController@getDATP')->name('DATP');
 
 
-	Route::get('/approving-my-employees-msc-objectives/approving-my-employees-annual-msc-objectives/{id}','HomeController@getAMEAMO')->name('AMEAMO');
-	Route::get('/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getAMEMMO')->name('AMEMMO');
+	Route::match(['get', 'post'], '/approving-my-employees-msc-objectives/approving-my-employees-annual-msc-objectives/{id}','HomeController@getAMEAMO')->name('AMEAMO');
+	Route::match(['get', 'post'], '/approving-my-employees-msc-objectives/approving-my-employees-monthly-msc-objectives/{id}','HomeController@getAMEMMO')->name('AMEMMO');
     Route::post('/approve-my-employees-annual-msc/{id}','HomeController@approveMyEmployeeMscAnnual')->name('approveMyEmployeeMscAnnual');
     Route::post('/approve-my-employees-monthly-msc/{id}','HomeController@approveMyEmployeeMscMonthly')->name('approveMyEmployeeMscMonthly');
     Route::post('/reject-my-employees-annual-msc/{id}','HomeController@rejectMyEmployeeMscAnnual')->name('rejectMyEmployeeMscAnnual');
     Route::post('/reject-my-employees-monthly-msc/{id}','HomeController@rejectMyEmployeeMscMonthly')->name('rejectMyEmployeeMscMonthly');
 
-	Route::group(['prefix'=>'approving-my-employees-performance'], function() {
+    Route::group(['prefix'=>'approving-my-employees-performance'], function() {
 	    Route::get('approving-my-employees-annual-performance/{id}','HomeController@getAMEAP')->name('AMEAP');
 		Route::get('approving-my-employees-monthly-performance/{id}','HomeController@getAMEMP')->name('AMEMP');
         Route::post('approving-my-employees-annual-rate/{id}','HomeController@approveMyEmployeeRateAnnual')->name('approveMyEmployeeRateAnnual');
@@ -115,8 +115,8 @@ Route::group(['middleware' => ['role:department_managers|super-admin']], functio
 Route::group(['middleware' => ['role:department_managers|employees|general_director|super-admin']], function () {
 
     Route::get('/building-my-personal-development-plan/{id}', 'HomeController@getBMPDP')->name('BMPDP');
-    Route::get('/building-my-monthly-msc-objectives/{id}', 'HomeController@getBMMMO')->name('BMMMO');
-    Route::get('/building-my-annual-msc-objectives/{id}', 'HomeController@getBMAMO')->name('BMAMO');
+    Route::match(['get', 'post'], '/building-my-monthly-msc-objectives/{id}', 'HomeController@getBMMMO')->name('BMMMO');
+    Route::match(['get', 'post'], '/building-my-annual-msc-objectives/{id}', 'HomeController@getBMAMO')->name('BMAMO');
     Route::post('/submit-monthly-msc-objectives/{id}', 'HomeController@submitMscMothy')->name('submitMscMothy');
     Route::post('/submit-my-annual-msc-objectives/{id}', 'HomeController@submitMscAnnual')->name('submitMscAnnual');
 

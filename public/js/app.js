@@ -37090,6 +37090,14 @@ $(document).ready(function () {
       $(form[0]).submit();
     }
   });
+  $('.btn-search').click(function (e) {
+    var form = $(this).closest('form');
+
+    if (form.length) {
+      $(form[0]).attr('action', window.location.href);
+      $(form[0]).submit();
+    }
+  });
 });
 
 /***/ }),

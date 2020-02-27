@@ -173,33 +173,98 @@ class HomeController extends Controller
         $personal_info = personal_info::where('user_id',$id)->first();
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMPDP',['course'=>$course, 'personal_info'=>$personal_info]);
     }
-    public function getBMMMO($id) {
+    public function getBMMMO($id, Request $request) {
         $course = course::all();
         $users= personal_info::where('staff_role_id', 3)->get();
-        if($this->isHR()) {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->get()->where('type', 1);
-        } else {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('user_id',$id)->get()->where('type', 1);
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentIds as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
         }
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=> $users]);
-    }
-    public function getBMAMO($id){
-        $course = course::all();
-        $users= personal_info::where('staff_role_id', 3)->get();
+        $departmentList = personal_info::whereIn('department_id', $departmentIds)->get();
+        $year = '';
+        $department = '';
+
+        $year = '';
         if($this->isHR()) {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0)->get();
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->where('type', 1);
+
+            if($request->isMethod('POST')) {
+                $year = $request->input('dateFrom');
+                $department = $request->input('department');
+                if($year) {
+                    $msc_performance = $msc_performance->where('month_year', 'like', $year."%");
+                }
+                if($department) {
+                    $msc_performance = $msc_performance->where('user_id', $department);
+                }
+            }
         } else {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 0)->get();
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('user_id',$id)->where('type', 1);
+
+            if($request->isMethod('POST')) {
+                $year = $request->input('dateFrom');
+                if($year) {
+                    $msc_performance = $msc_performance->where('month_year', 'like', $year."%");
+                }
+            }
         }
 
+
+        $msc_performance = $msc_performance->get();
+
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=> $users, 'year' => $year, 'department_list' => $departmentList]);
+    }
+    public function getBMAMO($id, Request $request){
+        $course = course::all();
+        $users= personal_info::where('staff_role_id', 3)->get();
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentIds as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        $departmentList = personal_info::whereIn('department_id', $departmentIds)->get();
+        $year = '';
+        $department = '';
+
+        if($this->isHR()) {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0);
+            if($request->isMethod('POST')) {
+                $year = $request->input('dateFrom');
+                $department = $request->input('department');
+                if($year) {
+                    $msc_performance = $msc_performance->where('year', 'like', $year."%");
+                }
+                if($department) {
+                    $msc_performance = $msc_performance->where('user_id', $department);
+                }
+            }
+        } else {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 0);
+
+            if($request->isMethod('POST')) {
+                $year = $request->input('dateFrom');
+                if($year) {
+                    $msc_performance = $msc_performance->where('year', 'like', $year."%");
+                }
+            }
+        }
+
+
+        $msc_performance = $msc_performance->get();
+
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList]);
     }
     //end-building-my-msc-objectives
 
     //approving-my-employees-msc-objectives
-    public function getAMEAMO($id){
+    public function getAMEAMO($id, Request $request){
 
 
         $course = course::all();
@@ -211,11 +276,25 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
-            ->whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
+            ->whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED);
 
-        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users]);
+        $year = '';
+        $employee = '';
+        if($request->isMethod('POST')) {
+            $year = $request->input('dateFrom');
+            $employee = $request->input('employee');
+            if($year) {
+                $msc_performance = $msc_performance->where('year', 'like', $year."%");
+            }
+            if($employee) {
+                $msc_performance = $msc_performance->where('user_id', $employee);
+            }
+        }
+        $msc_performance = $msc_performance->get();
+
+        return view('performance_management.building_my_msc_objectives.approve_my_employees_msc_objectives.AMEAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users, 'year' => $year, 'employee' => $employee]);
     }
-    public function getAMEMMO($id){
+    public function getAMEMMO($id, Request $request){
         $course = course::all();
         $personal_info = personal_info::where('user_id',$id)->first();
         $users= personal_info::where('department_id', $id)->get();
@@ -224,8 +303,22 @@ class HomeController extends Controller
             $userIds[] = $user->user_id;
         }
         $msc_performance = msc_performance::join('status', 'status.id', '=', 'status')
-            ->whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
-        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users]);
+            ->whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED);
+
+        $year = '';
+        $employee = '';
+        if($request->isMethod('POST')) {
+            $year = $request->input('dateFrom');
+            $employee = $request->input('employee');
+            if($year) {
+                $msc_performance = $msc_performance->where('year', 'like', $year."%");
+            }
+            if($employee) {
+                $msc_performance = $msc_performance->where('user_id', $employee);
+            }
+        }
+        $msc_performance = $msc_performance->get();
+        return view('performance_management.building_my_msc_objectives..approve_my_employees_msc_objectives.AMEMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance' => $msc_performance, 'users'=>$users, 'year' => $year, 'employee' => $employee]);
     }
     //end-approving-my-employees-msc-objectives
     //end-building-my-msc-objectives

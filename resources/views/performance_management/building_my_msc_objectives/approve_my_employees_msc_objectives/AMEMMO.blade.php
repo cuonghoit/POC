@@ -38,10 +38,14 @@
                         </div>
                         <div class="col-md-3">
                             <select class="selectpicker form-control" data-live-search="true">
-                                        <option>Select employees</option>
-                                        @foreach($users as $users)
-                                        <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
-                                        @endforeach
+                                <option>Select employees</option>
+                                @foreach($users as $user)
+                                    @if($user->user_id === $employee)
+                                        <option value="{{ $user->user_id }}" selected="selected"> {{  $selected }}>{{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                    @else
+                                        <option value="{{ $user->user_id }}">{{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
 
@@ -49,10 +53,10 @@
                             <p>Select Month/Year:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="month" name="dateFrom" class="form-control col-md-10 " value="">
+                            <input type="month" name="dateFrom" class="form-control col-md-10 " value="{{ $year }}">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-success">Search</button>
+                            <button class="btn btn-success btn-search">Search</button>
                         </div>
                     </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>

@@ -50,11 +50,11 @@
                             <p>Select Department:</p>
                         </div>
                         <div class="col-md-3">
-                            <select class="selectpicker form-control" data-live-search="true">
-                                        <option>Select Department</option>
-                                        @foreach($users as $pi)
-                                        <option>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
-                                        @endforeach
+                            <select class="selectpicker form-control" data-live-search="true" name="department">
+                                <option value="">Select Department</option>
+                                @foreach($department_list as $pi)
+                                <option value="{{ $pi->user_id }}">{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         @endif
@@ -63,10 +63,10 @@
                             <p>Select a Year:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" name="dateFrom" class="datepicker form-control col-md-8 " value="">
+                            <input type="text" name="dateFrom" class="datepicker form-control col-md-8 " value="{{$year}}">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-success">Search</button>
+                            <button class="btn btn-success btn-search">Search</button>
                         </div>
 
 
