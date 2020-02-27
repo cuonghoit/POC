@@ -35,7 +35,14 @@
                                 <td>Select Month/Year:</td>
                                 <td class="text-left"><input type="month" name="fromYear" class="form-control col-md-10"></td>
                             </div>
-                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                            <td class="text-left">
+                                <select class=" form-control" data-live-search="true">
+                                    <option>Select employees</option>
+                                    @foreach($users as $users)
+                                    <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
                         </tr>
                     </table><br>
 
@@ -163,15 +170,11 @@
                             <div class="form-group">
                                 <td>Department comment:</td>
                                 <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
+                                <td><input type="submit" name="submit" class="btn btn-success" value="APPROVE"></td>
+                                <td><button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button></td>
                             </div>
                         </tr>
                     </table><br>
-
-
-                    <div class="text-center">
-                        <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
-                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button>
-                    </div>
                    </form>
                 </div>
             </div>

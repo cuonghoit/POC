@@ -201,7 +201,7 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
+                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
                    </form>
                 </div>

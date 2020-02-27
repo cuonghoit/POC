@@ -37,6 +37,14 @@
                                 <td>Select Year:</td>
                                 <td class="text-left"><input type="text" name="fromYear" class="datepicker text-center form-control col-md-10"></td>
                             </div>
+                            <td class="text-left">
+                                    <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select employees</option>
+                                        @foreach($users as $users)
+                                        <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
                             <td class="text-left" ><button class="btn btn-success">Search</button></td>
                         </tr>
                     </table><br>
