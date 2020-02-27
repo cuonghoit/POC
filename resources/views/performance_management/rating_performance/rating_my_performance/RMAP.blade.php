@@ -144,22 +144,24 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=0;?>
                             @foreach($rate_annual_performance as $rate_annual_performance )
                             <tr>
                                 <input type="hidden" name="id[]" value="{{$rate_annual_performance->id}}">
                                 <td>{{$rate_annual_performance->date}}</td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="checkbox"></td>
-                                <td><input type="text" placeholder=" {{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
+                                <td><input type="checkbox" name="must_do_1[{{$i}}]" @if($rate_annual_performance->must_do_1==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="must_do_2[{{$i}}]" @if($rate_annual_performance->must_do_2==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="must_do_3[{{$i}}]" @if($rate_annual_performance->must_do_3==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="must_do_4[{{$i}}]" @if($rate_annual_performance->must_do_4==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="should_do_1[{{$i}}]" @if($rate_annual_performance->should_do_1==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="should_do_2[{{$i}}]" @if($rate_annual_performance->should_do_2==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
+                                <td><input type="text" name="monthly_rate[]" value="{{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td>{{$rate_annual_performance->name}}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
                             </tr>
+                            <?php $i++;?>
                             @endforeach
                             <tr>
                                 <td class="text-left" colspan="2">
@@ -203,6 +205,7 @@
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                    </form>
                 </div>
             </div>

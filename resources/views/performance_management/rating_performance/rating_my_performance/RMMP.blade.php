@@ -135,25 +135,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1; ?>
+                        <?php $i=0; ?>
                              @foreach($rate_monthly_performance as $rmp)
                             <tr>
 
                                 <td>
-                                {{$i++}}
+                                {{++$i}}
                                     <input type="hidden" name="id[]" value="{{$rmp->id}}" >
                                 </td>
                                 <td>
                                     {{ $rmp->objective_category }}
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control text-center" value="{{  $rmp->objective_and_milestone }}" >
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="{{  $rmp->objective_and_milestone }}" >
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control text-center" value="{{ $rmp->result }}" >
+                                    <input type="text" class="form-control text-center" name="result[]" value="{{ $rmp->result }}" >
                                 </td>
                                 <td>
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="achieve[{{$i-1}}]" @if($rmp->achieve == 1) checked = "checked" @endif>
                                 </td>
                                 <td>
                                     {{ $rmp->name}}
@@ -193,7 +193,7 @@
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        <button class="btn btn-success">Save</button>
+                        <button data-action="{{ route('saveRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                    </form>
                 </div>
             </div>

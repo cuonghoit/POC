@@ -189,7 +189,7 @@
                      <table style="width: 50%;">
                        <tr>
                             <div class="form-group">
-                                <td>Department comment:</td>
+                                <td>Approved/Rejected Comment:</td>
                                 <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
                             </div>
                         </tr>

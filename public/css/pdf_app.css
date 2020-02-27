@@ -11382,7 +11382,18 @@ a.text-dark:focus {
   }
 }
 
+@media print {
+@page {
+    size: a4 landscape;
+}
+}
+
 .container {
-  margin: 0 auto !important;
+  margin: 0 auto;
+}
+
+.card-body .table th,
+.card-body .table td {
+  padding: 0 !important;
 }
 

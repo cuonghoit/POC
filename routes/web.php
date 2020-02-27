@@ -126,6 +126,9 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
         Route::post('/submit-rating-my-annual/{id}', 'HomeController@submitRateAnnual')->name('submitRateAnnual');
         Route::post('/submit-rating-my-monthly/{id}', 'HomeController@submitRateMonthy')->name('submitRateMonthy');
     });
+
+    Route::post('save-rate-monthly-performance/{id}', 'HomeController@saveRMMP')->name('saveRMMP');
+    Route::post('save-rate-annual-performance/{id}', 'HomeController@saveRMAP')->name('saveRMAP');
 });
 
 

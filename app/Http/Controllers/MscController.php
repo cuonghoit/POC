@@ -38,18 +38,18 @@ class MscController extends Controller
             $ids = $request->input("id");
             $milestone = $request->input("milestone");
             $target = $request->input("target");
-            // $jan = $request->input("jan");
-            // $feb = $request->input("feb");
-            // $mar = $request->input("mar");
-            // $apr = $request->input("apr");
-            // $may = $request->input("may");
-            // $jun = $request->input("jun");
-            // $jul = $request->input("jul");
-            // $aug = $request->input("aug");
-            // $sep = $request->input("sep");
-            // $oct = $request->input("oct");
-            // $nov = $request->input("nov");
-            // $dec = $request->input("dec");
+            $jan = $request->input("jan");
+            $feb = $request->input("feb");
+            $mar = $request->input("mar");
+            $apr = $request->input("apr");
+            $may = $request->input("may");
+            $jun = $request->input("jun");
+            $jul = $request->input("jul");
+            $aug = $request->input("aug");
+            $sep = $request->input("sep");
+            $oct = $request->input("oct");
+            $nov = $request->input("nov");
+            $dec = $request->input("dec");
 
             for($i = 0; $i < $count; $i++) {
                 $mscPerformance = msc_performance::find($ids[$i]);
@@ -63,7 +63,7 @@ class MscController extends Controller
             }
         }
 
-        return redirect()->route('thi', ['id' => $id]);
+        return redirect()->route('BMAMO', ['id' => $id]);
     }
     public function saveMscMonthly($id,Request $request) {
         if($request->isMethod('post') && $request->has("id")) {

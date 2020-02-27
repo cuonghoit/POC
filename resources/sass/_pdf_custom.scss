@@ -14,12 +14,22 @@
     }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
     .container-xl, .container-lg, .container-md, .container-sm, .container {
         max-width: 100%;
     }
 }
+@media print {
+    @page {
+        size: a4 landscape;
+    }
 
+}
 .container {
-    margin: 0 auto !important;
+    margin: 0 auto;
+}
+.card-body {
+    .table th, .table td {
+        padding: 0 !important;
+    }
 }

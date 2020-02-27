@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -11370,5 +11370,17 @@ a.text-dark:focus {
 
 .dropdown-item.submenu .dropdown-menu {
   margin-left: 0;
+}
+
+html {
+  font-family: "EB Garamond";
+}
+
+:root {
+  --font-family-sans-serif: "EB Garamond";
+}
+
+body {
+  font-family: "EB Garamond";
 }
 
