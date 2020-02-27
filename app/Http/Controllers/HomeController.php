@@ -183,7 +183,7 @@ class HomeController extends Controller
                 $departmentIds[] = $user->department_id;
             }
         }
-        $departmentList = personal_info::whereIn('department_id', $departmentIds)->get();
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
         $year = '';
         $department = '';
 
@@ -228,7 +228,7 @@ class HomeController extends Controller
                 $departmentIds[] = $user->department_id;
             }
         }
-        $departmentList = personal_info::whereIn('department_id', $departmentIds)->get();
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
         $year = '';
         $department = '';
 
