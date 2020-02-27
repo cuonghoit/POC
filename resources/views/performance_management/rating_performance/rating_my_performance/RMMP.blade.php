@@ -30,6 +30,17 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY MONTHLY PERFORMANCE</b></h3><br>
+
+                    <table style="width: 50%;">
+                       <tr>
+                            <div class="form-group">
+                                <td>Select Month/Year:</td>
+                                <td class="text-left"><input type="month" name="fromYear" class="form-control col-md-10"></td>
+                            </div>
+                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                        </tr>
+                    </table><br>
+
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -85,7 +96,6 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>MONTHLY MSC OBJECTIVES</b></p>
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -98,54 +108,10 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <div class="form-group">
-                                <td><b>Training & Development period from:</b></td>
-                                <td>Month: </td>
-                               <td><select name="fromMonth" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td>Year: </td>
-                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
-                            </div>
-                            <td><b>To:</b></td>
-                            <div class="form-group">
-                                <td>Month:</td>
-                               <td><select name="toMonth" class="form-control col-md-10">
-                                    <option value="1">Jan</option>
-                                    <option value="2">Feb</option>
-                                    <option value="3">Mar</option>
-                                    <option value="4">Apr</option>
-                                    <option value="5">May</option>
-                                    <option value="6">Jun</option>
-                                    <option value="7">Jul</option>
-                                    <option value="8">Aug</option>
-                                    <option value="9">Sep</option>
-                                    <option value="10">Oct</option>
-                                    <option value="11">Nov</option>
-                                    <option value="12">Dec</option>
-                                </select></td>
-                                <td>Year: </td>
-                                <td><input type="text" name="fromYear" class="datepicker form-control col-md-6"></td>
-                            </div>
-                        </tr>
-                    </table><br>
                     <div class="table-responsive">
                         <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
-                            <tr class="bg-secondary">
+                            <tr class="bg-success">
                                 <th>No.</th>
                                 <th>
                                     Objective Category
@@ -169,23 +135,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $i=1; ?>
                              @foreach($rate_monthly_performance as $rmp)
                             <tr>
 
                                 <td>
-                                    {{ $rmp->id}}
+                                {{$i++}}
+                                    <input type="hidden" name="id[]" value="{{$rmp->id}}" >
                                 </td>
                                 <td>
                                     {{ $rmp->objective_category }}
                                 </td>
                                 <td>
-                                    {{  $rmp->objective_and_milestone }}
+                                    <input type="text" class="form-control text-center" value="{{  $rmp->objective_and_milestone }}" >
                                 </td>
                                 <td>
-                                    {{ $rmp->result }}
+                                    <input type="text" class="form-control text-center" value="{{ $rmp->result }}" >
                                 </td>
                                 <td>
-                                    {{ $rmp->achieve}}
+                                    <input type="checkbox">
                                 </td>
                                 <td>
                                     {{ $rmp->name}}
@@ -197,85 +165,6 @@
 
                             </tr>
                              @endforeach
-
-                            <tr>
-                                <td>4</td>
-                                <td>
-                                    Must-Do 4
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>
-                                    Should-Do 1
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>
-                                    Should-Do 2
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>
-                                    Could-Do 1
-                                </td>
-                                <td>
-                                    <input type="text" name="smart">
-                                </td>
-                                <td>
-                                    <input type="text" name="target">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td>
-                                    <input type="text" name="criteria">
-                                </td>
-                                <td></td>
-                            </tr>
-
                         </tbody>
                     </table>
                     </div>
@@ -302,8 +191,9 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
+                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button class="btn btn-success">Save</button>
                    </form>
                 </div>
             </div>

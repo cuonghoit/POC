@@ -30,6 +30,25 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL PERFORMANCE</b></h3><br>
+
+                    <table style="width: 50%;">
+                       <tr>
+                            <div class="form-group">
+                                <td>Select Year:</td>
+                                <td class="text-left"><input type="text" name="fromYear" class="datepicker text-center form-control col-md-10"></td>
+                            </div>
+                            <td class="text-left">
+                                    <select class="selectpicker form-control" data-live-search="true">
+                                        <option>Select employees</option>
+                                        @foreach($users as $users)
+                                        <option>{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
+                        </tr>
+                    </table><br>
+
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>
@@ -85,7 +104,7 @@
                             </div>
                         </tr>
                     </table><br>
-                    <p class="text-left" ><b>ANNUAL MSC OBJECTIVES</b></p>
+
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -98,17 +117,6 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-                    <table style="width: 100%;">
-                        <tr>
-                            <td>Training & Development period from:</td>
-                            <div class="form-group">
-                                <td><b>From Year:</b></td>
-                                <td><input type="text" name="dateFrom" class="datepicker form-control col-md-8" value=""></td>
-                                <td><b>To Year: </b></td>
-                                <td><input type="text" name="dateTo" class="datepicker form-control col-md-8" value=""></td>
-                            </div>
-                        </tr>
-                    </table><br>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center table-striped text-nowrap">
                         <thead>
@@ -150,13 +158,13 @@
                                 <td>
                                     {{$rate_annual_performance->date}}
                                 </td>
-                                <td>{{$rate_annual_performance->must_do_1}}</td>
-                                <td>{{$rate_annual_performance->must_do_2}}</td>
-                                <td>{{$rate_annual_performance->must_do_3}}</td>
-                                <td>{{$rate_annual_performance->must_do_4}}</td>
-                                <td>{{$rate_annual_performance->should_do_1}}</td>
-                                <td>{{$rate_annual_performance->should_do_2}}</td>
-                                <td>{{$rate_annual_performance->could_do_1}}</td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_1==1)  checked = "checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_2==1)  checked = "checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_3)  checked = "checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_4) checked = "checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->should_do_1) checked="checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->should_do_2) checked="checked" @endif></td>
+                                <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->could_do_1) checked="checked" @endif ></td>
                                 <td>{{$rate_annual_performance->monthly_rate}}</td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
@@ -164,12 +172,12 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td class="text-left" colspan="11">
+                                <td class="text-left" colspan="12">
                                     Annual Average Rate:
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-left" colspan="11">
+                                <td class="text-left" colspan="12">
                                     Convert to Annual Performance Appraisal Level:
                                 </td>
                             </tr>
@@ -178,6 +186,14 @@
                 </div>
                 <br>
                      <div class="table-responsive">
+                     <table style="width: 50%;">
+                       <tr>
+                            <div class="form-group">
+                                <td>Department comment:</td>
+                                <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
+                            </div>
+                        </tr>
+                    </table><br>
                         <table class="table">
                             <tr>
                                 <div class="form-group">

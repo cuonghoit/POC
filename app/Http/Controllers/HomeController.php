@@ -408,7 +408,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
     }
     public function getAMEMP($id){
         $course = course::all();
@@ -422,7 +422,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
     }
 
     //end-approving-my-employees-performance
