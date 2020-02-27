@@ -406,10 +406,10 @@ class HomeController extends Controller
                 if($rate_monthly_performance->id) {
                     $rate_monthly_performance->objective_and_milestone = $objective_and_milestone[$i];
                     $rate_monthly_performance->result = $result[$i];
-                    if(is_null($achieve[$i])){
-                        $rate_monthly_performance->achieve = 0;
-                    }else{
+                    if(isset($achieve[$i])){
                         $rate_monthly_performance->achieve = 1;
+                    }else{
+                        $rate_monthly_performance->achieve = 0;
                     }
                     // Set another data here
                     $rate_monthly_performance->save();

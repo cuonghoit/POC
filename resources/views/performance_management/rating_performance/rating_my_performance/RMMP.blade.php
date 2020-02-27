@@ -135,12 +135,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php $i=1; ?>
+                        <?php $i=0; ?>
                              @foreach($rate_monthly_performance as $rmp)
                             <tr>
 
                                 <td>
-                                {{$i++}}
+                                {{++$i}}
                                     <input type="hidden" name="id[]" value="{{$rmp->id}}" >
                                 </td>
                                 <td>
@@ -153,7 +153,7 @@
                                     <input type="text" class="form-control text-center" name="result[]" value="{{ $rmp->result }}" >
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="achieve[]" @if($rmp->achieve == 1) checked = "checked" @endif>
+                                    <input type="checkbox" name="achieve[{{$i-1}}]" @if($rmp->achieve == 1) checked = "checked" @endif>
                                 </td>
                                 <td>
                                     {{ $rmp->name}}
