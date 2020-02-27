@@ -34,7 +34,7 @@ class MscController extends Controller
     public function saveMscAnnual($id, Request $request) {
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
-                
+
             $ids = $request->input("id");
             $milestone = $request->input("milestone");
             $target = $request->input("target");
@@ -56,7 +56,7 @@ class MscController extends Controller
                 if($mscPerformance->id) {
                     $mscPerformance->milestone_behavior = $milestone[$i];
                     $mscPerformance->target_to_archive = $target[$i];
-                   
+
                     // Set another data here
                     $mscPerformance->save();
                 }
