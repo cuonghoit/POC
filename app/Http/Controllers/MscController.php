@@ -34,6 +34,7 @@ class MscController extends Controller
     public function saveMscAnnual($id, Request $request) {
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
+
             $ids = $request->input("id");
             $milestone = $request->input("milestone");
             $target = $request->input("target");
@@ -55,6 +56,29 @@ class MscController extends Controller
                 if($mscPerformance->id) {
                     $mscPerformance->milestone_behavior = $milestone[$i];
                     $mscPerformance->target_to_archive = $target[$i];
+
+                    // Set another data here
+                    $mscPerformance->save();
+                }
+            }
+        }
+
+        return redirect()->route('BMAMO', ['id' => $id]);
+    }
+    public function saveMscMonthly($id,Request $request) {
+        if($request->isMethod('post') && $request->has("id")) {
+            $count = count($request->input("id"));
+            $ids = $request->input("id");
+            $milestone = $request->input("milestone");
+            $target = $request->input("target");
+            $action_to_chieve = $request->input('action_to_chieve');
+
+            for($i = 0; $i < $count; $i++) {
+                $mscPerformance = msc_performance::find($ids[$i]);
+                if($mscPerformance->id) {
+                    $mscPerformance->milestone_behavior = $milestone[$i];
+                    $mscPerformance->target_to_archive = $target[$i];
+                    $mscPerformance->action_to_chieve = $action_to_chieve[$i];
                     // Set another data here
                     $mscPerformance->save();
 
@@ -62,9 +86,6 @@ class MscController extends Controller
             }
         }
 
-        return redirect()->route('BMAMO', ['id' => $id]);
-    }
-    public function saveMscMonthly(Request $request) {
-        var_dump($request->all());die;
+        return redirect()->route('BMMMO', ['id' => $id]);
     }
 }

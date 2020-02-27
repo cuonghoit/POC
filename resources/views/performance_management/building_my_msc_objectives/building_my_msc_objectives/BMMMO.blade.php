@@ -31,7 +31,7 @@
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY MONTHLY MSC OBJECTIVES</b></h3><br>
 
-                    
+
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -44,9 +44,9 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-                    
+
                     <div class="row">
-                         @if($personal_info->user_id== 5)
+                         @if($personal_info->user_id == 5)
                         <div class="col-md-2">
                             <p>Select Department:</p>
                         </div>
@@ -57,7 +57,7 @@
                                         <option>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
                                         @endforeach
                             </select>
-                        </div> 
+                        </div>
                         @endif
 
                         <div class="col-md-2">
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-success">Search</button>
-                        </div>                                        
+                        </div>
                     </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
@@ -125,8 +125,8 @@
                             </div>
                         </tr>
                     </table><br>
-                    
-                    
+
+
                     <table class="table table-bordered text-center table-striped">
                         <thead class="bg-success">
                             <tr>
@@ -156,19 +156,21 @@
                         <?php $i=1 ?>
                         @foreach($msc_performance as $msc)
                             <tr>
-                                <td>{{$i++}}</td>
                                 <td>
-                                    <input type="text" name="smart" value="{{$msc->objective_category}}" >
+                                    {{$i++}}
+                                    <input type="hidden" name="id[]" value="{{$msc->id}}"></td>
+                                <td>
+                                    {{$msc->objective_category}}
                                 </td>
                                 <td>
-                                    <input type="text" name="Milestone" value="{{$msc->milestone_behavior}}">
+                                    <input type="text" name="milestone[]" value="{{$msc->milestone_behavior}}">
 
                                 </td>
                                 <td>
-                                <input type="text" name="action-plans" value="{{$msc->target_to_archive}}" >
+                                <input type="text" name="target[]" value="{{$msc->target_to_archive}}" >
                                 </td>
                                 <td>
-                                    <input type="text" name="" value="{{$msc->action_to_chieve}}" >
+                                    <input type="text" name="action_to_chieve[]" value="{{$msc->action_to_chieve}}" >
                                 </td>
                                 <td>{{$msc->name}}</td>
                                 <td>
@@ -182,7 +184,8 @@
                     </table>
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                     </div>
                    </form>
                 </div>

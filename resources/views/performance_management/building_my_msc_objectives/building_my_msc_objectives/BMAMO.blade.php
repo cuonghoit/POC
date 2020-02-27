@@ -30,7 +30,7 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY ANNUAL MSC OBJECTIVES</b></h3><br>
-                    
+
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -56,7 +56,7 @@
                                         <option>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
                                         @endforeach
                             </select>
-                        </div> 
+                        </div>
                         @endif
 
                         <div class="col-md-2">
@@ -69,7 +69,7 @@
                             <button class="btn btn-success">Search</button>
                         </div>
 
-                                                               
+
                     </div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
