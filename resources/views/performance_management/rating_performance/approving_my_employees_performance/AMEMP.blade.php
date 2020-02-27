@@ -43,7 +43,7 @@
                                     @endforeach
                                 </select>
                             </td>
-                            <td class="text-left" ><button class="btn btn-success">Search</button></td>git
+                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
                         </tr>
                     </table><br>
 
@@ -165,17 +165,18 @@
                         </tbody>
                     </table>
                     </div>
-
                     <table style="width: 50%;">
                        <tr>
                             <div class="form-group">
-                                <td>Department comment:</td>
+                                <td>Approved/Rejected Comment:</td>
                                 <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
-                                <td><input type="submit" name="submit" class="btn btn-success" value="APPROVE"></td>
-                                <td><button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button></td>
                             </div>
                         </tr>
                     </table><br>
+                    <div class="text-center">
+                        <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
+                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateAnnual',Auth::user()->id) }}"  >REJECT</button>
+                    </div>
                    </form>
                 </div>
             </div>

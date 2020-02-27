@@ -186,6 +186,14 @@
                 </div>
                 <br>
                      <div class="table-responsive">
+                     <table style="width: 50%;">
+                       <tr>
+                            <div class="form-group">
+                                <td>Approved/Rejected Comment:</td>
+                                <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
+                            </div>
+                        </tr>
+                    </table><br>
                         <table class="table">
                             <tr>
                                 <div class="form-group">
@@ -207,16 +215,10 @@
                         </table>
                     </div>
 
-                    <table style="width: 50%;">
-                       <tr>
-                            <div class="form-group">
-                                <td>Department comment:</td>
-                                <td class="text-left"><input type="text" name="comment" class="form-control col-md-10"></td>
-                                <td><input type="submit" name="submit" class="btn btn-success" value="APPROVE"></td>
-                                <td><button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateMonthly',Auth::user()->id) }}"  >REJECT</button></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    <div class="text-center">
+                        <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
+                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateAnnual',Auth::user()->id) }}"  >REJECT</button>
+                    </div>
                    </form>
                 </div>
             </div>
