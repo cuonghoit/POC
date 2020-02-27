@@ -46,7 +46,7 @@
                     @endif
                     
                     <div class="row">
-                         @if($personal_info->user_id== 5)
+                         @if($personal_info->user_id == 5)
                         <div class="col-md-2">
                             <p>Select Department:</p>
                         </div>
@@ -156,9 +156,11 @@
                         <?php $i=1 ?>
                         @foreach($msc_performance as $msc)
                             <tr>
-                                <td>{{$i++}}</td>
                                 <td>
-                                    <input type="text" name="smart" value="{{$msc->objective_category}}" >
+                                    {{$i++}}
+                                    <input type="hidden" name="id[]" value="{{$msc->id}}"></td>
+                                <td>
+                                    {{$msc->objective_category}}
                                 </td>
                                 <td>
                                     <input type="text" name="Milestone" value="{{$msc->milestone_behavior}}">
@@ -182,7 +184,8 @@
                     </table>
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success col-md-3">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success" >Save</button>
                     </div>
                    </form>
                 </div>

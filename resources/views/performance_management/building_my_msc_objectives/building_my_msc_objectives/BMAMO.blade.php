@@ -258,7 +258,7 @@
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL:</b>&emsp;</label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success" >Save</button>
                     </div>
                    </form>
                 </div>
