@@ -16,7 +16,7 @@
         <div style="width: 100%;">
             <div class="card">
                 <div class="card-header">
-                Building My MSC Objective / Annual MSC
+                    MSC Objective / Annual MSC
                 </div>
 
                 <div class="card-body">
@@ -29,7 +29,16 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
-                    <h3 class="text-center" ><b>BUILDING MY ANNUAL MSC OBJECTIVES</b></h3><br>
+                    <h3 class="text-center" >
+                        <b>
+                            @hasanyrole('general_director')
+                            {{ __('COMPANY ANNUAL MSC OBJECTIVES') }}
+                            @else
+                                {{ __('BUILDING MY ANNUAL MSC OBJECTIVES') }}
+                            @endif
+                        </b>
+                    </h3><br>
+
 
                     @if(count($errors)>0)
                         <div class="atler">
@@ -256,7 +265,15 @@
                         </table>
                     </div>
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL:</b>&emsp;</label>
+                        <label for="submit"><b>
+                                @hasanyrole('general_director')
+                                {{ __('APPROVE/REJECT:') }}
+                                @else
+                                    {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL:') }}
+                                @endif
+
+                            </b>&emsp;
+                        </label>
                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
                         <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                     </div>

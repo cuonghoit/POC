@@ -25,7 +25,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ route('rejectMyEmployeeMscMonthly',Auth::user()->id) }}" method="post">
+                    <form action="{{ route('approveMyEmployeeMscMonthly',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
@@ -53,7 +53,7 @@
                             <p>Select Month/Year:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="month" name="dateFrom" class="form-control col-md-10 " value="{{ $year }}">
+                            <input type="text" name="dateFrom" class="datepicker-months form-control col-md-10 " value="{{ $year }}">
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-success btn-search">Search</button>

@@ -187,7 +187,6 @@ class HomeController extends Controller
         $year = '';
         $department = '';
 
-        $year = '';
         if($this->isHR()) {
             $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->where('type', 1);
 
@@ -198,7 +197,7 @@ class HomeController extends Controller
                     $msc_performance = $msc_performance->where('month_year', 'like', $year."%");
                 }
                 if($department) {
-                    $msc_performance = $msc_performance->where('user_id', $department);
+//                    $msc_performance = $msc_performance->where('user_id', $department);
                 }
             }
         } else {
@@ -241,7 +240,7 @@ class HomeController extends Controller
                     $msc_performance = $msc_performance->where('year', 'like', $year."%");
                 }
                 if($department) {
-                    $msc_performance = $msc_performance->where('user_id', $department);
+//                    $msc_performance = $msc_performance->where('user_id', $department);
                 }
             }
         } else {
@@ -456,23 +455,52 @@ class HomeController extends Controller
 
     //rating-performance
     //rating-my-performance
-    public function getRMAP($id){
+    public function getRMAP($id, Request $request){
         $course = course::all();
+
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+
+        $year = '';
+        $department = '';
+
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
         if($this->isHR()) {
             $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('status', $this::STATUS_APPROVED)->get();
+                ->where('status', $this::STATUS_APPROVED);
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $department = $request->input('department');
+                if($year) {
+                    $rate_annual_performance = $rate_annual_performance->where('year', 'like', $year."%");
+                }
+                if($department) {
+//                    $rate_annual_performance = $rate_annual_performance->where('user_id', $department);
+                }
+            }
         } else {
             $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('user_id',$id)->get();
+                ->where('user_id',$id);
 
         }
+
+        $rate_annual_performance = $rate_annual_performance->get();
         $avg = 0;
         foreach ($rate_annual_performance as $rate){
             $avg += $rate->monthly_rate;
         }
-        $avg = $avg/count($rate_annual_performance);
+        if(count($rate_annual_performance)) {
+            $avg = $avg/count($rate_annual_performance);
+        } else {
+            $avg = 0;
+        }
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg, 'year' => $year, 'department_list' => $departmentList]);
     }
 
     public function searchRMAP($id, Request $request){
@@ -573,17 +601,43 @@ class HomeController extends Controller
     }
 
 
-    public function getRMMP($id) {
+    public function getRMMP($id, Request $request) {
         $course = course::all();
+
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+
+        $year = '';
+        $department = '';
+
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+
         if($this->isHR()) {
             $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('status', $this::STATUS_APPROVED)->get();
+                ->where('status', $this::STATUS_APPROVED);
+            if($request->isMethod('POST')) {
+                $year = $request->input('month_year');
+                $department = $request->input('department');
+                if($year) {
+                    $rate_monthly_performance = $rate_monthly_performance->where('month_year', 'like', $year."%");
+                }
+                if($department) {
+//                    $rate_monthly_performance = $rate_monthly_performance->where('user_id', $department);
+                }
+            }
         } else {
             $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('user_id',$id)->get();
+                ->where('user_id',$id);
         }
+        $rate_monthly_performance = $rate_monthly_performance->get();
+
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'department_list' => $departmentList, 'year' => $year]);
     }
     public function saveRMMP($id, Request $request){
         if($request->isMethod('post') && $request->has("id")) {

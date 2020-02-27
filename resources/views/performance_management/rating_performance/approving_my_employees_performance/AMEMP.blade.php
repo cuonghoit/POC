@@ -32,7 +32,7 @@
                            <tr>
                                 <div class="form-group">
                                     <td>Select Month/Year:</td>
-                                    <td class="text-left"><input type="month" name="month_year" class="form-control col-md-10"></td>
+                                    <td class="text-left"><input type="text" name="month_year" class="datepicker-months form-control col-md-10"></td>
                                 </div>
                                 <td class="text-left">
                                     <select class=" form-control" data-live-search="true" name="employee">

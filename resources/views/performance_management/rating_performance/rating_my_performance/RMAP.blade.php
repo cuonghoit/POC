@@ -30,15 +30,34 @@
                     <h3 class="text-center" ><b>RATING MY ANNUAL PERFORMANCE</b></h3><br>
                     <form action="{{ route('searchRMAP',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                     <table style="width: 50%;">
-                       <tr>
-                            <div class="form-group">
-                                <td>Select Year:</td>
-                                <td class="text-left"><input type="text" name="year" class="datepicker text-center form-control col-md-10"></td>
-                            </div>
-                            <td class="text-left" ><button class="btn btn-success">Search</button></td>
-                        </tr>
-                    </table><br>
+                        <div class="row">
+                           @hasanyrole('general_director')
+                           <div class="col-md-2">
+                               <p>Select Department:</p>
+                           </div>
+                           <div class="col-md-3">
+                               <select class="selectpicker form-control" data-live-search="true" name="department">
+                                   <option value="">Select Department</option>
+                                   @foreach($department_list as $pi)
+                                       <option value="{{ $pi->user_id }}">{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                   @endforeach
+                               </select>
+                           </div>
+                           @endif
+                           <div class="col-md-2">
+                               <p>Select Year:</p>
+                           </div>
+                           <div class="col-md-2">
+                               <input type="text" name="year" class="datepicker text-center form-control col-md-10 " value="{{ $year }}">
+                           </div>
+                           <div class="col-md-2">
+                               @hasanyrole('general_director')
+                               <button class="btn btn-success btn-search">Search</button>
+                               @else
+                                   <button class="btn btn-success">Search</button>
+                               @endif
+                           </div>
+                        </div>
                     </form>
                     <form action="{{ route('submitRateAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">

@@ -64,7 +64,7 @@
                             <p>Select Month/Year:</p>
                         </div>
                         <div class="col-md-3">
-                            <input type="month" name="dateFrom" class="form-control col-md-10 " value="{{  $year }}">
+                            <input type="text" name="dateFrom" class="datepicker-months form-control col-md-10 " value="{{  $year }}">
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-success btn-search">Search</button>

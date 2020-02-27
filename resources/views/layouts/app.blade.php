@@ -332,5 +332,10 @@
         viewMode: "years",
         minViewMode: "years"
     });
+    $(".datepicker-months").datepicker({
+        format: "yyyy-mm",
+        viewMode: "months",
+        minViewMode: "months"
+    });
 </script>
 </html>
