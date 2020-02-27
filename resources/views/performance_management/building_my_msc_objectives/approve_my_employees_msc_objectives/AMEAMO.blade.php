@@ -30,9 +30,9 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL MSC OBJECTIVES</b></h3><br>
-                    <div class="row">   
-                   
-                    
+                    <div class="row">
+
+
                         <div class="col-md-2">
                             <p>Select Employees:</p>
                         </div>
@@ -53,9 +53,9 @@
                         </div>
                         <div class="col-md-2">
                             <button class="btn btn-success">Search</button>
-                        </div>  
+                        </div>
                     </div>
-                            
+
 
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
@@ -123,7 +123,7 @@
 
 
                     </table><br>
-                    
+
                     @if(count($errors)>0)
                         <div class="atler">
                             @foreach($errors->all() as $er)
@@ -262,9 +262,9 @@
                             </tr>--}}
                             <tr colspan="7">
                                 <td colspan="8" class="text-left">
-                                    Comment: 
-                                    <input type="text" name="coment" class="col-md-6">
-                                </td> 
+                                    Comment:
+                                    <input type="text" name="comment" class="col-md-6">
+                                </td>
                             </tr>
                         </tbody>
                     </table>

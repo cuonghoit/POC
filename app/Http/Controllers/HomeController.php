@@ -624,7 +624,7 @@ class HomeController extends Controller
         return redirect()->route('RMMP', ['id' => $id]);
     }
 
-    public function approveMyEmployeeMscAnnual($id) {
+    public function approveMyEmployeeMscAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
         foreach ($users as $user) {
@@ -632,16 +632,21 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
+        $comment = $request->input('comment');
+        if ( !$comment ) {
+            $comment = '';
+        }
 
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_APPROVED;
+            $msc->note = $comment;
             $msc->save();
         }
 
         return redirect()->route('AMEAMO', ['id' => $id]);
     }
 
-    public function approveMyEmployeeMscMonthly($id) {
+    public function approveMyEmployeeMscMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
         foreach ($users as $user) {
@@ -649,16 +654,21 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
+        $comment = $request->input('comment');
+        if ( !$comment ) {
+            $comment = '';
+        }
 
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_APPROVED;
+            $msc->note = $comment;
             $msc->save();
         }
 
         return redirect()->route('AMEMMO', ['id' => $id]);
     }
 
-    public function rejectMyEmployeeMscAnnual($id) {
+    public function rejectMyEmployeeMscAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
         foreach ($users as $user) {
@@ -666,16 +676,21 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 0)->where('status', $this::STATUS_SUBMITED)->get();
+        $comment = $request->input('comment');
+        if ( !$comment ) {
+            $comment = '';
+        }
 
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_REJECTED;
+            $msc->note = $comment;
             $msc->save();
         }
 
         return redirect()->route('AMEAMO', ['id' => $id]);
     }
 
-    public function rejectMyEmployeeMscMonthly($id) {
+    public function rejectMyEmployeeMscMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
         $userIds = array();
         foreach ($users as $user) {
@@ -683,9 +698,14 @@ class HomeController extends Controller
         }
 
         $msc_performance = msc_performance::whereIn('user_id', $userIds)->where('type', 1)->where('status', $this::STATUS_SUBMITED)->get();
+        $comment = $request->input('comment');
+        if ( !$comment ) {
+            $comment = '';
+        }
 
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_REJECTED;
+            $msc->note = $comment;
             $msc->save();
         }
 
@@ -794,5 +814,7 @@ class HomeController extends Controller
             $msc->status = $this::STATUS_PENDING;
             $msc->save();
         }
+
+        return redirect('/');
     }
 }
