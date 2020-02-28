@@ -46,7 +46,7 @@
                             </div>
                             @endif
                             <div class="col-md-2">
-                                <p>Select Year:</p>
+                                <p>Select Month/Year:</p>
                             </div>
                             <div class="col-md-2">
                                 <input type="text" name="month_year" class="datepicker-months text-center form-control col-md-10 " value="{{ $year }}">
