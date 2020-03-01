@@ -144,7 +144,13 @@
                                     Result Description
                                 </th>
                                 <th>
-                                    Achieved (√) or Not (x)
+                                    Achieved (√) or Not
+                                </th>
+                                <th rowspan="2">
+                                    Monthly Rates
+                                </th>
+                                <th rowspan="2">
+                                    Monthly Performance Appraisal Level
                                 </th>
                                 <th>
                                     Status
@@ -187,6 +193,8 @@
                                 <td>
                                     <input type="checkbox" name="achieve[{{$i-1}}]" @if($rmp->achieve == 1) checked = "checked" @endif>
                                 </td>
+                                <td><input type="text" name="monthly_rate[]" value="{{$rmp->monthly_rate}}" class="form-control text-center"></td>
+                                <td>{{$rmp->monthly_performance_level}}</td>
                                 <td class="{{ $classColor }}">
                                     {{ App\Http\Controllers\HomeController::getStatus($rmp->status) }}
                                 </td>

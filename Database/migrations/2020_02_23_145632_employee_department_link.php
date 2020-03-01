@@ -13,12 +13,12 @@ class EmployeeDepartmentLink extends Migration
      */
     public function up()
     {
-        Schema::create('employee_department_link', function (Blueprint $table) {
+        /*Schema::create('employee_department_link', function (Blueprint $table) {
             $table->unsignedBiginteger('employee_id')->primary();
             $table->unsignedBiginteger('department_id')->primary();
             $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('users')->onDelete('cascade');
-        });
+        });*/
     }
 
     /**

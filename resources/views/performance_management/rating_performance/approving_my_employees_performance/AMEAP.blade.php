@@ -157,7 +157,7 @@
                             @foreach($rate_annual_performance as $rate_annual_performance)
                             <tr>
                                 <td>
-                                    {{$rate_annual_performance->date}}
+                                    {{ date('M-y', strtotime($rate_annual_performance->date)) }}
                                 </td>
                                 <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_1==1)  checked = "checked" @endif></td>
                                 <td><input type="checkbox" disabled="disabled" @if($rate_annual_performance->must_do_2==1)  checked = "checked" @endif></td>

@@ -670,16 +670,33 @@ class HomeController extends Controller
             $objective_and_milestone = $request->input('objective_and_milestone');
             $result = $request->input('result');
             $achieve = $request->input('achieve');
+            $monthly_rate = $request->input('monthly_rate');
 
             for($i = 0; $i < $count; $i++) {
                 $rate_monthly_performance = rate_monthly_performance::find($ids[$i]);
                 if($rate_monthly_performance->id) {
                     $rate_monthly_performance->objective_and_milestone = $objective_and_milestone[$i];
                     $rate_monthly_performance->result = $result[$i];
+                    $rate_monthly_performance->monthly_rate = $monthly_rate[$i];
                     if(isset($achieve[$i])){
                         $rate_monthly_performance->achieve = 1;
                     }else{
                         $rate_monthly_performance->achieve = 0;
+                    }
+                    if($monthly_rate[$i]<2.5){
+                        $rate_monthly_performance->monthly_performance_level = 'Poor';
+                    }
+                    if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
+                        $rate_monthly_performance->monthly_performance_level = 'Average';
+                    }
+                    if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
+                        $rate_monthly_performance->monthly_performance_level = 'Good';
+                    }
+                    if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
+                        $rate_monthly_performance->monthly_performance_level = 'Very Good';
+                    }
+                    if($monthly_rate[$i]>=3.5){
+                        $rate_monthly_performance->monthly_performance_level = 'Outstanding';
                     }
                     // Set another data here
                     $rate_monthly_performance->save();

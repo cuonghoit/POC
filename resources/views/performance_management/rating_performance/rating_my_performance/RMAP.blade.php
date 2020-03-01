@@ -179,7 +179,7 @@
                                 } ?>
                             <tr>
                                 <input type="hidden" name="id[]" value="{{$rate_annual_performance->id}}">
-                                <td>{{$rate_annual_performance->date}}</td>
+                                <td>{{ date('M-y', strtotime($rate_annual_performance->date)) }}</td>
                                 <td><input type="checkbox" name="must_do_1[{{$i}}]" @if($rate_annual_performance->must_do_1==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" name="must_do_2[{{$i}}]" @if($rate_annual_performance->must_do_2==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" name="must_do_3[{{$i}}]" @if($rate_annual_performance->must_do_3==1) checked="checked"@endif></td>
@@ -187,7 +187,7 @@
                                 <td><input type="checkbox" name="should_do_1[{{$i}}]" @if($rate_annual_performance->should_do_1==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" name="should_do_2[{{$i}}]" @if($rate_annual_performance->should_do_2==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
-                                <td><input type="text" name="monthly_rate[]" value="{{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
+                                <td>{{$rate_annual_performance->monthly_rate}}</td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td class="{{ $classColor }}">{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
@@ -235,8 +235,12 @@
 
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        @hasanyrole('general_director')
+                        <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
+                        @else
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        @endif
+                        <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
                    </form>
                 </div>
             </div>
