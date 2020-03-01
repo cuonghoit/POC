@@ -28,7 +28,7 @@
                     <form action="{{ route('approveMyEmployeeMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                        <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" ><b>APPROVING MY EMPLOYEE ANNUAL MSC OBJECTIVES</b></h3><br>
                     <div class="row">
 

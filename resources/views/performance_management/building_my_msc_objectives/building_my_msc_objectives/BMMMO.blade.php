@@ -28,7 +28,7 @@
                     <form action="{{ route('submitMscMothy',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                        <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" ><b>BUILDING MY MONTHLY MSC OBJECTIVES</b></h3><br>
 
 
@@ -155,6 +155,17 @@
                         <tbody>
                         <?php $i=1 ?>
                         @foreach($msc_performance as $msc)
+                            <?php switch ($msc->name) {
+                                case 'Approved':
+                                    $classColor = 'text-success';
+                                    break;
+                                case 'Rejected':
+                                    $classColor = 'text-danger';
+                                    break;
+                                default:
+                                    $classColor = '';
+                                    break;
+                            } ?>
                             <tr>
                                 <td>
                                     {{$i++}}
@@ -172,7 +183,7 @@
                                 <td>
                                     <input type="text" name="action_to_chieve[]" value="{{$msc->action_to_chieve}}" >
                                 </td>
-                                <td>{{$msc->name}}</td>
+                                <td class="{{ $classColor }}">{{$msc->name}}</td>
                                 <td>
                                     {{$msc->note}}
                                 </td>

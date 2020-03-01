@@ -26,7 +26,7 @@
                         </div>
                     @endif
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                        <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY ANNUAL PERFORMANCE</b></h3><br>
                     <form action="{{ route('searchRMAP',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -166,6 +166,17 @@
                         <tbody>
                         <?php $i=0;?>
                             @foreach($rate_annual_performance as $rate_annual_performance )
+                                <?php switch ($rate_annual_performance->name) {
+                                    case 'Approved':
+                                        $classColor = 'text-success';
+                                        break;
+                                    case 'Rejected':
+                                        $classColor = 'text-danger';
+                                        break;
+                                    default:
+                                        $classColor = '';
+                                        break;
+                                } ?>
                             <tr>
                                 <input type="hidden" name="id[]" value="{{$rate_annual_performance->id}}">
                                 <td>{{$rate_annual_performance->date}}</td>
@@ -178,7 +189,7 @@
                                 <td><input type="checkbox" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
                                 <td><input type="text" name="monthly_rate[]" value="{{$rate_annual_performance->monthly_rate}}" class="form-control text-center"></td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
-                                <td>{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
+                                <td class="{{ $classColor }}">{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
                                 <td>{{$rate_annual_performance->note}}</td>
                             </tr>
                             <?php $i++;?>

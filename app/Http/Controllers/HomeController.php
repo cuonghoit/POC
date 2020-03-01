@@ -189,7 +189,11 @@ class HomeController extends Controller
         $department = '';
 
         if($this->isHR()) {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'status.id', '=', 'status')->where('status', $this::STATUS_APPROVED)->where('type', 1);
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")
+                ->join('status', 'status.id', '=', 'status')
+                ->where('status', '<>', $this::STATUS_PENDING)
+                ->where('status', '<>', $this::STATUS_SUBMITED)
+                ->where('type', 1);
 
             if($request->isMethod('POST')) {
                 $year = $request->input('dateFrom');
@@ -233,7 +237,7 @@ class HomeController extends Controller
         $department = '';
 
         if($this->isHR()) {
-            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0);
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', '<>', $this::STATUS_PENDING)->where('status', '<>', $this::STATUS_SUBMITED)->where('type', 0);
             if($request->isMethod('POST')) {
                 $year = $request->input('dateFrom');
                 $department = $request->input('department');
@@ -488,8 +492,10 @@ class HomeController extends Controller
 
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
         if($this->isHR()) {
-            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('status', $this::STATUS_APPROVED);
+            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")
+                ->join('status', 'status.id', '=', 'status')
+                ->where('status', '<>', $this::STATUS_PENDING)
+                ->where('status', '<>', $this::STATUS_SUBMITED);
             if($request->isMethod('POST')) {
                 $year = $request->input('year');
                 $department = $request->input('department');
@@ -635,8 +641,9 @@ class HomeController extends Controller
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
 
         if($this->isHR()) {
-            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-                ->where('status', $this::STATUS_APPROVED);
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")
+                ->join('status', 'status.id', '=', 'status')
+                ->where('status', '<>', $this::STATUS_PENDING)->where('status', '<>', $this::STATUS_SUBMITED);
             if($request->isMethod('POST')) {
                 $year = $request->input('month_year');
                 $department = $request->input('department');

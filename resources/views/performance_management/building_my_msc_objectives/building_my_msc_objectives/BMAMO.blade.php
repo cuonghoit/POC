@@ -28,7 +28,7 @@
                     <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
+                        <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" >
                         <b>
                             @hasanyrole('general_director')
@@ -136,11 +136,11 @@
                         </tr>
                     </table><br>
 
-                    <div class="table-responsive">
                         <div class="form-group">
                             <input type="hidden" name="isPrintPdf" value="false"/>
                             <div class="text-right"><button name="" value="Print out" class="btn btn-warning btn-print">{{ __("Print out") }}</button></div>
                         </div>
+                    <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
 
                         <thead class="bg-success">
@@ -186,6 +186,18 @@
                         <tbody>
                             <?php $i = 1;?>
                             @foreach($msc_performance as $mp)
+                                <?php switch ($mp->name) {
+                                    case 'Approved':
+                                        $classColor = 'text-success';
+                                        break;
+                                    case 'Rejected':
+                                        $classColor = 'text-danger';
+                                        break;
+                                    default:
+                                        $classColor = '';
+                                        break;
+                                } ?>
+                            @if(strcmp($mp->name, 'Approved') != 0)
                             <tr>
                                 <td>
                                     {{$i++}}
@@ -234,13 +246,41 @@
                                 <td>
                                     <input type="text" name="dec[]" value="{{$mp->dec}}">
                                 </td>
-                                <td>
+                                <td class="{{$classColor}}">
                                     {{$mp->name}}
                                 </td>
                                 <td>
                                     {{$mp->note}}
                                 </td>
                             </tr>
+                            @else
+                                <tr>
+                                    <td>
+                                        {{$i++}}
+                                    </td>
+                                    <td>{{$mp->objective_category}}</td>
+                                    <td>{{$mp->milestone_behavior}}</td>
+                                    <td>{{$mp->target_to_archive}}</td>
+                                    <td>{{$mp->jan}}</td>
+                                    <td>{{$mp->feb}}</td>
+                                    <td>{{$mp->mar}}</td>
+                                    <td>{{$mp->apr}}</td>
+                                    <td>{{$mp->may}}</td>
+                                    <td>{{$mp->jun}}</td>
+                                    <td>{{$mp->jul}}</td>
+                                    <td>{{$mp->aug}}</td>
+                                    <td>{{$mp->sep}}</td>
+                                    <td>{{$mp->oct}}</td>
+                                    <td>{{$mp->nov}}</td>
+                                    <td>{{$mp->dec}}</td>
+                                    <td class="{{$classColor}}">
+                                        {{$mp->name}}
+                                    </td>
+                                    <td>
+                                        {{$mp->note}}
+                                    </td>
+                                </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

@@ -27,7 +27,7 @@
                     @endif
 
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                        <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" ><b>RATING MY MONTHLY PERFORMANCE</b></h3><br>
                     <form action="{{ route('searchRMMP',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -158,6 +158,17 @@
                         <tbody>
                         <?php $i=0; ?>
                              @foreach($rate_monthly_performance as $rmp)
+                                 <?php switch ($rmp->name) {
+                                     case 'Approved':
+                                         $classColor = 'text-success';
+                                         break;
+                                     case 'Rejected':
+                                         $classColor = 'text-danger';
+                                         break;
+                                     default:
+                                         $classColor = '';
+                                         break;
+                                 } ?>
                             <tr>
 
                                 <td>
@@ -176,7 +187,7 @@
                                 <td>
                                     <input type="checkbox" name="achieve[{{$i-1}}]" @if($rmp->achieve == 1) checked = "checked" @endif>
                                 </td>
-                                <td>
+                                <td class="{{ $classColor }}">
                                     {{ App\Http\Controllers\HomeController::getStatus($rmp->status) }}
                                 </td>
                                 <td>
