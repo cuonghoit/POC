@@ -28,7 +28,7 @@
                     <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
-                        <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
+                        <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" >
                         <b>
                             @hasanyrole('general_director')
@@ -137,6 +137,10 @@
                     </table><br>
 
                     <div class="table-responsive">
+                        <div class="form-group">
+                            <input type="hidden" name="isPrintPdf" value="false"/>
+                            <div class="text-right"><button name="" value="Print out" class="btn btn-warning btn-print">{{ __("Print out") }}</button></div>
+                        </div>
                     <table class="table table-bordered text-center text-nowrap table-striped">
 
                         <thead class="bg-success">

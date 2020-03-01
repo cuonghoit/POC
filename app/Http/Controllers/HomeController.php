@@ -13,6 +13,7 @@ use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
 use PHPUnit\Framework\Constraint\Count;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -258,6 +259,22 @@ class HomeController extends Controller
         $msc_performance = $msc_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
+        if($request->isMethod('POST')) {
+            $isPrintPdf = $request->input('isPrintPdf');
+            if(strcmp($isPrintPdf, 'true') == 0 ) {
+                $data= [
+                    'course'=>$course,
+                    'personal_info'=>$personal_info,
+                    'msc_performance'=>$msc_performance,
+                    'users'=>$users,
+                    'year' => $year,
+                    'department_list' => $departmentList
+                ];
+                $pdf = PDF::loadView('performance_management.building_my_msc_objectives.building_my_msc_objectives.pdf_BMAMO', $data)->setPaper('a4', 'landscape');
+                return $pdf->download('msc_annual.pdf');
+            }
+        }
+
         return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList]);
     }
     //end-building-my-msc-objectives
