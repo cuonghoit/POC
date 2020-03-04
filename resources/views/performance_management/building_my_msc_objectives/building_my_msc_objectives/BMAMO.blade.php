@@ -25,8 +25,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
                     <h3 class="text-center" >
@@ -52,34 +50,36 @@
                             <b>{{session('notice')}}</b>
                         </div>
                     @endif
-
-                    <div class="row">
-                        @if($personal_info->user_id == 5)
-                        <div class="col-md-2">
-                            <p>Select Department:</p>
+                    <form action="{{ route('searchMscAnnual',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="row">
+                           @hasanyrole('general_director')
+                           <div class="col-md-2">
+                               <p>Select Department:</p>
+                           </div>
+                           <div class="col-md-3">
+                               <select class="selectpicker form-control" data-live-search="true" name="department">
+                                   <option value="">Select Department</option>
+                                   @foreach($department_list as $pi)
+                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                   @endforeach
+                               </select>
+                           </div>
+                           @endif
+                           <div class="col-md-2">
+                               <p>Select Year:</p>
+                           </div>
+                           <div class="col-md-2">
+                               <input type="text" name="year" class="datepicker text-center form-control col-md-10 " value="{{ $year }}">
+                           </div>
+                           <div class="col-md-2">
+                               <input type="submit" class="btn btn-success" value="Search">
+                           </div>
                         </div>
-                        <div class="col-md-3">
-                            <select class="selectpicker form-control" data-live-search="true" name="department">
-                                <option value="">Select Department</option>
-                                @foreach($department_list as $pi)
-                                <option value="{{ $pi->user_id }}">{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @endif
-
-                        <div class="col-md-2">
-                            <p>Select a Year:</p>
-                        </div>
-                        <div class="col-md-3">
-                            <input type="text" name="dateFrom" class="datepicker form-control col-md-8 " value="{{$year}}">
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-success btn-search">Search</button>
-                        </div>
-
-
+                    </form>
                     </div>
+                    <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>

@@ -40,7 +40,7 @@
                                 <select class="selectpicker form-control" data-live-search="true" name="department">
                                     <option value="">Select Department</option>
                                     @foreach($department_list as $pi)
-                                        <option value="{{ $pi->user_id }}">{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                        <option value="{{ $pi->user_id }}" @if($department==$pi->user_id) selected="selected" @endif>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -49,14 +49,10 @@
                                 <p>Select Month/Year:</p>
                             </div>
                             <div class="col-md-2">
-                                <input type="text" name="month_year" class="datepicker-months text-center form-control col-md-10 " value="{{ $year }}">
+                                <input type="text" name="month_year" class="datepicker-months text-center form-control col-md-10 " value="{{$year}}">
                             </div>
                             <div class="col-md-2">
-                                @hasanyrole('general_director')
-                                <button class="btn btn-success btn-search">Search</button>
-                                @else
-                                    <button class="btn btn-success">Search</button>
-                                @endif
+                                    <input class="btn btn-success" type="submit" value="Search">
                             </div>
                         </div>
                     </form>

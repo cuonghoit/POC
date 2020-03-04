@@ -39,7 +39,7 @@
                                <select class="selectpicker form-control" data-live-search="true" name="department">
                                    <option value="">Select Department</option>
                                    @foreach($department_list as $pi)
-                                       <option value="{{ $pi->user_id }}">{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
                                    @endforeach
                                </select>
                            </div>
@@ -51,11 +51,7 @@
                                <input type="text" name="year" class="datepicker text-center form-control col-md-10 " value="{{ $year }}">
                            </div>
                            <div class="col-md-2">
-                               @hasanyrole('general_director')
-                               <button class="btn btn-success btn-search">Search</button>
-                               @else
-                                   <button class="btn btn-success">Search</button>
-                               @endif
+                               <input type="submit" class="btn btn-success" value="Search">
                            </div>
                         </div>
                     </form>
@@ -236,7 +232,7 @@
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         @hasanyrole('general_director')
-                        <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
+                            <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
                         @else
                             <input type="submit" name="submit" value="Submit" class="btn btn-success">
                         @endif

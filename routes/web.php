@@ -123,6 +123,9 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::post('/save-monthly-msc-objectives/{id}', 'MscController@saveMscMonthly')->name('saveMscMonthly');
     Route::post('/save-annual-msc-objectives/{id}', 'MscController@saveMscAnnual')->name('saveMscAnnual');
 
+    Route::post('/search-search-msc-objectives/{id}', 'HomeController@searchMscMonthly')->name('searchMscMonthly');
+     Route::post('/search-annual-msc-objectives/{id}', 'HomeController@searchMscAnnual')->name('searchMscAnnual');
+
     Route::group(['prefix' => 'rating-performance'], function () {
         Route::match(['get', 'post'], '/rating-my-annual-performance/{id}', 'HomeController@getRMAP')->name('RMAP');
         Route::match(['get', 'post'], '/rating-my-monthly-performance/{id}', 'HomeController@getRMMP')->name('RMMP');
@@ -132,10 +135,12 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
 
     Route::post('save-rate-monthly-performance/{id}', 'HomeController@saveRMMP')->name('saveRMMP');
     Route::post('save-rate-annual-performance/{id}', 'HomeController@saveRMAP')->name('saveRMAP');
-    Route::post('save-rate-annual-performance/{id}', 'HomeController@reviewRMAP')->name('reviewRMAP');
+    Route::post('review-rate-annual-performance/{id}', 'HomeController@reviewRMAP')->name('reviewRMAP');
 
     Route::post('search-rate-monthly-performance/{id}', 'HomeController@searchRMMP')->name('searchRMMP');
     Route::post('search-rate-annual-performance/{id}', 'HomeController@searchRMAP')->name('searchRMAP');
+
+
 });
 
 

@@ -220,8 +220,62 @@ class HomeController extends Controller
         $msc_performance = $msc_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=> $users, 'year' => $year, 'department_list' => $departmentList]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=> $users, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
     }
+
+    public function searchMscMonthly ($id, Request $request){
+        $course = course::all();
+        $users= personal_info::where('staff_role_id', 3)->get();
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+        $year = '';
+        $department = '';
+
+        if($this->isHR()) {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', '<>', $this::STATUS_PENDING)->where('status', '<>', $this::STATUS_SUBMITED)->where('type', 1);
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $department = $request->input('department');
+                $msc_performance = $msc_performance->where('year', 'like', $year."%")->where('user_id', $department);
+            }
+        } else {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 1);
+
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $msc_performance = $msc_performance->where('year', 'like', $year."%");
+            }
+        }
+
+
+        $msc_performance = $msc_performance->get();
+
+        $personal_info = personal_info::where('user_id',$id)->first();
+        if($request->isMethod('POST')) {
+            $isPrintPdf = $request->input('isPrintPdf');
+            if(strcmp($isPrintPdf, 'true') == 0 ) {
+                $data= [
+                    'course'=>$course,
+                    'personal_info'=>$personal_info,
+                    'msc_performance'=>$msc_performance,
+                    'users'=>$users,
+                    'year' => $year,
+                    'department_list' => $departmentList
+                ];
+                $pdf = PDF::loadView('performance_management.building_my_msc_objectives.building_my_msc_objectives.pdf_BMAMO', $data)->setPaper('a4', 'landscape');
+                return $pdf->download('msc_annual.pdf');
+            }
+        }
+
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMMMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
+    }
+
     public function getBMAMO($id, Request $request){
         $course = course::all();
         $users= personal_info::where('staff_role_id', 3)->get();
@@ -279,8 +333,64 @@ class HomeController extends Controller
             }
         }
 
-        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList]);
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
     }
+
+    public function searchMscAnnual ($id, Request $request){
+        $course = course::all();
+        $users= personal_info::where('staff_role_id', 3)->get();
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+        $year = '';
+        $department = '';
+
+        if($this->isHR()) {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', '<>', $this::STATUS_PENDING)->where('status', '<>', $this::STATUS_SUBMITED)->where('type', 0);
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $department = $request->input('department');
+                $msc_performance = $msc_performance->where('year', 'like', $year."%")->where('user_id', $department);
+            }
+        } else {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 0);
+
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $msc_performance = $msc_performance->where('year', 'like', $year."%");
+            }
+        }
+
+
+        $msc_performance = $msc_performance->get();
+
+        $personal_info = personal_info::where('user_id',$id)->first();
+        if($request->isMethod('POST')) {
+            $isPrintPdf = $request->input('isPrintPdf');
+            if(strcmp($isPrintPdf, 'true') == 0 ) {
+                $data= [
+                    'course'=>$course,
+                    'personal_info'=>$personal_info,
+                    'msc_performance'=>$msc_performance,
+                    'users'=>$users,
+                    'year' => $year,
+                    'department_list' => $departmentList
+                ];
+                $pdf = PDF::loadView('performance_management.building_my_msc_objectives.building_my_msc_objectives.pdf_BMAMO', $data)->setPaper('a4', 'landscape');
+                return $pdf->download('msc_annual.pdf');
+            }
+        }
+
+        return view('performance_management.building_my_msc_objectives.building_my_msc_objectives.BMAMO',['course'=>$course, 'personal_info'=>$personal_info, 'msc_performance'=>$msc_performance,'users'=>$users, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
+    }
+
+
+
     //end-building-my-msc-objectives
 
     //approving-my-employees-msc-objectives
@@ -530,7 +640,20 @@ class HomeController extends Controller
         $course = course::all();
         $year = $request->input('year');
         $personal_info = personal_info::where('user_id',$id)->first();
-        $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$id)->get();
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        if($this->isHR()){
+            $department = $request->input('department');
+            $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$department)->get();
+        }
+        else{
+            $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$id)->get();
+        }
         $avg = 0;
         foreach ($rate_annual_performance as $rate){
             $avg += $rate->monthly_rate;
@@ -538,7 +661,7 @@ class HomeController extends Controller
         if($avg!= 0){
             $avg = $avg/count($rate_annual_performance);
         }
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg,'year'=>$year, 'department_list'=>$departmentList,'department'=>$department]);
     }
 
     public function saveRMAP($id, Request $request){
@@ -651,7 +774,7 @@ class HomeController extends Controller
                     $rate_monthly_performance = $rate_monthly_performance->where('month_year', 'like', $year."%");
                 }
                 if($department) {
-//                    $rate_monthly_performance = $rate_monthly_performance->where('user_id', $department);
+                    $rate_monthly_performance = $rate_monthly_performance->where('user_id', $department);
                 }
             }
         } else {
@@ -661,7 +784,7 @@ class HomeController extends Controller
         $rate_monthly_performance = $rate_monthly_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'department_list' => $departmentList, 'year' => $year]);
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'department_list' => $departmentList, 'year' => $year, 'department'=>$department]);
     }
     public function saveRMMP($id, Request $request){
         if($request->isMethod('post') && $request->has("id")) {
@@ -712,16 +835,33 @@ class HomeController extends Controller
 
         $course = course::all();
         $month_year = $request->input('month_year');
-//        if($this->isHR()) {
-//            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-//                ->where('status', $this::STATUS_APPROVED)->get();
-//        } else {
-//            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
-//                ->where('user_id',$id)->get();
-//        }
         $personal_info = personal_info::where('user_id',$id)->first();
-        $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$id)->get();
-        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance]);
+        $department = '';
+        $departmentList = '';
+        if($this->isHR()) {
+            $departmentList = personal_info::whereNotNull('department_id')->get();
+            $departmentIds = array();
+            foreach ($departmentList as $user) {
+                if( !in_array($user->department_id, $departmentIds) ) {
+                    $departmentIds[] = $user->department_id;
+                }
+            }
+            $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+            $month_year = $request->input('month_year');
+            $department = $request->input('department');
+            $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$department)->get();
+            if($request->isMethod('POST')) {
+                    $year = $request->input('month_year');
+                    $department = $request->input('department');
+                }
+        } else {
+            $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$id)->get();
+            if($request->isMethod('POST')) {
+                    $year = $request->input('month_year');
+                }
+        }
+
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'year'=>$year,'department'=>$department,'department_list'=>$departmentList]);
     }
 
     // end-rating-my-performance

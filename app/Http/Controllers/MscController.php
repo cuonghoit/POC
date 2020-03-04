@@ -65,6 +65,7 @@ class MscController extends Controller
 
         return redirect()->route('BMAMO', ['id' => $id]);
     }
+
     public function saveMscMonthly($id,Request $request) {
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
