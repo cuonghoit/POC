@@ -642,6 +642,7 @@ class HomeController extends Controller
         $personal_info = personal_info::where('user_id',$id)->first();
         $departmentList = personal_info::whereNotNull('department_id')->get();
         $departmentIds = array();
+        $department = '';
         foreach ($departmentList as $user) {
             if( !in_array($user->department_id, $departmentIds) ) {
                 $departmentIds[] = $user->department_id;
