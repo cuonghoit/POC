@@ -872,6 +872,8 @@ class HomeController extends Controller
         $course = course::all();
         $userIds = array();
         $users= personal_info::where('department_id', $id)->get();
+        $employee = '';
+        $year = '';
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -880,7 +882,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users,'employee'=>$employee,'year'=>$year]);
     }
 
     public function searchAMEAP($id, Request $request) {
@@ -898,12 +900,14 @@ class HomeController extends Controller
 //            ->get();
         $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users,'employee'=>$employee, 'year'=>$year]);
     }
 
     public function getAMEMP($id){
         $course = course::all();
         $users= personal_info::where('department_id', $id)->get();
+        $employee = '';
+        $month_year = '';
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -913,7 +917,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users, 'employee'=>$employee, 'month_year'=>$month_year]);
     }
 
     public function searchAMEMP($id, Request $request){
@@ -932,7 +936,7 @@ class HomeController extends Controller
 
         $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users,'employee'=>$employee, 'month_year'=>$month_year]);
     }
 
     //end-approving-my-employees-performance

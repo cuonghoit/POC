@@ -40,11 +40,7 @@
                             <select class="selectpicker form-control" name="employee" data-live-search="true" value="{{ $employee }}">
                                 <option>Select employees</option>
                                 @foreach($users as $user)
-                                    @if($user->user_id === $employee)
-                                        <option value="{{ $user->user_id }}" selected="selected"> {{  $selected }}>{{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
-                                    @else
-                                        <option value="{{ $user->user_id }}">{{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
-                                    @endif
+                                    <option value="{{ $user->user_id }}"@if($employee == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
                                 @endforeach
                             </select>
                         </div>
