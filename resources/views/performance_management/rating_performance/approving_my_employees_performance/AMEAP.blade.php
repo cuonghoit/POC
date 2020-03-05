@@ -34,13 +34,13 @@
                            <tr>
                                 <div class="form-group">
                                     <td>Select Year:</td>
-                                    <td class="text-left"><input type="text" name="year" class="datepicker text-center form-control col-md-10"></td>
+                                    <td class="text-left"><input type="text" name="year" class="datepicker text-center form-control col-md-10" value="{{$year}}"></td>
                                 </div>
                                 <td class="text-left">
                                         <select class="selectpicker form-control" data-live-search="true" name="employee">
                                             <option>Select employees</option>
                                             @foreach($users as $users)
-                                            <option value="{{$users->user_id}}">{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
+                                            <option value="{{$users->user_id}}" @if($employee == $users->user_id) selected="selected" @endif >{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
