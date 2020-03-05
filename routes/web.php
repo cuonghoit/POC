@@ -16,7 +16,13 @@ Route::get('/login', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(
+    [
+        'reset' => false,
+        'verify' => false,
+        'register' => false,
+    ]
+);
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/reset-all-status', 'HomeController@resetAllStatus')->name('resetAllStatus');

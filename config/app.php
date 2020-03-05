@@ -180,6 +180,8 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
 
+        Adldap\Laravel\AdldapServiceProvider::class,
+
     ],
 
     /*
@@ -234,6 +236,7 @@ return [
         * Print pdf
         */
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class
 
     ],
 
