@@ -1231,7 +1231,7 @@ class HomeController extends Controller
     public function saveAnnual($date, $id)
     {
         $date = date('Y-m', strtotime($date));
-        $rate_annual_performance = rate_annual_performance::where('date', 'like', $date . '%')->first();
+        $rate_annual_performance = rate_annual_performance::where('date', 'like', $date . '%')->where('user_id',$id)->first();
         $rate_monthly_performance = rate_monthly_performance::where('month_year', 'like', $date . '%')->where('user_id', $id)->get();
         $avg = 0;
         $count = rate_monthly_performance::where('month_year', 'like', $date . '%')->where('user_id', $id)->count();
