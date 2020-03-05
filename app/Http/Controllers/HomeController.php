@@ -13,6 +13,7 @@ use App\Model\rate_annual_performance;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
 use PHPUnit\Framework\Constraint\Count;
+use Illuminate\Support\Facades\Schema;
 use PDF;
 
 class HomeController extends Controller
@@ -633,7 +634,7 @@ class HomeController extends Controller
             $avg = 0;
         }
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg, 'year' => $year, 'department_list' => $departmentList]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
     }
 
     public function searchRMAP($id, Request $request){
@@ -807,6 +808,7 @@ class HomeController extends Controller
                     }else{
                         $rate_monthly_performance->achieve = 0;
                     }
+
                     if($monthly_rate[$i]<2.5){
                         $rate_monthly_performance->monthly_performance_level = 'Poor';
                     }
@@ -824,6 +826,11 @@ class HomeController extends Controller
                     }
                     // Set another data here
                     $rate_monthly_performance->save();
+
+                    //save annual
+                    if($i == ($count-1)){
+                         $this->saveAnnual($rate_monthly_performance->month_year, $id);
+                    }
                 }
             }
         }
@@ -872,6 +879,8 @@ class HomeController extends Controller
         $course = course::all();
         $userIds = array();
         $users= personal_info::where('department_id', $id)->get();
+        $employee = '';
+        $year = '';
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
         }
@@ -880,7 +889,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users,'employee'=>$employee,'year'=>$year]);
     }
 
     public function searchAMEAP($id, Request $request) {
@@ -898,12 +907,14 @@ class HomeController extends Controller
 //            ->get();
         $rate_annual_performance = rate_annual_performance::where('year','like' ,$year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEAP',['course'=>$course, 'personal_info'=>$personal_info,'rate_annual_performance'=>$rate_annual_performance, 'users'=>$users,'employee'=>$employee, 'year'=>$year]);
     }
 
     public function getAMEMP($id){
         $course = course::all();
         $users= personal_info::where('department_id', $id)->get();
+        $employee = '';
+        $month_year = '';
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -913,7 +924,7 @@ class HomeController extends Controller
             ->where('status', $this::STATUS_SUBMITED)
             ->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users, 'employee'=>$employee, 'month_year'=>$month_year]);
     }
 
     public function searchAMEMP($id, Request $request){
@@ -932,7 +943,7 @@ class HomeController extends Controller
 
         $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$employee)->whereIn('user_id', $userIds)->where('status', $this::STATUS_SUBMITED)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users]);
+        return view('performance_management.rating_performance.approving_my_employees_performance.AMEMP',['course'=>$course, 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'users'=>$users,'employee'=>$employee, 'month_year'=>$month_year]);
     }
 
     //end-approving-my-employees-performance
@@ -1215,5 +1226,38 @@ class HomeController extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function saveAnnual($date, $id)
+    {
+        $date = date('Y-m', strtotime($date));
+        $rate_annual_performance = rate_annual_performance::where('date', 'like', $date . '%')->where('user_id',$id)->first();
+        $rate_monthly_performance = rate_monthly_performance::where('month_year', 'like', $date . '%')->where('user_id', $id)->get();
+        $avg = 0;
+        $count = rate_monthly_performance::where('month_year', 'like', $date . '%')->where('user_id', $id)->count();
+        foreach ($rate_monthly_performance as $monthly) {
+            $objective_category = $monthly->objective_category;
+            $rate_annual_performance->$objective_category = $monthly->achieve;
+            $avg += $monthly->monthly_rate;
+        }
+        $avg = $avg / $count;
+        if ($avg < 2.5) {
+            $rate_annual_performance->monthly_performance_level = 'Poor';
+        }
+        if ($avg < 3 && $avg >= 2.5) {
+            $rate_annual_performance->monthly_performance_level = 'Average';
+        }
+        if ($avg < 3.5 && $avg >= 3) {
+            $rate_annual_performance->monthly_performance_level = 'Good';
+        }
+        if ($avg < 4.2 && $avg >= 3.5) {
+            $rate_annual_performance->monthly_performance_level = 'Very Good';
+        }
+        if ($avg >= 3.5) {
+            $rate_annual_performance->monthly_performance_level = 'Outstanding';
+        }
+        $rate_annual_performance->monthly_rate = $avg;
+        $rate_annual_performance->save();
+
     }
 }
