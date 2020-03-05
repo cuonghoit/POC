@@ -176,13 +176,13 @@
                             <tr>
                                 <input type="hidden" name="id[]" value="{{$rate_annual_performance->id}}">
                                 <td>{{ date('M-y', strtotime($rate_annual_performance->date)) }}</td>
-                                <td><input type="checkbox" name="must_do_1[{{$i}}]" @if($rate_annual_performance->must_do_1==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="must_do_2[{{$i}}]" @if($rate_annual_performance->must_do_2==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="must_do_3[{{$i}}]" @if($rate_annual_performance->must_do_3==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="must_do_4[{{$i}}]" @if($rate_annual_performance->must_do_4==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="should_do_1[{{$i}}]" @if($rate_annual_performance->should_do_1==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="should_do_2[{{$i}}]" @if($rate_annual_performance->should_do_2==1) checked="checked"@endif></td>
-                                <td><input type="checkbox" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="must_do_1[{{$i}}]" @if($rate_annual_performance->must_do_1==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="must_do_2[{{$i}}]" @if($rate_annual_performance->must_do_2==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="must_do_3[{{$i}}]" @if($rate_annual_performance->must_do_3==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="must_do_4[{{$i}}]" @if($rate_annual_performance->must_do_4==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="should_do_1[{{$i}}]" @if($rate_annual_performance->should_do_1==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="should_do_2[{{$i}}]" @if($rate_annual_performance->should_do_2==1) checked="checked"@endif></td>
+                                <td><input type="checkbox" disabled="disabled" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
                                 <td>{{$rate_annual_performance->monthly_rate}}</td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td class="{{ $classColor }}">{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
