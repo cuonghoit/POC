@@ -26,6 +26,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Model\\ExcelMsc' => $baseDir . '/app/Model/ExcelMsc.php',
     'App\\Model\\User' => $baseDir . '/app/Model/User.php',
     'App\\Model\\course' => $baseDir . '/app/Model/course.php',
     'App\\Model\\personal_info' => $baseDir . '/app/Model/personal_info.php',

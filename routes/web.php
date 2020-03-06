@@ -140,6 +140,12 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::post('search-rate-monthly-performance/{id}', 'HomeController@searchRMMP')->name('searchRMMP');
     Route::post('search-rate-annual-performance/{id}', 'HomeController@searchRMAP')->name('searchRMAP');
 
+    Route::group(['prefix'=>'export'], function (){
+
+        Route::post('export', 'ExcelMscController@export')->name('export');
+
+
+    });
 
 });
 

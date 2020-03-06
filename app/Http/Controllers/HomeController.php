@@ -670,7 +670,7 @@ class HomeController extends Controller
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
             $ids = $request->input("id");
-            $must_do_1 = $request->input('must_do_1');
+            print_r($must_do_1 = $request->input('must_do_1'));
             $must_do_2 = $request->input('must_do_2');
             $must_do_3 = $request->input('must_do_3');
             $must_do_4 = $request->input('must_do_4');

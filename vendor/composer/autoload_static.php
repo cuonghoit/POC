@@ -582,6 +582,7 @@ class ComposerStaticInit574098390db214822984fba84916c9fb
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Model\\ExcelMsc' => __DIR__ . '/../..' . '/app/Model/ExcelMsc.php',
         'App\\Model\\User' => __DIR__ . '/../..' . '/app/Model/User.php',
         'App\\Model\\course' => __DIR__ . '/../..' . '/app/Model/course.php',
         'App\\Model\\personal_info' => __DIR__ . '/../..' . '/app/Model/personal_info.php',

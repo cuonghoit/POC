@@ -61,6 +61,7 @@ class MscController extends Controller
                     $mscPerformance->save();
                 }
             }
+            die();
         }
 
         return redirect()->route('BMAMO', ['id' => $id]);

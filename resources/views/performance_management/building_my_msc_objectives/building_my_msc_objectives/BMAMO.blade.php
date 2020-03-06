@@ -137,8 +137,8 @@
                     </table><br>
 
                         <div class="form-group">
-                            <input type="hidden" name="isPrintPdf" value="false"/>
-                            <div class="text-right"><button name="" value="Print out" class="btn btn-warning btn-print">{{ __("Print out") }}</button></div>
+{{--                            <input type="hidden" name="isPrintPdf" value="false"/>--}}
+                            <div class="text-right"><button data-action="{{ route('export') }}" class="btn btn-warning btn-reject" >print out</button></div>
                         </div>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
@@ -203,7 +203,7 @@
                                     {{$i++}}
                                     <input type="hidden" name="id[]"  value="{{$mp->id}}">
                                 </td>
-                                <td>{{$mp->objective_category}}</td>
+                                <td><input disabled="disabled" name="objective_category[]" style="border: none; background: none;" value="{{$mp->objective_category}}"></td>
                                 <td>
                                     <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
                                 </td>
@@ -250,7 +250,7 @@
                                     {{$mp->name}}
                                 </td>
                                 <td>
-                                    {{$mp->note}}
+                                    <input disabled="disabled" name="note[]" style="border: none; background: none;" value="{{$mp->note}}">
                                 </td>
                             </tr>
                             @else
