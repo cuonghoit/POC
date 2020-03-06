@@ -257,22 +257,51 @@
                                 <tr>
                                     <td>
                                         {{$i++}}
+                                   <input type="hidden" name="id[]"  value="{{$mp->id}}">
                                     </td>
-                                    <td>{{$mp->objective_category}}</td>
-                                    <td>{{$mp->milestone_behavior}}</td>
-                                    <td>{{$mp->target_to_archive}}</td>
-                                    <td>{{$mp->jan}}</td>
-                                    <td>{{$mp->feb}}</td>
-                                    <td>{{$mp->mar}}</td>
-                                    <td>{{$mp->apr}}</td>
-                                    <td>{{$mp->may}}</td>
-                                    <td>{{$mp->jun}}</td>
-                                    <td>{{$mp->jul}}</td>
-                                    <td>{{$mp->aug}}</td>
-                                    <td>{{$mp->sep}}</td>
-                                    <td>{{$mp->oct}}</td>
-                                    <td>{{$mp->nov}}</td>
-                                    <td>{{$mp->dec}}</td>
+                                    <td><input disabled="disabled" name="objective_category[]" style="border: none; background: none;" value="{{$mp->objective_category}}"></td>
+                                    <td>
+                                        <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="target[]"  value="{{$mp->target_to_archive}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="jan[]" value="{{$mp->jan}}" >
+                                    </td>
+                                    <td>
+                                        <input type="text" name="feb[]" value="{{$mp->feb}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="mar[]" value="{{$mp->mar}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="apr[]" value="{{$mp->apr}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="may[]" value="{{$mp->may}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="jun[]" value="{{$mp->jun}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="jul[]" value="{{$mp->jul}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="aug[]" value="{{$mp->aug}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="sep[]" value="{{$mp->sep}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="oct[]" value="{{$mp->oct}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="nov[]" value="{{$mp->nov}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="dec[]" value="{{$mp->dec}}">
+                                    </td>
                                     <td class="{{$classColor}}">
                                         {{$mp->name}}
                                     </td>

@@ -50,8 +50,8 @@ class ExcelMscController extends Controller
             $nov = $request->input("nov");
             $dec = $request->input("dec");
             $note = $request->input('note');
-            echo $count = count($request->input("id"));
-            for($i = 0; $i < 7; $i++){
+            $count = count($request->input("id"));
+            for($i = 0; $i < $count; $i++){
             echo $milestone[$i];
                 $newdata=array([
                     'objective_category'=>$objective_category[$i],
