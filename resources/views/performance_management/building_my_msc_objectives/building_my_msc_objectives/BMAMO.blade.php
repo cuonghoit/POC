@@ -203,7 +203,8 @@
                                     {{$i++}}
                                     <input type="hidden" name="id[]"  value="{{$mp->id}}">
                                 </td>
-                                <td><input disabled="disabled" name="objective_category[]" style="border: none; background: none;" value="{{$mp->objective_category}}"></td>
+                                <td>{{$mp->objective_category}}
+                                <input type="hidden"name="objective_category[]" value="{{$mp->objective_category}}"></td>
                                 <td>
                                     <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
                                 </td>
@@ -259,7 +260,8 @@
                                         {{$i++}}
                                    <input type="hidden" name="id[]"  value="{{$mp->id}}">
                                     </td>
-                                    <td><input disabled="disabled" name="objective_category[]" style="border: none; background: none;" value="{{$mp->objective_category}}"></td>
+                                    <td><{{$mp->objective_category}}
+                                    <input type="hidden"name="objective_category[]" value="{{$mp->objective_category}}"></td>
                                     <td>
                                         <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
                                     </td>
