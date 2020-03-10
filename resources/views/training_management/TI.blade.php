@@ -99,8 +99,8 @@
                   		</tr>
                   	</table>
                   	<table class=" table table-bordered table-striped">
-                  		<tr colspan="7" class="font-weight-bold">
-                  			Registration:
+                  		<tr  >
+                        <th colspan="7"> Registration List: </th>
                   		</tr>
                   		<tr>
                   			<th>No.</th>
@@ -120,7 +120,7 @@
                   			<td></td>
                   			<td> Date: </td>
                   			<td> Date: </td>
-                  			<td> </td>
+                  			
                   		</tr>
                   		<tr>
                   			<td>2</td>
