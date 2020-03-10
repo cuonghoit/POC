@@ -21,6 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -271,7 +273,7 @@
                                     </div>
                                     @endhasanyrole
                                     @hasanyrole('employees|department_managers|director|general_director|super-admin')
-                                    <a class="dropdown-item" href="{{route('performaceManagement')}}">
+                                    <a class="dropdown-item" href="{{route('performaceManagement',Auth::user()->id)}}">
                                         @hasanyrole('general_director')
                                             {{ __('Company Performance Appraisal Reports') }}
                                         @else

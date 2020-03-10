@@ -52,6 +52,26 @@
                             </div>
                         </tr>
                     </table><br>
+                    <div class="container">
+                        <div class="column" style="width: 50%; float: left;">
+                            {!! $bar->container() !!}
+                        </div>
+                         <div class="pie" style="width: 50%; float: left;">
+                            <h2 style="text-align: center;">Rating Annual pie</h2>
+                            <br>
+                            {!! $pie->container() !!}
+                        </div>
+                    </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script>
+                        var app = new Vue({
+                            el: '.container',
+                        });
+                    </script>
+                    {!! $bar->script() !!}
+                    {!! $pie->script() !!}
+                    <br><br><br><br>
                     <div class="table-responsive Training">
                         <table class="table table-bordered table-striped text-center">
                             <tr>

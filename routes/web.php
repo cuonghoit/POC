@@ -50,7 +50,7 @@ Route::group(['middleware' => ['role:employees|department_managers|director|supe
 	});
 
 	Route::group(['prefix'=>'performace-management'],function(){
-		Route::get('/performance-management-report', 'HomeController@getPerformaceManagement')->name('performaceManagement');
+		Route::get('/performance-management-report/{id}', 'HomeController@getPerformaceManagement')->name('performaceManagement');
         Route::get('/print-performance-report', 'PdfController@printPerformanceReport')->name('printPerformanceReport');
 
 		Route::group(['prefix'=>'managing-company-performances'],function(){

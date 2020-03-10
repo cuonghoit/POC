@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
 use PHPUnit\Framework\Constraint\Count;
 use Illuminate\Support\Facades\Schema;
+use App\Charts\Highcharts;
 use PDF;
 
 class HomeController extends Controller
@@ -456,8 +457,60 @@ class HomeController extends Controller
 
     //performance-management
     //managing-company-performances
-    public function getPerformaceManagement() {
-        return view('performance_management/performance_management');
+    public function getPerformaceManagement($id) {
+        $bar = new Highcharts();
+        $pie = new Highcharts();
+        $data_bar = collect([]);
+        $data_pie = collect([]);
+        $rate_annual_performance = rate_annual_performance::where('user_id', $id)->get();
+        $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Poor')->count()/12*100);
+        $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Average')->count()/12*100);
+        $data_pie->push($rate_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Good')->count()/12*100);
+        $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Very Good')->count()/12*100);
+        $data_pie->push($rate_outstanding = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Outstanding')->count()/12*100);
+
+        foreach ($rate_annual_performance as $rate_aunnual){
+            $data_bar->push($rate_aunnual->monthly_rate);
+        }
+
+        $bar->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        $pie->labels(['Poor','Average','Good','Very Good','Outstanding']);
+
+        $bar->dataset('Rate Annual', 'column', $data_bar);
+        $bar->options([
+            'title' => [
+                'text' => 'Rating Annual column' // or false, depending on what you want.
+            ],
+            'yAxis'=> [ //--- Primary yAxis
+                'title'=> [
+                    'text'=> 'Temperature'
+                ],
+                'max'=>'5'
+            ],
+        ]);
+        $pie->dataset('Rate Annual', 'pie', $data_pie)->options([
+            'chart'=> [
+              'plotBackgroundColor'=> null,
+              'plotBorderWidth'=> null,
+              'plotShadow'=> false,
+            ],
+            'title' => [
+                'text' => 'Rating Annual pie' // or false, depending on what you want.
+            ],
+            'color' => ['red','blue','green','yellow','gray'],
+            'tooltip'=> [
+              'pointFormat'=> '{series.name}: <br>{point.percentage:.1f} %<br>value: {point.y}'
+            ],
+            'plotOptions'=> [
+              'pie'=> [
+                'dataLabels'=> [
+                  'enabled'=> true,
+                  'format'=> '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>value: {point.y}',
+                ]
+              ]
+            ],
+        ]);
+        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie]);
     }
 
     public function getCMPR() {
