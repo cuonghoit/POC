@@ -217,8 +217,8 @@
                     </div>
 
                     <div class="text-center">
-                        <input type="submit" name="submit" class="btn btn-success" value="APPROVE">
-                        <button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateAnnual',Auth::user()->id) }}"  >REJECT</button>
+                        <input type="submit" name="submit" class="btn btn-success" value="Reviewed">
+                        {{--<button class="btn btn-danger btn-reject" data-action="{{ route('rejectMyEmployeeRateAnnual',Auth::user()->id) }}"  >REJECT</button>--}}
                     </div>
                    </form>
                 </div>

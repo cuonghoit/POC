@@ -233,6 +233,7 @@
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                         @hasanyrole('general_director')
                             <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
+                            <button data-action="{{ route('unlockRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>
                         @else
                             <input type="submit" name="submit" value="Submit" class="btn btn-success">
                         @endif

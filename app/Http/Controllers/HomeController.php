@@ -1260,4 +1260,33 @@ class HomeController extends Controller
         $rate_annual_performance->save();
 
     }
+
+    public function unlockRMAP($id, Request $request) {
+        $year = $request->input('year');
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        $department = '';
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        if($this->isHR()){
+            $department = $request->input('department');
+            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")
+                ->where('year','like' ,$year.'%')
+                ->join('status', 'status.id', '=', 'status')
+                ->where('status', $this::STATUS_APPROVED)
+                ->where('user_id',$department)->get();
+        }
+var_dump($rate_annual_performance);die;
+        foreach ($rate_annual_performance as $rateAnnual) {
+            $rateAnnual->status = $this::STATUS_PENDING;
+            var_dump($rateAnnual->status);
+//            $rateAnnual->save();
+        }
+        die;
+
+        return redirect()->route('RMAP',Auth::user()->id);
+    }
 }
