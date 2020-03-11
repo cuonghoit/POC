@@ -24,6 +24,7 @@ class HomeController extends Controller
     public const STATUS_APPROVED = 3;
     public const STATUS_REJECTED = 4;
     public const STATUS_COMPLETED = 5;
+    public const STATUS_REVIEW = 6;
     /**
      * Create a new controller instance.
      *
@@ -301,7 +302,8 @@ class HomeController extends Controller
                     $msc_performance = $msc_performance->where('year', 'like', $year."%");
                 }
                 if($department) {
-//                    $msc_performance = $msc_performance->where('user_id', $department);
+                    $userIds = $this->getUserIdsByDepartmentId($department);
+                    $msc_performance = $msc_performance->whereIn('user_id', $userIds);
                 }
             }
         } else {
@@ -357,7 +359,14 @@ class HomeController extends Controller
             if($request->isMethod('POST')) {
                 $year = $request->input('year');
                 $department = $request->input('department');
-                $msc_performance = $msc_performance->where('year', 'like', $year."%")->where('user_id', $department);
+                if($year) {
+                    $msc_performance = $msc_performance->where('year', 'like', $year."%");
+                }
+                if($department) {
+                    $userIds = $this->getUserIdsByDepartmentId($department);
+                    $msc_performance = $msc_performance->whereIn('user_id', $userIds);
+                }
+
             }
         } else {
             $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('user_id',$id)->where('type', 0);
@@ -1314,32 +1323,71 @@ class HomeController extends Controller
 
     }
 
-    public function unlockRMAP($id, Request $request) {
-        $year = $request->input('year');
-        $departmentList = personal_info::whereNotNull('department_id')->get();
-        $departmentIds = array();
-        $department = '';
-        foreach ($departmentList as $user) {
-            if( !in_array($user->department_id, $departmentIds) ) {
-                $departmentIds[] = $user->department_id;
+    public function unlockBMAMO($id, Request $request) {
+        if($this->isHR()) {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0);
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $department = $request->input('department');
+                if($year) {
+                    $msc_performance = $msc_performance->where('year', 'like', $year."%");
+                }
+                if($department) {
+                    $userIds = $this->getUserIdsByDepartmentId($department);
+                    $msc_performance = $msc_performance->whereIn('user_id', $userIds);
+                }
+
+                $msc_performance = $msc_performance->get();
+
+                foreach ($msc_performance as $msc) {
+                    if($msc->status === $this::STATUS_APPROVED) {
+                        $msc->status = $this::STATUS_PENDING;
+                        $msc->save();
+                    }
+                }
             }
         }
-        if($this->isHR()){
-            $department = $request->input('department');
-            $rate_annual_performance = rate_annual_performance::select("rate_annual_performance.*", "status.name")
-                ->where('year','like' ,$year.'%')
-                ->join('status', 'status.id', '=', 'status')
-                ->where('status', $this::STATUS_APPROVED)
-                ->where('user_id',$department)->get();
-        }
-var_dump($rate_annual_performance);die;
-        foreach ($rate_annual_performance as $rateAnnual) {
-            $rateAnnual->status = $this::STATUS_PENDING;
-            var_dump($rateAnnual->status);
-//            $rateAnnual->save();
-        }
-        die;
 
-        return redirect()->route('RMAP',Auth::user()->id);
+        return redirect()->route('BMAMO',Auth::user()->id);
+    }
+
+    public function getUserIdsByDepartmentId($departmentIds) {
+        $result = personal_info::select('user_id')->where('department_id', $departmentIds)->get();
+        $userIds = array();
+        foreach ($result as $row) {
+            if( !in_array($row['user_id'], $userIds) ) {
+                $userIds[] = $row['user_id'];
+            }
+        }
+
+        return $userIds;
+    }
+
+    public function reviewRMAP($id, Request $request) {
+        if($this->isHR()) {
+            $msc_performance = msc_performance::select("msc_performance.*", "status.name")->join('status', 'msc_performance.status', '=', 'status.id')->where('status', $this::STATUS_APPROVED)->where('type', 0);
+            if($request->isMethod('POST')) {
+                $year = $request->input('year');
+                $department = $request->input('department');
+                if($year) {
+                    $msc_performance = $msc_performance->where('year', 'like', $year."%");
+                }
+                if($department) {
+                    $userIds = $this->getUserIdsByDepartmentId($department);
+                    $msc_performance = $msc_performance->whereIn('user_id', $userIds);
+                }
+
+                $msc_performance = $msc_performance->get();
+
+                foreach ($msc_performance as $msc) {
+                    if($msc->status === $this::STATUS_APPROVED) {
+                        $msc->status = $this::STATUS_PENDING;
+                        $msc->save();
+                    }
+                }
+            }
+        }
+
+        return redirect()->route('BMAMO',Auth::user()->id);
     }
 }

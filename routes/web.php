@@ -123,6 +123,7 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::get('/building-my-personal-development-plan/{id}', 'HomeController@getBMPDP')->name('BMPDP');
     Route::match(['get', 'post'], '/building-my-monthly-msc-objectives/{id}', 'HomeController@getBMMMO')->name('BMMMO');
     Route::match(['get', 'post'], '/building-my-annual-msc-objectives/{id}', 'HomeController@getBMAMO')->name('BMAMO');
+    Route::match(['get', 'post'], '/unlock-my-annual-msc-objectives/{id}', 'HomeController@unlockBMAMO')->name('unlockBMAMO');
     Route::post('/submit-monthly-msc-objectives/{id}', 'HomeController@submitMscMothy')->name('submitMscMothy');
     Route::post('/submit-my-annual-msc-objectives/{id}', 'HomeController@submitMscAnnual')->name('submitMscAnnual');
 
@@ -142,7 +143,6 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::post('save-rate-monthly-performance/{id}', 'HomeController@saveRMMP')->name('saveRMMP');
     Route::post('save-rate-annual-performance/{id}', 'HomeController@saveRMAP')->name('saveRMAP');
     Route::post('review-rate-annual-performance/{id}', 'HomeController@reviewRMAP')->name('reviewRMAP');
-    Route::post('unlock-rate-annual-performance/{id}', 'HomeController@unlockRMAP')->name('unlockRMAP');
 
     Route::post('search-rate-monthly-performance/{id}', 'HomeController@searchRMMP')->name('searchRMMP');
     Route::post('search-rate-annual-performance/{id}', 'HomeController@searchRMAP')->name('searchRMAP');

@@ -349,7 +349,11 @@
 
                             </b>&emsp;
                         </label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        @hasanyrole('general_director')
+                            <button data-action="{{ route('unlockBMAMO',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>
+                        @else
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        @endif
                         <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                     </div>
                    </form>
