@@ -47,7 +47,9 @@
                     @endif
                     @if(session('notice'))
                         <div class="text-danger">
-                            <b>{{session('notice')}}</b>
+                            <div class="alert alert-danger" role="alert">
+                            {{ session('notice') }}
+                        </div>
                         </div>
                     @endif
                     <form action="{{ route('searchMscAnnual',Auth::user()->id) }}" method="post">

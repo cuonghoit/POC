@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Exports\ExcelMscExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class ExcelMscController extends Controller
 {
@@ -33,6 +34,9 @@ class ExcelMscController extends Controller
              'dec',
             'note'
                     ]);
+            if(is_null($request->input('id'))){
+                return redirect()->route('BMAMO',Auth::user()->id)->with('notice','Nothing Data!!!');
+            }
 
             $objective_category = $request->input('objective_category');
             $milestone = $request->input("milestone");
