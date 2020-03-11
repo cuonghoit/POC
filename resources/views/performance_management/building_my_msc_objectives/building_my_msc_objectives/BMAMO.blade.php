@@ -138,7 +138,7 @@
 
                         <div class="form-group">
 {{--                            <input type="hidden" name="isPrintPdf" value="false"/>--}}
-                            <div class="text-right"><button data-action="{{ route('export') }}" class="btn btn-warning btn-reject" >print out</button></div>
+                            <div class="text-right"><button data-action="{{ route('export') }}" class="btn btn-warning btn-reject" >{{ __('Export to Excel') }}</button></div>
                         </div>
                     <div class="table-responsive">
                     <table class="table table-bordered text-center text-nowrap table-striped">
