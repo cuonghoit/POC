@@ -20,7 +20,7 @@ class ExcelMscExport implements Responsable, FromArray
     * It's required to define the fileName within
     * the export class when making use of Responsable.
     */
-    private $fileName = 'excel.xlsx';
+    private $fileName = 'annual_msc.xlsx';
 
     /**
     * Optional Writer Type

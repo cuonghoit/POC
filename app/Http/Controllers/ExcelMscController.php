@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\model\ExcelMsc;
+use App\Model\ExcelMsc;
 
 use App\Http\Controllers\Controller;
 use App\Exports\ExcelMscExport;
