@@ -181,6 +181,7 @@ return [
          * Print pdf
          */
         Barryvdh\DomPDF\ServiceProvider::class,
+        Adldap\Laravel\AdldapServiceProvider::class,
 
     ],
 

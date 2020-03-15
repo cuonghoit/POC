@@ -720,6 +720,7 @@ class ComposerStaticInit574098390db214822984fba84916c9fb
         'Adldap\\Schemas\\Schema' => __DIR__ . '/..' . '/adldap2/adldap2/src/Schemas/Schema.php',
         'Adldap\\Schemas\\SchemaInterface' => __DIR__ . '/..' . '/adldap2/adldap2/src/Schemas/SchemaInterface.php',
         'Adldap\\Utilities' => __DIR__ . '/..' . '/adldap2/adldap2/src/Utilities.php',
+        'App\\Charts\\Highcharts' => __DIR__ . '/../..' . '/app/Charts/Highcharts.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exports\\ExcelMscExport' => __DIR__ . '/../..' . '/app/Exports/ExcelMscExport.php',

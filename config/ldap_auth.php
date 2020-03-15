@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => App\Model\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -233,7 +233,7 @@ return [
         |
         */
 
-        'sync' => env('LDAP_PASSWORD_SYNC', false),
+        'sync' => env('LDAP_PASSWORD_SYNC', true),
 
         /*
         |--------------------------------------------------------------------------

@@ -147,6 +147,7 @@ return array(
     'Adldap\\Schemas\\Schema' => $vendorDir . '/adldap2/adldap2/src/Schemas/Schema.php',
     'Adldap\\Schemas\\SchemaInterface' => $vendorDir . '/adldap2/adldap2/src/Schemas/SchemaInterface.php',
     'Adldap\\Utilities' => $vendorDir . '/adldap2/adldap2/src/Utilities.php',
+    'App\\Charts\\Highcharts' => $baseDir . '/app/Charts/Highcharts.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Exports\\ExcelMscExport' => $baseDir . '/app/Exports/ExcelMscExport.php',

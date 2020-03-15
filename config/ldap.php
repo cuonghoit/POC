@@ -143,7 +143,7 @@ return [
                 |
                 */
 
-                'hosts' => explode(' ', env('LDAP_HOSTS', 'corp-dc1.corp.acme.org corp-dc2.corp.acme.org')),
+                'hosts' => explode(' ', env('LDAP_HOSTS', '10.10.10.2 10.10.10.3')),
 
                 /*
                 |--------------------------------------------------------------------------
@@ -183,7 +183,7 @@ return [
                 |
                 */
 
-                'base_dn' => env('LDAP_BASE_DN', 'dc=corp,dc=acme,dc=org'),
+                'base_dn' => env('LDAP_BASE_DN', 'OU=PQPOC,DC=phuquocpoc,DC=local'),
 
                 /*
                 |--------------------------------------------------------------------------
