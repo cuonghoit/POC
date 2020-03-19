@@ -42,6 +42,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        $user = Auth::user();
+//        if(!$user->hasAnyRole('employees|department_managers|director|super-admin')) {
+//            $user->assignRole('employees');
+//        }
         return redirect()->route('performaceManagement',Auth::user()->id);
     }
 
