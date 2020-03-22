@@ -159,7 +159,9 @@
                         </thead>
                         <tbody>
                         <?php $i=0; ?>
+                            @php $status = ''; @endphp
                              @foreach($rate_monthly_performance as $rmp)
+                                 @php $status = $rmp->name; @endphp
                                  <?php switch ($rmp->name) {
                                      case 'Approved':
                                          $classColor = 'text-success';
@@ -253,13 +255,13 @@
                     </div>
 
                     <div class="form-group text-center">
-                        @if(strcmp($rmp->name, 'Pending') == 0)
+                        @if(strcmp($status, 'Pending') == 0)
                             <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                             <input type="submit" name="submit" value="Submit" class="btn btn-success">
                             <button data-action="{{ route('saveRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
-                        @elseif(strcmp($rmp->name, 'Submited') == 0)
+                        @elseif(strcmp($status, 'Submited') == 0)
                             <button class="col-md-3 btn btn-success" name="submited">Submited</button>
-                        @elseif(strcmp($rmp->name, 'Approved') ==0)
+                        @elseif(strcmp($status, 'Approved') ==0)
                             <button class="col-md-3 btn btn-success" name="approved">Approved</button>
                         @endif
                    </form>

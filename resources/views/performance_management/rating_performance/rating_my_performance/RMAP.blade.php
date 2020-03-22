@@ -161,7 +161,9 @@
                         </thead>
                         <tbody>
                         <?php $i=0;?>
+                            @php $status = ''; @endphp
                             @foreach($rate_annual_performance as $rate_annual_performance )
+                                @php $status = $rate_annual_performance->name; @endphp
                                 <?php switch ($rate_annual_performance->name) {
                                     case 'Approved':
                                         $classColor = 'text-success';
@@ -230,23 +232,23 @@
                     </div>
 
                     <div class="form-group text-center">
-                        
+
                         @hasanyrole('department_managers|director|general_director')
                             <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
                             {{--<button data-action="{{ route('unlockRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>--}}
                             <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
                         @else
-                            @if(strcmp($rate_annual_performance->name, 'Pending') == 0)
+                            @if(strcmp($status, 'Pending') == 0)
                                 <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
                                 <input type="submit" name="submit" value="Submit" class="btn btn-success">
                                 <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
-                            @elseif(strcmp($rate_annual_performance->name,'Submited') == 0)
+                            @elseif(strcmp($status,'Submited') == 0)
                                 <button class="col-md-3 btn btn-success" name="submited">Submited</button>
-                            @elseif(strcmp($rate_annual_performance->name,'Approved') == 0)
+                            @elseif(strcmp($status,'Approved') == 0)
                                 <button class="col-md-3 btn btn-success" name="approved">Approved</button>
                             @endif
                         @endif
-                        
+
                    </form>
                 </div>
             </div>
