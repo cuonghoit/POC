@@ -149,6 +149,13 @@
                                     </a>
                                     @endhasanyrole
 
+                                    @hasanyrole('employees|department_managers|general_director|super-admin')
+                                    <a class="dropdown-item" href="{{ route('PTEBP',Auth::user()->id) }}"
+                                       onclick="">
+                                        {{ __('Post training ẹvaluation') }}
+                                    </a>
+                                    @endhasanyrole
+
                                     <div class="dropright dropdown-item submenu">
                                         <a id="nav-approve-training" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             {{ __('Approve Training') }}

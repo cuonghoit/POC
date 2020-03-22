@@ -14,7 +14,7 @@
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
-                    
+
                     	    </div>
                     @endif
                     <form action="" >
@@ -23,13 +23,15 @@
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>TRAINING REQUEST</b></h3><br>
                     <div class="row">
-	                    <div class="col-md-1 font-weight-bold">
-	                    	Ref:
-	                    </div>
-	                    <div class="col-md-5 "> No. / YYYY / PQPOC-HRM </div>
-	                    <div class="col-md-1 font-weight-bold"> Date:
-	                    </div>
-	                    <div class="col-md-5 "> HCMC, DD/MM/YYYY</div>
+	                    <table width="100%">
+                            <tr>
+                                <td>Ref:</td>
+                                <td> No. / YYYY / PQPOC-HRM </td>
+                                <td> Date: </td>
+                                <td> HCMC, DD/MM/YYYY</td>
+                                <td class="text-right"><a href="{{route('printTrainingRequest')}}"  class="btn btn-warning">Print out</a></td>
+                            </tr>
+                        </table>
                   	</div>
                   	<br>
                   	<table class=" table table-bordered table-striped">
@@ -51,7 +53,7 @@
                   		</tr>
                   		<tr>
                   			<td class="font-weight-bold">Duration:</td>
-                  			<td>… days (From….. to…..)</td>
+                  			<td></td>
                   		</tr>
                   		<tr>
                   			<td class="font-weight-bold">Venue:</td>
@@ -59,17 +61,11 @@
                   		</tr>
                   		<tr>
                   			<td class="font-weight-bold">Training provider:</td>
-                  			<td></td>
+                  			<td>date:</td>
                   		</tr>
                   		<tr>
                   			<td class="font-weight-bold">Supporting document:</td>
-                  			<td>
-                  				-	Attachment #1: Course content. <br>
-								-	Attachment #2: Quotation. <br>
-								-	Attachment #3: Participant’s Training & Financial Commitment signed with PQPOC. <br>
-								-	…
-
-                  			</td>
+                  			<td>date:</td>
                   		</tr>
                   		<tr >
                   			<td class="font-weight-bold"></td>
@@ -81,13 +77,13 @@
                   		<tr>
                   			<td class="font-weight-bold">Total estimated cost: <br> Including:
 </td>
-                  			<td> … USD/VND</td>
+                  			<td>...USD/VND</td>
                   			<td> Budget Cost Code: </td>
                   			<td> G0311 </td>
                   		</tr>
                   		<tr>
                   			<td class="font-weight-bold">Tuition fee:</td>
-                  			<td> … USD/VND </td>
+                  			<td>...USD/VND </td>
                   			<td> Taxes (VAT/CIT -if any): </td>
                   			<td></td>
                   		</tr>
@@ -95,7 +91,7 @@
                   			<td class="font-weight-bold">Logistic fee (travel, accommodation):</td>
                   			<td>Refer to Company Staff policy</td>
                   			<td> Other fees (if any):</td>
-                  			<td> … USD/VND</td>
+                  			<td> ... USD/VND</td>
                   		</tr>
                   	</table>
                   	<table class=" table table-bordered table-striped">
@@ -120,7 +116,7 @@
                   			<td></td>
                   			<td> Date: </td>
                   			<td> Date: </td>
-                  			
+
                   		</tr>
                   		<tr>
                   			<td>2</td>

@@ -32,6 +32,7 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>TRAINING MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>POST TRAINING EVALUATION</b></h3><br>
+                        <div class="text-right"><a href="{{route('printTrainingEvaluation', $personal_info->user_id)}}" class="btn btn-warning">Print out</a></div>
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                                                 <tr>
@@ -276,7 +277,7 @@
                                 <td><textarea name="suggestions_for_improvement" class="form-control" rows="3"></textarea></td>
                             </tr>
                         </table>
-                        
+
                     </form><br>
                     <div class="form-group text-center">
                         <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>

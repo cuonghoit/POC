@@ -49,6 +49,9 @@ Route::group(['middleware' => ['role:employees|department_managers|director|supe
 		Route::get('/post-training-evaluation-combined-records', 'HomeController@getPTECR')->name('PTECR');
 	});
 
+	Route::get('/print-training-request', 'PdfController@printTrainingRequest')->name('printTrainingRequest');
+	Route::get('/print-post-training-evaluation/{id}', 'PdfController@printTrainingEvaluation')->name('printTrainingEvaluation');
+
 	Route::group(['prefix'=>'performace-management'],function(){
 		Route::get('/performance-management-report/{id}', 'HomeController@getPerformaceManagement')->name('performaceManagement');
         Route::get('/print-performance-report', 'PdfController@printPerformanceReport')->name('printPerformanceReport');

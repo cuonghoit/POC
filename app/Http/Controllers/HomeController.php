@@ -10,6 +10,8 @@ use App\Model\training_record;
 use App\Model\rate_monthly_performance;
 use App\Model\status;
 use App\Model\rate_annual_performance;
+use App\Model\training_request;
+use App\Model\training_employee;
 use Illuminate\Support\Facades\Auth;
 use App\Model\msc_performance;
 use PHPUnit\Framework\Constraint\Count;
@@ -107,10 +109,10 @@ class HomeController extends Controller
     }
 
     public function getTI($id){
-        $course = course::all();
-        $course_count = DB::table('course')->count();
-        $personal_info = personal_info::where('user_id',$id)->first();
-        return view('training_management.TI',['course'=>$course,'personal_info'=>$personal_info]);
+
+        $training_request = training_request::where('user_id', $id)->first();
+        $training_employees = training_employee::all();
+        return view('training_management.TI',['training_request'=>$training_request, 'training_employees'=>$training_employees]);
     }
 
 
