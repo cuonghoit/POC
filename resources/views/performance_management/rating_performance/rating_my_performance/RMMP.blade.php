@@ -171,8 +171,8 @@
                                          $classColor = '';
                                          break;
                                  } ?>
+                            @if(strcmp($rmp->name, 'Pending') == 0)
                             <tr>
-
                                 <td>
                                 {{++$i}}
                                     <input type="hidden" name="id[]" value="{{$rmp->id}}" >
@@ -197,10 +197,36 @@
                                 <td>
                                     {{ $rmp->note}}
                                 </td>
-
-
                             </tr>
-                             @endforeach
+                            @else
+                            <tr>
+                                <td>
+                                {{++$i}}
+                                    <input type="hidden" name="id[]" value="{{$rmp->id}}" >
+                                </td>
+                                <td>
+                                    {{ $rmp->objective_category }}
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="{{  $rmp->objective_and_milestone }}" disabled >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="{{ $rmp->result }}" disabled>
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{$i-1}}]" disabled @if($rmp->achieve == 1) checked = "checked" @endif>
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="{{$rmp->monthly_rate}}" class="form-control text-center" disabled></td>
+                                <td>{{$rmp->monthly_performance_level}}</td>
+                                <td class="{{ $classColor }}">
+                                    {{ App\Http\Controllers\HomeController::getStatus($rmp->status) }}
+                                </td>
+                                <td>
+                                    {{ $rmp->note}}
+                                </td>
+                            </tr>
+                            @endif
+                            @endforeach
                         </tbody>
                     </table>
                     </div>
@@ -227,9 +253,15 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        <button data-action="{{ route('saveRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        @if(strcmp($rmp->name, 'Pending') == 0)
+                            <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                            <button data-action="{{ route('saveRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        @elseif(strcmp($rmp->name, 'Submited') == 0)
+                            <button class="col-md-3 btn btn-success" name="submited">Submited</button>
+                        @elseif(strcmp($rmp->name, 'Approved') ==0)
+                            <button class="col-md-3 btn btn-success" name="approved">Approved</button>
+                        @endif
                    </form>
                 </div>
             </div>

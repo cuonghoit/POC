@@ -230,14 +230,23 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
+                        
                         @hasanyrole('department_managers|director|general_director')
                             <button data-action="{{ route('reviewRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Reviewed") }}</button>
                             {{--<button data-action="{{ route('unlockRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>--}}
+                            <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
                         @else
-                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                            @if(strcmp($rate_annual_performance->name, 'Pending') == 0)
+                                <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
+                                <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                                <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
+                            @elseif(strcmp($rate_annual_performance->name,'Submited') == 0)
+                                <button class="col-md-3 btn btn-success" name="submited">Submited</button>
+                            @elseif(strcmp($rate_annual_performance->name,'Approved') == 0)
+                                <button class="col-md-3 btn btn-success" name="approved">Approved</button>
+                            @endif
                         @endif
-                        <button data-action="{{ route('saveRMAP',Auth::user()->id) }}" class="btn btn-success btn-reject" >{{ __("Save") }}</button>
+                        
                    </form>
                 </div>
             </div>
