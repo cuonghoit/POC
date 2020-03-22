@@ -114,7 +114,12 @@ class HomeController extends Controller
         $training_employees = training_employee::all();
         return view('training_management.TI',['training_request'=>$training_request, 'training_employees'=>$training_employees]);
     }
+    public function getTR($id){
 
+        $training_request = training_request::where('user_id', $id)->first();
+        $training_employees = training_employee::all();
+        return view('training_management.training_implementation.TR',['training_request'=>$training_request, 'training_employees'=>$training_employees]);
+    }
 
 
     public function getGATP()
