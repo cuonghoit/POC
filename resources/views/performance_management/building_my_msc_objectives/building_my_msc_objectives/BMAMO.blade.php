@@ -79,12 +79,12 @@
                            </div>
                         </div>
                     </form>
-                    </div>
+                    
                     <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
-                                                <tr>
+                        <tr>
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
@@ -139,7 +139,7 @@
                     </table><br>
 
                         <div class="form-group">
-{{--                            <input type="hidden" name="isPrintPdf" value="false"/>--}}
+{{--                        <input type="hidden" name="isPrintPdf" value="false"/>--}}
                             <div class="text-right"><button data-action="{{ route('export') }}" class="btn btn-warning btn-reject" >{{ __('Export to Excel') }}</button></div>
                         </div>
                     <div class="table-responsive">
@@ -199,7 +199,7 @@
                                         $classColor = '';
                                         break;
                                 } ?>
-                            @if(strcmp($mp->name, 'Approved') != 0)
+                            @if(strcmp($mp->name, 'Pending') != 0)
                             <tr>
                                 <td>
                                     {{$i++}}
@@ -208,46 +208,46 @@
                                 <td>{{$mp->objective_category}}
                                 <input type="hidden"name="objective_category[]" value="{{$mp->objective_category}}"></td>
                                 <td>
-                                    <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
+                                    <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="target[]"  value="{{$mp->target_to_archive}}">
+                                    <input type="text" name="target[]"  value="{{$mp->target_to_archive}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="jan[]" value="{{$mp->jan}}" >
+                                    <input type="text" name="jan[]" value="{{$mp->jan}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="feb[]" value="{{$mp->feb}}">
+                                    <input type="text" name="feb[]" value="{{$mp->feb}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="mar[]" value="{{$mp->mar}}">
+                                    <input type="text" name="mar[]" value="{{$mp->mar}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="apr[]" value="{{$mp->apr}}">
+                                    <input type="text" name="apr[]" value="{{$mp->apr}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="may[]" value="{{$mp->may}}">
+                                    <input type="text" name="may[]" value="{{$mp->may}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="jun[]" value="{{$mp->jun}}">
+                                    <input type="text" name="jun[]" value="{{$mp->jun}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="jul[]" value="{{$mp->jul}}">
+                                    <input type="text" name="jul[]" value="{{$mp->jul}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="aug[]" value="{{$mp->aug}}">
+                                    <input type="text" name="aug[]" value="{{$mp->aug}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="sep[]" value="{{$mp->sep}}">
+                                    <input type="text" name="sep[]" value="{{$mp->sep}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="oct[]" value="{{$mp->oct}}">
+                                    <input type="text" name="oct[]" value="{{$mp->oct}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="nov[]" value="{{$mp->nov}}">
+                                    <input type="text" name="nov[]" value="{{$mp->nov}}" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" name="dec[]" value="{{$mp->dec}}">
+                                    <input type="text" name="dec[]" value="{{$mp->dec}}" disabled="disabled">
                                 </td>
                                 <td class="{{$classColor}}">
                                     {{$mp->name}}
@@ -256,55 +256,56 @@
                                     <input disabled="disabled" name="note[]" style="border: none; background: none;" value="{{$mp->note}}">
                                 </td>
                             </tr>
+                            
                             @else
                                 <tr>
                                     <td>
                                         {{$i++}}
                                    <input type="hidden" name="id[]"  value="{{$mp->id}}">
                                     </td>
-                                    <td><{{$mp->objective_category}}
-                                    <input type="hidden"name="objective_category[]" value="{{$mp->objective_category}}"></td>
+                                    <td>{{$mp->objective_category}}
+                                    <input type="hidden"name="objective_category[]" value="{{$mp->objective_category}}" ></td>
                                     <td>
-                                        <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}">
+                                        <input type="text" name="milestone[]"  value="{{$mp->milestone_behavior}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="target[]"  value="{{$mp->target_to_archive}}">
+                                        <input type="text" name="target[]"  value="{{$mp->target_to_archive}}" >
                                     </td>
                                     <td>
                                         <input type="text" name="jan[]" value="{{$mp->jan}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="feb[]" value="{{$mp->feb}}">
+                                        <input type="text" name="feb[]" value="{{$mp->feb}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="mar[]" value="{{$mp->mar}}">
+                                        <input type="text" name="mar[]" value="{{$mp->mar}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="apr[]" value="{{$mp->apr}}">
+                                        <input type="text" name="apr[]" value="{{$mp->apr}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="may[]" value="{{$mp->may}}">
+                                        <input type="text" name="may[]" value="{{$mp->may}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="jun[]" value="{{$mp->jun}}">
+                                        <input type="text" name="jun[]" value="{{$mp->jun}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="jul[]" value="{{$mp->jul}}">
+                                        <input type="text" name="jul[]" value="{{$mp->jul}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="aug[]" value="{{$mp->aug}}">
+                                        <input type="text" name="aug[]" value="{{$mp->aug}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="sep[]" value="{{$mp->sep}}">
+                                        <input type="text" name="sep[]" value="{{$mp->sep}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="oct[]" value="{{$mp->oct}}">
+                                        <input type="text" name="oct[]" value="{{$mp->oct}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="nov[]" value="{{$mp->nov}}">
+                                        <input type="text" name="nov[]" value="{{$mp->nov}}" >
                                     </td>
                                     <td>
-                                        <input type="text" name="dec[]" value="{{$mp->dec}}">
+                                        <input type="text" name="dec[]" value="{{$mp->dec}}" >
                                     </td>
                                     <td class="{{$classColor}}">
                                         {{$mp->name}}
@@ -342,21 +343,30 @@
                         </table>
                     </div>
                     <div class="form-group text-center">
-                        <label for="submit"><b>
+
+                        <label for="submit" ><b>
                                 @hasanyrole('general_director')
                                 {{ __('APPROVE/REJECT:') }}
+                                <button data-action="{{ route('unlockBMAMO',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>
                                 @else
-                                    {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL:') }}
+
+                                    @if(strcmp($mp->name, 'Submited') == 0)
+                                        <button name="submited" class="btn btn-success " style="white-space: nowrap;" >Submited</button>
+                                    @elseif(strcmp($mp->name, 'Approved') == 0)
+                                        <button name="approved" class="btn btn-success" >Approved</button>
+                                    @elseif(strcmp($mp->name, 'Pending') == 0)
+                                    {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL: ') }}
+                                        <input type="submit" name="submit" value="Submit" class="btn btn-success">                        
+                                        <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                                    @endif
                                 @endif
 
                             </b>&emsp;
                         </label>
-                        @hasanyrole('general_director')
-                            <button data-action="{{ route('unlockBMAMO',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>
-                        @else
-                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        @endif
-                        <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        
+                            
+                        
+                        
                     </div>
                    </form>
                 </div>

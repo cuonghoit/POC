@@ -73,7 +73,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
-                                                <tr>
+                        <tr>
                             <div class="form-group">
                                 <td><label for="Satff_Name">Staff name:
                                 </label></td>
@@ -167,6 +167,7 @@
                                     $classColor = '';
                                     break;
                             } ?>
+                            @if(strcmp($msc->name, 'Pending') == 0)
                             <tr>
                                 <td>
                                     {{$i++}}
@@ -188,16 +189,45 @@
                                 <td>
                                     {{$msc->note}}
                                 </td>
-
                             </tr>
+                            @else
+                            <tr>
+                                <td>
+                                    {{$i++}}
+                                    <input type="hidden" name="id[]" value="{{$msc->id}}"></td>
+                                <td>
+                                    {{$msc->objective_category}}
+                                </td>
+                                <td>
+                                    <input type="text" name="milestone[]" value="{{$msc->milestone_behavior}}" disabled="disabled">
+
+                                </td>
+                                <td>
+                                <input type="text" name="target[]" value="{{$msc->target_to_archive}}" disabled="disabled">
+                                </td>
+                                <td>
+                                    <input type="text" name="action_to_chieve[]" value="{{$msc->action_to_chieve}}" disabled="disabled">
+                                </td>
+                                <td class="{{ $classColor }}">{{$msc->name}}</td>
+                                <td>
+                                    {{$msc->note}}
+                                </td>
+                            </tr>
+                            @endif
                             @endforeach
 
                         </tbody>
                     </table>
                     <div class="form-group text-center">
-                        <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
-                        <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        @if(strcmp($msc->name, 'Submited') == 0)
+                            <button class="col-md-3 btn btn-success" name="submited">Submited</button>
+                        @elseif(strcmp($msc->name,'Approved') == 0)
+                            <button class="col-md-3 btn btn-success" name="submited">Approved</button>
+                        @elseif(strcmp($msc->name, 'Pending') == 0)
+                            <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                            <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                        @endif
                     </div>
                    </form>
                 </div>
