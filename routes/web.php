@@ -40,7 +40,7 @@ Route::group(['middleware' => ['role:employees|department_managers|director|supe
     Route::post('/individual-annual-training-plan/{id}', 'HomeController@postIATP')->name('postIATP');
 
     Route::get('/training-employees/{id}','HomeController@getTI')->name('TI');
-
+    Route::get('/training-department_managers/{id}','HomeController@getTR')->name('TR');
 
     Route::group(['prefix'=>'training-implementation'],function(){
 		Route::get('/company-annual-training-plan-schedule', 'HomeController@getCATPS')->name('CATPS');

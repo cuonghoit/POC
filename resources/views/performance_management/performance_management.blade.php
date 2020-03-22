@@ -31,15 +31,20 @@
                         <tr>
                             <div class="form-group">
                                 <td class="text-right":><b>Staff Name:</b></td>
-                                <td><input type="number" name="staffName" class="form-control col-md-12" value=""></td>
+                                <td><input type="text" name="staffName" class="form-control col-md-12" value=""></td>
                                 <td class="text-right":><b>Staff Number:</b></td>
-                                <td><input type="number" name="staffNumber" class="form-control col-md-12" value=""></td>
-                                <td class="text-right":><b>Department:</b></td>
+                                <td><input type="text" name="staffNumber" class="form-control col-md-12" value=""></td>
+                                @hasanyrole('general_director|super-admin')
+                                <td class="text-right":></td>
+                                <td></td>
+                                @else
+                                    <td class="text-right":><b>Department:</b></td>
                                 <td><select name="department" class="form-control col-md-12" value="">
                                     <option value="">Department</option>
                                     <option value="">Department</option>
                                     <option value="">Department</option>
                                 </select></td>
+                                    @endhasanyrole
                             </div>
                         </tr>
                         <tr>

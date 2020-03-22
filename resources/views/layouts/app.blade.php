@@ -179,7 +179,7 @@
                                     </a>
                                     @endhasanyrole
                                     @hasanyrole('department_managers|director|super-admin')
-                                    <a class="dropdown-item" href="#"
+                                    <a class="dropdown-item" href="{{ route('TR',Auth::user()->id) }}"
                                        onclick="">
                                         {{ __('Training Implementation') }}
                                     </a>
@@ -279,7 +279,7 @@
                                         </div>
                                     </div>
                                     @endhasanyrole
-                                    @hasanyrole('employees|department_managers|director|general_director|super-admin')
+                                    @hasanyrole('department_managers|director|general_director|super-admin')
                                     <a class="dropdown-item" href="{{route('performaceManagement',Auth::user()->id)}}">
                                         @hasanyrole('general_director')
                                             {{ __('Company Performance Appraisal Reports') }}
