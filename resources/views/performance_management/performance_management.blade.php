@@ -45,9 +45,9 @@
                         <tr>
                             <div class="form-group">
                                 <td class="text-right":><b>From Date:</b></td>
-                                <td><input type="date" name="formDate" class="form-control col-md-12" value=""></td>
+                                <td><input type="date" name="formDate" class="form-control col-md-12" value="{{$form_date}}"></td>
                                 <td class="text-right":><b>To Date:</b></td>
-                                <td><input type="date" name="toDate" class="form-control col-md-12" value=""></td>
+                                <td><input type="date" name="toDate" class="form-control col-md-12" value="{{$to_date}}"></td>
                                 <td colspan="2" class="text-right"><input type="submit" name="" value="Print out" class="btn btn-warning"></td>
                             </div>
                         </tr>
@@ -91,104 +91,23 @@
                                 <th>Should-Do 2</th>
                                 <th>Could-Do 1</th>
                             </tr>
-                            <tr class="bg-primary">
-                                <th></th>
-                                <th>Department:</th>
-                                <td>Development</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <?php $i=1; ?>
+                            @foreach($rap as $rap)
                             <tr>
-                                <td>1</td>
+                                <td>{{$i++}}</td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><input type="radio" @if($rap->must_do_1 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->must_do_2 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->must_do_3 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->must_do_4 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->should_do_1 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->should_do_2 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td><input type="radio" @if($rap->could_do_1 == 1) checked = "checked" @endif disabled = "disabled"></td>
+                                <td>{{$rap->monthly_rate}}</td>
+                                <td>{{$rap->monthly_performance_level}}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr class="bg-primary">
-                                <th></th>
-                                <th>Department:</th>
-                                <td>Drilling</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @endforeach
                         </table>
                     </div>
                    </form>

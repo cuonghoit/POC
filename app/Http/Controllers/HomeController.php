@@ -194,7 +194,7 @@ class HomeController extends Controller
             }
         }
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
-        $year = '';
+        $year = date('Y-m');
         $department = '';
 
         if($this->isHR()) {
@@ -225,7 +225,7 @@ class HomeController extends Controller
             }
         }
 
-
+        $msc_performance =$msc_performance->where('year','like', $year."%");
         $msc_performance = $msc_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
@@ -296,7 +296,7 @@ class HomeController extends Controller
             }
         }
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
-        $year = '';
+        $year = now()->year;
         $department = '';
 
         if($this->isHR()) {
@@ -323,7 +323,7 @@ class HomeController extends Controller
             }
         }
 
-
+        $msc_performance = $msc_performance->where('year','like',$year."%");
         $msc_performance = $msc_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
@@ -487,7 +487,8 @@ class HomeController extends Controller
         foreach ($rate_annual_performance as $rate_aunnual){
             $data_bar->push($rate_aunnual->monthly_rate);
         }
-
+        $from_date = date('Y-01-01');
+        $to_date = date('Y-m-d');
         $bar->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
         $pie->labels(['Poor','Average','Good','Very Good','Outstanding']);
 
@@ -523,9 +524,12 @@ class HomeController extends Controller
                   'format'=> '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>value: {point.y}',
                 ]
               ]
-            ],
+            ]
         ]);
-        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie]);
+        $from_year = date('Y-01-01');
+        $to_year = date('Y-m-01');
+        $rap = rate_annual_performance::where('user_id', $id)->whereBetween('date',[$from_year, $to_year])->get();
+        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie, 'form_date'=>$from_date,'to_date'=>$to_date, 'rap'=>$rap]);
     }
 
     public function getCMPR() {
@@ -666,7 +670,7 @@ class HomeController extends Controller
             }
         }
 
-        $year = '';
+        $year = now()->year;
         $department = '';
 
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
@@ -690,7 +694,7 @@ class HomeController extends Controller
                 ->where('user_id',$id);
 
         }
-
+        $rate_annual_performance = $rate_annual_performance->where('year', 'like', $year."%");
         $rate_annual_performance = $rate_annual_performance->get();
         $avg = 0;
         foreach ($rate_annual_performance as $rate){
@@ -828,7 +832,7 @@ class HomeController extends Controller
             }
         }
 
-        $year = '';
+        $year = date('Y-m');
         $department = '';
 
         $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
@@ -851,6 +855,7 @@ class HomeController extends Controller
             $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
                 ->where('user_id',$id);
         }
+        $rate_monthly_performance = $rate_monthly_performance->where('month_year','like', $year."%");
         $rate_monthly_performance = $rate_monthly_performance->get();
 
         $personal_info = personal_info::where('user_id',$id)->first();
