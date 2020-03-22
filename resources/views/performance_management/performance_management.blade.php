@@ -10,7 +10,7 @@
     }
 
 </style>
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">

@@ -11384,3 +11384,95 @@ body {
   font-family: "EB Garamond";
 }
 
+#body-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#sidebar-container {
+  min-height: 100vh;
+  background-color: #333;
+  padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+
+.sidebar-expanded {
+  width: 17%;
+}
+
+.sidebar-collapsed {
+  width: 5%;
+}
+
+.main-content-expanded {
+  width: 95%;
+}
+
+.main-content-colapse {
+  width: 83%;
+}
+
+/* Menu item*/
+
+#sidebar-container .list-group a {
+  color: white;
+}
+
+/* Submenu item*/
+
+#sidebar-container .list-group .sidebar-submenu a {
+  padding-left: 40px;
+}
+
+#sidebar-container .list-group .sidebar-submenu a.lvl-1 {
+  padding-left: 30px;
+}
+
+.sidebar-submenu {
+  font-size: 0.9rem;
+}
+
+/* Separators */
+
+.sidebar-separator-title {
+  background-color: #333;
+  height: 35px;
+}
+
+.sidebar-separator-content {
+  background-color: #333;
+  height: 35px;
+  padding-left: 30px;
+}
+
+.sidebar-separator {
+  background-color: #333;
+  height: 25px;
+}
+
+.logo-separator {
+  background-color: #333;
+  height: 60px;
+}
+
+/* Closed submenu icon */
+
+#sidebar-container .list-group .list-group-item[aria-expanded=false] .submenu-icon::after {
+  content: " \F0D7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+
+/* Opened submenu icon */
+
+#sidebar-container .list-group .list-group-item[aria-expanded=true] .submenu-icon::after {
+  content: " \F0DA";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+

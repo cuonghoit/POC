@@ -11,7 +11,7 @@
 
 
 </style>
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -119,7 +119,7 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                    <table class="table table-bordered text-center table-striped text-nowrap">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <th rowspan="2">

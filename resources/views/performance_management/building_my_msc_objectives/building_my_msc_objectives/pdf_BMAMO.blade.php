@@ -18,7 +18,7 @@
                         </b>
                     </h5><br>
 
-                    <table class="table table-bordered text-center text-nowrap w-auto text-xsmall">
+                    <table class="table table-bordered text-center w-auto text-xsmall">
 
                         <thead class="bg-success">
                             <tr >

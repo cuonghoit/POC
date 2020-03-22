@@ -11,7 +11,7 @@
 
 
 </style>
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -155,7 +155,9 @@
                         </thead>
                         <tbody>
                         <?php $i=1 ?>
+                        @php $status = ''; @endphp
                         @foreach($msc_performance as $msc)
+                            @php $status = $msc->name; @endphp
                             <?php switch ($msc->name) {
                                 case 'Approved':
                                     $classColor = 'text-success';
@@ -219,11 +221,11 @@
                         </tbody>
                     </table>
                     <div class="form-group text-center">
-                        @if(strcmp($msc->name, 'Submited') == 0)
+                        @if(strcmp($status, 'Submited') == 0)
                             <button class="col-md-3 btn btn-success" name="submited">Submited</button>
-                        @elseif(strcmp($msc->name,'Approved') == 0)
+                        @elseif(strcmp($status,'Approved') == 0)
                             <button class="col-md-3 btn btn-success" name="submited">Approved</button>
-                        @elseif(strcmp($msc->name, 'Pending') == 0)
+                        @elseif(strcmp($status, 'Pending') == 0)
                             <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
                             <input type="submit" name="submit" value="Submit" class="btn btn-success">
                             <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>

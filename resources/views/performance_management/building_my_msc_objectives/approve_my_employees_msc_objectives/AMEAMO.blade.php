@@ -12,7 +12,7 @@
 </style>
 
 
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -138,7 +138,7 @@
                     @endif
                     <br>
                     <div class="table-responsive">
-                    <table class="table table-bordered text-center text-nowrap table-striped">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                         <tr class="bg-success">
                             <th rowspan="2">
@@ -272,7 +272,7 @@
                     </div>
                      <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered text-center text-nowrap table-striped">
+                        <table class="table table-bordered text-center table-striped">
                             <tr>
                                 <td>
                                     Staff Signature:

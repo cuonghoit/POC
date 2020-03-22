@@ -28,6 +28,175 @@
 </head>
 <body>
     <div id="app">
+        <!-- Bootstrap NavBar -->
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('images/poc-logo-main.png') }}"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+            </div>
+        </nav><!-- NavBar END -->
+        <!-- Bootstrap row -->
+        @guest
+            <div class="col p-4">
+                @yield('content')
+            </div>
+        @else
+        <div class="row" id="body-row">
+            <!-- Sidebar -->
+            <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+                <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+                <!-- Bootstrap List Group -->
+                <ul class="list-group">
+                    <a href="{{ url('/') }}" class="bg-dark list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
+                            <span class="menu-collapsed">CMS</span>
+                        </div>
+                    </a>
+                    <!-- Menu with submenu -->
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-dashboard fa-fw mr-3 d-none"></span>
+                            <span class="menu-collapsed">{{ __('Perfomance Management') }}</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu1' class="collapse sidebar-submenu">
+                        @hasanyrole('employees|super-admin')
+                        <a href="{{ URL::to('pdf/guidelines_MSC.pdf') }}" class="list-group-item
+                        list-group-item-action bg-dark text-white lvl-1" target="_blank">
+                            <span class="menu-collapsed">{{ __('Guideline for MSC Performance Management System ')  }}</span>
+                        </a>
+                        @endhasanyrole
+                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
+                        menu-collapsed">
+                            <small>
+                                @hasanyrole('general_director')
+                                    {{ __('Company MSC') }}
+                                @else
+                                    {{ __('My MSC') }}
+                                @endhasanyrole
+                            </small>
+                        </li>
+                        <a href="{{ route('BMAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                        </a>
+                        <a href="{{ route('BMMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                        </a>
+                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
+                        menu-collapsed">
+                            <small>
+                                @hasanyrole('general_director')
+                                    {{ __('Company Rating') }}
+                                @else
+                                    {{ __('My Rating') }}
+                                @endhasanyrole
+
+                            </small>
+                        </li>
+                        <a href="{{ route('RMMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                        </a>
+                        <a href="{{ route('RMAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                        </a>
+                        @hasanyrole('department_managers|director|super-admin')
+                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
+                        menu-collapsed">
+                            <small>{{ __('Employees MSC') }}</small>
+                        </li>
+                        <a href="{{ route('AMEAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                        </a>
+                        <a href="{{ route('AMEMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                        </a>
+                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
+                        menu-collapsed">
+                            <small>{{ __('Employees Rating') }}</small>
+                        </li>
+                        <a href="{{ route('AMEMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                        </a>
+                        <a href="{{ route('AMEAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                        </a>
+                        @endhasanyrole
+                        @hasanyrole('employees|department_managers|director|general_director|super-admin')
+                        <a href="{{route('performaceManagement',Auth::user()->id)}}" class="list-group-item
+                        list-group-item-action bg-dark text-white lvl-1">
+                            <span class="menu-collapsed">{{ __('Performance Reports') }}</span>
+                        </a>
+                        @endhasanyrole
+                    </div>
+                    <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-graduation-cap fa-fw mr-3 d-none"></span>
+                            <span class="menu-collapsed"> {{ __('Training Management') }}</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu2' class="collapse sidebar-submenu">
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">Settings</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <span class="menu-collapsed">Password</span>
+                        </a>
+                    </div>
+                    <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                            <span id="collapse-text" class="menu-collapsed">Collapse</span>
+                        </div>
+                    </a>
+                </ul><!-- List Group END-->
+            </div><!-- sidebar-container END -->
+            <!-- MAIN -->
+            <div class="col p-4 main-content main-content-colapse">
+                @yield('content')
+            </div>
+        </div><!-- body-row END -->
+        @endguest
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -329,10 +498,6 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
 </body>
 <script type="text/javascript">

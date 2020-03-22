@@ -11,7 +11,7 @@
 
 
 </style>
-<div class="container">
+<div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
             <div class="card">
@@ -79,7 +79,7 @@
                            </div>
                         </div>
                     </form>
-                    
+
                     <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
@@ -143,7 +143,7 @@
                             <div class="text-right"><button data-action="{{ route('export') }}" class="btn btn-warning btn-reject" >{{ __('Export to Excel') }}</button></div>
                         </div>
                     <div class="table-responsive">
-                    <table class="table table-bordered text-center text-nowrap table-striped">
+                    <table class="table table-bordered text-center table-striped">
 
                         <thead class="bg-success">
                             <tr >
@@ -256,7 +256,7 @@
                                     <input disabled="disabled" name="note[]" style="border: none; background: none;" value="{{$mp->note}}">
                                 </td>
                             </tr>
-                            
+
                             @else
                                 <tr>
                                     <td>
@@ -322,7 +322,7 @@
                     </div>
                      <br>
                     <div class="table-responsive">
-                        <table class="table table-bordered text-center text-nowrap table-striped">
+                        <table class="table table-bordered text-center table-striped">
                             <tr>
                                 <div class="form-group">
                                     <td><label for="staff_sign">Staff Signature:
@@ -356,17 +356,17 @@
                                         <button name="approved" class="btn btn-success" >Approved</button>
                                     @elseif(strcmp($mp->name, 'Pending') == 0)
                                     {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL: ') }}
-                                        <input type="submit" name="submit" value="Submit" class="btn btn-success">                        
+                                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
                                         <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                                     @endif
                                 @endif
 
                             </b>&emsp;
                         </label>
-                        
-                            
-                        
-                        
+
+
+
+
                     </div>
                    </form>
                 </div>
