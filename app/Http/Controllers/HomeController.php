@@ -322,6 +322,7 @@ class HomeController extends Controller
                 }
             }
         }
+       
 
         $msc_performance = $msc_performance->where('year','like',$year."%");
         $msc_performance = $msc_performance->get();
@@ -1081,6 +1082,7 @@ class HomeController extends Controller
     public function submitMscAnnual($id) {
         $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->where('status', $this::STATUS_PENDING)->get();
         foreach ($msc_performance as $msc) {
+
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
         }
