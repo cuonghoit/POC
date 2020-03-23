@@ -11398,7 +11398,7 @@ body {
 /* Sidebar sizes when expanded and expanded */
 
 .sidebar-expanded {
-  width: 17%;
+  width: 18%;
 }
 
 .sidebar-collapsed {
@@ -11410,7 +11410,7 @@ body {
 }
 
 .main-content-colapse {
-  width: 83%;
+  width: 82%;
 }
 
 /* Menu item*/
@@ -11423,14 +11423,20 @@ body {
 
 #sidebar-container .list-group .sidebar-submenu a {
   padding-left: 40px;
+  font-size: 0.8rem;
 }
 
 #sidebar-container .list-group .sidebar-submenu a.lvl-1 {
   padding-left: 30px;
+  font-size: 0.9rem;
 }
 
 .sidebar-submenu {
-  font-size: 0.9rem;
+  font-size: 1rem;
+}
+
+#sidebar-container {
+  font-size: 1rem;
 }
 
 /* Separators */
@@ -11444,6 +11450,7 @@ body {
   background-color: #333;
   height: 35px;
   padding-left: 30px;
+  font-size: 0.9rem;
 }
 
 .sidebar-separator {

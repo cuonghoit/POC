@@ -189,7 +189,7 @@
                             <?php $i = 1;?>
                             @php $status = ''; @endphp
                             @foreach($msc_performance as $mp)
-                            @php $status = $rmp->name; @endphp
+                            @php $status = $mp->name; @endphp
                                 <?php switch ($mp->name) {
                                     case 'Approved':
                                         $classColor = 'text-success';

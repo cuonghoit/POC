@@ -98,7 +98,7 @@
                     <!-- Submenu content -->
                     <div id='submenu1' class="collapse sidebar-submenu">
                         <a href="{{ route('performaceManagementDashboard') }}" class="list-group-item
-                        list-group-item-action bg-dark text-white lvl-1" target="_blank">
+                        list-group-item-action bg-dark text-white lvl-1">
                             <span class="menu-collapsed">{{ __('Dashboard')  }}</span>
                         </a>
                         @hasanyrole('employees|super-admin')
@@ -107,15 +107,13 @@
                             <span class="menu-collapsed">{{ __('Guideline for MSC Performance Management System ')  }}</span>
                         </a>
                         @endhasanyrole
-                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
-                        menu-collapsed">
-                            <small>
-                                @hasanyrole('general_director')
-                                    {{ __('Company MSC') }}
-                                @else
-                                    {{ __('My MSC') }}
-                                @endhasanyrole
-                            </small>
+                        <li class="list-group-item sidebar-separator-content d-flex align-items-center
+                        menu-collapsed text-white">
+                            @hasanyrole('general_director')
+                                {{ __('Company MSC') }}
+                            @else
+                                {{ __('My MSC') }}
+                            @endhasanyrole
                         </li>
                         <a href="{{ route('BMAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
@@ -123,16 +121,13 @@
                         <a href="{{ route('BMMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
                         </a>
-                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
-                        menu-collapsed">
-                            <small>
-                                @hasanyrole('general_director')
-                                    {{ __('Company Rating') }}
-                                @else
-                                    {{ __('My Rating') }}
-                                @endhasanyrole
-
-                            </small>
+                        <li class="list-group-item sidebar-separator-content d-flex align-items-center
+                        menu-collapsed text-white">
+                            @hasanyrole('general_director')
+                                {{ __('Company Rating') }}
+                            @else
+                                {{ __('My Rating') }}
+                            @endhasanyrole
                         </li>
                         <a href="{{ route('RMMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
