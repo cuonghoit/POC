@@ -25,6 +25,8 @@ Auth::routes(
 );
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/performance-management-dashboard', 'PerformanceManagementController@index')->name('performaceManagementDashboard');
+Route::get('/trainning-management-dashboard', 'TrainningManagementController@index')->name('trainningManagementDashboard');
 Route::get('/reset-all-status', 'HomeController@resetAllStatus')->name('resetAllStatus');
 
 

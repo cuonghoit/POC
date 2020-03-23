@@ -11476,3 +11476,72 @@ body {
   padding-left: 10px;
 }
 
+.no-display {
+  display: none;
+}
+
+.background-login {
+  background-image: url("/images/bg_login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.background-login .card {
+  background-color: transparent;
+  border: none;
+}
+
+.background-login > .row.justify-content-end {
+  height: 638px;
+}
+
+.background-performance {
+  background-image: url("/images/bg_login.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: -24px;
+}
+
+.background-performance .card {
+  background-color: transparent;
+  border: none;
+}
+
+.background-performance > div {
+  height: 638px;
+}
+
+.background-trainning {
+  background-image: url("/images/bg_trainning.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: -24px;
+}
+
+.background-trainning .card {
+  background-color: transparent;
+  border: none;
+}
+
+.background-trainning > div {
+  height: 638px;
+}
+
+.background-hrm {
+  background-image: url("/images/bg_hrm.jpg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position-x: center;
+}
+
+.background-hrm > div {
+  height: 400px;
+}
+
+.background-hrm .card {
+  background-color: transparent;
+  border: none;
+}
+

@@ -48,7 +48,8 @@ class HomeController extends Controller
 //        if(!$user->hasAnyRole('employees|department_managers|director|super-admin')) {
 //            $user->assignRole('employees');
 //        }
-        return redirect()->route('performaceManagement',Auth::user()->id);
+        return view('dashboard');
+//        return redirect()->route('performaceManagementDashboard',Auth::user()->id);
     }
 
     //training-management
