@@ -97,6 +97,10 @@
                     </a>
                     <!-- Submenu content -->
                     <div id='submenu1' class="collapse sidebar-submenu">
+                        <a href="{{ route('performaceManagementDashboard') }}" class="list-group-item
+                        list-group-item-action bg-dark text-white lvl-1" target="_blank">
+                            <span class="menu-collapsed">{{ __('Dashboard')  }}</span>
+                        </a>
                         @hasanyrole('employees|super-admin')
                         <a href="{{ URL::to('pdf/guidelines_MSC.pdf') }}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1" target="_blank">
@@ -165,7 +169,7 @@
                         </a>
                         @endhasanyrole
                     </div>
-                    <a href="{{ url('/') }}" class="bg-dark list-group-item list-group-item-action">
+                    <a href="{{ route('trainningManagementDashboard') }}" class="bg-dark list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-cog fa-fw mr-3 d-none"></span>
                             <span class="menu-collapsed">{{ __('Training Management') }}</span>
