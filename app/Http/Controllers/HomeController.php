@@ -506,11 +506,12 @@ class HomeController extends Controller
             ],
             'yAxis'=> [ //--- Primary yAxis
                 'title'=> [
-                    'text'=> 'Temperature'
+                    'text'=> 'Mothnly rate'
                 ],
-                'max'=>'5'
+                'max'=>'5',
             ],
         ]);
+
         $pie->dataset('Rate Annual', 'pie', $data_pie)->options([
             'chart'=> [
               'plotBackgroundColor'=> null,

@@ -161,7 +161,7 @@
                                     Target to Achieve
                                 </th>
                                 <th colspan="12">
-                                    Training & Development Schedule
+                                    Months
                                 </th>
                                 <th rowspan="2">
                                     Status
@@ -187,7 +187,9 @@
                         </thead>
                         <tbody>
                             <?php $i = 1;?>
+                            @php $status = ''; @endphp
                             @foreach($msc_performance as $mp)
+                            @php $status = $rmp->name; @endphp
                                 <?php switch ($mp->name) {
                                     case 'Approved':
                                         $classColor = 'text-success';
@@ -350,11 +352,11 @@
                                 <button data-action="{{ route('unlockBMAMO',Auth::user()->id) }}" class="btn btn-success btn-reject">{{ __("Unlock") }}</button>
                                 @else
 
-                                    @if(strcmp($mp->name, 'Submited') == 0)
+                                    @if(strcmp($status, 'Submited') == 0)
                                         <button name="submited" class="btn btn-success " style="white-space: nowrap;" >Submited</button>
-                                    @elseif(strcmp($mp->name, 'Approved') == 0)
+                                    @elseif(strcmp($status, 'Approved') == 0)
                                         <button name="approved" class="btn btn-success" >Approved</button>
-                                    @elseif(strcmp($mp->name, 'Pending') == 0)
+                                    @elseif(strcmp($status, 'Pending') == 0)
                                     {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL: ') }}
                                         <input type="submit" name="submit" value="Submit" class="btn btn-success">
                                         <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
