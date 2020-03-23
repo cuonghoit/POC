@@ -81,7 +81,7 @@
                 <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
                 <!-- Bootstrap List Group -->
                 <ul class="list-group">
-                    <a href="{{ url('/') }}" class="bg-dark list-group-item list-group-item-action">
+                    <a href="https://cms.phuquocpoc.vn/" class="bg-dark list-group-item list-group-item-action"  target="_blank">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-cog fa-fw mr-3 d-none"></span>
                             <span class="menu-collapsed">{{ __('CMS') }}</span>
