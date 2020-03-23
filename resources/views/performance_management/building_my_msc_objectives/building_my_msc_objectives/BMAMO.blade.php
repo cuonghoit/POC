@@ -60,7 +60,7 @@
                                <p>Select Department:</p>
                            </div>
                            <div class="col-md-3">
-                               <select class="selectpicker form-control" data-live-search="true" name="department">
+                               <select class="selectpicker form-control" data-live-search="true" name="department" autocomplete="off">
                                    <option value="">Select Department</option>
                                    @foreach($department_list as $pi)
                                        <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
@@ -82,6 +82,8 @@
 
                     <form action="{{ route('submitMscAnnual',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="year_choosen" class="datepicker-months text-center form-control
+                    col-md-10 " value="{{$year}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -318,6 +320,152 @@
                                 </tr>
                             @endif
                             @endforeach
+
+                            @if($i === 1)
+                                @php $status = 'Pending'; @endphp
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Must-Do 1") }}<input type="hidden"name="objective_category[]" value="{{ __("Must-Do 1") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Must-Do 2") }}<input type="hidden"name="objective_category[]" value="{{ __("Must-Do 2") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Must-Do 3") }}<input type="hidden"name="objective_category[]" value="{{ __("Must-Do 3") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Must-Do 4") }}<input type="hidden"name="objective_category[]"
+                                                                    value="{{ __("Must-Do 4") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Should-Do 1") }}<input type="hidden"name="objective_category[]" value="{{ __("Should-Do 1") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Should-Do 2") }}<input type="hidden"name="objective_category[]"
+                                                                      value="{{ __("Should-Do 2") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td>{{ __("Could-Do 1") }}<input type="hidden"name="objective_category[]" value="{{ __("Could-Do 1") }}" ></td>
+                                    <td><input type="text" name="milestone[]"  value="" ></td>
+                                    <td><input type="text" name="target[]"  value="" ></td>
+                                    <td><input type="text" name="jan[]" value="" ></td>
+                                    <td><input type="text" name="feb[]" value="" ></td>
+                                    <td><input type="text" name="mar[]" value="" ></td>
+                                    <td><input type="text" name="apr[]" value="" ></td>
+                                    <td><input type="text" name="may[]" value="" ></td>
+                                    <td><input type="text" name="jun[]" value="" ></td>
+                                    <td><input type="text" name="jul[]" value="" ></td>
+                                    <td><input type="text" name="aug[]" value="" ></td>
+                                    <td><input type="text" name="sep[]" value="" ></td>
+                                    <td><input type="text" name="oct[]" value="" ></td>
+                                    <td><input type="text" name="nov[]" value="" ></td>
+                                    <td><input type="text" name="dec[]" value="" ></td>
+                                    <td class="">{{ __("Pending") }}</td>
+                                    <td></td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
 

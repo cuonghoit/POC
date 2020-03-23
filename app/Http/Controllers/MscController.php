@@ -56,12 +56,82 @@ class MscController extends Controller
                 if($mscPerformance->id) {
                     $mscPerformance->milestone_behavior = $milestone[$i];
                     $mscPerformance->target_to_archive = $target[$i];
+                    $mscPerformance->jan = $jan[$i];
+                    $mscPerformance->feb = $feb[$i];
+                    $mscPerformance->mar = $mar[$i];
+                    $mscPerformance->apr = $apr[$i];
+                    $mscPerformance->may = $may[$i];
+                    $mscPerformance->jun = $jun[$i];
+                    $mscPerformance->jul = $jul[$i];
+                    $mscPerformance->aug = $aug[$i];
+                    $mscPerformance->sep = $sep[$i];
+                    $mscPerformance->oct = $oct[$i];
+                    $mscPerformance->nov = $nov[$i];
+                    $mscPerformance->dec = $dec[$i];
+
 
                     // Set another data here
                     $mscPerformance->save();
                 }
             }
-            die();
+        } else {
+            $this->createMscAnnual($id, $request);
+        }
+
+        return redirect()->route('BMAMO', ['id' => $id]);
+    }
+
+    public function createMscAnnual($id, $request) {
+        if($request->isMethod('post')) {
+            $count = 7;
+
+            $objectiveCategory = $request->input("objective_category");
+            $milestone = $request->input("milestone");
+            $target = $request->input("target");
+            $jan = $request->input("jan");
+            $feb = $request->input("feb");
+            $mar = $request->input("mar");
+            $apr = $request->input("apr");
+            $may = $request->input("may");
+            $jun = $request->input("jun");
+            $jul = $request->input("jul");
+            $aug = $request->input("aug");
+            $sep = $request->input("sep");
+            $oct = $request->input("oct");
+            $nov = $request->input("nov");
+            $dec = $request->input("dec");
+
+            $year = $request->input('year_choosen');
+            $year = $year . '/01/01';
+            $date = date_create($year);
+            $strYear = date_format($date,"Y/m/d");
+
+            for($i = 0; $i < $count; $i++) {
+                $mscPerformance = new msc_performance();
+                $mscPerformance->user_id = Auth::user()->id;
+                $mscPerformance->objective_category = $objectiveCategory[$i];
+                $mscPerformance->milestone_behavior = $milestone[$i];
+                $mscPerformance->target_to_archive = $target[$i];
+                $mscPerformance->jan = $jan[$i];
+                $mscPerformance->feb = $feb[$i];
+                $mscPerformance->mar = $mar[$i];
+                $mscPerformance->apr = $apr[$i];
+                $mscPerformance->may = $may[$i];
+                $mscPerformance->jun = $jun[$i];
+                $mscPerformance->jul = $jul[$i];
+                $mscPerformance->aug = $aug[$i];
+                $mscPerformance->sep = $sep[$i];
+                $mscPerformance->oct = $oct[$i];
+                $mscPerformance->nov = $nov[$i];
+                $mscPerformance->dec = $dec[$i];
+                $mscPerformance->year = $strYear;
+                $mscPerformance->month_year = $strYear;
+                $mscPerformance->status = $this::STATUS_PENDING;
+                $mscPerformance->type = 0;
+
+                // Set another data here
+                $mscPerformance->save();
+            }
         }
 
         return redirect()->route('BMAMO', ['id' => $id]);
