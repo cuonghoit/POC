@@ -68,22 +68,49 @@ class MscController extends Controller
     }
 
     public function saveMscMonthly($id,Request $request) {
-        if($request->isMethod('post') && $request->has("id")) {
-            $count = count($request->input("id"));
+        if($request->isMethod('post')) {
             $ids = $request->input("id");
+            if($ids) {
+                $count = count($request->input("id"));
+            } else {
+                $count = 7;
+            }
+
             $milestone = $request->input("milestone");
             $target = $request->input("target");
             $action_to_chieve = $request->input('action_to_chieve');
+            if($ids && $request->has("id")) {
+                for($i = 0; $i < $count; $i++) {
+                    $mscPerformance = msc_performance::find($ids[$i]);
+                    if($mscPerformance->id) {
+                        $mscPerformance->milestone_behavior = $milestone[$i];
+                        $mscPerformance->target_to_archive = $target[$i];
+                        $mscPerformance->action_to_chieve = $action_to_chieve[$i];
+                        // Set another data here
+                        $mscPerformance->save();
 
-            for($i = 0; $i < $count; $i++) {
-                $mscPerformance = msc_performance::find($ids[$i]);
-                if($mscPerformance->id) {
+                    }
+                }
+            } else {
+                for($i = 0; $i < $count; $i++) {
+                    $objectiveCategory = $request->input('objective_category');
+                    $year = $request->input('year_choosen');
+                    $date = date_create($year);
+                    $year = date_format($date,"Y/m/d");
+
+                    $mscPerformance = new msc_performance();
+
+                    $mscPerformance->user_id = Auth::user()->id;
+                    $mscPerformance->objective_category = $objectiveCategory[$i];
                     $mscPerformance->milestone_behavior = $milestone[$i];
                     $mscPerformance->target_to_archive = $target[$i];
                     $mscPerformance->action_to_chieve = $action_to_chieve[$i];
+                    $mscPerformance->status = $this::STATUS_PENDING;
+                    $mscPerformance->year = $year;
+                    $mscPerformance->month_year = $year;
+                    $mscPerformance->type = 1;
                     // Set another data here
                     $mscPerformance->save();
-
                 }
             }
         }

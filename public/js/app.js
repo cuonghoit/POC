@@ -37084,6 +37084,11 @@ $(document).ready(function () {
   });
   $('.btn-reject').click(function (e) {
     var form = $(this).closest('form');
+    var yearChoosen = $('input[name="year_choosen"]');
+
+    if (yearChoosen.length) {
+      yearChoosen.val($('input[name="year"]').val());
+    }
 
     if (form.length) {
       $(form[0]).attr('action', $(this).data('action'));

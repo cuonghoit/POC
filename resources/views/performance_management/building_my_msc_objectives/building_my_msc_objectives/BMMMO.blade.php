@@ -71,6 +71,8 @@
                     </form>
                     <form action="{{ route('submitMscMothy',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="year_choosen" class="datepicker-months text-center form-control
+                    col-md-10 " value="{{$year}}">
                     <p class="text-left" ><b>GENERAL INFO</b></p>
                     <table style="width: 100%;">
                         <tr>
@@ -217,6 +219,80 @@
                             </tr>
                             @endif
                             @endforeach
+                            @if($i === 1)
+                                @php $status = 'Pending'; @endphp
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Must-Do 1')
+                                    }}"/>{{ __('Must-Do 1')
+                                    }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Must-Do 2')
+                                    }}"/>{{ __('Must-Do 2') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Must-Do 3')
+                                    }}"/>{{ __('Must-Do 3') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Must-Do 4')
+                                    }}"/>{{ __('Must-Do 4') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Should-Do 1')
+                                    }}"/>{{ __('Should-Do 1') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Should-Do 2')
+                                    }}"/>{{ __('Should-Do 2') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>{{$i++}}</td>
+                                    <td><input type="hidden" name="objective_category[]" value="{{ __('Could-Do 1')
+                                    }}"/>{{ __('Could-Do 1') }}</td>
+                                    <td><input type="text" name="milestone[]" value=""></td>
+                                    <td><input type="text" name="target[]" value="" ></td>
+                                    <td><input type="text" name="action_to_chieve[]" value="" ></td>
+                                    <td class="">{{ __('Pending') }}</td>
+                                    <td></td>
+                                </tr>
+                            @endif
 
                         </tbody>
                     </table>
