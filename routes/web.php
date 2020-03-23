@@ -148,6 +148,7 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
     Route::post('review-rate-annual-performance/{id}', 'HomeController@reviewRMAP')->name('reviewRMAP');
 
     Route::post('search-rate-monthly-performance/{id}', 'HomeController@searchRMMP')->name('searchRMMP');
+    Route::post('create-new-report-rate-monthlr-performance/{id}','HomeController@createRMMP')->name('createRMMP');
     Route::post('search-rate-annual-performance/{id}', 'HomeController@searchRMAP')->name('searchRMAP');
 
     Route::group(['prefix'=>'export'], function (){

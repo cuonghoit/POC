@@ -327,7 +327,7 @@ class HomeController extends Controller
                 }
             }
         }
-       
+
 
         $msc_performance = $msc_performance->where('year','like',$year."%");
         $msc_performance = $msc_performance->get();
@@ -918,6 +918,90 @@ class HomeController extends Controller
         return redirect()->route('RMMP',Auth::user()->id);
     }
 
+    public  function createRMMP($id, Request $request){
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+
+        $department = '';
+
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+        if($request->isMethod('post')){
+            $objective_category = ['Must_Do_1', 'Must_Do_2','Must_Do_3','Must_Do_4','Should_Do_1', 'Should_Do_2','Could_Do_1'];
+            $objective_and_milestone = $request->input('objective_and_milestone');
+            $result = $request->input('result');
+            $achieve = $request->input('achieve');
+            $monthly_rate = $request->input('monthly_rate');
+            $year = $request->year;
+            for($i = 0; $i < 7; $i++) {
+                $rate_monthly_performance = new rate_monthly_performance();
+                $rate_monthly_performance->user_id = $id;
+                $rate_monthly_performance->month_year = $year;
+                $rate_monthly_performance->status = 1;
+                $rate_monthly_performance->objective_category = $objective_category[$i];
+                $rate_monthly_performance->objective_and_milestone = $objective_and_milestone[$i];
+                $rate_monthly_performance->result = $result[$i];
+                $rate_monthly_performance->monthly_rate = $monthly_rate[$i];
+                if(isset($achieve[$i])){
+                    $rate_monthly_performance->achieve = 1;
+                }else{
+                    $rate_monthly_performance->achieve = 0;
+                }
+
+                if($monthly_rate[$i]<2.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Poor';
+                }
+                if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Average';
+                }
+                if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
+                    $rate_monthly_performance->monthly_performance_level = 'Good';
+                }
+                if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Very Good';
+                }
+                if($monthly_rate[$i]>=3.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Outstanding';
+                }
+                // Set another data here
+                $rate_monthly_performance->save();
+
+                //save annual
+                if($i == 6){
+                     $this->saveAnnual($rate_monthly_performance->month_year, $id);
+                }
+            }
+        }
+        $year = date('Y-m');
+        if($this->isHR()) {
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")
+                ->join('status', 'status.id', '=', 'status')
+                ->where('status', '<>', $this::STATUS_PENDING)->where('status', '<>', $this::STATUS_SUBMITED);
+            if($request->isMethod('POST')) {
+                $year = $request->input('month_year');
+                $department = $request->input('department');
+                if($year) {
+                    $rate_monthly_performance = $rate_monthly_performance->where('month_year', 'like', $year."%");
+                }
+                if($department) {
+                    $rate_monthly_performance = $rate_monthly_performance->where('user_id', $department);
+                }
+            }
+        } else {
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
+                ->where('user_id',$id);
+        }
+        $rate_monthly_performance = $rate_monthly_performance->where('month_year','like', $year."%");
+        $rate_monthly_performance = $rate_monthly_performance->get();
+
+        $personal_info = personal_info::where('user_id',$id)->first();
+        return view('performance_management.rating_performance.rating_my_performance.RMMP',[ 'personal_info'=>$personal_info,'rate_monthly_performance'=>$rate_monthly_performance, 'year'=>$year,'department'=>$department,'department_list'=>$departmentList]);
+    }
+
     public function searchRMMP($id, Request $request){
 
         $course = course::all();
@@ -936,13 +1020,17 @@ class HomeController extends Controller
             $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
             $month_year = $request->input('month_year');
             $department = $request->input('department');
-            $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$department)->get();
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
+                ->where('user_id',$id);
+            $rate_monthly_performance = $rate_monthly_performance->where('month_year','like' ,$month_year.'%')->get();
             if($request->isMethod('POST')) {
                     $year = $request->input('month_year');
                     $department = $request->input('department');
                 }
         } else {
-            $rate_monthly_performance = rate_monthly_performance::where('month_year','like' ,$month_year.'%')->where('user_id',$id)->get();
+            $rate_monthly_performance = rate_monthly_performance::select("rate_monthly_performance.*", "status.name")->join('status', 'status.id', '=', 'status')
+                ->where('user_id',$id);
+            $rate_monthly_performance = $rate_monthly_performance->where('month_year','like' ,$month_year.'%')->get();
             if($request->isMethod('POST')) {
                     $year = $request->input('month_year');
                 }

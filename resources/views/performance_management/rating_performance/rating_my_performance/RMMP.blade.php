@@ -151,6 +151,144 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @if(count($rate_monthly_performance)==0)
+                        <?php $status = 'Create';?>
+                        <input type="hidden" name="year" value="{{$year}}-1">
+                        <tr>
+                            <td>1</td>
+                                <td>
+                                    Must do 1
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{0}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                                <td>
+                                    Must do 2
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{1}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                                <td>
+                                    Must do 3
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{2}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                                <td>
+                                    Must do 4
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{3}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                                <td>
+                                    Should do 1
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{4}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                                <td>
+                                    Should do 2
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{5}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                                <td>
+                                    Could do 1
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="objective_and_milestone[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control text-center" name="result[]" value="" >
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="achieve[{{6}}]">
+                                </td>
+                                <td><input type="text" name="monthly_rate[]" value="" class="form-control text-center"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                        </tr>
+                        @else
+
                         <?php $i=0; ?>
                             @php $status = ''; @endphp
                              @foreach($rate_monthly_performance as $rmp)
@@ -222,6 +360,7 @@
                             </tr>
                             @endif
                             @endforeach
+                        @endif
                         </tbody>
                     </table>
                     </div>
@@ -256,6 +395,9 @@
                             <button class="col-md-3 btn btn-success" name="submited">Submited</button>
                         @elseif(strcmp($status, 'Approved') ==0)
                             <button class="col-md-3 btn btn-success" name="approved">Approved</button>
+                        @elseif(strcmp($status, 'Create') ==0)
+                        <label for="submit"><b>Create new report  ({{$year}}): </b>&emsp;</label>
+                        <button data-action="{{ route('createRMMP',Auth::user()->id) }}" class="btn btn-success col-md-3 btn-reject" >Create</button>
                         @endif
                    </form>
                 </div>
