@@ -307,7 +307,7 @@
                             @if(strcmp($rmp->name, 'Pending') == 0)
                             <tr>
                                 <td>
-                                {{++$i}}
+                                {{$i++}}
                                     <input type="hidden" name="id[]" value="{{$rmp->id}}" >
                                 </td>
                                 <td>
