@@ -29,16 +29,16 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
-                    <h3 class="text-center" ><b>APPROVE MY EMPLOYEES MONTHLY MSC OBJECTIVES</b></h3><br>
+                    <h3 class="text-center" ><b>APPROVE MY STAFF MONTHLY MSC OBJECTIVES</b></h3><br>
                         <div class="row">
 
 
                         <div class="col-md-2">
-                            <p>Select Employees:</p>
+                            <p>Select Staff:</p>
                         </div>
                         <div class="col-md-3">
                             <select class="selectpicker form-control" data-live-search="true" name = "employee">
-                                <option>Select employees</option>
+                                <option>Select Staff</option>
                                 @foreach($users as $user)
                                     <option value="{{ $user->user_id }}" @if($employee == $user->user_id) selected="selected" @endif>{{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
                                 @endforeach

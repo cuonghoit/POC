@@ -25,7 +25,7 @@
                     @endif
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>{{  __("PERFORMANCE MANAGEMENT SYSTEM") }}</b></h4><br>
-                    <h3 class="text-center" ><b>APPROVING MY EMPLOYEES MONTHLY PERFORMANCE</b></h3><br>
+                    <h3 class="text-center" ><b>APPROVING MY STAFF MONTHLY PERFORMANCE</b></h3><br>
                     <form action="{{ route('searchAMEMP',Auth::user()->id) }}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <table style="width: 50%;">
@@ -36,7 +36,7 @@
                                 </div>
                                 <td class="text-left">
                                     <select class=" form-control" data-live-search="true" name="employee">
-                                        <option>Select employees</option>
+                                        <option>Select Staff</option>
                                         @foreach($users as $users)
                                         <option value="{{$users->user_id}}" @if($employee == $users->user_id) selected="selecte"'@endif">{{$users->first_name}} {{$users->middle_name}} {{$users->last_name}}</option>
                                         @endforeach

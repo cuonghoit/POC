@@ -298,13 +298,14 @@
                     </table>
                     <div class="form-group text-center">
                         @if(strcmp($status, 'Submited') == 0)
-                            <button class="col-md-3 btn btn-success" name="submited">Submited</button>
+                            <button class="col-md-3 btn btn-success" name="submited">Submitted</button>
                         @elseif(strcmp($status,'Approved') == 0)
                             <button class="col-md-3 btn btn-success" name="submited">Approved</button>
                         @elseif(strcmp($status, 'Pending') == 0)
                             <label for="submit"><b>SUBMIT TO SUPERVISOR FOR APPROVAL:</b>&emsp;</label>
-                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
                             <button data-action="{{ route('saveMscMonthly',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
+
                         @endif
                     </div>
                    </form>

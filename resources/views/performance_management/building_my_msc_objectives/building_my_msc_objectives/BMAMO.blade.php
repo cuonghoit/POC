@@ -506,8 +506,9 @@
                                         <button name="approved" class="btn btn-success" >Approved</button>
                                     @elseif(strcmp($status, 'Pending') == 0)
                                     {{ __('SUBMIT TO DEPARTMENT FOR APPROVAL: ') }}
-                                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
                                         <button data-action="{{ route('saveMscAnnual',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
+                                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+
                                     @endif
                                 @endif
 
