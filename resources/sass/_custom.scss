@@ -38,7 +38,7 @@ body {
 
 /* Sidebar sizes when expanded and expanded */
 .sidebar-expanded {
-    width: 18%;
+    width: 20%;
 }
 .sidebar-collapsed {
     width: 5%;
@@ -49,7 +49,7 @@ body {
 }
 
 .main-content-colapse {
-    width: 82%;
+    width: 80%;
 }
 
 
@@ -60,21 +60,21 @@ body {
 
 /* Submenu item*/
 #sidebar-container .list-group .sidebar-submenu a {
-    padding-left: 40px;
-    font-size: 0.8rem;
+    padding-left: 60px;
+    font-size: 0.7rem;
 }
 
 #sidebar-container .list-group .sidebar-submenu a.lvl-1 {
-    padding-left: 30px;
+    padding-left: 35px;
     font-size: 0.9rem;
 }
 
 .sidebar-submenu {
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 #sidebar-container {
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 /* Separators */
@@ -85,7 +85,7 @@ body {
 .sidebar-separator-content {
     background-color: #333;
     height: 35px;
-    padding-left: 30px;
+    padding-left: 35px;
     font-size: 0.9rem;
 }
 
@@ -130,6 +130,21 @@ body {
     }
     > .row.justify-content-end {
         height: 638px;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+    }
+
+    .login-title {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: #0044cc;
+        text-transform: uppercase;
+        font-weight: bold;
     }
 }
 

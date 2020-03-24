@@ -81,7 +81,7 @@
                 <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
                 <!-- Bootstrap List Group -->
                 <ul class="list-group">
-                    <a href="https://cms.phuquocpoc.vn/" class="bg-dark list-group-item list-group-item-action"  target="_blank">
+                    <a href="https://cms.phuquocpoc.vn/" class="bg-dark list-group-item list-group-item-action" target="_blank">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-cog fa-fw mr-3 d-none"></span>
                             <span class="menu-collapsed">{{ __('CMS') }}</span>
@@ -136,9 +136,9 @@
                             <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
                         </a>
                         @hasanyrole('department_managers|director|super-admin')
-                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
-                        menu-collapsed">
-                            <small>{{ __('Employees MSC') }}</small>
+                        <li class="list-group-item sidebar-separator-content d-flex align-items-center
+                        menu-collapsed text-white">
+                            {{ __('Employees MSC') }}
                         </li>
                         <a href="{{ route('AMEAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
@@ -146,9 +146,9 @@
                         <a href="{{ route('AMEMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
                         </a>
-                        <li class="list-group-item sidebar-separator-content text-muted d-flex align-items-center
-                        menu-collapsed">
-                            <small>{{ __('Employees Rating') }}</small>
+                        <li class="list-group-item sidebar-separator-content d-flex align-items-center
+                        menu-collapsed text-white">
+                            {{ __('Employees Rating') }}
                         </li>
                         <a href="{{ route('AMEMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
                             <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
@@ -168,6 +168,13 @@
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-cog fa-fw mr-3 d-none"></span>
                             <span class="menu-collapsed">{{ __('Training Management') }}</span>
+                        </div>
+                    </a>
+                    <a href="https://employer.jobtest.vn/vi/dashboard" class="bg-dark list-group-item
+                    list-group-item-action" target="_blank">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
+                            <span class="menu-collapsed">{{ __('Pre-Test') }}</span>
                         </div>
                     </a>
                     <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
