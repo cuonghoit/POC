@@ -501,9 +501,6 @@ class HomeController extends Controller
 
         $bar->dataset('Rate Annual', 'column', $data_bar);
         $bar->options([
-            'title' => [
-                'text' => 'Rating Annual column' // or false, depending on what you want.
-            ],
             'yAxis'=> [ //--- Primary yAxis
                 'title'=> [
                     'text'=> 'Mothnly rate'
@@ -518,10 +515,7 @@ class HomeController extends Controller
               'plotBorderWidth'=> null,
               'plotShadow'=> false,
             ],
-            'title' => [
-                'text' => 'Rating Annual pie' // or false, depending on what you want.
-            ],
-            'color' => ['red','blue','green','yellow','gray'],
+            'color' => ['red','#FF8C00','Violet','blue','green'],
             'tooltip'=> [
               'pointFormat'=> '{series.name}: <br>{point.percentage:.1f} %<br>value: {point.y}'
             ],
@@ -537,7 +531,17 @@ class HomeController extends Controller
         $from_year = date('Y-01-01');
         $to_year = date('Y-m-01');
         $rap = rate_annual_performance::where('user_id', $id)->whereBetween('date',[$from_year, $to_year])->get();
-        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie, 'form_date'=>$from_date,'to_date'=>$to_date, 'rap'=>$rap]);
+
+        $departmentList = personal_info::whereNotNull('department_id')->get();
+        $departmentIds = array();
+        foreach ($departmentList as $user) {
+            if( !in_array($user->department_id, $departmentIds) ) {
+                $departmentIds[] = $user->department_id;
+            }
+        }
+        $department = '';
+        $departmentList = personal_info::whereIn('user_id', $departmentIds)->get();
+        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie, 'form_date'=>$from_date,'to_date'=>$to_date, 'rap'=>$rap,'department_list'=>$departmentList]);
     }
 
     public function getCMPR() {
@@ -713,8 +717,25 @@ class HomeController extends Controller
         } else {
             $avg = 0;
         }
+
+        if($avg<2.5){
+            $monthly_performance_level = 'Poor';
+        }
+        if($avg<3 && $avg>=2.5){
+            $monthly_performance_level = 'Average';
+        }
+        if($avg<3.5 && $avg>=3){
+            $monthly_performance_level = 'Good';
+        }
+        if($avg<4.2 && $avg>=3.5){
+            $monthly_performance_level = 'Very Good';
+        }
+        if($avg>=3.5){
+            $monthly_performance_level = 'Outstanding';
+        }
+
         $personal_info = personal_info::where('user_id',$id)->first();
-        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department]);
+        return view('performance_management.rating_performance.rating_my_performance.RMAP',['course'=>$course, 'personal_info'=>$personal_info, 'rate_annual_performance'=>$rate_annual_performance,'avg'=>$avg, 'year' => $year, 'department_list' => $departmentList, 'department'=>$department,'monthly_performance_level'=>$monthly_performance_level]);
     }
 
     public function searchRMAP($id, Request $request){

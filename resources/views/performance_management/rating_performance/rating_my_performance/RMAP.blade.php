@@ -201,9 +201,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-left" colspan="12">
+                                <td class="text-left" colspan="2">
                                     Convert to Annual Performance Appraisal Level:
                                 </td>
+                                <td class="text-left" colspan="10">{{$monthly_performance_level}}</td>
                             </tr>
                         </tbody>
                     </table>

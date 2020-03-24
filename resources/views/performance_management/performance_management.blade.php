@@ -40,9 +40,9 @@
                                 @else
                                     <td class="text-right":><b>Department:</b></td>
                                 <td><select name="department" class="form-control col-md-12" value="">
-                                    <option value="">Department</option>
-                                    <option value="">Department</option>
-                                    <option value="">Department</option>
+                                    @foreach($department_list as $list)
+                                    <option value="{{$list->id}}">{{$list->first_name}} {{$list->middle_name}} {{$list->last_name}}</option>
+                                    @endforeach
                                 </select></td>
                                     @endhasanyrole
                             </div>
@@ -59,10 +59,11 @@
                     </table><br>
                     <div class="container">
                         <div class="column" style="width: 50%; float: left;">
+                            <h2 style="text-align: center;">Rating Annual Column</h2>
                             {!! $bar->container() !!}
                         </div>
                          <div class="pie" style="width: 50%; float: left;">
-                            <h2 style="text-align: center;">Rating Annual pie</h2>
+                            <h2 style="text-align: center;">Rating Annual Pie</h2>
                             <br>
                             {!! $pie->container() !!}
                         </div>
