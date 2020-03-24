@@ -836,7 +836,7 @@ class HomeController extends Controller
                     if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                         $rate_annual_performance->monthly_performance_level = 'Exceeds many Expectation';
                     }
-                    if($monthly_rate[$i]>=3.5){
+                    if($monthly_rate[$i]>=4.2){
                         $rate_annual_performance->monthly_performance_level = 'Outstanding';
                     }
                     // Set another data here
