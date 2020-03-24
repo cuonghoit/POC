@@ -185,7 +185,9 @@
                                 <td><input type="checkbox" disabled="disabled" name="should_do_1[{{$i}}]" @if($rate_annual_performance->should_do_1==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" disabled="disabled" name="should_do_2[{{$i}}]" @if($rate_annual_performance->should_do_2==1) checked="checked"@endif></td>
                                 <td><input type="checkbox" disabled="disabled" name="could_do_1[{{$i}}]" @if($rate_annual_performance->could_do_1==1) checked="checked"@endif></td>
-                                <td>{{$rate_annual_performance->monthly_rate}}</td>
+                                <td>{{$rate_annual_performance->monthly_rate}}
+                                    <input type="hidden" value="{{$rate_annual_performance->monthly_rate}}" name="monthly_rate[]">
+                                </td>
                                 <td>{{$rate_annual_performance->monthly_performance_level}}</td>
                                 <td class="{{ $classColor }}">{{ App\Http\Controllers\HomeController::getStatus($rate_annual_performance->status) }}</td>
                                 <td>{{$rate_annual_performance->note}}</td>

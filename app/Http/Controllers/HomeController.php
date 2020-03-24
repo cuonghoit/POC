@@ -485,10 +485,10 @@ class HomeController extends Controller
         $data_bar = collect([]);
         $data_pie = collect([]);
         $rate_annual_performance = rate_annual_performance::where('user_id', $id)->get();
-        $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Poor')->count()/12*100);
-        $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Average')->count()/12*100);
-        $data_pie->push($rate_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Good')->count()/12*100);
-        $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Very Good')->count()/12*100);
+        $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Improvement Opportunity')->count()/12*100);
+        $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Meets Expectation')->count()/12*100);
+        $data_pie->push($rate_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Exceeds Expectation')->count()/12*100);
+        $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Exceeds many Expectation')->count()/12*100);
         $data_pie->push($rate_outstanding = rate_annual_performance::where('user_id', $id)->where('monthly_performance_level','like','Outstanding')->count()/12*100);
 
         foreach ($rate_annual_performance as $rate_aunnual){
@@ -497,7 +497,7 @@ class HomeController extends Controller
         $from_date = date('Y-01-01');
         $to_date = date('Y-m-d');
         $bar->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
-        $pie->labels(['Poor','Average','Good','Very Good','Outstanding']);
+        $pie->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Very Good','Outstanding']);
 
         $bar->dataset('Rate Annual', 'column', $data_bar);
         $bar->options([
@@ -719,16 +719,16 @@ class HomeController extends Controller
         }
 
         if($avg<2.5){
-            $monthly_performance_level = 'Poor';
+            $monthly_performance_level = 'Improvement Opportunity';
         }
         if($avg<3 && $avg>=2.5){
-            $monthly_performance_level = 'Average';
+            $monthly_performance_level = 'Meets Expectation';
         }
         if($avg<3.5 && $avg>=3){
-            $monthly_performance_level = 'Good';
+            $monthly_performance_level = 'Exceeds Expectation';
         }
         if($avg<4.2 && $avg>=3.5){
-            $monthly_performance_level = 'Very Good';
+            $monthly_performance_level = 'Exceeds many Expectation';
         }
         if($avg>=3.5){
             $monthly_performance_level = 'Outstanding';
@@ -771,72 +771,72 @@ class HomeController extends Controller
         if($request->isMethod('post') && $request->has("id")) {
             $count = count($request->input("id"));
             $ids = $request->input("id");
-            $must_do_1 = $request->input('must_do_1');
-            $must_do_2 = $request->input('must_do_2');
-            $must_do_3 = $request->input('must_do_3');
-            $must_do_4 = $request->input('must_do_4');
-            $should_do_1 = $request->input('should_do_1');
-            $should_do_2 = $request->input('should_do_2');
-            $could_do_1 = $request->input('could_do_1');
+//            $must_do_1 = $request->input('must_do_1');
+//            $must_do_2 = $request->input('must_do_2');
+//            $must_do_3 = $request->input('must_do_3'));
+//            $must_do_4 = $request->input('must_do_4');
+//            $should_do_1 = $request->input('should_do_1');
+//            $should_do_2 = $request->input('should_do_2');
+//            $could_do_1 = $request->input('could_do_1');
             $monthly_rate = $request->input('monthly_rate');
 
             for($i = 0; $i < $count; $i++) {
                 $rate_annual_performance = rate_annual_performance::find($ids[$i]);
                 if($rate_annual_performance->id) {
-                    $rate_annual_performance->monthly_rate = $monthly_rate[$i];
-                    if(isset($must_do_1[$i])){
-                        $rate_annual_performance->must_do_1 = 1;
-                    }else{
-                        $rate_annual_performance->must_do_1 = 0;
-                    }
-
-                    if(isset($must_do_2[$i])){
-                        $rate_annual_performance->must_do_2 = 1;
-                    }else{
-                        $rate_annual_performance->must_do_2 = 0;
-                    }
-
-                    if(isset($must_do_3[$i])){
-                        $rate_annual_performance->must_do_3 = 1;
-                    }else{
-                        $rate_annual_performance->must_do_3 = 0;
-                    }
-
-                    if(isset($must_do_4[$i])){
-                        $rate_annual_performance->must_do_4 = 1;
-                    }else{
-                        $rate_annual_performance->must_do_4 = 0;
-                    }
-
-                    if(isset($should_do_1[$i])){
-                        $rate_annual_performance->should_do_1 = 1;
-                    }else{
-                        $rate_annual_performance->should_do_1 = 0;
-                    }
-
-                    if(isset($should_do_2[$i])){
-                        $rate_annual_performance->should_do_2 = 1;
-                    }else{
-                        $rate_annual_performance->should_do_2 = 0;
-                    }
-                    if(isset($could_do_1[$i])){
-                        $rate_annual_performance->could_do_1 = 1;
-                    }else{
-                        $rate_annual_performance->could_do_1 = 0;
-                    }
+//                    $rate_annual_performance->monthly_rate = $monthly_rate[$i];
+//                    if(isset($must_do_1[$i])){
+//                        $rate_annual_performance->must_do_1 = 1;
+//                    }else{
+//                        $rate_annual_performance->must_do_1 = 0;
+//                    }
+//
+//                    if(isset($must_do_2[$i])){
+//                        $rate_annual_performance->must_do_2 = 1;
+//                    }else{
+//                        $rate_annual_performance->must_do_2 = 0;
+//                    }
+//
+//                    if(isset($must_do_3[$i])){
+//                        $rate_annual_performance->must_do_3 = 1;
+//                    }else{
+//                        $rate_annual_performance->must_do_3 = 0;
+//                    }
+//
+//                    if(isset($must_do_4[$i])){
+//                        $rate_annual_performance->must_do_4 = 1;
+//                    }else{
+//                        $rate_annual_performance->must_do_4 = 0;
+//                    }
+//
+//                    if(isset($should_do_1[$i])){
+//                        $rate_annual_performance->should_do_1 = 1;
+//                    }else{
+//                        $rate_annual_performance->should_do_1 = 0;
+//                    }
+//
+//                    if(isset($should_do_2[$i])){
+//                        $rate_annual_performance->should_do_2 = 1;
+//                    }else{
+//                        $rate_annual_performance->should_do_2 = 0;
+//                    }
+//                    if(isset($could_do_1[$i])){
+//                        $rate_annual_performance->could_do_1 = 1;
+//                    }else{
+//                        $rate_annual_performance->could_do_1 = 0;
+//                    }
                     if($monthly_rate[$i]<2.5){
-                        $rate_annual_performance->monthly_performance_level = 'Poor';
+                        $rate_annual_performance->monthly_performance_level = 'Improvement Opportunity';
                     }
                     if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
-                        $rate_annual_performance->monthly_performance_level = 'Average';
+                        $rate_annual_performance->monthly_performance_level = 'Meets Expectation';
                     }
                     if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
-                        $rate_annual_performance->monthly_performance_level = 'Good';
+                        $rate_annual_performance->monthly_performance_level = 'Exceeds Expectation';
                     }
                     if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
-                        $rate_annual_performance->monthly_performance_level = 'Very Good';
+                        $rate_annual_performance->monthly_performance_level = 'Exceeds many Expectation';
                     }
-                    if($monthly_rate[$i]>=3.5){
+                    if($monthly_rate[$i]>=4.2){
                         $rate_annual_performance->monthly_performance_level = 'Outstanding';
                     }
                     // Set another data here
@@ -912,16 +912,16 @@ class HomeController extends Controller
                     }
 
                     if($monthly_rate[$i]<2.5){
-                        $rate_monthly_performance->monthly_performance_level = 'Poor';
+                        $rate_monthly_performance->monthly_performance_level = 'Improvement Opportunity';
                     }
                     if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
-                        $rate_monthly_performance->monthly_performance_level = 'Average';
+                        $rate_monthly_performance->monthly_performance_level = 'Meets Expectation';
                     }
                     if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
-                        $rate_monthly_performance->monthly_performance_level = 'Good';
+                        $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
                     }
                     if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
-                        $rate_monthly_performance->monthly_performance_level = 'Very Good';
+                        $rate_monthly_performance->monthly_performance_level = 'Exceeds many Expectation';
                     }
                     if($monthly_rate[$i]>=3.5){
                         $rate_monthly_performance->monthly_performance_level = 'Outstanding';
@@ -976,16 +976,16 @@ class HomeController extends Controller
                 }
 
                 if($monthly_rate[$i]<2.5){
-                    $rate_monthly_performance->monthly_performance_level = 'Poor';
+                    $rate_monthly_performance->monthly_performance_level = 'Improvement Opportunity';
                 }
                 if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
                     $rate_monthly_performance->monthly_performance_level = 'Average';
                 }
                 if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
-                    $rate_monthly_performance->monthly_performance_level = 'Good';
+                    $rate_monthly_performance->monthly_performance_level = 'Meets Expectation';
                 }
                 if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
-                    $rate_monthly_performance->monthly_performance_level = 'Very Good';
+                    $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
                 }
                 if($monthly_rate[$i]>=3.5){
                     $rate_monthly_performance->monthly_performance_level = 'Outstanding';
@@ -1216,7 +1216,53 @@ class HomeController extends Controller
         $personal_info = personal_info::where('user_id',$id)->first();
         return redirect()->route('RMAP', ['id' => $id]);
     }
-    public function submitRateMonthy($id) {
+    public function submitRateMonthy($id, Request $request) {
+        if($request->isMethod('post')){
+            $objective_category = ['Must_Do_1', 'Must_Do_2','Must_Do_3','Must_Do_4','Should_Do_1', 'Should_Do_2','Could_Do_1'];
+            $objective_and_milestone = $request->input('objective_and_milestone');
+            $result = $request->input('result');
+            $achieve = $request->input('achieve');
+            $monthly_rate = $request->input('monthly_rate');
+            $year = $request->year;
+            for($i = 0; $i < 7; $i++) {
+                $rate_monthly_performance = new rate_monthly_performance();
+                $rate_monthly_performance->user_id = $id;
+                $rate_monthly_performance->month_year = $year;
+                $rate_monthly_performance->status = 1;
+                $rate_monthly_performance->objective_category = $objective_category[$i];
+                $rate_monthly_performance->objective_and_milestone = $objective_and_milestone[$i];
+                $rate_monthly_performance->result = $result[$i];
+                $rate_monthly_performance->monthly_rate = $monthly_rate[$i];
+                if(isset($achieve[$i])){
+                    $rate_monthly_performance->achieve = 1;
+                }else{
+                    $rate_monthly_performance->achieve = 0;
+                }
+
+                if($monthly_rate[$i]<2.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Improvement Opportunity';
+                }
+                if($monthly_rate[$i]<3 && $monthly_rate[$i]>=2.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Average';
+                }
+                if($monthly_rate[$i]<3.5 && $monthly_rate[$i]>=3){
+                    $rate_monthly_performance->monthly_performance_level = 'Meets Expectation';
+                }
+                if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
+                }
+                if($monthly_rate[$i]>=3.5){
+                    $rate_monthly_performance->monthly_performance_level = 'Outstanding';
+                }
+                // Set another data here
+                $rate_monthly_performance->save();
+
+                //save annual
+                if($i == 6){
+                     $this->saveAnnual($rate_monthly_performance->month_year, $id);
+                }
+            }
+        }
         $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
         foreach ($rate_monthly_performance as $rate) {
             $rate->status = $this::STATUS_SUBMITED;
@@ -1433,16 +1479,16 @@ class HomeController extends Controller
         }
         $avg = $avg / $count;
         if ($avg < 2.5) {
-            $rate_annual_performance->monthly_performance_level = 'Poor';
+            $rate_annual_performance->monthly_performance_level = 'Improvement Opportunity';
         }
         if ($avg < 3 && $avg >= 2.5) {
-            $rate_annual_performance->monthly_performance_level = 'Average';
+            $rate_annual_performance->monthly_performance_level = 'Meets Expectation';
         }
         if ($avg < 3.5 && $avg >= 3) {
-            $rate_annual_performance->monthly_performance_level = 'Good';
+            $rate_annual_performance->monthly_performance_level = 'Exceeds Expectation';
         }
         if ($avg < 4.2 && $avg >= 3.5) {
-            $rate_annual_performance->monthly_performance_level = 'Very Good';
+            $rate_annual_performance->monthly_performance_level = 'Exceeds many Expectation';
         }
         if ($avg >= 3.5) {
             $rate_annual_performance->monthly_performance_level = 'Outstanding';
