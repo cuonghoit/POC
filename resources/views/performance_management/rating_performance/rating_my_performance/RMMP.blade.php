@@ -133,7 +133,7 @@
                                     Result Description
                                 </th>
                                 <th>
-                                    Achieved (√) or Not
+                                    Archive (√)
                                 </th>
                                 <th rowspan="2">
                                     Monthly Rates
