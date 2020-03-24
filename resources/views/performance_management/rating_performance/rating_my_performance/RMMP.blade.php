@@ -396,8 +396,9 @@
                         @elseif(strcmp($status, 'Approved') ==0)
                             <button class="col-md-3 btn btn-success" name="approved">Approved</button>
                         @elseif(strcmp($status, 'Create') ==0)
-                        <label for="submit"><b>Create new report  ({{$year}}): </b>&emsp;</label>
-                        <button data-action="{{ route('createRMMP',Auth::user()->id) }}" class="btn btn-success col-md-3 btn-reject" >Create</button>
+                        <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('createRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                         @endif
                    </form>
                 </div>
