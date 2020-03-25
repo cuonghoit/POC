@@ -501,7 +501,9 @@ class HomeController extends Controller
             $year = $request->input('year');
         }else{
             $users_first = $users->first();
-            $users_first = $users_first->user_id;
+            if($users_first){
+                $users_first = $users_first->user_id;
+            }
         }
         $rap = rate_annual_performance::where('user_id', $users_first)->where('date','like',$year.'%')->get();
         $bar = new Highcharts();
