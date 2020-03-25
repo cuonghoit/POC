@@ -101,23 +101,23 @@
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-dashboard fa-fw mr-3"></span>
                             <span class="menu-collapsed d-none">{{ __('Perfomance Management') }}</span>
-                            <span class="submenu-icon ml-auto"></span>
+                            <span class="submenu-icon ml-auto d-none"></span>
                         </div>
                     </a>
                     <!-- Submenu content -->
-                    <div id='submenu1' class="collapse sidebar-submenu">
+                    <div id='submenu1' class="collapse sidebar-submenu d-none">
                         <a href="{{ route('performaceManagementDashboard') }}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
-                            <span class="menu-collapsed">{{ __('Dashboard')  }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Dashboard')  }}</span>
                         </a>
                         @hasanyrole('employees|super-admin')
                         <a href="{{ URL::to('pdf/guidelines_MSC.pdf') }}" class="list-group-item
-                        list-group-item-action bg-dark text-white lvl-1" target="_blank">
-                            <span class="menu-collapsed">{{ __('Guideline for MSC Performance Management System ')  }}</span>
+                        list-group-item-action bg-dark text-white lvl-1 d-none" target="_blank">
+                            <span class="menu-collapsed d-none">{{ __('Guideline for MSC Performance Management System ')  }}</span>
                         </a>
                         @endhasanyrole
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
                                 {{ __('Company MSC') }}
                             @else
@@ -125,13 +125,13 @@
                             @endhasanyrole
                         </li>
                         <a href="{{ route('BMAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual MSC') }}</span>
                         </a>
                         <a href="{{ route('BMMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly MSC') }}</span>
                         </a>
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
                                 {{ __('Company Rating') }}
                             @else
@@ -139,37 +139,37 @@
                             @endhasanyrole
                         </li>
                         <a href="{{ route('RMMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly Rating') }}</span>
                         </a>
                         <a href="{{ route('RMAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual Rating') }}</span>
                         </a>
                         @hasanyrole('department_managers|director|super-admin')
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             {{ __('Employees MSC') }}
                         </li>
                         <a href="{{ route('AMEAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual MSC') }}</span>
                         </a>
                         <a href="{{ route('AMEMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly MSC') }}</span>
                         </a>
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             {{ __('Employees Rating') }}
                         </li>
                         <a href="{{ route('AMEMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly Rating') }}</span>
                         </a>
                         <a href="{{ route('AMEAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual Rating') }}</span>
                         </a>
                         @endhasanyrole
                         @hasanyrole('employees|supervisors|department_managers|director|general_director|super-admin')
                         <a href="{{route('performaceManagement',Auth::user()->id)}}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
-                            <span class="menu-collapsed">{{ __('Performance Reports') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Performance Reports') }}</span>
                         </a>
                         @endhasanyrole
                     </div>
