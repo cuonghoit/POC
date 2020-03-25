@@ -56,6 +56,11 @@
                     <form action="{{route('printPerformanceReport')}}" method="get">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
+                    @if(count($users)==0)
+                        <div class="text-center alert-danger">
+                            <h4>No Data<b></b></h4>
+                        </div>
+                    @endif
                     @if($users_first!=0)
                     @if(count($rap)==0)
                         <div class="text-center alert-danger">
@@ -82,29 +87,7 @@
                     </script>
                     {!! $bar->script() !!}
                     {!! $pie->script() !!}
-                    @else
-                    <div class="container">
-                        <div class="pie" style="width: 50%;float: left;">
-                            <h2 style="text-align: center;">Rating Annual Column</h2>
-                            <br>
-                            {!! $bar_all->container() !!}
-                        </div>
-                        <div class="pie" style="width: 50%; float: left;">
-                            <h2 style="text-align: center;">Rating Annual Pie</h2>
-                            <br>
-                            {!! $pie_all->container() !!}
-                        </div>
-                    </div>
 
-                    <script src="https://unpkg.com/vue"></script>
-                    <script>
-                        var app = new Vue({
-                            el: '.container',
-                        });
-                    </script>
-                    {!! $bar_all->script() !!}
-                    {!! $pie_all->script() !!}
-                    @endif
                     <br><br><br><br>
                     <div class="table-responsive Training">
                         <table class="table table-bordered table-striped text-center">
@@ -144,6 +127,30 @@
                             @endforeach
                         </table>
                     </div>
+
+                    @else
+                    <div class="container">
+                        <div class="pie" style="width: 50%;float: left;">
+                            <h2 style="text-align: center;">Rating Annual Column</h2>
+                            <br>
+                            {!! $bar_all->container() !!}
+                        </div>
+                        <div class="pie" style="width: 50%; float: left;">
+                            <h2 style="text-align: center;">Rating Annual Pie</h2>
+                            <br>
+                            {!! $pie_all->container() !!}
+                        </div>
+                    </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script>
+                        var app = new Vue({
+                            el: '.container',
+                        });
+                    </script>
+                    {!! $bar_all->script() !!}
+                    {!! $pie_all->script() !!}
+                    @endif
                    </form>
                 </div>
             </div>

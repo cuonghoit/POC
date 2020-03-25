@@ -565,12 +565,17 @@ class HomeController extends Controller
         $data_bar_all->push($exceeds_expectation);
         $data_bar_all->push($exceeds_many_expectation);
         $data_bar_all->push($outstanding);
+        if(count($users)==0){
+            $count_user = 1;
+        }else{
+            $count_user =count($users);
+        }
 
-        $data_pie_all->push($improvement_opportunity/count($users)*100);
-        $data_pie_all->push($meets_expectation/count($users)*100);
-        $data_pie_all->push($exceeds_expectation/count($users)*100);
-        $data_pie_all->push($exceeds_many_expectation/count($users)*100);
-        $data_pie_all->push($outstanding/count($users)*100);
+        $data_pie_all->push($improvement_opportunity/$count_user*100);
+        $data_pie_all->push($meets_expectation/$count_user*100);
+        $data_pie_all->push($exceeds_expectation/$count_user*100);
+        $data_pie_all->push($exceeds_many_expectation/$count_user*100);
+        $data_pie_all->push($outstanding/$count_user*100);
 
         $bar->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
         $pie->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Exceeds many Expectation','Outstanding']);
