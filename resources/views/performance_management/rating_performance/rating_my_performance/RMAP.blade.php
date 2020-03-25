@@ -72,13 +72,13 @@
                     @endif
                     <div class="table-responsive">
                     <table class="table table-bordered text-center table-striped">
-                        <thead>
+                        <thead class="bg-success">
                             <tr>
                                 <th rowspan="2">
                                     Month / Year
                                 </th>
                                 <th colspan="7">
-                                    Achieved (√) or Not (x)
+                                    Achieved (√)
                                 </th>
                                 <th rowspan="2">
                                     Monthly Rates

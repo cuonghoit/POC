@@ -37114,7 +37114,7 @@ $(document).ready(function () {
     }
   }); // Hide submenus
 
-  $('#body-row .collapse').collapse('hide'); // Collapse/Expand icon
+  $('#body-row .collapse').collapse('show'); // Collapse/Expand icon
 
   $('#collapse-icon').addClass('fa-angle-double-right'); // Collapse click
 
