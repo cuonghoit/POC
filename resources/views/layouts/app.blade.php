@@ -97,7 +97,8 @@
                         </div>
                     </a>
                     <!-- Menu with submenu -->
-                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="true" class="bg-dark list-group-item
+                    list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span class="fa fa-dashboard fa-fw mr-3"></span>
                             <span class="menu-collapsed d-none">{{ __('Performance Management') }}</span>
@@ -119,7 +120,7 @@
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
                         menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
-                                {{ __('Company MSC') }}
+                                {{ __('Employees MSC') }}
                             @else
                                 {{ __('My MSC') }}
                             @endhasanyrole
@@ -133,7 +134,7 @@
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
                         menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
-                                {{ __('Company Rating') }}
+                                {{ __('Employees Rating') }}
                             @else
                                 {{ __('My Rating') }}
                             @endhasanyrole
@@ -166,7 +167,7 @@
                             <span class="menu-collapsed d-none">{{ __('Annual Rating') }}</span>
                         </a>
                         @endhasanyrole
-                        @hasanyrole('employees|supervisors|department_managers|director|general_director|super-admin')
+                        @hasanyrole('supervisors|department_managers|director|general_director|super-admin')
                         <a href="{{route('performaceManagement',Auth::user()->id)}}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
                             <span class="menu-collapsed d-none">{{ __('Performance Reports') }}</span>

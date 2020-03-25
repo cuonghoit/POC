@@ -48,7 +48,7 @@ $(document).ready(function () {
     });
 
     // Hide submenus
-    $('#body-row .collapse').collapse('hide');
+    $('#body-row .collapse').collapse('show');
 
     // Collapse/Expand icon
     $('#collapse-icon').addClass('fa-angle-double-right');
