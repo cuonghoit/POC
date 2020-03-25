@@ -22,41 +22,35 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('printPerformanceReport')}}" method="get">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
-                    <table style="width: 100%;">
-                        <tr>
-                            <div class="form-group">
-                                <td class="text-right":><b>Staff Name:</b></td>
-                                <td><input type="text" name="staffName" class="form-control col-md-12" value=""></td>
-                                <td class="text-right":><b>Staff Number:</b></td>
-                                <td><input type="text" name="staffNumber" class="form-control col-md-12" value=""></td>
-                                @hasanyrole('general_director|super-admin')
-                                <td class="text-right":></td>
-                                <td></td>
-                                @else
-                                    <td class="text-right":><b>Department:</b></td>
-                                <td><select name="department" class="form-control col-md-12" value="">
-                                    @foreach($department_list as $list)
-                                    <option value="{{$list->id}}">{{$list->first_name}} {{$list->middle_name}} {{$list->last_name}}</option>
-                                    @endforeach
-                                </select></td>
-                                    @endhasanyrole
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td class="text-right":><b>From Date:</b></td>
-                                <td><input type="date" name="formDate" class="form-control col-md-12" value="{{$form_date}}"></td>
-                                <td class="text-right":><b>To Date:</b></td>
-                                <td><input type="date" name="toDate" class="form-control col-md-12" value="{{$to_date}}"></td>
-                                <td colspan="2" class="text-right"><input type="submit" name="" value="Print out" class="btn btn-warning"></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    <form action="">
+                        <table style="width: 100%;">
+                            <tr>
+                                <div class="form-group">
+                                    @hasanyrole('general_director|super-admin')
+                                        <td class="text-right":><b>Department:</b></td>
+                                    @else
+                                    <td class="text-right":><b>Select Staff:</b></td>
+                                    @endif
+                                    <td>
+                                         <select class="selectpicker form-control" name="employee" data-live-search="true" value="">
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->user_id }}"@if($employees == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td class="text-right":><b>Select year:</b></td>
+                                    <td><input type="textt" name="dateFrom" class="datepicker form-control col-md-6     " value="{{$year}}"></td>
+                                    <td><button class="btn btn-success btn-search">Search</button></td>
+                                </div>
+                            </tr>
+                        </table><br>
+                    </form>
+                    <form action="{{route('printPerformanceReport')}}" method="get">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
                     <div class="container">
                         <div class="column" style="width: 50%; float: left;">
                             <h2 style="text-align: center;">Rating Annual Column</h2>
