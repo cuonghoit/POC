@@ -482,8 +482,9 @@ class HomeController extends Controller
     public function getPerformaceManagement($id, Request $request) {
         $users = '';
         $department = '';
-        $year = date('Y');
-        $employees = '';
+        $from_date = date('Y-01-01');
+        $to_date = date('Y-m-01');
+        $users_first = '0';
         if($this->isHR()){
             $departmentList = personal_info::whereNotNull('department_id')->get();
             $departmentIds = array();
@@ -498,35 +499,83 @@ class HomeController extends Controller
         }
         if($request->isMethod('POST')){
             $users_first = $request->input('user');
-            $year = $request->input('year');
+            $to_date = $request->input('to_date')."-1";
+            $from_date = $request->input('from_date')."-1";
+
+            $to = $request->input('to_date');
+            $from = $request->input('from_date');
+//            echo date_format($to_date,'Y');die();
         }else{
             $users_first = $users->first();
             if($users_first){
                 $users_first = $users_first->user_id;
             }
+            $from = date('Y-01');
+            $to = date('Y-m');
         }
-        $rap = rate_annual_performance::where('user_id', $users_first)->where('date','like',$year.'%')->get();
+        $rap = rate_annual_performance::where('user_id', $users_first)->whereBetween('date',[$from_date, $to_date])->get();
         $bar = new Highcharts();
+        $bar_all = new Highcharts();
         $pie = new Highcharts();
+        $pie_all = new Highcharts();
         $data_bar = collect([]);
+        $data_bar_all = collect([]);
         $data_pie = collect([]);
-        $rate_annual_performance = rate_annual_performance::where('user_id', $users_first)->where('date','like',$year.'%')->get();
+        $data_pie_all = collect([]);
+        $rate_annual_performance = rate_annual_performance::where('user_id', $users_first)->whereBetween('date',[$from_date, $to_date])->get();
         $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $users_first)
-        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Improvement Opportunity')->count()/12*100);
+        ->whereBetween('date',[$from_date, $to_date])->where('monthly_performance_level','like','Improvement Opportunity')->count()/12*100);
         $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $users_first)
-        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Meets Expectation')->count()/12*100);
+        ->whereBetween('date',[$from_date, $to_date])->where('monthly_performance_level','like','Meets Expectation')->count()/12*100);
         $data_pie->push($rate_good = rate_annual_performance::where('user_id', $users_first)
-        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Exceeds Expectation')->count()/12*100);
+        ->whereBetween('date',[$from_date, $to_date])->where('monthly_performance_level','like','Exceeds Expectation')->count()/12*100);
         $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $users_first)
-        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Exceeds many Expectation')->count()/12*100);
+        ->whereBetween('date',[$from_date, $to_date])->where('monthly_performance_level','like','Exceeds many Expectation')->count()/12*100);
         $data_pie->push($rate_outstanding = rate_annual_performance::where('user_id', $users_first)
-        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Outstanding')->count()/12*100);
-
+        ->whereBetween('date',[$from_date, $to_date])->where('monthly_performance_level','like','Outstanding')->count()/12*100);
         foreach ($rate_annual_performance as $rate_aunnual){
             $data_bar->push($rate_aunnual->monthly_rate);
         }
+        $improvement_opportunity= 0;
+        $meets_expectation = 0;
+        $exceeds_expectation = 0;
+        $exceeds_many_expectation = 0;
+        $outstanding= 0;
+        foreach ($users as $u){
+            $rate_all = rate_annual_performance::where('user_id',$u->user_id)->whereBetween('date',[$from_date, $to_date])->get();
+            $avg = $rate_all->avg('monthly_rate');
+            if ($avg < 2.5) {
+                $improvement_opportunity++;
+            }
+            if ($avg < 3 && $avg >= 2.5) {
+                $meets_expectation++;
+            }
+            if ($avg < 3.5 && $avg >= 3) {
+                $exceeds_expectation++;
+            }
+            if ($avg < 4.2 && $avg >= 3.5) {
+                $exceeds_many_expectation++;
+            }
+            if ($avg >= 4.2) {
+                $outstanding++;
+            }
+        }
+        $data_bar_all->push($improvement_opportunity);
+        $data_bar_all->push($meets_expectation);
+        $data_bar_all->push($exceeds_expectation);
+        $data_bar_all->push($exceeds_many_expectation);
+        $data_bar_all->push($outstanding);
+
+        $data_pie_all->push($improvement_opportunity/count($users)*100);
+        $data_pie_all->push($meets_expectation/count($users)*100);
+        $data_pie_all->push($exceeds_expectation/count($users)*100);
+        $data_pie_all->push($exceeds_many_expectation/count($users)*100);
+        $data_pie_all->push($outstanding/count($users)*100);
+
         $bar->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
-        $pie->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Very Good','Outstanding']);
+        $pie->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Exceeds many Expectation','Outstanding']);
+        $bar_all->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Exceeds many Expectation','Outstanding']);
+        $pie_all->labels(['Improvement Opportunity','Meets Expectation','Exceeds Expectation','Exceeds many Expectation','Outstanding']);
 
         $bar->dataset('Rate Annual', 'column', $data_bar);
         $bar->options([
@@ -536,6 +585,16 @@ class HomeController extends Controller
                 ],
                 'max'=>'5',
             ],
+        ]);
+
+        $bar_all->dataset('Rate Annual', 'column', $data_bar_all);
+        $bar_all->options([
+            'yAxis'=> [ //--- Primary yAxis
+                'title'=> [
+                    'text'=> 'Total Staff'
+                ],
+            ],
+            'color' => ['red','#FF8C00','Violet','blue','green'],
         ]);
 
         $pie->dataset('Rate Annual', 'pie', $data_pie)->options([
@@ -557,7 +616,26 @@ class HomeController extends Controller
               ]
             ]
         ]);
-        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie, 'rap'=>$rap,'users'=>$users, 'employees'=>$employees, 'year'=>$year]);
+        $pie_all->dataset('Rate Annual', 'pie', $data_pie_all)->options([
+            'chart'=> [
+              'plotBackgroundColor'=> null,
+              'plotBorderWidth'=> null,
+              'plotShadow'=> false,
+            ],
+            'color' => ['red','#FF8C00','Violet','blue','green'],
+            'tooltip'=> [
+              'pointFormat'=> '{series.name}: <br>{point.percentage:.1f} %<br>value: {point.y}'
+            ],
+            'plotOptions'=> [
+              'pie'=> [
+                'dataLabels'=> [
+                  'enabled'=> true,
+                  'format'=> '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>value: {point.y}',
+                ]
+              ]
+            ]
+        ]);
+        return view('performance_management/performance_management', ['bar' => $bar, 'pie'=>$pie,'bar_all'=>$bar_all,'pie_all'=>$pie_all, 'rap'=>$rap,'users'=>$users, 'users_first'=>$users_first,'from_date'=>$from ,'to_date'=>$to]);
     }
 
     public function getCMPR() {
@@ -722,7 +800,7 @@ class HomeController extends Controller
                 ->where('user_id',$id);
 
         }
-        $rate_annual_performance = $rate_annual_performance->where('year', 'like', $year."%");
+        $rate_annual_performance = $rate_annual_performance->where('date', 'like', $year."%");
         $rate_annual_performance = $rate_annual_performance->get();
         $avg = 0;
         foreach ($rate_annual_performance as $rate){
@@ -746,7 +824,7 @@ class HomeController extends Controller
         if($avg<4.2 && $avg>=3.5){
             $monthly_performance_level = 'Exceeds many Expectation';
         }
-        if($avg>=3.5){
+        if($avg>=4.2){
             $monthly_performance_level = 'Outstanding';
         }
 
@@ -939,7 +1017,7 @@ class HomeController extends Controller
                     if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                         $rate_monthly_performance->monthly_performance_level = 'Exceeds many Expectation';
                     }
-                    if($monthly_rate[$i]>=3.5){
+                    if($monthly_rate[$i]>=4.2){
                         $rate_monthly_performance->monthly_performance_level = 'Outstanding';
                     }
                     // Set another data here
@@ -1003,7 +1081,7 @@ class HomeController extends Controller
                 if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                     $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
                 }
-                if($monthly_rate[$i]>=3.5){
+                if($monthly_rate[$i]>=4.2){
                     $rate_monthly_performance->monthly_performance_level = 'Outstanding';
                 }
                 // Set another data here
@@ -1267,7 +1345,7 @@ class HomeController extends Controller
                 if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                     $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
                 }
-                if($monthly_rate[$i]>=3.5){
+                if($monthly_rate[$i]>=4.2){
                     $rate_monthly_performance->monthly_performance_level = 'Outstanding';
                 }
                 // Set another data here
@@ -1506,7 +1584,7 @@ class HomeController extends Controller
         if ($avg < 4.2 && $avg >= 3.5) {
             $rate_annual_performance->monthly_performance_level = 'Exceeds many Expectation';
         }
-        if ($avg >= 3.5) {
+        if ($avg >= 4.2) {
             $rate_annual_performance->monthly_performance_level = 'Outstanding';
         }
         $rate_annual_performance->monthly_rate = $avg;

@@ -37,13 +37,17 @@
                                     @endif
                                     <td>
                                          <select class="selectpicker form-control" name="user" data-live-search="true" value="">
+                                            <option value="0">ALL</option>
                                             @foreach($users as $user)
-                                                <option value="{{ $user->user_id }}"@if($employees == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                                <option value="{{ $user->user_id }}"@if($users_first == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
-                                    <td class="text-right":><b>Select year:</b></td>
-                                    <td><input type="textt" name="year" class="datepicker form-control col-md-6" value="{{$year}}"></td>
+                                    <td width="20%"></td>
+                                    <td class="text-right":><b>Form Month/year:</b></td>
+                                    <td><input type="textt" name="from_date" class="datepicker-months form-control col-md-6" value="{{$from_date}}"></td>
+                                    <td class="text-right":><b>To Month/year:</b></td>
+                                    <td><input type="textt" name="to_date" class="datepicker-months form-control col-md-6" value="{{$to_date}}"></td>
                                     <td><input type="submit" class="btn btn-success" value="Search"></td>
                                 </div>
                             </tr>
@@ -52,9 +56,10 @@
                     <form action="{{route('printPerformanceReport')}}" method="get">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
+                    @if($users_first!=0)
                     @if(count($rap)==0)
                         <div class="text-center alert-danger">
-                            <h4>There are not any reports in <b>{{$year}}</b></h4>
+                            <h4>There are not any reports in to {{$from_date}} from {{$to_date}}<b></b></h4>
                         </div>
                     @endif
                     <div class="container">
@@ -77,6 +82,29 @@
                     </script>
                     {!! $bar->script() !!}
                     {!! $pie->script() !!}
+                    @else
+                    <div class="container">
+                        <div class="pie" style="width: 50%;float: left;">
+                            <h2 style="text-align: center;">Rating Annual Column</h2>
+                            <br>
+                            {!! $bar_all->container() !!}
+                        </div>
+                        <div class="pie" style="width: 50%; float: left;">
+                            <h2 style="text-align: center;">Rating Annual Pie</h2>
+                            <br>
+                            {!! $pie_all->container() !!}
+                        </div>
+                    </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script>
+                        var app = new Vue({
+                            el: '.container',
+                        });
+                    </script>
+                    {!! $bar_all->script() !!}
+                    {!! $pie_all->script() !!}
+                    @endif
                     <br><br><br><br>
                     <div class="table-responsive Training">
                         <table class="table table-bordered table-striped text-center">
