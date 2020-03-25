@@ -11362,6 +11362,13 @@ a.text-dark:focus {
   }
 }
 
+@media (max-width: 768px) {
+  .background-login .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 @media (min-width: 576px) {
   .navbar-expand-md .dropright.submenu .nav-link {
     padding: 0;
