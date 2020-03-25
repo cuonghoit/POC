@@ -25,7 +25,8 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
-                    <form action="">
+                    <form action="{{route('searchPerformanceReport', Auth::user()->id)}}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <table style="width: 100%;">
                             <tr>
                                 <div class="form-group">
@@ -35,15 +36,15 @@
                                     <td class="text-right":><b>Select Staff:</b></td>
                                     @endif
                                     <td>
-                                         <select class="selectpicker form-control" name="employee" data-live-search="true" value="">
+                                         <select class="selectpicker form-control" name="user" data-live-search="true" value="">
                                             @foreach($users as $user)
                                                 <option value="{{ $user->user_id }}"@if($employees == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
                                             @endforeach
                                         </select>
                                     </td>
                                     <td class="text-right":><b>Select year:</b></td>
-                                    <td><input type="textt" name="dateFrom" class="datepicker form-control col-md-6     " value="{{$year}}"></td>
-                                    <td><button class="btn btn-success btn-search">Search</button></td>
+                                    <td><input type="textt" name="year" class="datepicker form-control col-md-6" value="{{$year}}"></td>
+                                    <td><input type="submit" class="btn btn-success" value="Search"></td>
                                 </div>
                             </tr>
                         </table><br>
@@ -51,6 +52,11 @@
                     <form action="{{route('printPerformanceReport')}}" method="get">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
+                    @if(count($rap)==0)
+                        <div class="text-center alert-danger">
+                            <h4>There are not any reports in <b>{{$year}}</b></h4>
+                        </div>
+                    @endif
                     <div class="container">
                         <div class="column" style="width: 50%; float: left;">
                             <h2 style="text-align: center;">Rating Annual Column</h2>

@@ -479,7 +479,7 @@ class HomeController extends Controller
 
     //performance-management
     //managing-company-performances
-    public function getPerformaceManagement($id) {
+    public function getPerformaceManagement($id, Request $request) {
         $users = '';
         $department = '';
         $year = date('Y');
@@ -496,18 +496,29 @@ class HomeController extends Controller
         }else{
             $users= personal_info::where('department_id', $id)->get();
         }
-        $users_first = $users->first();
-        $rap = rate_annual_performance::where('user_id', $users_first->user_id)->where('date','like',$year.'%')->get();
+        if($request->isMethod('POST')){
+            $users_first = $request->input('user');
+            $year = $request->input('year');
+        }else{
+            $users_first = $users->first();
+            $users_first = $users_first->user_id;
+        }
+        $rap = rate_annual_performance::where('user_id', $users_first)->where('date','like',$year.'%')->get();
         $bar = new Highcharts();
         $pie = new Highcharts();
         $data_bar = collect([]);
         $data_pie = collect([]);
-        $rate_annual_performance = rate_annual_performance::where('user_id', $users_first->user_id)->get();
-        $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $users_first->user_id)->where('monthly_performance_level','like','Improvement Opportunity')->count()/12*100);
-        $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $users_first->user_id)->where('monthly_performance_level','like','Meets Expectation')->count()/12*100);
-        $data_pie->push($rate_good = rate_annual_performance::where('user_id', $users_first->user_id)->where('monthly_performance_level','like','Exceeds Expectation')->count()/12*100);
-        $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $users_first->user_id)->where('monthly_performance_level','like','Exceeds many Expectation')->count()/12*100);
-        $data_pie->push($rate_outstanding = rate_annual_performance::where('user_id', $users_first->user_id)->where('monthly_performance_level','like','Outstanding')->count()/12*100);
+        $rate_annual_performance = rate_annual_performance::where('user_id', $users_first)->where('date','like',$year.'%')->get();
+        $data_pie->push($rate_poor = rate_annual_performance::where('user_id', $users_first)
+        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Improvement Opportunity')->count()/12*100);
+        $data_pie->push($rate_avg = rate_annual_performance::where('user_id', $users_first)
+        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Meets Expectation')->count()/12*100);
+        $data_pie->push($rate_good = rate_annual_performance::where('user_id', $users_first)
+        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Exceeds Expectation')->count()/12*100);
+        $data_pie->push($rate_very_good = rate_annual_performance::where('user_id', $users_first)
+        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Exceeds many Expectation')->count()/12*100);
+        $data_pie->push($rate_outstanding = rate_annual_performance::where('user_id', $users_first)
+        ->where('date','like',$year.'%')->where('monthly_performance_level','like','Outstanding')->count()/12*100);
 
         foreach ($rate_annual_performance as $rate_aunnual){
             $data_bar->push($rate_aunnual->monthly_rate);
