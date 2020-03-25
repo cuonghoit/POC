@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    <style type="text/css">
+    body, html {
+    height: 100%;
+    }
+    </style>
 <div class="background-login">
+    <a class="navbar-brand" href="{{ url('/') }}">
+        <img src="{{ asset('images/poc-logo.png') }}"/>
+    </a>
+    <h1 class="login-title">{{ __('Human Resource Information System') }}</h1>
     <div class="row justify-content-end">
         <div class="col-md-5">
 
