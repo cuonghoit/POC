@@ -1,5 +1,16 @@
+@if($personal_info->supervisor)
+    @php
+        $supervisorName = $personal_info->supervisor->first_name . ' ' . $personal_info->supervisor->middle_name . '
+     ' . $personal_info->supervisor->last_name;
+        $supervisorJobTitle = $personal_info->supervisor->job_title;
+    @endphp
+@else
+    @php
+        $supervisorName = '';
+        $supervisorJobTitle = '';
+    @endphp
+@endif
 <p class="text-left" ><b>GENERAL INFO</b></p>
-{{  $personal_info->supervisor->id }}
 <table style="width: 100%;">
     <tr>
         <div class="form-group">
@@ -10,7 +21,8 @@
         <div class="form-group">
             <td><label for="Supervisor">{{ __("Supervisor") }}:
                 </label></td>
-            <td><input type="text" class="form-control col-md-10" name="supervisor" disabled="disabled" value="{{$personal_info->supervisor->first_name}} {{$personal_info->supervisor->middle_name}} {{$personal_info->supervisor->last_name}}" ><td></td>
+            <td><input type="text" class="form-control col-md-10" name="supervisor" disabled="disabled" value="{{ $supervisorName }}"
+                ><td></td>
         </div>
         <div class="form-group">
             <td><label for="Staff_Number">{{ __("Staff number") }}:
@@ -22,7 +34,8 @@
         <div class="form-group">
             <td><label for="supervisorJobTitle">{{ __("Supervisor job title") }}:
                 </label></td>
-            <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" disabled="disabled" value="{{$personal_info->supervisor->job_title}}" ><td></td>
+            <td><input type="text" class="form-control col-md-10" name="supervisorJobTitle" disabled="disabled"
+                       value="{{ $supervisorJobTitle }}" ><td></td>
         </div>
         <div class="form-group">
             <td><label for="jobTitle">{{ __("Job title") }}:
