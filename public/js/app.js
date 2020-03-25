@@ -37116,7 +37116,7 @@ $(document).ready(function () {
 
   $('#body-row .collapse').collapse('hide'); // Collapse/Expand icon
 
-  $('#collapse-icon').addClass('fa-angle-double-left'); // Collapse click
+  $('#collapse-icon').addClass('fa-angle-double-right'); // Collapse click
 
   $('[data-toggle=sidebar-colapse]').click(function () {
     SidebarCollapse();
@@ -37129,9 +37129,9 @@ function SidebarCollapse() {
   $('.submenu-icon').toggleClass('d-none');
   $('.fa-fw').toggleClass('d-none');
   $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
-  $('.main-content').toggleClass('main-content-expanded main-content-colapse'); // Treating d-flex/d-none on separators with title
+  $('.main-content').toggleClass('main-content-expanded main-content-colapsed'); // Treating d-flex/d-none on separators with title
 
-  var SeparatorTitle = $('.sidebar-separator-title');
+  var SeparatorTitle = $('.sidebar-separator-content');
 
   if (SeparatorTitle.hasClass('d-flex')) {
     SeparatorTitle.removeClass('d-flex');
