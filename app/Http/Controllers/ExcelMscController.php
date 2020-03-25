@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Model\ExcelMsc;
+use App\Mail\TestMail;
 
 use App\Http\Controllers\Controller;
 use App\Exports\ExcelMscExport;

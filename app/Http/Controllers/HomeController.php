@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -1202,6 +1203,7 @@ class HomeController extends Controller
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
         }
+              
         return redirect()->route('BMAMO', ['id' => $id]);
     }
 

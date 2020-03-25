@@ -159,6 +159,8 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
 
 
     });
+    
+
 
 });
 
@@ -173,3 +175,4 @@ Route::group(['middleware' => ['role:director|super-admin']], function () {
 	});
 
 });
+Route::get('/email','MailSend@testemail')->name('testemail');
