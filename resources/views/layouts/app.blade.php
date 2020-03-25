@@ -77,21 +77,30 @@
         @else
         <div class="row" id="body-row">
             <!-- Sidebar -->
-            <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+            <div id="sidebar-container" class="sidebar-collapsed d-none d-md-block">
                 <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
                 <!-- Bootstrap List Group -->
                 <ul class="list-group">
+                    @hasanyrole('general_director')
+                    <a href="https://employer.jobtest.vn/vi/dashboard" class="bg-dark list-group-item
+                    list-group-item-action" target="_blank">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-external-link fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Pre-Test') }}</span>
+                        </div>
+                    </a>
+                    @endhasanyrole
                     <a href="https://cms.phuquocpoc.vn/" class="bg-dark list-group-item list-group-item-action" target="_blank">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('CMS') }}</span>
+                            <span class="fa fa-cog fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('CMS') }}</span>
                         </div>
                     </a>
                     <!-- Menu with submenu -->
                     <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-dashboard fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Perfomance Management') }}</span>
+                            <span class="fa fa-dashboard fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Perfomance Management') }}</span>
                             <span class="submenu-icon ml-auto"></span>
                         </div>
                     </a>
@@ -157,7 +166,7 @@
                             <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
                         </a>
                         @endhasanyrole
-                        @hasanyrole('employees|department_managers|director|general_director|super-admin')
+                        @hasanyrole('employees|supervisors|department_managers|director|general_director|super-admin')
                         <a href="{{route('performaceManagement',Auth::user()->id)}}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
                             <span class="menu-collapsed">{{ __('Performance Reports') }}</span>
@@ -166,27 +175,20 @@
                     </div>
                     <a href="{{ route('trainningManagementDashboard') }}" class="bg-dark list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Training Management') }}</span>
-                        </div>
-                    </a>
-                    <a href="https://employer.jobtest.vn/vi/dashboard" class="bg-dark list-group-item
-                    list-group-item-action" target="_blank">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Pre-Test') }}</span>
+                            <span class="fa fa-graduation-cap fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Training Management') }}</span>
                         </div>
                     </a>
                     <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span id="collapse-icon" class="fa fa-2x mr-3"></span>
-                            <span id="collapse-text" class="menu-collapsed">Collapse</span>
+                            <span id="collapse-text" class="menu-collapsed d-none">Collapse</span>
                         </div>
                     </a>
                 </ul><!-- List Group END-->
             </div><!-- sidebar-container END -->
             <!-- MAIN -->
-            <div class="col p-4 main-content main-content-colapse">
+            <div class="col p-4 main-content main-content-expanded">
                 @yield('content')
             </div>
         </div><!-- body-row END -->
