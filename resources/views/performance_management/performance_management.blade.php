@@ -25,11 +25,6 @@
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
-                    @if(count($employees)==0)
-                        <div class="text-center alert-danger">
-                            <h4>No Data<b></b></h4>
-                        </div>
-                    @endif
                     <form action="{{route('searchPerformanceReport', Auth::user()->id)}}" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <table style="width: 100%;">
@@ -37,32 +32,17 @@
                                 <div class="form-group">
                                     @hasanyrole('general_director|super-admin')
                                         <td class="text-right":><b>Department:</b></td>
-                                        <td>
-                                         <select class="selectpicker form-control" name="department" id="department" data-live-search="true">
-                                            <option value="0" >ALL</option>
-                                             @foreach($department as $department)
-                                                    <option value="{{ $department->user_id }}"@if($department_first== $department->user_id)selected="selected"@endif> {{$department->first_name}} {{$department->middle_name}} {{$department->last_name}}</option>
-                                             @endforeach
-                                        </select>
-                                        </td>
-                                        <td class="text-right":><b>Staff:</b></td>
-                                        <td>
-                                         <select class="selectpicker form-control" name="employees" id="employees" data-live-search="true">
-                                            <option value="0">ALL</option>
-                                            <option value="-1">None</option>
-                                        </select>
-                                        </td>
                                     @else
-                                        <td class="text-right":><b>Select Staff:</b></td>
-                                        <td>
-                                             <select class="selectpicker form-control" name="employees" data-live-search="true" value="">
-                                                <option value="0" @if($employees_first== 0)selected="selected"@endif>ALL</option>
-                                                @foreach($employees as $employees)
-                                                    <option value="{{ $employees->user_id }}"@if($employees_first== $employees->user_id)selected="selected"@endif> {{$employees->first_name}} {{$employees->middle_name}} {{$employees->last_name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
+                                    <td class="text-right":><b>Select Staff:</b></td>
                                     @endif
+                                    <td>
+                                         <select class="selectpicker form-control" name="user" data-live-search="true" value="">
+                                            <option value="0">ALL</option>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->user_id }}"@if($users_first == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
                                     <td width="20%"></td>
                                     <td class="text-right":><b>Form Month/year:</b></td>
                                     <td><input type="textt" name="from_date" class="datepicker-months form-control col-md-6" value="{{$from_date}}"></td>
@@ -76,7 +56,12 @@
                     <form action="{{route('printPerformanceReport')}}" method="get">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
-                    @if($employees_first!=0)
+                    @if(count($users)==0)
+                        <div class="text-center alert-danger">
+                            <h4>No Data<b></b></h4>
+                        </div>
+                    @endif
+                    @if($users_first!=0)
                     @if(count($rap)==0)
                         <div class="text-center alert-danger">
                             <h4>There are not any reports in to {{$from_date}} from {{$to_date}}<b></b></h4>
