@@ -11,6 +11,8 @@
 
 
 </style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -63,7 +65,7 @@
                                <select class="selectpicker form-control" data-live-search="true" name="department" autocomplete="off">
                                    <option value="">Select Department</option>
                                    @foreach($department_list as $pi)
-                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->department}}</option>
                                    @endforeach
                                </select>
                            </div>
