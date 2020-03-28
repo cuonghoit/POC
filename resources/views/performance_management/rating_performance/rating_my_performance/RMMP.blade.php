@@ -316,17 +316,23 @@
                                 <div class="form-group">
                                     <td><label for="staff_sign">Staff Signature:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"
+                                    @if(strcmp($status, 'Submited') == 0) value="Submited" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                                 <div class="form-group">
                                     <td><label for="manager_sign">Line Manager's Signature:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"
+                                    @if(strcmp($status, 'Approved') == 0) value="Approved" @elseif(strcmp($status, 'Rejected') == 0)value="Approved" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                                 <div class="form-group">
                                     <td><label for="hrm">HRM Recorded by HRM:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="hrm"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="hrm"
+                                    @if(strcmp($status, 'Reviewed') == 0) value="Reviewed" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                             </tr>
                         </table>
@@ -343,7 +349,7 @@
                             <button class="col-md-3 btn btn-success" name="approved">Approved</button>
                         @elseif(strcmp($status, 'Create') ==0)
                         <label for="submit"><b>SUBMIT TO DEPARTMENT FOR APPROVAL: </b>&emsp;</label>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-success">
+                        <button data-action="{{ route('submitFirstRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Submit</button>
                         <button data-action="{{ route('createRMMP',Auth::user()->id) }}" class="btn btn-success btn-reject" >Save</button>
                         @endif
                    </form>

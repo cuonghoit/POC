@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Mail\TestMail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +19,17 @@ use PHPUnit\Framework\Constraint\Count;
 use Illuminate\Support\Facades\Schema;
 use App\Charts\Highcharts;
 use PDF;
+use App\Mail\SendEmail;
+use App\Mail\SendEmailApproveofDepartment;
+use App\Mail\SendEmailRejectofDepartment;
+use App\Mail\SendEmailSubmitMonthly;
+use App\Mail\SendEmailApproveMonthly;
+use App\Mail\SendEmailRejectMonthly;
+use App\Mail\SendEmailSubmitRatingAnnual;
+use App\Mail\SendEmailReviewRatingAnnual;
+use App\Mail\SendEmailSubmitRatingMonthly;
+use App\Mail\SendEmailApproveRatingMonthly;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -1186,28 +1197,39 @@ class HomeController extends Controller
         return $status_name;
         }
 
-    public function submitMscMothy($id) {
+    public function submitMscMothy(Request $request, $id) {
         $msc_performance = msc_performance::where('user_id',$id)->where('type', 1)->where('status', $this::STATUS_PENDING)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         foreach ($msc_performance as $msc) {
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
         }
+        if($request->isMethod('POST')){
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailSubmitMonthly($personal_info));
+        }
 
-        return redirect()->route('BMMMO', ['id' => $id]);
+        return redirect()->route('BMMMO', ['id' => $id])->with('notice','Thanks for send email, we will confirm soon');
     }
 
-    public function submitMscAnnual($id) {
+    public function submitMscAnnual(Request $request,$id) {
+          
         $msc_performance = msc_performance::where('user_id',$id)->where('type', 0)->where('status', $this::STATUS_PENDING)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         foreach ($msc_performance as $msc) {
 
             $msc->status = $this::STATUS_SUBMITED;
             $msc->save();
+        }   
+            
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com','Kelly')->send(new SendEmail($personal_info));
+            
         }
-              
-        return redirect()->route('BMAMO', ['id' => $id]);
+            
+        return redirect()->route('BMAMO', ['id' => $id])->with('notice','Thanks for send email, we will cofirm soon');
     }
 
-    public function submitRateAnnual($id){
+    public function submitRateAnnual($id,Request $request){
         $course = course::all();
         $rate_annual_performance = rate_annual_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
         foreach ($rate_annual_performance as $rate) {
@@ -1216,9 +1238,26 @@ class HomeController extends Controller
         }
         $rate_annual_performance = rate_annual_performance::where('user_id',$id)->get();
         $personal_info = personal_info::where('user_id',$id)->first();
-        return redirect()->route('RMAP', ['id' => $id]);
+        if($request->isMethod('POST')){
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailSubmitRatingAnnual($personal_info));
+        }
+        return redirect()->route('RMAP', ['id' => $id])->with('notice','Thanks for send email, we will confirm soon');
     }
     public function submitRateMonthy($id, Request $request) {
+        $personal_info = personal_info::where('user_id',$id)->get();
+        
+        $rate_monthly_performance = rate_monthly_performance::where('user_id',$id)->where('status', $this::STATUS_PENDING)->get();
+        foreach ($rate_monthly_performance as $rate) {
+            $rate->status = $this::STATUS_SUBMITED;
+            $rate->save();
+        }
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailSubmitRatingMonthly($personal_info));
+        }
+        
+        return redirect()->route('RMMP', ['id' => $id])->with('notice','Thanks for send email, we will confirm soon');
+    }
+    public function submitFirstRMMP($id, Request $request) {
         if($request->isMethod('post')){
             $objective_category = ['Must_Do_1', 'Must_Do_2','Must_Do_3','Must_Do_4','Should_Do_1', 'Should_Do_2','Could_Do_1'];
             $objective_and_milestone = $request->input('objective_and_milestone');
@@ -1253,7 +1292,7 @@ class HomeController extends Controller
                 if($monthly_rate[$i]<4.2 && $monthly_rate[$i]>=3.5){
                     $rate_monthly_performance->monthly_performance_level = 'Exceeds Expectation';
                 }
-                if($monthly_rate[$i]>=3.5){
+                if($monthly_rate[$i]>=4.2){
                     $rate_monthly_performance->monthly_performance_level = 'Outstanding';
                 }
                 // Set another data here
@@ -1275,6 +1314,7 @@ class HomeController extends Controller
 
     public function approveMyEmployeeMscAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -1291,12 +1331,17 @@ class HomeController extends Controller
             $msc->note = $comment;
             $msc->save();
         }
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailApproveofDepartment($personal_info));
+            
+        }
 
-        return redirect()->route('AMEAMO', ['id' => $id]);
+        return redirect()->route('AMEAMO', ['id' => $id])->with('notice','Send Email Successfully');
     }
 
     public function approveMyEmployeeMscMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -1313,12 +1358,17 @@ class HomeController extends Controller
             $msc->note = $comment;
             $msc->save();
         }
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailApproveMonthly($personal_info));
+            
+        }
 
-        return redirect()->route('AMEMMO', ['id' => $id]);
+        return redirect()->route('AMEMMO', ['id' => $id])->with('notice','Thanks for send email, we will confirm soon');
     }
 
     public function rejectMyEmployeeMscAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -1335,12 +1385,16 @@ class HomeController extends Controller
             $msc->note = $comment;
             $msc->save();
         }
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailRejectofDepartment($personal_info));
+        }
 
-        return redirect()->route('AMEAMO', ['id' => $id]);
+        return redirect()->route('AMEAMO', ['id' => $id])->with('notice','Send Email Successfully');
     }
 
     public function rejectMyEmployeeMscMonthly($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         $userIds = array();
         foreach ($users as $user) {
             $userIds[] = $user->user_id;
@@ -1357,12 +1411,15 @@ class HomeController extends Controller
             $msc->note = $comment;
             $msc->save();
         }
-
-        return redirect()->route('AMEMMO', ['id' => $id]);
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailRejectMonthly($personal_info));
+        }
+        return redirect()->route('AMEMMO', ['id' => $id])->with('notice','Send Email Successfully');
     }
 
     public function approveMyEmployeeRateAnnual($id, Request $request) {
         $users= personal_info::where('department_id', $id)->get();
+        $personal_info = personal_info::where('user_id',$id)->get();
         $userIds = array();
         $comment = $request->input('comment');
         foreach ($users as $user) {
@@ -1378,8 +1435,10 @@ class HomeController extends Controller
             $rate->status = $this::STATUS_APPROVED;
             $rate->save();
         }
-
-        return redirect()->route('AMEAP', ['id' => $id]);
+        if($request->isMethod('POST')){
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailReviewRatingAnnual($personal_info));
+        }
+        return redirect()->route('AMEAP', ['id' => $id])->with('notice','Send Email Successfully');
     }
 
     public function approveMyEmployeeRateMonthly($id, Request $request) {
@@ -1398,8 +1457,12 @@ class HomeController extends Controller
             $rate->status = $this::STATUS_APPROVED;
             $rate->save();
         }
+        $personal_info = personal_info::where('user_id',$id)->get();
+        if($request->isMethod('POST')) {
+            Mail::to('hothanhtungld@gmail.com')->send(new SendEmailApproveRatingMonthly($personal_info));
+        }
 
-        return redirect()->route('AMEMP', ['id' => $id]);
+        return redirect()->route('AMEMP', ['id' => $id])->with('notice','Send Email Successfully');
     }
 
     public function rejectMyEmployeeRateAnnual($id, Request $request) {

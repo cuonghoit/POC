@@ -143,6 +143,7 @@ Route::group(['middleware' => ['role:department_managers|employees|general_direc
         Route::match(['get', 'post'], '/rating-my-monthly-performance/{id}', 'HomeController@getRMMP')->name('RMMP');
         Route::post('/submit-rating-my-annual/{id}', 'HomeController@submitRateAnnual')->name('submitRateAnnual');
         Route::post('/submit-rating-my-monthly/{id}', 'HomeController@submitRateMonthy')->name('submitRateMonthy');
+        Route::post('/submit-first-rating-my-monthly/{id}', 'HomeController@submitFirstRMMP')->name('submitFirstRMMP');
     });
 
     Route::post('save-rate-monthly-performance/{id}', 'HomeController@saveRMMP')->name('saveRMMP');
@@ -175,4 +176,6 @@ Route::group(['middleware' => ['role:director|super-admin']], function () {
 	});
 
 });
-Route::get('/email','MailSend@testemail')->name('testemail');
+
+
+
