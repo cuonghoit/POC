@@ -11,6 +11,8 @@
 
 
 </style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="">
     <div class="row justify-content-center">
         <div style="width: 100%;">
@@ -63,7 +65,7 @@
                                <select class="selectpicker form-control" data-live-search="true" name="department" autocomplete="off">
                                    <option value="">Select Department</option>
                                    @foreach($department_list as $pi)
-                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                       <option value="{{ $pi->user_id }}" @if($department == $pi->user_id) selected="selected" @endif >{{$pi->department}}</option>
                                    @endforeach
                                </select>
                            </div>
@@ -423,17 +425,23 @@
                                 <div class="form-group">
                                     <td><label for="staff_sign">Staff Signature:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="staff_sign"
+                                    @if(strcmp($status, 'Submited') == 0) value="Submited" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                                 <div class="form-group">
                                     <td><label for="manager_sign">Line Manager's Signature:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="manager_sign"
+                                    @if(strcmp($status, 'Approved') == 0) value="Approved" @elseif(strcmp($status, 'Rejected') == 0)value="Approved" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                                 <div class="form-group">
                                     <td><label for="hrm">HRM Recorded by HRM:
                                     </label></td>
-                                    <td><input type="text" class="form-control col-md-12" name="hrm"></td>
+                                    <td><input type="text" class="form-control col-md-12" name="hrm"
+                                    @if(strcmp($status, 'Reviewed') == 0) value="Reviewed" @endif disabled="disabled"
+                                    ></td>
                                 </div>
                             </tr>
                         </table>

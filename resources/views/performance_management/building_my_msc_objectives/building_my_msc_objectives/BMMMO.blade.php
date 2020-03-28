@@ -53,7 +53,7 @@
                                 <select class="selectpicker form-control" data-live-search="true" name="department">
                                     <option value="">Select Department</option>
                                     @foreach($department_list as $pi)
-                                        <option value="{{ $pi->user_id }}" @if($department==$pi->user_id) selected="selected" @endif>{{$pi->first_name}} {{$pi->middle_name}} {{$pi->last_name}}</option>
+                                        <option value="{{ $pi->user_id }}" @if($department==$pi->user_id) selected="selected" @endif>{{$pi->department}}</option>
                                     @endforeach
                                 </select>
                             </div>

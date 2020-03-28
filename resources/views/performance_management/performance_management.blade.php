@@ -22,41 +22,51 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{route('printPerformanceReport')}}" method="get">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <h4 class="text-center" >PHU QUOC PETROLEUM OPERATING COMPANY<br>
                         <b>PERFORMANCE MANAGEMENT SYSTEM</b></h4><br>
                     <h3 class="text-center" ><b>PERFORMANCE MANAGEMENT REPORT</b></h3><br>
-                    <table style="width: 100%;">
-                        <tr>
-                            <div class="form-group">
-                                <td class="text-right":><b>Staff Name:</b></td>
-                                <td><input type="text" name="staffName" class="form-control col-md-12" value=""></td>
-                                <td class="text-right":><b>Staff Number:</b></td>
-                                <td><input type="text" name="staffNumber" class="form-control col-md-12" value=""></td>
-                                @hasanyrole('general_director|super-admin')
-                                <td class="text-right":></td>
-                                <td></td>
-                                @else
-                                    <td class="text-right":><b>Department:</b></td>
-                                <td><select name="department" class="form-control col-md-12" value="">
-                                    @foreach($department_list as $list)
-                                    <option value="{{$list->id}}">{{$list->first_name}} {{$list->middle_name}} {{$list->last_name}}</option>
-                                    @endforeach
-                                </select></td>
-                                    @endhasanyrole
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td class="text-right":><b>From Date:</b></td>
-                                <td><input type="date" name="formDate" class="form-control col-md-12" value="{{$form_date}}"></td>
-                                <td class="text-right":><b>To Date:</b></td>
-                                <td><input type="date" name="toDate" class="form-control col-md-12" value="{{$to_date}}"></td>
-                                <td colspan="2" class="text-right"><input type="submit" name="" value="Print out" class="btn btn-warning"></td>
-                            </div>
-                        </tr>
-                    </table><br>
+                    <form action="{{route('searchPerformanceReport', Auth::user()->id)}}" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <table style="width: 100%;">
+                            <tr>
+                                <div class="form-group">
+                                    @hasanyrole('general_director|super-admin')
+                                        <td class="text-right":><b>Department:</b></td>
+                                    @else
+                                    <td class="text-right":><b>Select Staff:</b></td>
+                                    @endif
+                                    <td>
+                                         <select class="selectpicker form-control" name="user" data-live-search="true" value="">
+                                            <option value="0">ALL</option>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->user_id }}"@if($users_first == $user->user_id) selected="selected" @endif> {{$user->first_name}} {{$user->middle_name}} {{$user->last_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td width="20%"></td>
+                                    <td class="text-right":><b>Form Month/year:</b></td>
+                                    <td><input type="textt" name="from_date" class="datepicker-months form-control col-md-6" value="{{$from_date}}"></td>
+                                    <td class="text-right":><b>To Month/year:</b></td>
+                                    <td><input type="textt" name="to_date" class="datepicker-months form-control col-md-6" value="{{$to_date}}"></td>
+                                    <td><input type="submit" class="btn btn-success" value="Search"></td>
+                                </div>
+                            </tr>
+                        </table><br>
+                    </form>
+                    <form action="{{route('printPerformanceReport')}}" method="get">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="text-right"><input type="submit" value="Print Out" class="btn btn-warning"></div>
+                    @if(count($users)==0)
+                        <div class="text-center alert-danger">
+                            <h4>No Data<b></b></h4>
+                        </div>
+                    @endif
+                    @if($users_first!=0)
+                    @if(count($rap)==0)
+                        <div class="text-center alert-danger">
+                            <h4>There are not any reports in to {{$from_date}} from {{$to_date}}<b></b></h4>
+                        </div>
+                    @endif
                     <div class="container">
                         <div class="column" style="width: 50%; float: left;">
                             <h2 style="text-align: center;">Rating Annual Column</h2>
@@ -77,6 +87,7 @@
                     </script>
                     {!! $bar->script() !!}
                     {!! $pie->script() !!}
+
                     <br><br><br><br>
                     <div class="table-responsive Training">
                         <table class="table table-bordered table-striped text-center">
@@ -116,6 +127,30 @@
                             @endforeach
                         </table>
                     </div>
+
+                    @else
+                    <div class="container">
+                        <div class="pie" style="width: 50%;float: left;">
+                            <h2 style="text-align: center;">Rating Annual Column</h2>
+                            <br>
+                            {!! $bar_all->container() !!}
+                        </div>
+                        <div class="pie" style="width: 50%; float: left;">
+                            <h2 style="text-align: center;">Rating Annual Pie</h2>
+                            <br>
+                            {!! $pie_all->container() !!}
+                        </div>
+                    </div>
+
+                    <script src="https://unpkg.com/vue"></script>
+                    <script>
+                        var app = new Vue({
+                            el: '.container',
+                        });
+                    </script>
+                    {!! $bar_all->script() !!}
+                    {!! $pie_all->script() !!}
+                    @endif
                    </form>
                 </div>
             </div>

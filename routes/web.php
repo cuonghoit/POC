@@ -58,6 +58,8 @@ Route::group(['middleware' => ['role:employees|department_managers|director|supe
 		Route::get('/performance-management-report/{id}', 'HomeController@getPerformaceManagement')->name('performaceManagement');
         Route::get('/print-performance-report', 'PdfController@printPerformanceReport')->name('printPerformanceReport');
 
+        Route::post('/search-performance-report/{id}', 'HomeController@getPerformaceManagement')->name('searchPerformanceReport');
+
 		Route::group(['prefix'=>'managing-company-performances'],function(){
 			Route::get('/company-monthly-performance-report', 'HomeController@getCMPR')->name('CMPR');
 			Route::get('/company-multi-monthly-performance-report', 'HomeController@getCMMPR')->name('CMMPR');

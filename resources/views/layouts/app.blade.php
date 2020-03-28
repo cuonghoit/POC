@@ -77,116 +77,119 @@
         @else
         <div class="row" id="body-row">
             <!-- Sidebar -->
-            <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+            <div id="sidebar-container" class="sidebar-collapsed d-none d-md-block">
                 <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
                 <!-- Bootstrap List Group -->
                 <ul class="list-group">
+                    @hasanyrole('general_director')
+                    <a href="https://employer.jobtest.vn/vi/dashboard" class="bg-dark list-group-item
+                    list-group-item-action" target="_blank">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="fa fa-external-link fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Pre-Test') }}</span>
+                        </div>
+                    </a>
+                    @endhasanyrole
                     <a href="https://cms.phuquocpoc.vn/" class="bg-dark list-group-item list-group-item-action" target="_blank">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('CMS') }}</span>
+                            <span class="fa fa-cog fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('CMS') }}</span>
                         </div>
                     </a>
                     <!-- Menu with submenu -->
-                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="true" class="bg-dark list-group-item
+                    list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-dashboard fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Perfomance Management') }}</span>
-                            <span class="submenu-icon ml-auto"></span>
+                            <span class="fa fa-dashboard fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Performance Management') }}</span>
+                            <span class="submenu-icon ml-auto d-none"></span>
                         </div>
                     </a>
                     <!-- Submenu content -->
-                    <div id='submenu1' class="collapse sidebar-submenu">
+                    <div id='submenu1' class="collapse sidebar-submenu d-none">
                         <a href="{{ route('performaceManagementDashboard') }}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
-                            <span class="menu-collapsed">{{ __('Dashboard')  }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Dashboard')  }}</span>
                         </a>
                         @hasanyrole('employees|super-admin')
                         <a href="{{ URL::to('pdf/guidelines_MSC.pdf') }}" class="list-group-item
-                        list-group-item-action bg-dark text-white lvl-1" target="_blank">
-                            <span class="menu-collapsed">{{ __('Guideline for MSC Performance Management System ')  }}</span>
+                        list-group-item-action bg-dark text-white lvl-1 d-none" target="_blank">
+                            <span class="menu-collapsed d-none">{{ __('Guideline for MSC Performance Management System ')  }}</span>
                         </a>
                         @endhasanyrole
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
-                                {{ __('Company MSC') }}
+                                {{ __('Employees MSC') }}
                             @else
                                 {{ __('My MSC') }}
                             @endhasanyrole
                         </li>
                         <a href="{{ route('BMAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual MSC') }}</span>
                         </a>
                         <a href="{{ route('BMMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly MSC') }}</span>
                         </a>
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             @hasanyrole('general_director')
-                                {{ __('Company Rating') }}
+                                {{ __('Employees Rating') }}
                             @else
                                 {{ __('My Rating') }}
                             @endhasanyrole
                         </li>
                         <a href="{{ route('RMMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly Rating') }}</span>
                         </a>
                         <a href="{{ route('RMAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual Rating') }}</span>
                         </a>
                         @hasanyrole('department_managers|director|super-admin')
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             {{ __('Employees MSC') }}
                         </li>
                         <a href="{{ route('AMEAMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual MSC') }}</span>
                         </a>
                         <a href="{{ route('AMEMMO',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly MSC') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly MSC') }}</span>
                         </a>
                         <li class="list-group-item sidebar-separator-content d-flex align-items-center
-                        menu-collapsed text-white">
+                        menu-collapsed text-white d-none">
                             {{ __('Employees Rating') }}
                         </li>
                         <a href="{{ route('AMEMP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Monthly Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Monthly Rating') }}</span>
                         </a>
                         <a href="{{ route('AMEAP',Auth::user()->id) }}" class="list-group-item list-group-item-action bg-dark text-white">
-                            <span class="menu-collapsed">{{ __('Annual Rating') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Annual Rating') }}</span>
                         </a>
                         @endhasanyrole
-                        @hasanyrole('employees|department_managers|director|general_director|super-admin')
+                        @hasanyrole('supervisors|department_managers|director|general_director|super-admin')
                         <a href="{{route('performaceManagement',Auth::user()->id)}}" class="list-group-item
                         list-group-item-action bg-dark text-white lvl-1">
-                            <span class="menu-collapsed">{{ __('Performance Reports') }}</span>
+                            <span class="menu-collapsed d-none">{{ __('Performance Reports') }}</span>
                         </a>
                         @endhasanyrole
                     </div>
                     <a href="{{ route('trainningManagementDashboard') }}" class="bg-dark list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Training Management') }}</span>
-                        </div>
-                    </a>
-                    <a href="https://employer.jobtest.vn/vi/dashboard" class="bg-dark list-group-item
-                    list-group-item-action" target="_blank">
-                        <div class="d-flex w-100 justify-content-start align-items-center">
-                            <span class="fa fa-cog fa-fw mr-3 d-none"></span>
-                            <span class="menu-collapsed">{{ __('Pre-Test') }}</span>
+                            <span class="fa fa-graduation-cap fa-fw mr-3"></span>
+                            <span class="menu-collapsed d-none">{{ __('Training Management') }}</span>
                         </div>
                     </a>
                     <a href="#top" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
                         <div class="d-flex w-100 justify-content-start align-items-center">
                             <span id="collapse-icon" class="fa fa-2x mr-3"></span>
-                            <span id="collapse-text" class="menu-collapsed">Collapse</span>
+                            <span id="collapse-text" class="menu-collapsed d-none">Collapse</span>
                         </div>
                     </a>
                 </ul><!-- List Group END-->
             </div><!-- sidebar-container END -->
             <!-- MAIN -->
-            <div class="col p-4 main-content main-content-colapse">
+            <div class="col p-4 main-content main-content-expanded">
                 @yield('content')
             </div>
         </div><!-- body-row END -->
