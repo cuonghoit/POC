@@ -26,7 +26,7 @@ class PermissionRegistrar
     /** @var \Illuminate\Support\Collection */
     protected $permissions;
 
-    /** @var DateInterval|int */
+    /** @var \DateInterval|int */
     public static $cacheExpirationTime;
 
     /** @var string */
@@ -102,6 +102,16 @@ class PermissionRegistrar
         $this->permissions = null;
 
         return $this->cache->forget(self::$cacheKey);
+    }
+
+    /**
+     * Clear class permissions.
+     * This is only intended to be called by the PermissionServiceProvider on boot,
+     * so that long-running instances like Swoole don't keep old data in memory.
+     */
+    public function clearClassPermissions()
+    {
+        $this->permissions = null;
     }
 
     /**
